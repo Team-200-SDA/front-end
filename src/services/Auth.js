@@ -1,63 +1,86 @@
-import AuthApi from "../api/AuthApi";
+import AuthApi from '../api/AuthApi';
+import UserApi from '../api/UserApi';
 
-const tokenKey = "_token";
+const tokenKey = '_token';
+const userKey = 'user';
+const emailKey = 'email';
 
 // Disclaimer: This simple auth implementation is for development purposes only.
 
 class Auth {
-    setLoggedIn = () => {};
+  setLoggedIn = () => {};
 
-    isLoggedIn() {
-        return this._getToken() != null;
-    }
+  isLoggedIn() {
+    return this._getToken() != null;
+  }
 
-    async login(loginData) {
-        return await this._loginOrRegister(AuthApi.authenticate, loginData);
-    }
+  async login(loginData) {
+    return await this._loginOrRegister(AuthApi.authenticate, loginData);
+  }
 
-    async register(registrationData) {
-        return await this._loginOrRegister(AuthApi.register, registrationData);
-    }
+  async register(registrationData) {
+    return await this._loginOrRegister(AuthApi.register, registrationData);
+  }
 
-    logout() {
-        this.setLoggedIn(false);
-        this._clearToken();
+  async getUser() {
+    try {
+      const response = await UserApi.getLoggedInUser();
+      this._setLoggedInUser(response.data);
+    } catch (error) {
+      console.log(error);
     }
+  }
 
-    bindLoggedInStateSetter(loggedInStateSetter) {
-        this.setLoggedIn = loggedInStateSetter;
-    }
+  logout() {
+    this.setLoggedIn(false);
+    this._clearToken();
+    this._clearLoggedInUser();
+  }
 
-    getAuthorizationHeader() {
-        return "Bearer "+this._getToken();
-    }
+  bindLoggedInStateSetter(loggedInStateSetter) {
+    this.setLoggedIn = loggedInStateSetter;
+  }
 
-    async _loginOrRegister(action, data) {
-        try {
-            const response = await action(data);
-            this._setToken(response.data.token);
-            this.setLoggedIn(true);
-            return true;
-        } catch (e) {
-            console.error(e);
-            
-            this.setLoggedIn(false);
-            return false;
-        }
-    }
+  getAuthorizationHeader() {
+    return 'Bearer ' + this._getToken();
+  }
 
-    _getToken() {
-        return window.sessionStorage.getItem(tokenKey);
-    }
+  async _loginOrRegister(action, data) {
+    try {
+      const response = await action(data);
+      this._setToken(response.data.token);
+      this.setLoggedIn(true);
+      this.getUser();
+      return true;
+    } catch (e) {
+      console.error(e);
 
-    _setToken(token) {
-        window.sessionStorage.setItem(tokenKey, token);
+      this.setLoggedIn(false);
+      return false;
     }
+  }
 
-    _clearToken() {
-        window.sessionStorage.removeItem(tokenKey);
-    }
+  _getToken() {
+    return window.sessionStorage.getItem(tokenKey);
+  }
+
+  _setToken(token) {
+    window.sessionStorage.setItem(tokenKey, token);
+  }
+
+  _clearToken() {
+    window.sessionStorage.removeItem(tokenKey);
+  }
+
+  _setLoggedInUser(user) {
+    window.sessionStorage.setItem(userKey, user.name);
+    window.sessionStorage.setItem(emailKey, user.email);
+  }
+
+  _clearLoggedInUser() {
+    window.sessionStorage.removeItem(userKey);
+    window.sessionStorage.removeItem(emailKey);
+  }
 }
-
 
 export default new Auth();
