@@ -1,27 +1,29 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
-import { format } from 'date-fns';
 import ChatMessage from './ChatMessage';
+import { Fab, TextField } from '@material-ui/core';
+import { Send } from '@material-ui/icons';
 
 const wsEndpoint = 'http://localhost:8080/ws';
 const user = window.sessionStorage.getItem('user');
+const socket = new SockJS(wsEndpoint, null, {
+  transports: ['xhr-streaming'],
+  headers: { Authorization: window.sessionStorage.getItem('_token') }
+});
+const stompClient = Stomp.over(socket);
+console.log(stompClient);
 
 function Chat() {
   const [messages, setMessages] = useState([]);
-  const socket = new SockJS(wsEndpoint, null, {
-    transports: ['xhr-streaming'],
-    headers: { Authorization: window.sessionStorage.getItem('_token') }
-  });
-  const stompClient = Stomp.over(socket);
+  const [messageField, setMessageField] = useState('');
 
   useEffect(() => {
     stompClient.connect({}, onConnected, onError);
   }, []);
 
-  const onConnected = () => {
+  function onConnected() {
     // Subscribe to the Public Topic
     stompClient.subscribe('/topic/public', onMessageReceived);
     //Send Username To Server
@@ -30,9 +32,9 @@ function Chat() {
       {},
       JSON.stringify({ sender: user, type: 'JOIN' })
     );
-  };
+  }
 
-  const onMessageReceived = payload => {
+  function onMessageReceived(payload) {
     const message = JSON.parse(payload.body);
 
     if (message.type === 'JOIN') {
@@ -40,23 +42,65 @@ function Chat() {
     } else if (message.type === 'LEAVE') {
       message.content = 'Left!';
     }
-    message.time = format(new Date(), 'HH:MM');
-    setMessages(...messages, [message]);
-  };
+    setMessages(oldMessages => [...oldMessages, message]);
+  }
 
-  // const sendMessage = () => {
-  //   console.log('send msg');
-  // };
+  function sendMessage() {
+    console.log(stompClient);
+    if (messageField && stompClient) {
+      const chatMessage = {
+        sender: user,
+        content: messageField,
+        type: 'CHAT'
+      };
+      stompClient.send('/app/chat.sendMessage', {}, JSON.stringify(chatMessage));
+    }
+    setMessageField('');
+  }
 
   function onError() {
     console.log('error');
   }
 
-  const messagesToRender = messages.map(message => (
-    <ChatMessage key={uuid()} message={message} />
-  ));
+  const submitHandler = e => {
+    e.preventDefault();
+    sendMessage();
+  };
 
-  return <div>{messagesToRender}</div>;
+  const messagesToRender = messages.map(msg => {
+    return <ChatMessage key={uuid()} message={msg} />;
+  });
+
+  return (
+    <div className="paper">
+      <div className="jsx-messages">{messagesToRender}</div>
+
+      <form
+        onSubmit={e => submitHandler(e)}
+        className="message-form"
+        noValidate
+        autoComplete="off">
+        <TextField
+          className="message-text-field"
+          id="outlined-full-width"
+          placeholder="Type a message..."
+          helperText="Enter or Click to send."
+          fullWidth
+          margin="normal"
+          onChange={e => setMessageField(e.target.value)}
+          value={messageField}
+          InputLabelProps={{
+            shrink: true
+          }}
+          variant="outlined"
+        />
+
+        <Fab size="small" onClick={e => submitHandler(e)}>
+          <Send />
+        </Fab>
+      </form>
+    </div>
+  );
 }
 
 export default Chat;

@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   background-color: rgb(83, 83, 165);
+  margin-bottom: 10px;
 }
 
 .message-box-sender {
@@ -36,4 +37,29 @@
   margin-right: 10px;
   color: rgb(172, 175, 177);
   font-size: 0.8em;
+}
+.message-form {
+  display: flex;
+  align-items: center;
+}
+
+.MuiFab-root.MuiFab-sizeSmall {
+  background-color: rgb(83, 83, 165);
+  margin-left: 10px;
+  margin-bottom: 16px;
+}
+
+.paper {
+  display: flex;
+  flex-direction: column;
+  justify-items: flex-end;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.MuiFormControl-root.MuiTextField-root.message-text-field.MuiFormControl-marginNormal.MuiFormControl-fullWidth {
+  margin-top: auto;
+  /* position: absolute; */
+  /* bottom: 0; */
+  /* width: 50%; */
 }
