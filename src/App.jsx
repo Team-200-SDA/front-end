@@ -8,6 +8,7 @@ import Navbar from './components/layout/Navbar';
 import LoginPage from './components/auth/LoginPage';
 import HomePage from './components/home/HomePage';
 import Chat from './components/chat/Chat';
+import Lecture from './components/lecture/Lecture';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -21,6 +22,9 @@ function App() {
         <Switch>
           <Route path="/" exact>
             <HomePage />
+          </Route>
+          <Route path="/lectures" exact>
+            <Lecture />
           </Route>
           <Route path="/chat" exact>
             <Chat />
