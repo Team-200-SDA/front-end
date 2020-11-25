@@ -1,8 +1,7 @@
 import React from "react";
+import "../chatbot/Linklist.css";
 
-import "./LinkList.css";
-
-const LinkList = (props) => {
+const Linklist = (props) => {
   const linkMarkup = props.options.map((link) => (
     <li key={link.id} className="link-list-item">
       <a
@@ -19,4 +18,4 @@ const LinkList = (props) => {
   return <ul className="link-list">{linkMarkup}</ul>;
 };
 
-export default LinkList;
+export default Linklist;

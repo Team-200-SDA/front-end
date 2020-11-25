@@ -5,10 +5,21 @@ class ActionProvider {
       this.setState = setStateFunc;
     }
    //This provides the state of the greeting. 
-    greet() {
+   //How do we inititate the greet() and handleJavaScriptList here in the first phase?
+    handlegreet() {
       const greetingMessage = this.createChatBotMessage("Hi, friend...............")
       this.updateChatbotState(greetingMessage)
     }
+    handleJavascriptList = () => {
+      const message = this.createChatBotMessage(
+        "Fantastic, I've got the following resources for you on Javascript:",
+        {
+          widget: "javascriptLinks",
+        }
+      );
+      this.updateChatbotState(message);
+    };
+  
     
     //This method updates the state of the bot.
     updateChatbotState(message) {
