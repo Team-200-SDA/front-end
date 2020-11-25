@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import SockJS from 'sockjs-client';
@@ -5,6 +6,7 @@ import Stomp from 'stompjs';
 import ChatMessage from './ChatMessage';
 import { Fab, TextField } from '@material-ui/core';
 import { Send } from '@material-ui/icons';
+import { format } from 'date-fns';
 
 const wsEndpoint = 'http://localhost:8080/ws';
 const user = window.sessionStorage.getItem('user');
@@ -12,15 +14,17 @@ const socket = new SockJS(wsEndpoint, null, {
   transports: ['xhr-streaming'],
   headers: { Authorization: window.sessionStorage.getItem('_token') }
 });
-const stompClient = Stomp.over(socket);
-console.log(stompClient);
 
 function Chat() {
   const [messages, setMessages] = useState([]);
   const [messageField, setMessageField] = useState('');
+  const stompClient = Stomp.over(socket);
 
   useEffect(() => {
     stompClient.connect({}, onConnected, onError);
+
+    // Disconnect the socket connection when component un-mounts.
+    return () => stompClient.disconnect();
   }, []);
 
   function onConnected() {
@@ -36,12 +40,12 @@ function Chat() {
 
   function onMessageReceived(payload) {
     const message = JSON.parse(payload.body);
-
     if (message.type === 'JOIN') {
       message.content = 'Joined!';
     } else if (message.type === 'LEAVE') {
       message.content = 'Left!';
     }
+    message.time = format(new Date(), 'HH:mm');
     setMessages(oldMessages => [...oldMessages, message]);
   }
 
@@ -94,7 +98,6 @@ function Chat() {
           }}
           variant="outlined"
         />
-
         <Fab size="small" onClick={e => submitHandler(e)}>
           <Send />
         </Fab>
