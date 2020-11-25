@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
+import * as Scroll from 'react-scroll';
 import { v4 as uuid } from 'uuid';
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
@@ -19,6 +20,7 @@ function Chat() {
   const [messages, setMessages] = useState([]);
   const [messageField, setMessageField] = useState('');
   const stompClient = Stomp.over(socket);
+  const scroll = Scroll.animateScroll;
 
   useEffect(() => {
     stompClient.connect({}, onConnected, onError);
@@ -47,6 +49,7 @@ function Chat() {
     }
     message.time = format(new Date(), 'HH:mm');
     setMessages(oldMessages => [...oldMessages, message]);
+    scroll.scrollToBottom();
   }
 
   function sendMessage() {
