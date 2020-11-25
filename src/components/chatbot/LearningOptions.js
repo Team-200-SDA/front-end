@@ -5,6 +5,7 @@ import "./LearningOptions.css";
 const LearningOptions = (props) => {
 
   //The learning options component should be registered with the config file.
+  //We can create custom create learning options and render it to the page.
   const options = [
     { text: "Javascript", handler: () => {}, id: 1 },
     { text: "React JS", handler: () => {}, id: 2 },
