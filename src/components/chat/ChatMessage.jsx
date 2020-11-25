@@ -1,6 +1,8 @@
 import { Avatar, Box, Paper } from '@material-ui/core';
 import React from 'react';
 import { format } from 'date-fns';
+import UserApi from '../../api/UserApi';
+
 const user = window.sessionStorage.getItem('user');
 
 function ChatMessage({ message }) {
