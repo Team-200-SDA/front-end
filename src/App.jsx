@@ -12,6 +12,7 @@ import LoginPage from './components/auth/LoginPage';
 import HomePage from './components/home/HomePage';
 import Chat from './components/chat/Chat';
 import Userprofile from './components/userprofile/UserProfile';
+import Lecture from './components/lecture/Lecture';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -28,7 +29,9 @@ function App() {
           <Route path="/" exact>
             <HomePage />
           </Route>
-
+          <Route path="/lectures" exact>
+            <Lecture />
+          </Route>
           <Route path="/chat" exact>
             <Chat />
           </Route>
