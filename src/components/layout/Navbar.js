@@ -2,6 +2,8 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 function Navbar({ onLogout }) {
+
+
   const history = useHistory();
   function chatRefresh() {
     history.push('/chat');
@@ -42,6 +44,11 @@ function Navbar({ onLogout }) {
               Chat
             </Link>
           </li>
+                    <li className="nav-item">
+              <Link to="/userprofile" className="nav-link">
+                User Profile
+              </Link>
+            </li>
         </ul>
 
         <button className="btn btn-outline-info my-2 my-sm-0" onClick={onLogout}>
@@ -50,6 +57,7 @@ function Navbar({ onLogout }) {
       </div>
     </nav>
   );
+
 }
 
 export default Navbar;
