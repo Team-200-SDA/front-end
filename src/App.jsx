@@ -11,6 +11,7 @@ import config from './chatbot-resources/config';
 import LoginPage from './components/auth/LoginPage';
 import HomePage from './components/home/HomePage';
 import Chat from './components/chat/Chat';
+import Userprofile from './components/userprofile/UserProfile';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -18,20 +19,30 @@ function App() {
 
   const loggedInRouter = (
     <Router>
+
       <Navbar onLogout={() => Auth.logout()} />
 
       <div className="container mt-5">
+
         <Switch>
           <Route path="/" exact>
             <HomePage />
           </Route>
+
           <Route path="/chat" exact>
             <Chat />
           </Route>
+
           <Route path="/bot" exact>
           <Chatbot config={config} actionProvider={ActionProvider} messageParser={MessageParser} />
           </Route>
+
+          <Route path="/userprofile">
+            <Userprofile />
+          </Route>
+
         </Switch>
+
       </div>
 
 
