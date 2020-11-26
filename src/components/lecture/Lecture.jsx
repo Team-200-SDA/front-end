@@ -1,43 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import LectureApi from '../../api/LectureApi';
+import React, { useState } from 'react';
+import LecturePage from './LecturePage';
 
-export default function Lecture(props) {
-    const [title, setTitle] = useState("");
-    const [link, setLink] = useState("");
+export default function Lecture({lecture, deleteLecture}) {
+    const [bodyIsOpen, setBodyIsOpen] = useState(false);
+    const handleOpenMessage = () => {
+        setBodyIsOpen(!bodyIsOpen);
+    };
 
-    function createLecture() {
-        if (link === "") { return;}   //we dont want to post a Lecture with no details.
-
-        const newLecture = {
-            lectureTitle: title,
-            lectureLink: link,
-        };
-
-        LectureApi.createLecture(newLecture)
-            .then(() => {
-                props.getAllLectures();
-                setLink("");
-                setTitle("");
-            })
-    }   
 
     return (
-        <div className="container col-sm-12 col-md-10 col-lg-8">
-            {/* <p className="card-title">Create a new Post</p> */}
-            <div className="form-group">
-                <input className="form-control"
-                    placeholder="Title"
-                    value={title}
-                    onChange={event => setTitle(event.target.value)}
-                />
-                <textarea className="form-control post-content"
-                    placeholder={`Link for the lecture.`}
-                    value={link}
-                    onChange={event => setLink(event.target.value)}
-                />
+        <div className="card mt-4">
+            <div className="card-title bg-secondary text-white m-0 p-1">
+                <div className="mw-75" 
+                    onClick={handleOpenMessage} 
+                    style={{ cursor: "pointer" }}>
+                    {lecture.title}
+                </div>
             </div>
-            <div className="form-group">
-                <button className="btn btn-primary  " onClick={createLecture}>Upload</button>
+            <div className="card-body">
+                {lecture.link}
+            </div>
+            <div className="text-right">
+                <button className="btn btn-light mr-s"
+                onClick={() => deleteLecture(lecture.id)}>
+                Delete
+                </button>
             </div>
         </div>
     );

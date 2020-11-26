@@ -8,8 +8,8 @@ import Navbar from './components/layout/Navbar';
 import LoginPage from './components/auth/LoginPage';
 import HomePage from './components/home/HomePage';
 import Chat from './components/chat/Chat';
-import Userprofile from './components/userprofile/UserProfile';
-import Lecture from './components/lecture/Lecture';
+// import Userprofile from './components/userprofile/UserProfile';
+import LecturePage from './components/lecture/LecturePage';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -25,7 +25,7 @@ function App() {
             <HomePage />
           </Route>
           <Route path="/lectures" exact>
-            <Lecture />
+            <LecturePage />
           </Route>
           <Route path="/chat" exact>
             <Chat />
