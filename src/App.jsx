@@ -30,9 +30,9 @@ function App() {
           <Route path="/chat" exact>
             <Chat />
           </Route>
-          <Route path="/userprofile">
+          {/* <Route path="/userprofile">
             <Userprofile />
-          </Route>
+          </Route> */}
         </Switch>
       </div>
     </Router>
