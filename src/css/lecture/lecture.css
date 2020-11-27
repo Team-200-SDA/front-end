@@ -1,8 +1,8 @@
-.assignment-card {
+.lecture-card {
     max-width: 50%;
     margin: auto !important;
 }
 
-.assignment-card .card-body button {
+.lecture-card .card-body button {
     margin-left: 70%;
 }
