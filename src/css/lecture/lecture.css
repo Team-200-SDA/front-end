@@ -1,0 +1,8 @@
+.card {
+    max-width: 50%;
+    margin: auto !important;
+}
+
+.card .card-body button {
+    margin-left: 70%;
+}
