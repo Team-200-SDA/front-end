@@ -6,6 +6,7 @@ import LectureApi from '../../api/LectureApi';
 import CreateLecture from './CreateLecture';
 import Lecture from './Lecture';
 
+import '../../css/lecture/lecturePage.css';
 
 export default function LecturePage() {
     const [ lectures, setLectures ] = useState([]);
@@ -33,7 +34,7 @@ export default function LecturePage() {
         <div className= "lecture-div">
             <CreateLecture lectures={lectures} getAllLectures={getAllLectures}/>
 
-            { lectures.length === 0 ? "No lecture yet" :
+            { lectures.length === 0 ? "No lecture yet." :
                    lectures
                     .map((lecture) => 
                     <Lecture key={uuid()} lecture={lecture} deleteLecture={deleteLecture} />
