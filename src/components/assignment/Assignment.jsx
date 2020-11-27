@@ -5,7 +5,7 @@ export default function Assignment({assignment, deleteAssignment}) {
 
     return (
         
-        <div className="card">
+        <div className="card assignment-card">
             <div className="card-body">
                 <span>
                     <a href= {assignment.link}

@@ -46,7 +46,7 @@ function Navbar({ onLogout }) {
           </li>
 
           <li className="nav-item">
-            <Link to="/lectures" className="nav-link">
+            <Link to="/assignments" className="nav-link">
               Assignments
             </Link>
           </li>

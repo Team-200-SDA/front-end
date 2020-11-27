@@ -33,7 +33,7 @@ function App() {
             <Lecture />
           </Route>
           <Route path="/assignments" exact>
-            <Lecture />
+            <Assignment />
           </Route>
           <Route path="/chat" exact>
             <Chat />
