@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Auth from './services/Auth';
 import Navbar from './components/layout/Navbar';
 // Chat Bot
-/* import Chatbot from 'react-chatbot-kit'
+import Chatbot from 'react-chatbot-kit';
 import ActionProvider from './chatbot-resources/ActionProvider';
 import MessageParser from './chatbot-resources/MessageParser';
 import config from './chatbot-resources/config';
@@ -11,7 +11,8 @@ import config from './chatbot-resources/config';
 import LoginPage from './components/auth/LoginPage';
 import HomePage from './components/home/HomePage';
 import Chat from './components/chat/Chat';
-import Userprofile from './components/userprofile/UserProfile';
+import LiveVideo from './components/live/LiveVideo/LiveVideo';
+// import Userprofile from './components/userprofile/UserProfile';
 import Lecture from './components/lecture/Lecture';
 
 function App() {
@@ -20,11 +21,9 @@ function App() {
 
   const loggedInRouter = (
     <Router>
-
       <Navbar onLogout={() => Auth.logout()} />
 
       <div className="container mt-5">
-
         <Switch>
           <Route path="/" exact>
             <HomePage />
@@ -36,19 +35,23 @@ function App() {
             <Chat />
           </Route>
 
-         {/*  <Route path="/bot" exact>
-          <Chatbot config={config} actionProvider={ActionProvider} messageParser={MessageParser} />
-          </Route> */}
-
-          <Route path="/userprofile">
-            <Userprofile />
+          <Route path="/bot" exact>
+            <Chatbot
+              config={config}
+              actionProvider={ActionProvider}
+              messageParser={MessageParser}
+            />
           </Route>
 
+          <Route path="/live">
+            <LiveVideo />
+          </Route>
+
+          {/* <Route path="/userprofile">
+            <Userprofile />
+          </Route> */}
         </Switch>
-
       </div>
-
-
     </Router>
   );
 
