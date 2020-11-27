@@ -46,6 +46,12 @@ function Navbar({ onLogout }) {
           </li>
 
           <li className="nav-item">
+            <Link to="/lectures" className="nav-link">
+              Assignments
+            </Link>
+          </li>
+
+          <li className="nav-item">
             <Link onClick={chatRefresh} to="/chat" className="nav-link">
               Chat
             </Link>
