@@ -6,6 +6,8 @@ import AssignmentApi from '../../api/AssignmentApi';
 import CreateAssignment from './CreateAssignment';
 import Assignment from './Assignment';
 
+import '../../css/assignment/assignmentPage.css';
+
 
 export default function AssignmentPage() {
     const [ assignments, setAssignments ] = useState([]);
@@ -33,7 +35,7 @@ export default function AssignmentPage() {
         <div className= "assignment-div">
             <CreateAssignment assignments={assignments} getAllAssignments={getAllAssignments}/>
 
-            { assignments.length === 0 ? "No assignment yet" :
+            { assignments.length === 0 ? "No assignment yet." : 
                    assignments
                     .map((assignment) => 
                     <Assignment key={uuid()} assignment={assignment} deleteAssignment={deleteAssignment} />

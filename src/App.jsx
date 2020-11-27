@@ -14,7 +14,7 @@ import Chat from './components/chat/Chat';
 import LiveVideo from './components/live/LiveVideo/LiveVideo';
 // import Userprofile from './components/userprofile/UserProfile';
 import Lecture from './components/lecture/Lecture';
-import Assignment from './components/assignment/Assignment';
+import AssignmentPage from './components/assignment/AssignmentPage';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -33,7 +33,7 @@ function App() {
             <Lecture />
           </Route>
           <Route path="/assignments" exact>
-            <Assignment />
+            <AssignmentPage />
           </Route>
           <Route path="/chat" exact>
             <Chat />

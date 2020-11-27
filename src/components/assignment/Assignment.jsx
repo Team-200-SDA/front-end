@@ -9,7 +9,7 @@ export default function Assignment({assignment, deleteAssignment}) {
             <div className="card-body">
                 <span>
                     <a href= {assignment.link}
-                    className=""
+                    className="assignment-link"
                     target ="_blank">{assignment.title}</a>
                 </span>
                 <button className="btn btn-light"

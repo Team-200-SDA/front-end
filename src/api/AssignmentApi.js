@@ -1,7 +1,7 @@
 import Api from './Api';
 
 class AssignmentApi {
-    getAllAssignment() {
+    getAllAssignments() {
         return Api.get('/assignments');
     }
     getAssignmentById(id) {
