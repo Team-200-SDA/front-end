@@ -12,7 +12,7 @@ import LoginPage from "./components/auth/LoginPage";
 import HomePage from "./components/home/HomePage";
 import Chat from "./components/chat/Chat";
 import LiveVideo from "./components/live/LiveVideo/LiveVideo";
-// import Userprofile from './components/userprofile/UserProfile';
+import Userprofile from "./components/userprofile/UserProfile";
 import Lecture from "./components/lecture/Lecture";
 
 function App() {
@@ -47,9 +47,9 @@ function App() {
             <LiveVideo />
           </Route>
 
-          {/* <Route path="/userprofile">
+          <Route path="/userprofile">
             <Userprofile />
-          </Route> */}
+          </Route>
         </Switch>
       </div>
     </Router>

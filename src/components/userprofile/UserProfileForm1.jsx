@@ -1,13 +1,15 @@
 import { ContactsOutlined } from "@material-ui/icons";
 import { render } from "@testing-library/react";
 import React, { useState } from "react";
-import defaultImage from "../../assets/blank-profile-picture-973460_1280.png";
+import defaultImage from "../../assets/images/blank-profile-picture-973460_1280.png";
 import ImageUploader from "./ImageUploader";
+import "./UserProfile.css";
 
 function UserProfileForm({
   user,
   onUpdateClick,
-  onUpdatePhoneClick, onUpdatePicClick,
+  onUpdatePhoneClick,
+  onUpdatePicClick,
 }) {
   const [address, setAddress] = useState({ address: "" });
   const [phoneno, setPhoneno] = useState({ phoneno: "" });
@@ -18,11 +20,11 @@ function UserProfileForm({
     onUpdateClick(address.address);
     setAddress({ address: "" });
   }
-function clickUpdatePhone(e) {
-  e.preventDefault();
-  onUpdatePhoneClick(phoneno.phoneno);
-  setPhoneno({ phoneno: "" });
-}
+  function clickUpdatePhone(e) {
+    e.preventDefault();
+    onUpdatePhoneClick(phoneno.phoneno);
+    setPhoneno({ phoneno: "" });
+  }
 
   function clickUpdatepic(e) {
     e.preventDefault();
@@ -45,7 +47,7 @@ function clickUpdatePhone(e) {
         placeholder="name@example.com"
       ></input>
     </div> */
-    <div className="card">
+    <div className="card user-profile">
       <div className="card-title bg-secondary text-white m-0 p-1">
         User Profile
       </div>
@@ -79,7 +81,7 @@ function clickUpdatePhone(e) {
           </div>
         </div>
 
-        <div className="card">
+        <div className="card address">
           <div className="card-body">
             <div className="form-group">
               <div className="input-group">
@@ -88,7 +90,6 @@ function clickUpdatePhone(e) {
                 </div>
                 <textarea
                   class="form-control"
-                  aria-label="With textarea"
                   value={user.address}
                   onChange={(event) =>
                     setAddress({ address: event.target.value })
@@ -104,26 +105,25 @@ function clickUpdatePhone(e) {
             >
               Update Address
             </button>
+          </div>
 
-            <div className="form-group">
-              <div className="input-group">
-                <div className="input-group-prepend">
-                  <span className="input-group-text">Phoneno</span>
-                </div>
-                <input
-                  className="form-control"
-                  placeholder="Phoneno"
-                  value={user.phoneno}
-                  onChange={(event) =>
-                    setPhoneno({ phoneno: event.target.value })
-                  }
-                ></input>
+          <div className="form-group">
+            <div className="input-group p-2">
+              <div className="input-group-prepend">
+                <span className="input-group-text">Phoneno</span>
               </div>
+              <input
+                className="form-control"
+                value={user.phoneno}
+                onChange={(event) =>
+                  setPhoneno({ phoneno: event.target.value })
+                }
+              ></input>
             </div>
           </div>
           <div className="text-right">
             <button
-              className="btn btn-primary  "
+              className="btn btn-primary "
               onClick={(e) => clickUpdatePhone(e)}
             >
               Update Phoneno
@@ -131,15 +131,15 @@ function clickUpdatePhone(e) {
           </div>
         </div>
 
-        <div className="card mt-10">
+        <div className="card profile m-2">
           <div className="form-group row">
             <div className="col">
               <label>Profile Picture</label>
-              <img
-                src={user.profilepic}
-                alt="User profile picture"
-                width="70%"
-              />
+              {user.profilepic === null ? (
+                <img src={defaultImage} alt="User profile" width="70%" />
+              ) : (
+                <img src={user.profilepic} alt="User profile" width="70%" />
+              )}
             </div>
             <div className="col">
               <ImageUploader

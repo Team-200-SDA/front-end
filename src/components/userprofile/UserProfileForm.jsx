@@ -1,6 +1,6 @@
 import { ContactsOutlined } from "@material-ui/icons";
 import React, { useState } from "react";
-import defaultImage from "../../assets/blank-profile-picture-973460_1280.png";
+//import defaultImage from "../../assets/blank-profile-picture-973460_1280.png";
 
 function UserProfileForm({ user, onUpdateClick, onUpdatePicClick }) {
   const [address, setAddress] = useState({ address: "" });
