@@ -5,7 +5,7 @@ export default function Lecture({lecture, deleteLecture}) {
 
     return (
         
-        <div className="card">
+        <div className="card assignment-card">
             <div className="card-body">
                 <span>
                     <a href= {lecture.link}
