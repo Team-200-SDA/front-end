@@ -31,7 +31,7 @@ export default function CreateAssignment(props) {
                     onChange={event => setTitle(event.target.value)}
                 />
                 <textarea className="form-control"
-                    placeholder={`Link to the Assignment`}
+                    placeholder={`Link to the assignment`}
                     value={link}
                     onChange={event => setLink(event.target.value)}
                 />
