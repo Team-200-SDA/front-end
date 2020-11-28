@@ -26,7 +26,7 @@ function UserProfileForm({
     setPhoneno({ phoneno: "" });
   }
 
-  function clickUpdatepic(e) {
+  function clickUpdateProfilepic(e) {
     e.preventDefault();
     console.log("image", image);
     onUpdatePicClick(image);
@@ -53,8 +53,8 @@ function UserProfileForm({
       </div>
 
       <div className="card-body">
-        <div className="form-group row">
-          <label for="staticUsername" class="col-sm-2 col-form-label">
+        <div className="form-group row ml-3">
+          <label for="staticUsername" className="col-sm-2 col-form-label">
             Username
           </label>
           <div className="col-sm-10">
@@ -67,7 +67,7 @@ function UserProfileForm({
           </div>
         </div>
 
-        <div className="form-group row">
+        <div className="form-group row ml-3">
           <label for="staticEmail" className="col-sm-2 col-form-label">
             Email
           </label>
@@ -82,9 +82,9 @@ function UserProfileForm({
         </div>
 
         <div className="card address">
-          <div className="card-body">
-            <div className="form-group">
-              <div className="input-group">
+          <div className="card-body pb-1">
+            <div className="form-group row">
+              <div className="input-group col pr-1">
                 <div className="input-group-prepend">
                   <span className="input-group-text">Address</span>
                 </div>
@@ -96,49 +96,51 @@ function UserProfileForm({
                   }
                 ></textarea>
               </div>
-            </div>
-          </div>
-          <div className="text-right">
-            <button
-              className="btn btn-primary  "
-              onClick={(e) => clickUpdateAddress(e)}
-            >
-              Update Address
-            </button>
-          </div>
 
-          <div className="form-group">
-            <div className="input-group p-2">
-              <div className="input-group-prepend">
-                <span className="input-group-text">Phoneno</span>
+              <div className=" coltext-right mt-0 pb-1">
+                <button
+                  className="btn btn-primary  "
+                  onClick={(e) => clickUpdateAddress(e)}
+                >
+                  Update
+                </button>
               </div>
-              <input
-                className="form-control"
-                value={user.phoneno}
-                onChange={(event) =>
-                  setPhoneno({ phoneno: event.target.value })
-                }
-              ></input>
             </div>
-          </div>
-          <div className="text-right">
-            <button
-              className="btn btn-primary "
-              onClick={(e) => clickUpdatePhone(e)}
-            >
-              Update Phoneno
-            </button>
+
+            <div className="form-group row mt-1">
+              <div className="col input-group">
+                <div className="input-group-prepend">
+                  <span className="input-group-text">Phoneno</span>
+                </div>
+                <input
+                  className="form-control"
+                  value={user.phoneno}
+                  onChange={(event) =>
+                    setPhoneno({ phoneno: event.target.value })
+                  }
+                ></input>
+              </div>
+
+              <div className="text-right mt-0 mb-0">
+                <button
+                  className="btn btn-primary "
+                  onClick={(e) => clickUpdatePhone(e)}
+                >
+                  Update
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
         <div className="card profile m-2">
+          <label className="ml-3">Profile Picture</label>
           <div className="form-group row">
-            <div className="col">
-              <label>Profile Picture</label>
+            <div className="col ml-3">
               {user.profilepic === null ? (
-                <img src={defaultImage} alt="User profile" width="70%" />
+                <img src={defaultImage} alt="User profile" width="50%" />
               ) : (
-                <img src={user.profilepic} alt="User profile" width="70%" />
+                <img src={user.profilepic} alt="User profile" width="50%" />
               )}
             </div>
             <div className="col">
@@ -152,7 +154,7 @@ function UserProfileForm({
           <div className="text-right">
             <button
               className="btn btn-primary  "
-              onClick={(e) => clickUpdatepic(e)}
+              onClick={(e) => clickUpdateProfilepic(e)}
             >
               Update Profile picture
             </button>

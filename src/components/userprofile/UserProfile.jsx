@@ -21,6 +21,7 @@ function UserProfile() {
 
     UserApi.updateAddress(address)
       .then((res) => {
+        alert("Address Updated");
         console.log(res);
       })
       .catch((err) => console.log(err));
@@ -31,6 +32,7 @@ function UserProfile() {
 
     UserApi.updatePhoneno(phoneno)
       .then((res) => {
+        alert("Phoneno Updated");
         console.log(res);
       })
       .catch((err) => console.log(err));
@@ -40,6 +42,7 @@ function UserProfile() {
     console.log(image);
     UserApi.updateProfilepic(image)
       .then((res) => {
+        alert("Profile picture Updated");
         console.log("RESPONSE",res);
         setUser(res.data);
       })
