@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import Calendar from '../calendar/Calendar';
 
 function Navbar({ onLogout }) {
   const history = useHistory();
@@ -55,7 +56,17 @@ function Navbar({ onLogout }) {
               User Profile
             </Link>
           </li>
+
+          <li className="nav-item">
+          <Link onClick={Calendar} className="nav-link" >
+            Calendar
+            </Link>
+          </li>
+
         </ul>
+
+
+       
 
         <button className="btn btn-outline-info my-2 my-sm-0" onClick={onLogout}>
           Logout
