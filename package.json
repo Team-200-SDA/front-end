@@ -11,6 +11,8 @@
     "@testing-library/user-event": "^12.2.2",
     "axios": "^0.21.0",
     "date-fns": "^2.16.1",
+    "event-source-polyfill": "^1.0.21",
+    "lodash": "^4.17.20",
     "react": "^17.0.1",
     "react-chatbot-kit": "^1.1.1",
     "react-dom": "^17.0.1",
