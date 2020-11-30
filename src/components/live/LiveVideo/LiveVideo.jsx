@@ -4,7 +4,7 @@ import Call from '../Call/Call';
 import StartButton from '../StartButton/StartButton';
 import api from '../../../api/LiveVideoApi';
 import Tray from '../Tray/Tray';
-import CallObjectContext from '../../../js/live/CallObjectContext';
+import CallObjectContext from '../../../js/states/CallObjectContext';
 import { roomUrlFromPageUrl, pageUrlFromRoomUrl } from '../../../js/live/urlUtils';
 import DailyIframe from '@daily-co/daily-js';
 import { logDailyEvent } from '../../../js/live/logUtils';

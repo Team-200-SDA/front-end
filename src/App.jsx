@@ -1,24 +1,27 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Auth from "./services/Auth";
-import Navbar from "./components/layout/Navbar";
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Auth from './services/Auth';
+import Navbar from './components/layout/Navbar';
 // Chat Bot
-import Chatbot from "react-chatbot-kit";
-import ActionProvider from "./chatbot-resources/ActionProvider";
-import MessageParser from "./chatbot-resources/MessageParser";
-import config from "./chatbot-resources/config";
+import Chatbot from 'react-chatbot-kit';
+import ActionProvider from './chatbot-resources/ActionProvider';
+import MessageParser from './chatbot-resources/MessageParser';
+import config from './chatbot-resources/config';
 /// Import pages
-import LoginPage from "./components/auth/LoginPage";
-import HomePage from "./components/home/HomePage";
-import Chat from "./components/chat/Chat";
-import LiveVideo from "./components/live/LiveVideo/LiveVideo";
-import Userprofile from "./components/userprofile/UserProfile";
-import Calendar from "./components/calendar/Calendar";
+import LoginPage from './components/auth/LoginPage';
+import HomePage from './components/home/HomePage';
+import Chat from './components/chat/Chat';
+import LiveVideo from './components/live/LiveVideo/LiveVideo';
+// import Userprofile from './components/userprofile/UserProfile';
 import Userprofile from './components/userprofile/UserProfile';
-import Lecture from "./components/lecture/Lecture";
+import Calendar from './components/calendar/Calendar';
+// import Userprofile from './components/userprofile/UserProfile';
+import LecturePage from './components/lecture/LecturePage';
+import AssignmentPage from './components/assignment/AssignmentPage';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
+  const [privMessages, setPrivMessages] = useState([]);
   Auth.bindLoggedInStateSetter(setLoggedIn);
 
   const loggedInRouter = (
@@ -31,7 +34,10 @@ function App() {
             <HomePage />
           </Route>
           <Route path="/lectures" exact>
-            <Lecture />
+            <LecturePage />
+          </Route>
+          <Route path="/assignments" exact>
+            <AssignmentPage />
           </Route>
           <Route path="/chat" exact>
             <Chat />
