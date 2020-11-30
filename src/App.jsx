@@ -15,7 +15,7 @@ import LiveVideo from "./components/live/LiveVideo/LiveVideo";
 import Userprofile from "./components/userprofile/UserProfile";
 import Calendar from "./components/calendar/Calendar";
 // import Userprofile from './components/userprofile/UserProfile';
-import Lecture from './components/lecture/Lecture';
+import LecturePage from './components/lecture/LecturePage';
 import AssignmentPage from './components/assignment/AssignmentPage';
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
             <HomePage />
           </Route>
           <Route path="/lectures" exact>
-            <Lecture />
+            <LecturePage />
           </Route>
           <Route path="/assignments" exact>
             <AssignmentPage />
@@ -59,7 +59,7 @@ function App() {
 
           <Route path="/userprofile">
             <Userprofile />
-          </Route>
+          </Route> 
         </Switch>
       </div>
     </Router>
