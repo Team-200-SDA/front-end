@@ -15,7 +15,8 @@ import LiveVideo from "./components/live/LiveVideo/LiveVideo";
 import Userprofile from "./components/userprofile/UserProfile";
 import Calendar from "./components/calendar/Calendar";
 // import Userprofile from './components/userprofile/UserProfile';
-import Lecture from "./components/lecture/Lecture";
+import Lecture from './components/lecture/Lecture';
+import AssignmentPage from './components/assignment/AssignmentPage';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route path="/lectures" exact>
             <Lecture />
+          </Route>
+          <Route path="/assignments" exact>
+            <AssignmentPage />
           </Route>
           <Route path="/chat" exact>
             <Chat />
