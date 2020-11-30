@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useReducer, useCallback } from 'react';
 import Tile from '../Tile/Tile';
-import CallObjectContext from '../../../js/live/CallObjectContext';
+import CallObjectContext from '../../../js/states/CallObjectContext';
 import CallMessage from '../CallMessage/CallMessage';
 import {
   initialCallState,
