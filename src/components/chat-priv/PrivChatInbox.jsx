@@ -1,22 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import PrivConversationCard from './PrivConversationCard';
 import { v4 as uuid } from 'uuid';
 
-function PrivChatInbox() {
-  const [renderedConv, setRenderConv] = useState([]);
-  // console.log(conversations);
+function PrivChatInbox({ conversations }) {
+  const jsxConversations = conversations.map(conversation => (
+    <PrivConversationCard key={uuid()} conversation={conversation} />
+  ));
 
-  // useEffect(() => {
-  //   setRenderConv(conversations);
-  // }, [conversations]);
-
-  return (
-    <>
-      {/* {renderedConv.map(conversation => {
-        return <PrivConversationCard key={uuid()} conversation={conversation} />;
-      })} */}
-    </>
-  );
+  return <>{jsxConversations}</>;
 }
 
 export default PrivChatInbox;
