@@ -14,50 +14,56 @@ import Chat from './components/chat/Chat';
 import LiveVideo from './components/live/LiveVideo/LiveVideo';
 // import Userprofile from './components/userprofile/UserProfile';
 import Lecture from './components/lecture/Lecture';
-import PrivChat from './components/chat-priv/PrivChat';
+import PrivChatHandler from './components/chat-priv/PrivChatHandler';
+import PrivChatInbox from './components/chat-priv/PrivChatInbox';
+import { RecoilRoot } from 'recoil';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
+  const [privMessages, setPrivMessages] = useState([]);
   Auth.bindLoggedInStateSetter(setLoggedIn);
 
   const loggedInRouter = (
-    <Router>
-      <Navbar onLogout={() => Auth.logout()} />
+    <RecoilRoot>
+      <Router>
+        <Navbar onLogout={() => Auth.logout()} />
+        <PrivChatHandler setPrivMessages={setPrivMessages} privMessages={privMessages} />
 
-      <div className="container mt-5">
-        <Switch>
-          <Route path="/" exact>
-            <HomePage />
-          </Route>
-          <Route path="/lectures" exact>
-            <Lecture />
-          </Route>
-          <Route path="/chat" exact>
-            <Chat />
-          </Route>
+        <div className="container mt-5">
+          <Switch>
+            <Route path="/" exact>
+              <HomePage />
+            </Route>
+            <Route path="/lectures" exact>
+              <Lecture />
+            </Route>
+            <Route path="/chat" exact>
+              <Chat />
+            </Route>
 
-          <Route path="/bot" exact>
-            <Chatbot
-              config={config}
-              actionProvider={ActionProvider}
-              messageParser={MessageParser}
-            />
-          </Route>
+            <Route path="/bot" exact>
+              <Chatbot
+                config={config}
+                actionProvider={ActionProvider}
+                messageParser={MessageParser}
+              />
+            </Route>
 
-          <Route path="/live">
-            <LiveVideo />
-          </Route>
+            <Route path="/live">
+              <LiveVideo />
+            </Route>
 
-          <Route path="/pchat">
-            <PrivChat />
-          </Route>
+            <Route path="/pchat">
+              <PrivChatInbox />
+            </Route>
 
-          {/* <Route path="/userprofile">
+            {/* <Route path="/userprofile">
             <Userprofile />
           </Route> */}
-        </Switch>
-      </div>
-    </Router>
+          </Switch>
+        </div>
+      </Router>
+    </RecoilRoot>
   );
 
   return loggedIn ? loggedInRouter : <LoginPage />;

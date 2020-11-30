@@ -83,7 +83,6 @@ function Chat() {
   return (
     <div className="paper">
       <div className="jsx-messages">{messagesToRender}</div>
-
       <form
         onSubmit={e => submitHandler(e)}
         className="message-form"

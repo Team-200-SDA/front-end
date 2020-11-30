@@ -5,7 +5,7 @@ import TrayButton, {
   TYPE_SCREEN,
   TYPE_LEAVE
 } from '../TrayButton/TrayButton';
-import CallObjectContext from '../../../js/live/CallObjectContext';
+import CallObjectContext from '../../../js/states/CallObjectContext';
 import { logDailyEvent } from '../../../js/live/logUtils';
 import DailyIframe from '@daily-co/daily-js';
 
