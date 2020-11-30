@@ -13,6 +13,8 @@ import HomePage from "./components/home/HomePage";
 import Chat from "./components/chat/Chat";
 import LiveVideo from "./components/live/LiveVideo/LiveVideo";
 import Userprofile from "./components/userprofile/UserProfile";
+import Calendar from "./components/calendar/Calendar";
+// import Userprofile from './components/userprofile/UserProfile';
 import Lecture from "./components/lecture/Lecture";
 
 function App() {
@@ -45,6 +47,10 @@ function App() {
 
           <Route path="/live">
             <LiveVideo />
+          </Route>
+
+          <Route path="/calendar">
+            <Calendar />
           </Route>
 
           <Route path="/userprofile">
