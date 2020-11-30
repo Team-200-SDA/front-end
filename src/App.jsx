@@ -15,7 +15,7 @@ import LiveVideo from "./components/live/LiveVideo/LiveVideo";
 import Userprofile from "./components/userprofile/UserProfile";
 import Calendar from "./components/calendar/Calendar";
 // import Userprofile from './components/userprofile/UserProfile';
-import Lecture from './components/lecture/Lecture';
+import LecturePage from './components/lecture/LecturePage';
 import AssignmentPage from './components/assignment/AssignmentPage';
 
 function App() {
