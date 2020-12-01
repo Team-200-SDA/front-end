@@ -90,7 +90,7 @@ function UserProfileForm({
                 </div>
                 <input
                   class="form-control"
-                  value={user.address}
+                  defaultValue={user.address}
                   onChange={(event) =>
                     setAddress({ address: event.target.value })
                   }
@@ -114,7 +114,7 @@ function UserProfileForm({
                 </div>
                 <input
                   className="form-control"
-                  value={user.phoneno}
+                  defaultValue={user.phoneno}
                   onChange={(event) =>
                     setPhoneno({ phoneno: event.target.value })
                   }
