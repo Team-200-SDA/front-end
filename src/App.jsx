@@ -12,12 +12,11 @@ import LoginPage from './components/auth/LoginPage';
 import HomePage from './components/home/HomePage';
 import Chat from './components/chat/Chat';
 import LiveVideo from './components/live/LiveVideo/LiveVideo';
-// import Userprofile from './components/userprofile/UserProfile';
 import Userprofile from './components/userprofile/UserProfile';
 import Calendar from './components/calendar/Calendar';
-// import Userprofile from './components/userprofile/UserProfile';
 import LecturePage from './components/lecture/LecturePage';
 import AssignmentPage from './components/assignment/AssignmentPage';
+import FileStoragePage from "./components/filestorage/FileStoragePage";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -61,6 +60,10 @@ function App() {
 
           <Route path="/userprofile">
             <Userprofile />
+          </Route>
+
+          <Route path="/filestorage">
+            <FileStoragePage />
           </Route>
         </Switch>
       </div>
