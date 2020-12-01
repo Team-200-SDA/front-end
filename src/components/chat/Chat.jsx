@@ -32,6 +32,8 @@ function Chat() {
   function onConnected() {
     // Subscribe to the Public Topic
     stompClient.subscribe('/topic/public', onMessageReceived);
+    console.log(stompClient);
+
     //Send Username To Server
     stompClient.send(
       '/app/chat.addUser',
@@ -65,14 +67,14 @@ function Chat() {
     setMessageField('');
   }
 
-  function onError() {
-    console.log('error');
-  }
-
   const submitHandler = e => {
     e.preventDefault();
     sendMessage();
   };
+
+  function onError() {
+    console.log('error');
+  }
 
   const messagesToRender = messages.map(msg => {
     return <ChatMessage key={uuid()} message={msg} />;
@@ -81,7 +83,6 @@ function Chat() {
   return (
     <div className="paper">
       <div className="jsx-messages">{messagesToRender}</div>
-
       <form
         onSubmit={e => submitHandler(e)}
         className="message-form"

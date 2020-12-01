@@ -137,8 +137,8 @@ hs_err_pid*
 .AppleDouble
 .LSOverride
 
-# Icon must end with two \r
-Icon
+# Icon must end with two r
+
 
 
 # Thumbnails
@@ -218,3 +218,4 @@ $RECYCLE.BIN/
 
 build/
 .idea/
+.vscode/
