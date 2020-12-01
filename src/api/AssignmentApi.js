@@ -6,15 +6,19 @@ class AssignmentApi {
     // If Student, you only get own assignments
     return Api.get('/assignments');
   }
+
   getAssignmentById(id) {
     return Api.get('/assignments/' + id);
   }
+
   createAssignment(newAssignment) {
     return Api.post('/assignments', newAssignment);
   }
+
   updateAssignment(updateAssignment) {
     return Api.put('/assignments', updateAssignment);
   }
+
   deleteAssignment(id) {
     return Api.delete('/assignments/' + id);
   }
