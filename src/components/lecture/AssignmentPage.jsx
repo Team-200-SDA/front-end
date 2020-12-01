@@ -50,7 +50,7 @@ export default function AssignmentPage() {
             type="radio"
             name="options"
             id="option1"
-            className=plete="off"
+            // className=plete="off"
             checked
             onClick={handleAssignAssignment}
           />{' '}
@@ -61,7 +61,7 @@ export default function AssignmentPage() {
             type="radio"
             name="options"
             id="option2"
-            className=plete="off"
+            // className=plete="off"
             onClick={handleSubmitAssignment}
           />{' '}
           Submitted Assignments

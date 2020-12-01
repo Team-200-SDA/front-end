@@ -4,6 +4,7 @@ import { EventSourcePolyfill } from 'event-source-polyfill';
 import { produce } from 'immer';
 import PrivMessageContext from '../../js/states/PrivMessageContext';
 import PrivMessageSetter from '../../js/states/PrivMessageSetterContext';
+import PrivChatApi from '../../api/PrivChatApi';
 
 // Helper vars
 let eventSource = undefined;
@@ -17,7 +18,7 @@ function PrivChatHandler() {
   useEffect(() => {
     if (!listening) {
       // Establish Connection
-      eventSource = new EventSourcePolyfill('http://localhost:8080/message/stream', {
+      eventSource = new EventSourcePolyfill(PrivChatApi.stream, {
         withCredentials: true,
         headers: {
           Authorization: 'Bearer ' + window.sessionStorage.getItem('_token')
