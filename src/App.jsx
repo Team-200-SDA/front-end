@@ -2,16 +2,20 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Auth from './services/Auth';
 import Navbar from './components/layout/Navbar';
+//import React, { Component } from 'react';
+//import { Chat } from 'react-chat-popup';
+
 // Chat Bot
 import Chatbot from 'react-chatbot-kit'
 import ActionProvider from './chatbot-resources/ActionProvider';
 import MessageParser from './chatbot-resources/MessageParser';
 import config from './chatbot-resources/config';
+
 // Import pages
 import LoginPage from './components/auth/LoginPage';
 import HomePage from './components/home/HomePage';
 import Chat from './components/chat/Chat';
-import Userprofile from './components/userprofile/UserProfile';
+//import Userprofile from './components/userprofile/UserProfile';
 import Lecture from './components/lecture/Lecture';
 
 function App() {
@@ -40,9 +44,9 @@ function App() {
           <Chatbot config={config} actionProvider={ActionProvider} messageParser={MessageParser} />
           </Route>
 
-          <Route path="/userprofile">
+          {/* <Route path="/userprofile">
             <Userprofile />
-          </Route>
+          </Route> */}
 
         </Switch>
 
