@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function BrowserUnsupported() {
   return (
-    <p class="browser-unsupported">
+    <p className="browser-unsupported">
       Looks like you need to upgrade your browser to make video calls.
       <br />
       See&nbsp;
