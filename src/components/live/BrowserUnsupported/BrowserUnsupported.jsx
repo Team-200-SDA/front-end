@@ -3,7 +3,7 @@ import React from 'react';
 export default function BrowserUnsupported() {
   return (
     <p class="browser-unsupported">
-      Looks like you need to upgrade your browser to make Daily video calls.
+      Looks like you need to upgrade your browser to make video calls.
       <br />
       See&nbsp;
       <a href="https://help.daily.co/en/articles/3179421-what-browser-version-does-daily-co-require">
