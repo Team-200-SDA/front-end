@@ -4,6 +4,7 @@ import UserApi from '../api/UserApi';
 const tokenKey = '_token';
 const userKey = 'user';
 const emailKey = 'email';
+const roleKey = 'role';
 
 // Disclaimer: This simple auth implementation is for development purposes only.
 
@@ -75,11 +76,13 @@ class Auth {
   _setLoggedInUser(user) {
     window.sessionStorage.setItem(userKey, user.name);
     window.sessionStorage.setItem(emailKey, user.email);
+    window.sessionStorage.setItem(roleKey, user.role);
   }
 
   _clearLoggedInUser() {
     window.sessionStorage.removeItem(userKey);
     window.sessionStorage.removeItem(emailKey);
+    window.sessionStorage.removeItem(roleKey);
   }
 }
 

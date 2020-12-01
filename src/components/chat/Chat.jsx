@@ -67,14 +67,14 @@ function Chat() {
     setMessageField('');
   }
 
-  function onError() {
-    console.log('error');
-  }
-
   const submitHandler = e => {
     e.preventDefault();
     sendMessage();
   };
+
+  function onError() {
+    console.log('error');
+  }
 
   const messagesToRender = messages.map(msg => {
     return <ChatMessage key={uuid()} message={msg} />;
