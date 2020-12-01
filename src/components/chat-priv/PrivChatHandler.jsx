@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext, useEffect, useState } from 'react';
 import { EventSourcePolyfill } from 'event-source-polyfill';
-import { format } from 'date-fns';
-import { useRecoilState } from 'recoil';
-import { PrivMessageState } from '../../js/states/PrivMessageState-atom';
-import { PrivConvState } from '../../js/states/PrivConvState-atom';
-import { cloneDeep } from 'lodash';
-let eventSource = undefined;
-const clone = require('rfdc')();
+import { produce } from 'immer';
+import PrivMessageContext from '../../js/states/PrivMessageContext';
+import PrivMessageSetter from '../../js/states/PrivMessageSetterContext';
 
-function PrivChatHandler({ privMessages, setPrivMessages }) {
+// Helper vars
+let eventSource = undefined;
+
+function PrivChatHandler() {
   const [listening, setListening] = useState(false);
-  const [conversations, setConversations] = useRecoilState(PrivConvState);
-  const [messages, setMessages] = useRecoilState(PrivMessageState);
+  const [messages, setMessages] = useState([]);
+  const conversations = useContext(PrivMessageContext);
+  const setConversations = useContext(PrivMessageSetter);
 
   useEffect(() => {
     if (!listening) {
@@ -25,14 +26,14 @@ function PrivChatHandler({ privMessages, setPrivMessages }) {
       // Error Received
       eventSource.onerror = event => {
         console.log('Error!', event);
-        eventSource.close();
+        // eventSource.close();
       };
       // Prevent reconnect if connection is active.
       setListening(true);
     }
     return () => {
       eventSource.close();
-      console.log('Closing source on unmount');
+      console.log('Closing event source on unmount');
     };
   }, []);
 
@@ -41,33 +42,30 @@ function PrivChatHandler({ privMessages, setPrivMessages }) {
     eventSource.onmessage = event => {
       const newMessage = JSON.parse(event.data);
       if (newMessage.id !== 'heartbeat') {
-        newMessage.date = format(new Date(), 'HH:mm dd-MMM-yyyy');
-        setMessages(e => [...e, newMessage]);
+        setMessages(existingMessages => [...existingMessages, newMessage]);
       }
     };
   }, []);
 
   useEffect(() => {
     messages.forEach(msg => {
-      const dc = cloneDeep(privMessages);
-      if (dc.find(thread => thread.receiverName === msg.receiverName)) {
-        console.log('found existing');
-        const foundThread = dc.find(thread => thread.receiverName === msg.receiverName);
-        foundThread.thread.push(msg);
-      } else {
-        const newC = {
-          receiverName: msg.receiverName,
-          thread: [msg]
-        };
-        dc.push(newC);
-      }
-      setPrivMessages(dc);
+      const immerState = produce(conversations, draftState => {
+        if (draftState.find(thread => thread.receiverName === msg.receiverName)) {
+          const foundThread = draftState.find(
+            thread => thread[`receiverName`] === msg.receiverName
+          );
+          foundThread.thread.push(msg);
+        } else {
+          const newThread = {
+            receiverName: msg.receiverName,
+            thread: [msg]
+          };
+          draftState.push(newThread);
+        }
+      });
+      setConversations(immerState);
     });
   }, [messages]);
-
-  useEffect(() => {
-    console.log(privMessages);
-  }, [privMessages]);
 
   return <></>;
 }
