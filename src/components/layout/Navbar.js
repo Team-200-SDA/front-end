@@ -53,6 +53,12 @@ function Navbar({ onLogout }) {
           </li>
 
           <li className="nav-item">
+            <Link to="/pchat" className="nav-link">
+              Private Messaging
+            </Link>
+          </li>
+
+          <li className="nav-item">
             <Link onClick={chatRefresh} to="/chat" className="nav-link">
               Chat
             </Link>

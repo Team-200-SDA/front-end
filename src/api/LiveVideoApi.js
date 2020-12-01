@@ -1,4 +1,4 @@
-async function createRoom() {
+const createRoom = async () => {
   const response = await fetch('https://api.daily.co/v1/rooms/edulane', {
     method: 'GET',
     headers: {
@@ -8,6 +8,6 @@ async function createRoom() {
   });
   const room = await response.json();
   return room;
-}
+};
 
-export default { createRoom };
+export default createRoom;

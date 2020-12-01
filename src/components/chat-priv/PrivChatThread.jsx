@@ -1,34 +1,40 @@
 import { Fab, TextField } from '@material-ui/core';
 import { Send } from '@material-ui/icons';
+import { format } from 'date-fns';
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
+import PrivChatApi from '../../api/PrivChatApi';
 import PrivMessage from './PrivMessage';
 
-function PrivChatThread() {
-  const location = useLocation();
-  const conversation = location.state.conversation.thread;
+function PrivChatThread({ conversations }) {
   const [messageField, setMessageField] = useState('');
+  const receiverName = useParams().receiverName;
+  const thread = conversations.find(thread => thread.receiverName === receiverName);
 
-  function sendMessage() {
-    console.log('sending message');
-    setMessageField('');
-  }
-
-  const submitHandler = e => {
-    e.preventDefault();
-    sendMessage();
+  const sendMessage = async event => {
+    event.preventDefault();
+    try {
+      await PrivChatApi.sendMessage({
+        content: messageField,
+        date: format(new Date(), 'HH:mm dd-MMM-yyyy'),
+        receiverEmail: thread.thread[0].receiverEmail
+      });
+      setMessageField('');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const messagesToRender = conversation.map(msg => {
-    return <PrivMessage key={uuid()} message={msg} />;
-  });
+  const messagesToRender = thread.thread.map(message => (
+    <PrivMessage key={uuid()} message={message} />
+  ));
 
   return (
     <div className="paper">
       <div className="jsx-messages">{messagesToRender}</div>
       <form
-        onSubmit={e => submitHandler(e)}
+        onSubmit={e => sendMessage(e)}
         className="message-form"
         noValidate
         autoComplete="off">
@@ -46,7 +52,7 @@ function PrivChatThread() {
           }}
           variant="outlined"
         />
-        <Fab size="small" onClick={e => submitHandler(e)}>
+        <Fab size="small" onClick={event => sendMessage(event)}>
           <Send />
         </Fab>
       </form>

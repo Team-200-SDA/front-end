@@ -2,7 +2,7 @@ import Api from './Api';
 
 class PrivChatApi {
   sendMessage(payload) {
-    Api.post('/message', payload);
+    return Api.post('/message', payload);
   }
 
   stream = 'http://localhost:8080/message/stream';
