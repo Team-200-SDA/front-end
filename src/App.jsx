@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Auth from './services/Auth';
 import Navbar from './components/layout/Navbar';
 //import React, { Component } from 'react';
-//import { Chat } from 'react-chat-popup';
+//import { Chat as ChatPopup } from 'react-chat-popup';
 
 // Chat Bot
 import Chatbot from 'react-chatbot-kit'
