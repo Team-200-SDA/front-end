@@ -1,7 +1,9 @@
 import React from 'react';
 import '../../css/assignment/assignment.css';
 
-export default function Assignment({assignment, deleteAssignment}) {
+export default function Assignment({ user, assignment, deleteAssignment}) {
+    
+    const user_ = window.sessionStorage.getItem('user');
 
     return (
         
@@ -12,10 +14,13 @@ export default function Assignment({assignment, deleteAssignment}) {
                     className="assignment-link"
                     target ="_blank">{assignment.title}</a>
                 </span>
-                <button className="btn btn-light"
+                {user_ === assignment.user.name ?
+                (<button className="btn btn-light"
                     onClick={() => deleteAssignment(assignment.id)}>
                     Delete
-                </button>
+                 </button>)
+                : null }
+                
             </div>
         </div>
        
