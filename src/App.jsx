@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Auth from './services/Auth';
 import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
 import PrivMessageContext from './js/states/PrivMessageContext';
 import PrivMessageSetterContext from './js/states/PrivMessageSetterContext';
 
@@ -24,6 +25,7 @@ import AssignmentPage from './components/assignment/AssignmentPage';
 import PrivChatHandler from './components/chat-priv/PrivChatHandler';
 import PrivChatInbox from './components/chat-priv/PrivChatInbox';
 import PrivChatThread from './components/chat-priv/PrivChatThread';
+
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -76,6 +78,7 @@ function App() {
               </Route>
             </Switch>
           </div>
+          <Footer />
         </PrivMessageSetterContext.Provider>
       </PrivMessageContext.Provider>
     </Router>
