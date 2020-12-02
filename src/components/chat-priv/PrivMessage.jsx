@@ -5,7 +5,6 @@ function PrivMessage({ message }) {
   const user = window.sessionStorage.getItem('user');
   const { content, date, author } = message;
   const senderOrUser = author === user ? 'user' : 'sender';
-  console.log('message', message);
 
   return (
     <Paper elevation={3}>

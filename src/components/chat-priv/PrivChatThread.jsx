@@ -1,7 +1,7 @@
 import { Fab, IconButton, TextField } from '@material-ui/core';
 import { DeleteRounded, Send } from '@material-ui/icons';
 import { format } from 'date-fns';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import PrivChatApi from '../../api/PrivChatApi';
@@ -31,8 +31,7 @@ function PrivChatThread({ conversations }) {
 
   const deleteMessages = () => {
     thread.thread.forEach(async msg => {
-      const res = await PrivChatApi.deleteMessage(msg.id);
-      console.log(res);
+      await PrivChatApi.deleteMessage(msg.id);
     });
     history.push('/private-messaging');
     window.location.reload();
