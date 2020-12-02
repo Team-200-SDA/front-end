@@ -1,5 +1,5 @@
-import { Fab, TextField } from '@material-ui/core';
-import { Send } from '@material-ui/icons';
+import { Fab, IconButton, TextField } from '@material-ui/core';
+import { DeleteRounded, Send } from '@material-ui/icons';
 import { format } from 'date-fns';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -24,6 +24,12 @@ function PrivChatThread({ conversations }) {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const deleteMessage = async id => {
+    console.log(id);
+    const res = await PrivChatApi.deleteMessage(id);
+    console.log(res);
   };
 
   const messagesToRender = thread.thread.map(message => (
@@ -56,6 +62,10 @@ function PrivChatThread({ conversations }) {
           <Send />
         </Fab>
       </form>
+
+      <IconButton onClick={() => null} aria-label="delete">
+        <DeleteRounded />
+      </IconButton>
     </div>
   );
 }

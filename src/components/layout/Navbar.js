@@ -1,15 +1,8 @@
-import React from "react";
-import { Link, useHistory } from "react-router-dom";
-import Calendar from "../calendar/Calendar";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Calendar from '../calendar/Calendar';
 
 function Navbar({ onLogout }) {
-  const history = useHistory();
-
-  function chatRefresh() {
-    history.push("/chat");
-    window.location.reload();
-  }
-
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="/">
@@ -22,8 +15,7 @@ function Navbar({ onLogout }) {
         data-target="#navbarColor01"
         aria-controls="navbarColor01"
         aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+        aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
 
@@ -60,7 +52,7 @@ function Navbar({ onLogout }) {
           </li>
 
           <li className="nav-item">
-            <Link onClick={chatRefresh} to="/chat" className="nav-link">
+            <Link to="/chat" className="nav-link">
               Chat
             </Link>
           </li>
@@ -82,10 +74,7 @@ function Navbar({ onLogout }) {
           </li>
         </ul>
 
-        <button
-          className="btn btn-outline-info my-2 my-sm-0"
-          onClick={onLogout}
-        >
+        <button className="btn btn-outline-info my-2 my-sm-0" onClick={onLogout}>
           Logout
         </button>
       </div>
