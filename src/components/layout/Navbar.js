@@ -46,7 +46,7 @@ function Navbar({ onLogout }) {
           </li>
 
           <li className="nav-item">
-            <Link to="/pchat" className="nav-link">
+            <Link to="/private-messaging" className="nav-link">
               Private Messaging
             </Link>
           </li>
