@@ -5,6 +5,10 @@ class PrivChatApi {
     return Api.post('/message', payload);
   }
 
+  deleteMessage(id) {
+    return Api.delete(`/message/${id}`);
+  }
+
   stream = 'http://localhost:8080/message/stream';
 }
 
