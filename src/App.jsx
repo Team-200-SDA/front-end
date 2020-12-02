@@ -2,32 +2,38 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Auth from './services/Auth';
 import Navbar from './components/layout/Navbar';
+
 // Chat Bot
-import Chatbot from 'react-chatbot-kit';
-import ActionProvider from './chatbot-resources/ActionProvider';
-import MessageParser from './chatbot-resources/MessageParser';
-import config from './chatbot-resources/config';
+import Chatbot from "react-chatbot-kit";
+import ActionProvider from "./chatbot-resources/ActionProvider";
+import MessageParser from "./chatbot-resources/MessageParser";
+import config from "./chatbot-resources/config";
 /// Import pages
-import LoginPage from './components/auth/LoginPage';
-import HomePage from './components/home/HomePage';
-import Chat from './components/chat/Chat';
-import LiveVideo from './components/live/LiveVideo/LiveVideo';
-// import Userprofile from './components/userprofile/UserProfile';
-import Userprofile from './components/userprofile/UserProfile';
-import Calendar from './components/calendar/Calendar';
-// import Userprofile from './components/userprofile/UserProfile';
-import LecturePage from './components/lecture/LecturePage';
-import AssignmentPage from './components/assignment/AssignmentPage';
+import LoginPage from "./components/auth/LoginPage";
+import HomePage from "./components/home/HomePage";
+import Chat from "./components/chat/Chat";
+import LiveVideo from "./components/live/LiveVideo/LiveVideo";
+import Userprofile from "./components/userprofile/UserProfile";
+import Calendar from "./components/calendar/Calendar";
+import LecturePage from "./components/lecture/LecturePage";
+import AssignmentPage from "./components/assignment/AssignmentPage";
+import FileStoragePage from "./components/filestorage/FileStoragePage";
+import PrivChatHandler from "./components/chat-priv/PrivChatHandler";
+import PrivChatInbox from "./components/chat-priv/PrivChatInbox";
+import PrivChatThread from "./components/chat-priv/PrivChatThread";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
-  const [privMessages, setPrivMessages] = useState([]);
+  const [conversations, setConversations] = useState([]);
   Auth.bindLoggedInStateSetter(setLoggedIn);
 
   const loggedInRouter = (
     <Router>
+      <PrivChatHandler
+        conversations={conversations}
+        setConversations={setConversations}
+      />
       <Navbar onLogout={() => Auth.logout()} />
-
       <div className="container mt-5">
         <Switch>
           <Route path="/" exact>
@@ -42,7 +48,6 @@ function App() {
           <Route path="/chat" exact>
             <Chat />
           </Route>
-
           <Route path="/bot" exact>
             <Chatbot
               config={config}
@@ -50,17 +55,24 @@ function App() {
               messageParser={MessageParser}
             />
           </Route>
-
           <Route path="/live">
             <LiveVideo />
           </Route>
 
+              <Route path="/filestorage">
+                <FileStoragePage />
+              </Route>
           <Route path="/calendar">
             <Calendar />
           </Route>
-
           <Route path="/userprofile">
             <Userprofile />
+          </Route>
+          <Route path="/pchat">
+            <PrivChatInbox conversations={conversations} />
+          </Route>
+          <Route path="/chat-thread/:receiverName">
+            <PrivChatThread conversations={conversations} />
           </Route>
         </Switch>
       </div>

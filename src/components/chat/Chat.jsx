@@ -10,13 +10,13 @@ import { Send } from '@material-ui/icons';
 import { format } from 'date-fns';
 
 const wsEndpoint = 'http://localhost:8080/ws';
-const user = window.sessionStorage.getItem('user');
 const socket = new SockJS(wsEndpoint, null, {
   transports: ['xhr-streaming'],
   headers: { Authorization: window.sessionStorage.getItem('_token') }
 });
 
 function Chat() {
+  const user = window.sessionStorage.getItem('user');
   const [messages, setMessages] = useState([]);
   const [messageField, setMessageField] = useState('');
   const stompClient = Stomp.over(socket);
@@ -24,7 +24,6 @@ function Chat() {
 
   useEffect(() => {
     stompClient.connect({}, onConnected, onError);
-
     // Disconnect the socket connection when component un-mounts.
     return () => stompClient.disconnect();
   }, []);
@@ -54,8 +53,8 @@ function Chat() {
     scroll.scrollToBottom();
   }
 
-  function sendMessage() {
-    console.log(stompClient);
+  function sendMessage(event) {
+    event.preventDefault();
     if (messageField && stompClient) {
       const chatMessage = {
         sender: user,
@@ -71,11 +70,6 @@ function Chat() {
     console.log('error');
   }
 
-  const submitHandler = e => {
-    e.preventDefault();
-    sendMessage();
-  };
-
   const messagesToRender = messages.map(msg => {
     return <ChatMessage key={uuid()} message={msg} />;
   });
@@ -84,7 +78,7 @@ function Chat() {
     <div className="paper">
       <div className="jsx-messages">{messagesToRender}</div>
       <form
-        onSubmit={e => submitHandler(e)}
+        onSubmit={event => sendMessage(event)}
         className="message-form"
         noValidate
         autoComplete="off">
@@ -102,7 +96,7 @@ function Chat() {
           }}
           variant="outlined"
         />
-        <Fab size="small" onClick={e => submitHandler(e)}>
+        <Fab size="small" onClick={event => sendMessage(event)}>
           <Send />
         </Fab>
       </form>

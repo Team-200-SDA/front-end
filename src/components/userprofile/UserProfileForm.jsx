@@ -1,40 +1,35 @@
-import { ContactsOutlined } from "@material-ui/icons";
-import { render } from "@testing-library/react";
-import React, { useState } from "react";
-import defaultImage from "../../assets/images/blank-profile-picture-973460_1280.png";
-import ImageUploader from "./ImageUploader";
-import "./UserProfile.css";
+import { ContactsOutlined } from '@material-ui/icons';
+import { render } from '@testing-library/react';
+import React, { useState } from 'react';
+import defaultImage from '../../assets/images/blank-profile-picture-973460_1280.png';
+import ImageUploader from './ImageUploader';
+import './UserProfile.css';
 
-function UserProfileForm({
-  user,
-  onUpdateClick,
-  onUpdatePhoneClick,
-  onUpdatePicClick,
-}) {
-  const [address, setAddress] = useState({ address: "" });
-  const [phoneno, setPhoneno] = useState({ phoneno: "" });
-  const [image, setImage] = useState({ image: "" });
+function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicClick }) {
+  const [address, setAddress] = useState({ address: '' });
+  const [phoneno, setPhoneno] = useState({ phoneno: '' });
+  const [image, setImage] = useState({ image: '' });
 
   function clickUpdateAddress(e) {
     e.preventDefault();
     onUpdateClick(address.address);
-    setAddress({ address: "" });
+    setAddress({ address: '' });
   }
   function clickUpdatePhone(e) {
     e.preventDefault();
     onUpdatePhoneClick(phoneno.phoneno);
-    setPhoneno({ phoneno: "" });
+    setPhoneno({ phoneno: '' });
   }
 
   function clickUpdateProfilepic(e) {
     e.preventDefault();
-    console.log("image", image);
+    console.log('image', image);
     onUpdatePicClick(image);
-    setImage({ image: "" });
+    setImage({ image: '' });
   }
 
-  console.log("user profile pic", user.profilepic);
-  console.log("user address", user.address);
+  console.log('user profile pic', user.profilepic);
+  console.log('user address', user.address);
 
   return (
     /*  <div className="form-group row">
@@ -48,9 +43,7 @@ function UserProfileForm({
       ></input>
     </div> */
     <div className="card user-profile">
-      <div className="card-title bg-secondary text-white m-0 p-1">
-        User Profile
-      </div>
+      <div className="card-title bg-secondary text-white m-0 p-1">User Profile</div>
 
       <div className="card-body">
         <div className="form-group row ml-3">
@@ -61,7 +54,7 @@ function UserProfileForm({
             <input
               type="text"
               readonly
-              class="form-control-plaintext"
+              className="form-control-plaintext"
               value={user.name}
             />
           </div>
@@ -75,7 +68,7 @@ function UserProfileForm({
             <input
               type="text"
               readonly
-              class="form-control-plaintext"
+              className="form-control-plaintext"
               value={user.email}
             />
           </div>
@@ -89,19 +82,15 @@ function UserProfileForm({
                   <span className="input-group-text">Address</span>
                 </div>
                 <input
-                  class="form-control"
-                  value={user.address}
-                  onChange={(event) =>
-                    setAddress({ address: event.target.value })
-                  }
-                ></input>
+                  className="form-control"
+                  defaultValue={user.address}
+                  onChange={event => setAddress({ address: event.target.value })}></input>
               </div>
 
               <div className=" coltext-right mt-0 pb-1">
                 <button
                   className="btn btn-primary  "
-                  onClick={(e) => clickUpdateAddress(e)}
-                >
+                  onClick={e => clickUpdateAddress(e)}>
                   Update
                 </button>
               </div>
@@ -114,18 +103,12 @@ function UserProfileForm({
                 </div>
                 <input
                   className="form-control"
-                  value={user.phoneno}
-                  onChange={(event) =>
-                    setPhoneno({ phoneno: event.target.value })
-                  }
-                ></input>
+                  defaultValue={user.phoneno}
+                  onChange={event => setPhoneno({ phoneno: event.target.value })}></input>
               </div>
 
               <div className="text-right mt-0 mb-0">
-                <button
-                  className="btn btn-primary "
-                  onClick={(e) => clickUpdatePhone(e)}
-                >
+                <button className="btn btn-primary " onClick={e => clickUpdatePhone(e)}>
                   Update
                 </button>
               </div>
@@ -144,18 +127,11 @@ function UserProfileForm({
               )}
             </div>
             <div className="col">
-              <ImageUploader
-                user={user}
-                setUploading={true}
-                setImgUrl={setImage}
-              />
+              <ImageUploader user={user} setUploading={true} setImgUrl={setImage} />
             </div>
           </div>
           <div className="text-right">
-            <button
-              className="btn btn-primary  "
-              onClick={(e) => clickUpdateProfilepic(e)}
-            >
+            <button className="btn btn-primary  " onClick={e => clickUpdateProfilepic(e)}>
               Update Profile picture
             </button>
           </div>
