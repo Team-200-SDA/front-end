@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../../css/lecture/lecture.css';
 
 export default function Lecture({lecture, deleteLecture, user_role}) {
@@ -8,9 +9,9 @@ export default function Lecture({lecture, deleteLecture, user_role}) {
         <div className="card lecture-card">
             <div className="card-body">
                 <span>
-                    <link to= {lecture.link}
+                    <Link to= {lecture.link}
                     className=""
-                    target ="_blank">{lecture.title}</link>
+                    target ="_blank">{lecture.title}</Link>
                 </span>
                 {  user_role !== "teacher" ? null : 
                 <button className="btn btn-light"
