@@ -36,8 +36,8 @@ export default function HomePage() {
 
   return (
     <div className="card">
-      <div className="card-body">
-        <h4 className="card-title">NEWS</h4>
+      <div className="card-body text-center">
+        <h4 className="card-title">News</h4>
         <div className= "news-div">
             <CreateNews news={news} getAllNews={getAllNews}/>
 
