@@ -1,9 +1,8 @@
 import { Avatar, Box, Paper } from '@material-ui/core';
 import React from 'react';
 
-const user = window.sessionStorage.getItem('user');
-
 function ChatMessage({ message }) {
+  const user = window.sessionStorage.getItem('user');
   const { sender, content, time } = message;
   const senderOrUser = sender === user ? 'user' : 'sender';
 

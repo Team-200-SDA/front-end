@@ -1,19 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { EventSourcePolyfill } from 'event-source-polyfill';
 import { produce } from 'immer';
-import PrivMessageContext from '../../js/states/PrivMessageContext';
-import PrivMessageSetter from '../../js/states/PrivMessageSetterContext';
+
 import PrivChatApi from '../../api/PrivChatApi';
 
 // Helper vars
 let eventSource = undefined;
 
-function PrivChatHandler() {
+function PrivChatHandler({ conversations, setConversations }) {
   const [listening, setListening] = useState(false);
   const [messages, setMessages] = useState([]);
-  const conversations = useContext(PrivMessageContext);
-  const setConversations = useContext(PrivMessageSetter);
 
   useEffect(() => {
     if (!listening) {
@@ -38,8 +35,10 @@ function PrivChatHandler() {
     };
   }, []);
 
+  /*
+   *  On message received, save it into an array of messages in component state.
+   */
   useEffect(() => {
-    // Message Received
     eventSource.onmessage = event => {
       const newMessage = JSON.parse(event.data);
       if (newMessage.id !== 'heartbeat') {
@@ -48,6 +47,11 @@ function PrivChatHandler() {
     };
   }, []);
 
+  /*
+   *  On Each message saved into message state, sort the message into an array of senders
+   *  If array for that sender does not yet exist, create it.
+   *  Array of senders is saved to state in App.jsx using a passed down setter.
+   */
   useEffect(() => {
     messages.forEach(msg => {
       const immerState = produce(conversations, draftState => {
