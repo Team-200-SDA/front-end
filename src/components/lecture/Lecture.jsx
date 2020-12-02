@@ -8,9 +8,9 @@ export default function Lecture({lecture, deleteLecture, user_role}) {
         <div className="card lecture-card">
             <div className="card-body">
                 <span>
-                    <a href= {lecture.link}
+                    <link to= {lecture.link}
                     className=""
-                    target ="_blank">{lecture.title}</a>
+                    target ="_blank">{lecture.title}</link>
                 </span>
                 {  user_role !== "teacher" ? null : 
                 <button className="btn btn-light"
