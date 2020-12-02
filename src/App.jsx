@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Auth from "./services/Auth";
-import Navbar from "./components/layout/Navbar";
-import PrivMessageContext from "./js/states/PrivMessageContext";
-import PrivMessageSetterContext from "./js/states/PrivMessageSetterContext";
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Auth from './services/Auth';
+import Navbar from './components/layout/Navbar';
 
 // Chat Bot
 import Chatbot from "react-chatbot-kit";
@@ -31,56 +29,53 @@ function App() {
 
   const loggedInRouter = (
     <Router>
-      <PrivMessageContext.Provider value={conversations}>
-        <PrivMessageSetterContext.Provider value={setConversations}>
-          <PrivChatHandler />
-
-          <Navbar onLogout={() => Auth.logout()} />
-          <div className="container mt-5">
-            <Switch>
-              <Route path="/" exact>
-                <HomePage />
-              </Route>
-              <Route path="/lectures" exact>
-                <LecturePage />
-              </Route>
-              <Route path="/assignments" exact>
-                <AssignmentPage />
-              </Route>
-              <Route path="/chat" exact>
-                <Chat />
-              </Route>
-              <Route path="/bot" exact>
-                <Chatbot
-                  config={config}
-                  actionProvider={ActionProvider}
-                  messageParser={MessageParser}
-                />
-              </Route>
-              <Route path="/live">
-                <LiveVideo />
-              </Route>
+      <PrivChatHandler
+        conversations={conversations}
+        setConversations={setConversations}
+      />
+      <Navbar onLogout={() => Auth.logout()} />
+      <div className="container mt-5">
+        <Switch>
+          <Route path="/" exact>
+            <HomePage />
+          </Route>
+          <Route path="/lectures" exact>
+            <LecturePage />
+          </Route>
+          <Route path="/assignments" exact>
+            <AssignmentPage />
+          </Route>
+          <Route path="/chat" exact>
+            <Chat />
+          </Route>
+          <Route path="/bot" exact>
+            <Chatbot
+              config={config}
+              actionProvider={ActionProvider}
+              messageParser={MessageParser}
+            />
+          </Route>
+          <Route path="/live">
+            <LiveVideo />
+          </Route>
 
               <Route path="/filestorage">
                 <FileStoragePage />
               </Route>
-
-              <Route path="/calendar">
-                <Calendar />
-              </Route>
-              <Route path="/userprofile">
-                <Userprofile />
-              </Route>
-              <Route path="/pchat">
-                <PrivChatInbox conversations={conversations} />
-              </Route>
-              <Route path="/chat-thread">
-                <PrivChatThread />
-              </Route>
-            </Switch>
-          </div>
-        </PrivMessageSetterContext.Provider>
-      </PrivMessageContext.Provider>
+          <Route path="/calendar">
+            <Calendar />
+          </Route>
+          <Route path="/userprofile">
+            <Userprofile />
+          </Route>
+          <Route path="/pchat">
+            <PrivChatInbox conversations={conversations} />
+          </Route>
+          <Route path="/chat-thread/:receiverName">
+            <PrivChatThread conversations={conversations} />
+          </Route>
+        </Switch>
+      </div>
     </Router>
   );
 
