@@ -9,6 +9,8 @@ import { useHistory } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 
 function PrivChatInbox({ conversations }) {
+  const loggedInUser = window.sessionStorage.getItem('user');
+  const [activeUserThreads, setActiveUserThreads] = useState([]);
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState('');
   const history = useHistory();
@@ -21,6 +23,11 @@ function PrivChatInbox({ conversations }) {
     };
     getUsers();
   }, []);
+
+  useEffect(() => {
+    const activeUsers = conversations.map(thread => thread.receiverName);
+    setActiveUserThreads(activeUsers);
+  }, [conversations]);
 
   const sendMessage = async receiverEmail => {
     try {
@@ -41,17 +48,19 @@ function PrivChatInbox({ conversations }) {
   const findUserByEmail = dropDownEmail =>
     users.find(user => user.email === dropDownEmail);
 
+  const dropDownFiltered = users.filter(
+    user => user.name !== loggedInUser && !activeUserThreads.includes(user.name)
+  );
+  const dropDownUsers = dropDownFiltered.map(user => {
+    return { key: user.name, text: user.name, value: user.email };
+  });
+
   const jsxConversations = conversations.map(conversation => (
     <PrivConversationCard key={uuid()} conversation={conversation} />
   ));
 
-  const dropDownUsers = users.map(user => {
-    return { key: user.name, text: user.name, value: user.email };
-  });
-
   return (
     <div>
-      {jsxConversations}
       <div>
         <Button
           onClick={() => sendMessage(selectedUser)}
@@ -66,6 +75,7 @@ function PrivChatInbox({ conversations }) {
           options={dropDownUsers}
         />
       </div>
+      {jsxConversations}
     </div>
   );
 }
