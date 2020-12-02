@@ -1,27 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import '../../css/layout/footer.css';
 export default function Footer() {
 
   return (
-    <footer className="page-footer font-small bg-dark">
-
-      <div className="collapse navbar-collapse" id="navbarColor01">
-        <ul className="navbar-nav mr-auto">
-            <li>
-                <a href="mailto: softwaredevelopmentacademy@gmail.com">
-                Contact-Us
-                </a>
-            </li>
-
-            <li className="nav-item">
-                <Link to="/bot" className="nav-link">
-                    Chat-Bot
+    <footer className="footer mt-auto py-3 bg-dark text-white ">
+      <div className= "container text-center py-4">
+        <ul >
+            <span className= "border rounded p-2 px-3 mr-4 d-none d-md-inline-block">
+                <Link to="mailto: softwaredevelopmentacademy@gmail.com">
+                Contact-Us <i className="fas fa-envelope"></i>
                 </Link>
-            </li>
+            </span>
+
+            <span className= "border rounded p-2 px-3 mr-4 d-none d-md-inline-block">
+                <Link to="/bot" >
+                Chat-Bot <i className="fas fa-robot"></i>
+                </Link>
+            </span>
         </ul>
       </div>
-    </footer>
+  </footer>
   );
 }
 
