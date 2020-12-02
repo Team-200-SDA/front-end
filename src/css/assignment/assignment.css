@@ -6,3 +6,7 @@
 .assignment-card .card-body button {
     margin-left: 50%;
 }
+
+.assignment-card .card-body .user-name {
+    color: grey;
+}
