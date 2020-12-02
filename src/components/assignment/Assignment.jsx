@@ -10,9 +10,9 @@ export default function Assignment({ user, assignment, deleteAssignment}) {
         <div className="card assignment-card">
             <div className="card-body">
                 <span>
-                    <a href= {assignment.link}
+                    <link to= {assignment.link}
                     className="assignment-link"
-                    target ="_blank">{assignment.title}</a>
+                    target ="_blank">{assignment.title}</link>
                 </span>
                 {user_ === assignment.user.name ?
                 (<button className="btn btn-light"
