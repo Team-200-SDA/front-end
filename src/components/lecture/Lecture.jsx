@@ -1,19 +1,27 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../../css/lecture/lecture.css';
 
-export default function Lecture({ lecture, deleteLecture }) {
-  return (
-    <div className="card lecture-card">
-      <div className="card-body">
-        <span>
-          <a href={lecture.link} className="">
-            {lecture.title}
-          </a>
-        </span>
-        <button className="btn btn-light" onClick={() => deleteLecture(lecture.id)}>
-          Delete<i className="fas fa-trash"></i>
-        </button>
-      </div>
-    </div>
-  );
+export default function Lecture({lecture, deleteLecture, user_role}) {
+
+    return (
+        
+        <div className="card lecture-card">
+            <div className="card-body">
+                <span>
+                    <Link to= {lecture.link}
+                    className=""
+                    target ="_blank">{lecture.title}</Link>
+                </span>
+                {  user_role !== "teacher" ? null : 
+                <button className="btn btn-light"
+                onClick={() => deleteLecture(lecture.id)}>
+                Delete
+            </button>
+            }
+            </div>
+        </div>
+       
+        );
+
 }
