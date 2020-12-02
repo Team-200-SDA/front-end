@@ -1,15 +1,15 @@
 import React from "react";
 import "./FileStorage.css";
-
+import { Link } from "react-router-dom";
 
 export default function FileStorage({ file, onFileDelete }) {
   return (
     <div className="card card-filestorage">
       <div className="card-body">
         <span>
-          <a href={file.link} className="file-link" target="_blank">
+          <Link to={file.link} className="file-link" target="_blank">
             {file.fileName}
-          </a>
+          </Link>
         </span>
         <button
           className="btn btn-danger"

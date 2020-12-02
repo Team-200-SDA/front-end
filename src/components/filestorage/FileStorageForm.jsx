@@ -9,8 +9,7 @@ export default function FileStorageForm({ onUploadFile }) {
       return;
     }
     e.preventDefault();
-    console.log("filename", filename);
-    console.log("link", link);
+
     const fileData = { fileName: filename, link: link };
     onUploadFile(fileData)
       .then(() => {
