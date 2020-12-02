@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../../css/assignment/assignment.css';
 
 export default function Assignment({ user, assignment, deleteAssignment}) {
@@ -10,9 +11,9 @@ export default function Assignment({ user, assignment, deleteAssignment}) {
         <div className="card assignment-card">
             <div className="card-body">
                 <span>
-                    <link to= {assignment.link}
+                    <Link to= {assignment.link}
                     className="assignment-link"
-                    target ="_blank">{assignment.title}</link>
+                    target ="_blank">{assignment.title}</Link>
                 </span>
                 {user_ === assignment.user.name ?
                 (<button className="btn btn-light"
