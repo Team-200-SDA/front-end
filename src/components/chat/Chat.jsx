@@ -10,19 +10,20 @@ import { Send } from '@material-ui/icons';
 import { format } from 'date-fns';
 
 const wsEndpoint = 'http://localhost:8080/ws';
-const socket = new SockJS(wsEndpoint, null, {
-  transports: ['xhr-streaming'],
-  headers: { Authorization: window.sessionStorage.getItem('_token') }
-});
 
 function Chat() {
   const user = window.sessionStorage.getItem('user');
   const [messages, setMessages] = useState([]);
   const [messageField, setMessageField] = useState('');
-  const stompClient = Stomp.over(socket);
   const scroll = Scroll.animateScroll;
+  let stompClient = null;
 
   useEffect(() => {
+    const socket = new SockJS(wsEndpoint, null, {
+      transports: ['xhr-streaming'],
+      headers: { Authorization: window.sessionStorage.getItem('_token') }
+    });
+    stompClient = Stomp.over(socket);
     stompClient.connect({}, onConnected, onError);
     // Disconnect the socket connection when component un-mounts.
     return () => stompClient.disconnect();
