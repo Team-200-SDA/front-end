@@ -60,10 +60,12 @@ function PrivChatHandler({ conversations, setConversations }) {
             thread => thread[`receiverName`] === msg.receiverName
           );
           foundThread.thread.push(msg);
+          foundThread.timeStamp = performance.now();
         } else {
           const newThread = {
             receiverName: msg.receiverName,
-            thread: [msg]
+            thread: [msg],
+            timeStamp: performance.now()
           };
           draftState.push(newThread);
         }

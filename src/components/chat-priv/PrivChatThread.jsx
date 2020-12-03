@@ -1,16 +1,19 @@
-import { Fab, TextField } from '@material-ui/core';
-import { Send } from '@material-ui/icons';
+import { Fab, IconButton, TextField } from '@material-ui/core';
+import { DeleteRounded, Send } from '@material-ui/icons';
 import { format } from 'date-fns';
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import PrivChatApi from '../../api/PrivChatApi';
 import PrivMessage from './PrivMessage';
 
 function PrivChatThread({ conversations }) {
+  const history = useHistory();
   const [messageField, setMessageField] = useState('');
   const receiverName = useParams().receiverName;
-  const thread = conversations.find(thread => thread.receiverName === receiverName);
+  // This needs to be let, or inbox (parent component) wont update with
+  // messages from other/new 1st time senders 🤷‍♂️
+  let thread = conversations.find(thread => thread.receiverName === receiverName);
 
   const sendMessage = async event => {
     event.preventDefault();
@@ -26,9 +29,18 @@ function PrivChatThread({ conversations }) {
     }
   };
 
+  const deleteMessages = () => {
+    thread.thread.forEach(async msg => {
+      await PrivChatApi.deleteMessage(msg.id);
+    });
+    history.push('/private-messaging');
+    window.location.reload();
+  };
+
   const messagesToRender = thread.thread.map(message => (
     <PrivMessage key={uuid()} message={message} />
   ));
+  console.log(thread);
 
   return (
     <div className="paper">
@@ -56,6 +68,10 @@ function PrivChatThread({ conversations }) {
           <Send />
         </Fab>
       </form>
+
+      <IconButton onClick={() => deleteMessages()} aria-label="delete">
+        <DeleteRounded />
+      </IconButton>
     </div>
   );
 }
