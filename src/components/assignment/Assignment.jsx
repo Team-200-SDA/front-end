@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../css/assignment/assignment.css';
 
 export default function Assignment({ user, assignment, deleteAssignment}) {
     

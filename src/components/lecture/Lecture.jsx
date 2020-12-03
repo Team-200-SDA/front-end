@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../css/lecture/lecture.css';
 
 export default function Lecture({lecture, deleteLecture, user_role}) {
 

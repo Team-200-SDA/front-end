@@ -6,8 +6,6 @@ import AssignmentApi from '../../api/AssignmentApi';
 import CreateAssignment from './CreateAssignment';
 import Assignment from './Assignment';
 
-import '../../css/assignment/assignmentPage.css';
-
 export default function AssignmentPage() {
   const [assignments, setAssignments] = useState([]);
   const [teacherAssignments, setTeacherAssignments] = useState([]);
@@ -52,16 +50,19 @@ export default function AssignmentPage() {
 
   function deleteAssignment(assignmentId) {
     AssignmentApi.deleteAssignment(assignmentId).then(() => {
+      alert("Assignment Deleted");
       getAllAssignments(); // to refresh the list immediately
     });
   }
   function deleteTeacherAssignment(assignmentId) {
     AssignmentApi.deleteAssignment(assignmentId).then(() => {
+      alert("Assignment Deleted");
       getTeacherAssignments(); // to refresh the list immediately
     });
   }
   function deleteAllStudentAssignment(assignmentId) {
     AssignmentApi.deleteAssignment(assignmentId).then(() => {
+      alert("Assignment Deleted");
       getAllStudentAssignments(); // to refresh the list immediately
     });
   }
