@@ -9,7 +9,6 @@ function PrivConversationCard({ conversation }) {
     <Paper elevation={3}>
       <Box className={`message-body message-box-priv`} color="primary.contrastText">
         <Avatar className={`message-avatar-priv`}>T</Avatar>
-
         <div className="message-sender">{conversation.receiverName}</div>
         <Link to={`/chat-thread/${conversation.receiverName}`}>
           <div className="message-content">

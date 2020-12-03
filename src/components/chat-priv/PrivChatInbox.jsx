@@ -19,7 +19,6 @@ function PrivChatInbox({ conversations }) {
     const getUsers = async () => {
       const response = await UserApi.getAllUsers();
       setUsers(response.data);
-      console.log(response.data);
     };
     getUsers();
   }, []);
@@ -29,17 +28,18 @@ function PrivChatInbox({ conversations }) {
     setActiveUserThreads(activeUsers);
   }, [conversations]);
 
-  const sendMessage = async receiverEmail => {
+  const sendMessage = async userInfo => {
+    const infoArray = userInfo.split(' '); // Create array from string info
     try {
       await PrivChatApi.sendMessage({
-        content: 'Has started a conversation...',
+        content: `Started a conversation with ${infoArray[1]}`,
         date: format(new Date(), 'HH:mm dd-MMM-yyyy'),
-        receiverEmail: receiverEmail
+        receiverEmail: infoArray[0]
       });
-      const receiverName = findUserByEmail(receiverEmail).name;
+      const receiverName = findUserByEmail(infoArray[0]).name;
       setTimeout(() => {
         history.push(`chat-thread/${receiverName}`);
-      }, 10);
+      }, 40);
     } catch (error) {
       console.log(error);
     }
@@ -51,24 +51,39 @@ function PrivChatInbox({ conversations }) {
   const dropDownFiltered = users.filter(
     user => user.name !== loggedInUser && !activeUserThreads.includes(user.name)
   );
-  const dropDownUsers = dropDownFiltered.map(user => {
-    return { key: user.name, text: user.name, value: user.email };
+
+  const dropDownSorted = dropDownFiltered.sort((a, b) =>
+    a.name < b.name ? -1 : a.name > b.name ? 1 : 0
+  );
+
+  const dropDownUsers = dropDownSorted.map(user => {
+    return {
+      key: user.name,
+      text: user.name,
+      value: `${user.email} ${user.name}` // Have to use string. Object will break dropdown.
+    };
   });
 
-  const jsxConversations = conversations.map(conversation => (
+  const sortedConversations = conversations
+    .slice()
+    .sort((a, b) => (a.timeStamp > b.timeStamp ? -1 : a.timeStamp < b.timeStamp ? 1 : 0));
+
+  const jsxConversations = sortedConversations.map(conversation => (
     <PrivConversationCard key={uuid()} conversation={conversation} />
   ));
 
   return (
     <div>
-      <div>
+      <div className="start-conversation">
         <Button
+          className="conversation-button"
           onClick={() => sendMessage(selectedUser)}
           variant="contained"
           color="primary">
           Start a conversation
         </Button>
         <Dropdown
+          className="conversation-dropdown"
           onChange={(event, data) => setSelectedUser(data.value)}
           placeholder="with... ?"
           selection

@@ -40,6 +40,7 @@ function PrivChatThread({ conversations }) {
   const messagesToRender = thread.thread.map(message => (
     <PrivMessage key={uuid()} message={message} />
   ));
+  console.log(thread);
 
   return (
     <div className="paper">
