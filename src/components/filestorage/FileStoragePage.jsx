@@ -1,4 +1,3 @@
-import { ContactsOutlined } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
 import FileStorageApi from "../../api/FileStorageApi";
 import FileStorageForm from "../filestorage/FileStorageForm";
@@ -24,8 +23,8 @@ export default function FileStoragePage() {
     });
   };
 
-  const deleteFile = (file) => {
-    return FileStorageApi.deleteFile(file.id).then(() => {
+  const deleteFile = (fileId) => {
+    return FileStorageApi.deleteFile(fileId).then(() => {
       alert("File Deleted");
       getAll();
     });

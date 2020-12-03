@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+
 export default function FileStorageForm({ onUploadFile }) {
   const [filename, setFilename] = useState("");
   const [link, setLink] = useState("");
@@ -11,6 +12,7 @@ export default function FileStorageForm({ onUploadFile }) {
     e.preventDefault();
 
     const fileData = { fileName: filename, link: link };
+    
     onUploadFile(fileData)
       .then(() => {
         setFilename("");
@@ -27,7 +29,7 @@ export default function FileStorageForm({ onUploadFile }) {
         <div className="container col-sm-12 col-md-10 col-lg-8">
           <div className="form-group">
             <input
-              className="form-control"
+              className="form-control mb-3"
               placeholder="File name"
               value={filename}
               onChange={(event) => setFilename(event.target.value)}
