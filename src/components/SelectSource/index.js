@@ -11,8 +11,8 @@ const NewDocumentWrapper = styled.div`
 `;
 
 // Client ID and API key from the Developer Console
-const CLIENT_ID = process.env.48042487719-no26i5a76j07b2j71jov0505t5k6hitp.apps.googleusercontent.com;
-const API_KEY = process.env.AIzaSyBYTS15rNiD7rLgO1SIjMYu8DnZ-TfxX1E;
+const CLIENT_ID = process.env.REACT_APP_GOOGLE_DRIVE_API_KEY;
+const API_KEY = process.env.REACT_APP_GOOGLE_DRIVE_CLIENT_ID;
 
 // Array of API discovery doc URLs for APIs
 const DISCOVERY_DOCS = [
