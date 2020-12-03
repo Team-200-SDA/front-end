@@ -7,11 +7,6 @@ import Navbar from './components/layout/Navbar';
 import PrivMessageContext from './js/states/PrivMessageContext';
 import PrivMessageSetterContext from './js/states/PrivMessageSetterContext';
 
-// Chat Bot
-import Chatbot from 'react-chatbot-kit';
-import ActionProvider from './chatbot-resources/ActionProvider';
-import MessageParser from './chatbot-resources/MessageParser';
-import config from './chatbot-resources/config';
 /// Import pages
 import LoginPage from './components/auth/LoginPage';
 import HomePage from './components/home/HomePage';
@@ -26,6 +21,7 @@ import AssignmentPage from './components/assignment/AssignmentPage';
 import PrivChatHandler from './components/chat-priv/PrivChatHandler';
 import PrivChatInbox from './components/chat-priv/PrivChatInbox';
 import PrivChatThread from './components/chat-priv/PrivChatThread';
+import FooterComponent from './components/layout/FooterComponent';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -37,7 +33,6 @@ function App() {
       <PrivMessageContext.Provider value={conversations}>
         <PrivMessageSetterContext.Provider value={setConversations}>
           <PrivChatHandler />
-
           <Navbar onLogout={() => Auth.logout()} />
           <div className="container mt-5">
             <Switch>
@@ -53,13 +48,7 @@ function App() {
               <Route path="/chat" exact>
                 <Chat />
               </Route>
-              <Route path="/bot" exact>
-                <Chatbot
-                  config={config}
-                  actionProvider={ActionProvider}
-                  messageParser={MessageParser}
-                />
-              </Route>
+
               <Route path="/live">
                 <LiveVideo />
               </Route>
@@ -78,6 +67,7 @@ function App() {
               </Route>
             </Switch>
           </div>
+          <FooterComponent />
         </PrivMessageSetterContext.Provider>
       </PrivMessageContext.Provider>
     </Router>

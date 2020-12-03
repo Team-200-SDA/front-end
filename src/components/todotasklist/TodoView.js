@@ -70,6 +70,8 @@ class TodoView extends Component {
                     </div>
                     <div className="card-footer">
                         <a href="/" className="btn btn-danger">View the details</a>
+                   
+
                     </div>
                 </div>
             </div>
