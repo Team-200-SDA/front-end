@@ -10,7 +10,11 @@ import '../../css/assignment/assignmentPage.css';
 
 export default function AssignmentPage() {
   const [assignments, setAssignments] = useState([]);
+  const [teacherAssignments, setTeacherAssignments] = useState([]);
+  const [allStudentsAssignments, setAllStudentsAssignments] = useState([]);
 
+  const user_role = window.sessionStorage.getItem('role');
+  
   const [assignmentAssignedOn, setAssignmentAssignedOn] = useState(true);
   const [assignmentSubmittedOn, setAssignmentSubmittedOn] = useState(false);
 
@@ -26,17 +30,39 @@ export default function AssignmentPage() {
   function getAllAssignments() {
     AssignmentApi.getAllAssignments().then(data => {
       setAssignments(data.data);
-      console.log(data);
+    });
+  }
+  function getTeacherAssignments() {
+    AssignmentApi.getTeacherAssignments().then(data => {
+      setTeacherAssignments(data.data);
+    });
+  }
+  function getAllStudentAssignments() {
+    AssignmentApi.getAllStudentAssignments().then(data => {
+      setAllStudentsAssignments(data.data);
     });
   }
 
   useEffect(() => {
     getAllAssignments();
+    getTeacherAssignments();
+    getAllStudentAssignments();
   }, []);
+
 
   function deleteAssignment(assignmentId) {
     AssignmentApi.deleteAssignment(assignmentId).then(() => {
       getAllAssignments(); // to refresh the list immediately
+    });
+  }
+  function deleteTeacherAssignment(assignmentId) {
+    AssignmentApi.deleteAssignment(assignmentId).then(() => {
+      getTeacherAssignments(); // to refresh the list immediately
+    });
+  }
+  function deleteAllStudentAssignment(assignmentId) {
+    AssignmentApi.deleteAssignment(assignmentId).then(() => {
+      getAllStudentAssignments(); // to refresh the list immediately
     });
   }
 
@@ -67,40 +93,56 @@ export default function AssignmentPage() {
         </label>
       </div>
 
-      {assignmentAssignedOn && (
+      {assignmentAssignedOn &&  (
         <div className="assignment-div">
-          <CreateAssignment
-            assignments={assignments}
-            getAllAssignments={getAllAssignments}
-          />
+          { user_role === "teacher" ? 
+          (<CreateAssignment
+            assignments={teacherAssignments}
+            getAllAssignments={getTeacherAssignments}
+          /> ): null}
 
-          {assignments.length === 0
-            ? 'No assignment yet.'
-            : assignments.map(assignment => (
+          {teacherAssignments.length === 0
+            ? 'No assignment assigned yet.'
+            : teacherAssignments.map(assignment => (
                 <Assignment
                   key={uuid()}
                   assignment={assignment}
-                  deleteAssignment={deleteAssignment}
+                  deleteAssignment={deleteTeacherAssignment}
                 />
               ))}
         </div>
+
       )}
       {assignmentSubmittedOn && (
         <div className="assignment-div">
-          <CreateAssignment
-            assignments={assignments}
-            getAllAssignments={getAllAssignments}
-          />
+          { user_role === "student" ? 
+          (<CreateAssignment
+            assignments={allStudentsAssignments}
+            getAllAssignments={getAllStudentAssignments}
+          /> ): null}
 
-          {assignments.length === 0
-            ? 'No assignment yet.'
-            : assignments.map(assignment => (
-                <Assignment
-                  key={uuid()}
-                  assignment={assignment}
-                  deleteAssignment={deleteAssignment}
-                />
-              ))}
+          {assignments.length === 0 && user_role === "student"
+            ? 'No assignment submitted yet.' : null}
+          { allStudentsAssignments.length === 0 && user_role === "teacher" 
+            ? 'No assignment submitted yet.' : null}  
+
+            { user_role === "student" 
+            ?  (assignments.map(assignment => (
+              <Assignment
+                key={uuid()}
+                assignment={assignment}
+                deleteAssignment={deleteAssignment}
+              /> )
+            ) ): null}
+
+              { user_role === "teacher" 
+            ?  (allStudentsAssignments.map(assignment => (
+              <Assignment
+                key={uuid()}
+                assignment={assignment}
+                deleteAssignment={deleteAllStudentAssignment}
+              /> )
+            ) ): null}
         </div>
       )}
     </div>
