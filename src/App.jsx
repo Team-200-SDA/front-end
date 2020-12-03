@@ -74,6 +74,7 @@ function App() {
           <Route path="/chat-thread/:receiverName">
             <PrivChatThread conversations={conversations} />
           </Route>
+        
         </Switch>
       </div>
     </Router>

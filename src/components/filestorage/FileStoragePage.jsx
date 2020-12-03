@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import FileStorageApi from "../../api/FileStorageApi";
 import FileStorageForm from "../filestorage/FileStorageForm";
+import SelectSource from "../SelectSource";
 import FileStorage from "./FileStorage";
 
 export default function FileStoragePage() {
@@ -39,6 +40,8 @@ export default function FileStoragePage() {
         : files.map((file) => (
             <FileStorage key={file.id} file={file} onFileDelete={deleteFile} />
           ))}
+
+          <SelectSource />
     </div>
   );
 }
