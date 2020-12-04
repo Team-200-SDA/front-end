@@ -14,9 +14,12 @@ export default function Assignment({ user, assignment, deleteAssignment}) {
                     {assignment.user.name}:</span>
                 ): null}
                 <span>
-                    <Link to= {assignment.link}
-                    className="assignment-link"
-                    target ="_blank">{assignment.title}</Link>
+                    <a target="_blank" 
+                    className="assignment-link" 
+                    rel="noreferrer" 
+                    href={assignment.link}>
+                    {assignment.title}
+                    </a>
                 </span>
                 {user_ === assignment.user.name ?
                 (<button className="btn btn-light"
