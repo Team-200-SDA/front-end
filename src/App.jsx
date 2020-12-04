@@ -21,6 +21,8 @@ import FileStoragePage from './components/filestorage/FileStoragePage';
 import PrivChatHandler from './components/chat-priv/PrivChatHandler';
 import PrivChatInbox from './components/chat-priv/PrivChatInbox';
 import PrivChatThread from './components/chat-priv/PrivChatThread';
+import TodoCreateComponent from './components/todo/TodoCreateComponent';
+import TodoListComponent from './components/todo/TodoListComponent';
 
 
 function App() {
@@ -59,7 +61,6 @@ function App() {
           <Route path="/live">
             <LiveVideo />
           </Route>
-
           <Route path="/filestorage">
             <FileStoragePage />
           </Route>
@@ -74,6 +75,12 @@ function App() {
           </Route>
           <Route path="/chat-thread/:receiverName">
             <PrivChatThread conversations={conversations} />
+          </Route>
+          <Route path="/todo-list">
+            <TodoListComponent />
+          </Route>
+          <Route path="/todo-form">
+            <TodoCreateComponent />
           </Route>
         </Switch>
       </div>

@@ -72,6 +72,11 @@ function Navbar({ onLogout }) {
               File Storage
             </Link>
           </li>
+          <li className="nav-item">
+            <Link to="/todo-list" className="nav-link">
+              Todo-List
+            </Link>
+          </li>
         </ul>
 
         <button className="btn btn-outline-info my-2 my-sm-0" onClick={onLogout}>
