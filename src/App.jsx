@@ -21,6 +21,8 @@ import FileStoragePage from './components/filestorage/FileStoragePage';
 import PrivChatHandler from './components/chat-priv/PrivChatHandler';
 import PrivChatInbox from './components/chat-priv/PrivChatInbox';
 import PrivChatThread from './components/chat-priv/PrivChatThread';
+import TodoCreateComponent from './components/todo/TodoCreateComponent';
+import TodoListComponent from './components/todo/TodoListComponent';
 
 
 function App() {
