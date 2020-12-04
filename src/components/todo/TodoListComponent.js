@@ -24,11 +24,12 @@ function StudentListComponent() {
             <tbody>
               {this.state.students.map(student => (
                 <tr key={student.studentId}>
-                  <td>{null}</td> //student.name
                   <td>{null}</td>
-                  <td>{student.taskcount}</td>
-                  <td>{student.telephone}</td>
-                  <td>{student.regDate}</td>
+                  {/* //student.name */}
+                  <td>{null}</td>
+                  <td>{null}</td>
+                  <td>{null}</td>student.telephone
+                  <td>{null}</td>student.regDate
                   <td>
                     <button type="submit" onClick={null} className="btn btn-info">
                       Details
