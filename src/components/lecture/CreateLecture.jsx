@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import LectureApi from '../../api/LectureApi';
+
+import FileUploader from '../filestorage/FileUploader';
 
 export default function CreateLecture(props) {
     const [title, setTitle] = useState("");
     const [link, setLink] = useState("");
+
+    const [uploadResponse, setUploadResponse] = useState(null);
     
     function createLecture() {
         if (link === "") { return;}   //we dont want to post a Lecture with no links.
@@ -21,9 +25,24 @@ export default function CreateLecture(props) {
                 setTitle("");
             })
     }
+
+    useEffect(() => {
+        if (uploadResponse === null) {
+          return;
+        }
+        console.log("Hiiiii",uploadResponse);
+        setTitle(uploadResponse.original_filename) ;
+        setLink(uploadResponse.secure_url);
+    
+        setUploadResponse(null);
+      }, [uploadResponse]);
     
     return (
         <div className="container col-sm-12 col-md-10 col-lg-8">
+            <div className="form-group">
+                <p className="form-control">Upload a file from your local-storage?</p>
+                <FileUploader setUploadResponse={setUploadResponse} />
+            </div>
             <div className="form-group">
                 <input className="form-control"
                     placeholder="Title"
@@ -35,9 +54,11 @@ export default function CreateLecture(props) {
                     value={link}
                     onChange={event => setLink(event.target.value)}
                 />
+                
             </div>
+            
             <div className="form-group">
-                <button className="btn btn-primary  " onClick={createLecture}>Upload</button>
+                <button className="btn btn-primary  " onClick={createLecture}>Publish</button>
             </div>
         </div>
     );

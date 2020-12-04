@@ -6,7 +6,7 @@ function Navbar({ onLogout }) {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="/">
-        SDA starter
+        EduLane
       </a>
       <button
         className="navbar-toggler"
