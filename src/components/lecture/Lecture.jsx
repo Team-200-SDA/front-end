@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../css/lecture/lecture.css';
 
 export default function Lecture({lecture, deleteLecture, user_role}) {
 
@@ -9,14 +8,18 @@ export default function Lecture({lecture, deleteLecture, user_role}) {
         <div className="card lecture-card">
             <div className="card-body">
                 <span>
-                    <Link to= {lecture.link}
-                    className=""
-                    target ="_blank">{lecture.title}</Link>
+                    <a target="_blank" 
+                    className="lecture-link" 
+                    rel="noreferrer" 
+                    href={lecture.link}>
+                    {lecture.title} 
+                    </a>
+
                 </span>
                 {  user_role !== "teacher" ? null : 
                 <button className="btn btn-light"
                 onClick={() => deleteLecture(lecture.id)}>
-                Delete
+                <i className="fas fa-trash"></i>
             </button>
             }
             </div>

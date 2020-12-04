@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AssignmentApi from '../../api/AssignmentApi';
+
+import FileUploader from '../filestorage/FileUploader';
 
 export default function CreateAssignment(props) {
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
+
+  const [uploadResponse, setUploadResponse] = useState(null);
 
   function createAssignment() {
     if (link === '') {
@@ -23,8 +27,24 @@ export default function CreateAssignment(props) {
     });
   }
 
+  useEffect(() => {
+    if (uploadResponse === null) {
+      return;
+    }
+    console.log("Hiiiii",uploadResponse);
+    setTitle(uploadResponse.original_filename) ;
+    setLink(uploadResponse.secure_url);
+
+    setUploadResponse(null);
+  }, [uploadResponse]);
+
   return (
     <div className="container col-sm-12 col-md-10 col-lg-8">
+      <div className="form-group">
+        <p className="form-control">Upload a file from your local-storage?</p>
+        <FileUploader setUploadResponse={setUploadResponse} />
+      </div>
+      
       <div className="form-group">
         <input
           className="form-control"
@@ -41,7 +61,7 @@ export default function CreateAssignment(props) {
       </div>
       <div className="form-group">
         <button className="btn btn-primary  " onClick={createAssignment}>
-          Upload
+          Publish
         </button>
       </div>
     </div>
