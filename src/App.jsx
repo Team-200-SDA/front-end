@@ -4,7 +4,6 @@ import Auth from './services/Auth';
 import Navbar from './components/layout/Navbar';
 import TodoListComponent from './components/todo/TodoListComponent';
 import TodoCreateComponent from './components/todo/TodoCreateComponent';
-import TodoViewComponent from './components/todo/TodoViewComponent';
 // Chat Bot
 import Chatbot from 'react-chatbot-kit';
 import ActionProvider from './chatbot-resources/ActionProvider';
@@ -60,7 +59,6 @@ function App() {
           <Route path="/live">
             <LiveVideo />
           </Route>
-
           <Route path="/filestorage">
             <FileStoragePage />
           </Route>
@@ -76,10 +74,12 @@ function App() {
           <Route path="/chat-thread/:receiverName">
             <PrivChatThread conversations={conversations} />
           </Route>
-
-          <Route path="/todo-list" component={TodoListComponent}></Route>
-          <Route path="/todo-view/:studentId" component={TodoViewComponent}></Route>
-          <Route path="/todo-form" component={TodoCreateComponent}></Route>
+          <Route path="/todo-list">
+            <TodoListComponent />
+          </Route>
+          <Route path="/todo-form">
+            <TodoCreateComponent />
+          </Route>
         </Switch>
       </div>
     </Router>
