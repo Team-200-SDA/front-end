@@ -1,125 +1,59 @@
-import { SignalCellularNull, SignalCellularNullOutlined } from '@material-ui/icons';
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import TodoApi from '../../api/TodoApi';
 
 function StudentCreateComponent() {
-  /*
-  saveStudentSubmit = e => {
-    e.preventDefault();
-    // invoke validation function
-    const isValid = this.handleValidation();
-    if (isValid) {
-      alert('Register Form is submited');
-      // invoke api
-      let student = this.state.student;
-      StudentService.createStudent(student).then(res => {
-        console.log('res: ', res.data);
-        if (res.status === '201') {
-          this.props.history.push('/student-list');
-        } else {
-          this.setState({ apiError: res.data.message });
-        }
-      });
-    
-    */
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [dueDate, setDueDate] = useState('');
+  const history = useHistory();
 
-  console.log('############# TEST SAVE FUNCTION ##############');
-
-  //   handleChange = e => {
-  //     const variableId = e.target.id;
-  //     const value = e.target.value;
-  //     //array operator which takes individual elements
-  //     const student = { student: { ...this.state.student, [variableId]: value } };
-  //     console.log('student :>> ', student);
-  //     this.setState(student);
-  //   };
-
-  /* handleValidation = () => {
-    let std = this.state.student;
-    let errors = {};
-    let formIsValid = true;
-
-    // name validation
-    if (std.name.length === 0) {
-      formIsValid = false;
-      errors.name = 'Name is rquired';
-    }
-
-    // email validation
-    if (std.email.length === 0) {
-      formIsValid = false;
-      errors.email = 'Email is required';
-    }
-
-    //age validation
-    if (std.taskcount <= 0) {
-      formIsValid = false;
-      errors.taskcount = 'Taskcount is required';
-    }
-
-    //phone
-    if (std.telephone.length === 0) {
-      formIsValid = false;
-      errors.telephone = 'Phone is required';
-    }
-
-    this.setState({ errors });
-    return formIsValid;
-  }; */
+  const createTodo = async event => {
+    event.preventDefault();
+    const todo = { title, description, dueDate, complete: false };
+    await TodoApi.createTodo(todo);
+    history.push('/todo-list');
+  };
 
   return (
     <div className="container">
-      <form onSubmit={null}>
+      <form onSubmit={event => createTodo(event)}>
         <div className="card">
           <div className="card-header bg-secondary text-white">
-            <h4>Student Form</h4>
+            <h4>Create Todo</h4>
             <span style={{ color: 'red' }}>{null}</span>
           </div>
 
           <div className="card-body">
-            <label>Name:</label>
+            <label>Title:</label>
             <input
               type="text"
-              value={null}
-              onChange={null}
+              value={title}
+              onChange={e => setTitle(e.target.value)}
               className="form-control"
-              placeholder="Enter  Task Name"
-              id="name"
+              placeholder="Enter a Title"
             />
             <span style={{ color: 'red' }}>{null}</span>
             <br />
 
-            <label>Email:</label>
+            <label>Description:</label>
             <input
               type="text"
-              value={null}
-              onChange={null}
+              value={description}
+              onChange={e => setDescription(e.target.value)}
               className="form-control"
-              placeholder="Enter Email"
-              id="email"
+              placeholder="Enter a Description"
             />
             <span style={{ color: 'red' }}>{null}</span>
             <br />
 
-            <label>Taskcount:</label>
+            <label>Due Date:</label>
             <input
               type="text"
-              value={null}
-              onChange={null}
+              value={dueDate}
+              onChange={e => setDueDate(e.target.value)}
               className="form-control"
-              placeholder="Enter task count"
-              id="taskcount"
-            />
-            <span style={{ color: 'red' }}>{null}</span>
-            <br />
-
-            <label>Phone:</label>
-            <input
-              type="text"
-              value={null}
-              onChange={null}
-              className="form-control"
-              placeholder="Enter Phone Number"
-              id="telephone"
+              placeholder="Enter a due date"
             />
             <span style={{ color: 'red' }}>{null}</span>
             <br />

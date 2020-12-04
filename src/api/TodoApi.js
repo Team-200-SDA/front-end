@@ -14,7 +14,7 @@ class TodoApi {
   }
 
   deleteTodo(id) {
-    return Api.delete(`/todo/id=${id}`);
+    return Api.delete(`/todo/${id}`);
   }
 }
 
