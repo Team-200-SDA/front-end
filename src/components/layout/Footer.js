@@ -8,7 +8,7 @@ export default function Footer() {
       <div className= "container text-center py-4">
         <ul >
             <span className= "border rounded p-2 px-3 mr-4 d-none d-md-inline-block">
-                <Link to="mailto: softwaredevelopmentacademy@gmail.com">
+                <Link to="mailto: sda.team200@gmail.com">
                 Contact-Us <i className="fas fa-envelope"></i>
                 </Link>
             </span>
