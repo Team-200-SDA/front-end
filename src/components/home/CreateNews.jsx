@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import NewsApi from '../../api/NewsApi';
 
+import ImageUploader from './ImageUploader';
+
 export default function CreateNews(props) {
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
@@ -15,6 +17,8 @@ export default function CreateNews(props) {
             image: image,
         };
 
+        console.log("HIII", newNews);
+
         NewsApi.createNews(newNews)
             .then((res) => {
                 console.log(res);
@@ -27,27 +31,33 @@ export default function CreateNews(props) {
     
     return (
         <div className="container col-sm-12 col-md-10 col-lg-8">
-            <div className="form-group">
-                <input className="form-control"
-                    placeholder="Title"
-                    value={title}
-                    onChange={event => setTitle(event.target.value)}
-                />
+          <div className="form-group">
+            <input className="form-control"
+              placeholder={`Title of the news`}
+              value={title}
+              onChange={event => setTitle(event.target.value)}
+            />
                 
-                <textarea className="form-control"
-                    placeholder={`Body of the news`}
-                    value={body}
-                    onChange={event => setBody(event.target.value)}
-                />
+            <textarea className="form-control"
+              placeholder={`Body of the news`}
+              value={body}
+              onChange={event => setBody(event.target.value)}
+            />
 
-                <textarea className="form-control"
-                    placeholder={`Image for the news`}
+            <div className="col">
+              <ImageUploader setUploading={true} setImgUrl={setImage} />
+                {/* <div className="form-group"></div>
+                  <button 
+                    className="btn btn-secondary" 
                     value={image}
-                    onChange={event => setImage(event.target.value)}
-                />
+                    onClick={event => setImage(event.target.value)}>
+                    Upload Image
+                  </button> */}
+                </div>
             </div>
+            
             <div className="form-group">
-                <button className="btn btn-primary  " onClick={createNews}>Upload</button>
+              <button className="btn btn-primary  " onClick={createNews}>Publish</button>
             </div>
         </div>
     );

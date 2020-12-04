@@ -1,5 +1,3 @@
-import { Button } from '@material-ui/core';
-
 import React, { useEffect, useState } from 'react';
 import {v4 as uuid} from 'uuid';
 
@@ -8,11 +6,11 @@ import NewsApi from '../../api/NewsApi';
 import CreateNews from './CreateNews';
 import News from './News';
 
-// import '../../css/news/homePage.css';
-
 export default function HomePage() {
 
   const [ news, setNews ] = useState([]);
+
+  const user_role = window.sessionStorage.getItem('role');
 
     function getAllNews() {
       NewsApi.getAllNews()
@@ -29,6 +27,7 @@ export default function HomePage() {
     function deleteNews(newsId) {
         NewsApi.deleteNews(newsId)
             .then(() => {
+                alert("News Deleted");
                 getAllNews(); // to refresh the list immediately
             })
     }
@@ -37,9 +36,10 @@ export default function HomePage() {
   return (
     <div className="card">
       <div className="card-body text-center">
-        <h4 className="card-title">News</h4>
+        {/* <h4 className="card-title">News</h4> */}
         <div className= "news-div">
-            <CreateNews news={news} getAllNews={getAllNews}/>
+        { user_role !== "teacher" ? null :
+            (<CreateNews news={news} getAllNews={getAllNews}/> ) }
 
             { news.length === 0 ? "No news yet." :
                    news
