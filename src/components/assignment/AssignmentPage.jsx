@@ -122,8 +122,10 @@ export default function AssignmentPage() {
             getAllAssignments={getAllStudentAssignments}
           /> ): null}
 
-          {assignments.length === 0 || allStudentsAssignments.length === 0
+          {assignments.length === 0 && user_role === "student"
             ? 'No assignment submitted yet.' : null}
+          { allStudentsAssignments.length === 0 && user_role === "teacher" 
+            ? 'No assignment submitted yet.' : null}  
 
             { user_role === "student" 
             ?  (assignments.map(assignment => (
