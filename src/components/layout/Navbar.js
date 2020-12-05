@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Calendar from '../calendar/Calendar';
+import Postspage from '../forum/posts/PostsPage'
 
 function Navbar({ onLogout }) {
   return (
@@ -70,6 +71,11 @@ function Navbar({ onLogout }) {
           <li className="nav-item">
             <Link to="/filestorage" className="nav-link">
               File Storage
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/forum" className="nav-link">
+              Forum
             </Link>
           </li>
         </ul>

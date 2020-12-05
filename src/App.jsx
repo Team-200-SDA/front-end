@@ -21,6 +21,10 @@ import FileStoragePage from './components/filestorage/FileStoragePage';
 import PrivChatHandler from './components/chat-priv/PrivChatHandler';
 import PrivChatInbox from './components/chat-priv/PrivChatInbox';
 import PrivChatThread from './components/chat-priv/PrivChatThread';
+import PostsPage from './components/forum/posts/PostsPage';
+import CommentPageDetails from './components/forum/comments/CommentPageDetails';
+import CommentsPage from './components/forum/comments/CommentsPage';
+
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -48,6 +52,22 @@ function App() {
           <Route path="/chat" exact>
             <Chat />
           </Route>
+
+          <Route path="/forum" exact>
+            <PostsPage />
+          </Route>
+          
+          <Route exact path="/comments">
+            <CommentsPage />
+          </Route>
+          <Route
+            path="/post/:id/comments"
+            render={({ match }) => <CommentPageDetails match={match} />}
+          />
+
+
+
+
           <Route path="/bot" exact>
             <Chatbot
               config={config}
