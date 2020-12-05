@@ -7,3 +7,11 @@
 .card-filestorage .card-body button {
     margin-left: 50%;
 }
+
+.uploader {
+    display: flex;
+}
+
+.ui.selection.dropdown.filetype-dropdown {
+    margin-left: 10px;
+}
