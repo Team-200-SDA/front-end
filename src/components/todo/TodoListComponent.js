@@ -7,6 +7,8 @@ function TodoListComponent() {
   const [todos, setTodos] = useState([]);
   const [update, setUpdate] = useState(0);
 
+  //React.useEffect hook takes a function as an argument and it will call that function after the main render cycle has completed
+
   useEffect(() => {
     const getTodos = async () => {
       const response = await TodoApi.getTodos();
@@ -15,11 +17,15 @@ function TodoListComponent() {
     getTodos();
   }, [update]);
 
+  //Sorting the tasks
+
   const responseSorter = response => {
     return response.sort((a, b) =>
       a.complete > b.complete ? -1 : a.complete < b.complete ? 1 : 0
     );
   };
+
+  //Updating of the taks
 
   const updateComplete = async todo => {
     await TodoApi.updateTodo({ ...todo, complete: !todo.complete });
@@ -32,6 +38,8 @@ function TodoListComponent() {
     await TodoApi.deleteTodo(id);
     setUpdate(value => value + 1);
   };
+
+  //Calling the functions ...
 
   const jsxTodos = todos.map(todo => {
     return (
@@ -58,6 +66,7 @@ function TodoListComponent() {
     );
   });
 
+  //Using a table to display the list of the tasks in a table format.
   return (
     <div className="container">
       <div className="card">

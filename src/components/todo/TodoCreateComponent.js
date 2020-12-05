@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import TodoApi from '../../api/TodoApi';
 
+//Using Functional components to Create a student todo list.
 function StudentCreateComponent() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [dueDate, setDueDate] = useState('');
   const history = useHistory();
 
+  //Creation of the Todolist
   const createTodo = async event => {
     event.preventDefault();
     const todo = { title, description, dueDate, complete: false };
