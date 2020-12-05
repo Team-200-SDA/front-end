@@ -32,7 +32,7 @@ export default function FileStoragePage() {
     <div>
       <FileStorageForm uploadFile={uploadFile} />
       {files.length === 0
-        ? 'No Files Uploaded.'
+        ? null
         : files.map(file => (
             <FileStorage key={file.id} file={file} onFileDelete={deleteFile} />
           ))}

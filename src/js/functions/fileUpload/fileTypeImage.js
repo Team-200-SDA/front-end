@@ -1,23 +1,103 @@
 function fileTypeImage(type) {
-  switch (type) {
-    case 'PDF':
+  const extension = type.toLowerCase();
+  switch (extension) {
+    // PDF
+    case 'pdf':
       return '/images/fileTypes/pdf.png';
-    case 'WORD DOCUMENT':
+    // Word
+    case 'doc':
       return '/images/fileTypes/word.png';
-    case 'SPREADSHEET':
+    case 'docx':
+      return '/images/fileTypes/word.png';
+    case 'txt':
+      return '/images/fileTypes/word.png';
+    case 'pages':
+      return '/images/fileTypes/word.png';
+    // SpreadSheet
+    case 'xls':
       return '/images/fileTypes/sheet.png';
-    case 'POWER POINT':
+    case 'xlsx':
+      return '/images/fileTypes/sheet.png';
+    case 'xlsm':
+      return '/images/fileTypes/sheet.png';
+    case 'numbers':
+      return '/images/fileTypes/sheet.png';
+    case 'numbers-tef':
+      return '/images/fileTypes/sheet.png';
+    case '123':
+      return '/images/fileTypes/sheet.png';
+    // Power Point
+    case 'ppt':
       return '/images/fileTypes/powerpoint.png';
-    case 'IMAGE':
+    case 'pps':
+      return '/images/fileTypes/powerpoint.png';
+    case 'pptx':
+      return '/images/fileTypes/powerpoint.png';
+    case 'pptm':
+      return '/images/fileTypes/powerpoint.png';
+    case 'potm':
+      return '/images/fileTypes/powerpoint.png';
+    case 'ppsx':
+      return '/images/fileTypes/powerpoint.png';
+    case 'odp':
+      return '/images/fileTypes/powerpoint.png';
+    case 'key':
+      return '/images/fileTypes/powerpoint.png';
+    // Images
+    case 'tif':
       return '/images/fileTypes/image.png';
+    case 'tiff':
+      return '/images/fileTypes/image.png';
+    case 'gif':
+      return '/images/fileTypes/image.png';
+    case 'png':
+      return '/images/fileTypes/image.png';
+    case 'jpg':
+      return '/images/fileTypes/image.png';
+    case 'jpeg':
+      return '/images/fileTypes/image.png';
+    case 'bmp':
+      return '/images/fileTypes/image.png';
+    case 'eps':
+      return '/images/fileTypes/image.png';
+    case 'raw':
+      return '/images/fileTypes/image.png';
+    // Links
     case 'LINK':
       return '/images/fileTypes/link.png';
-    case 'ZIP':
+    // Video
+    case 'mp4':
       return '/images/fileTypes/zip.png';
+    case 'mpeg-4':
+      return '/images/fileTypes/zip.png';
+    case 'mkv':
+      return '/images/fileTypes/zip.png';
+    case 'mov':
+      return '/images/fileTypes/zip.png';
+    case 'avi':
+      return '/images/fileTypes/zip.png';
+    case 'wmv':
+      return '/images/fileTypes/zip.png';
+    case 'webm':
+      return '/images/fileTypes/zip.png';
+    // Archive
+    case 'zip':
+      return '/images/fileTypes/zip.png';
+    case 'rar':
+      return '/images/fileTypes/zip.png';
+    case 'gz':
+      return '/images/fileTypes/zip.png';
+    case 'pkg':
+      return '/images/fileTypes/zip.png';
+    case 'deb':
+      return '/images/fileTypes/zip.png';
+    case '7z':
+      return '/images/fileTypes/zip.png';
+    // Other
     case 'OTHER':
       return '/images/fileTypes/other.png';
     default:
-      break;
+      return '/images/fileTypes/other.png';
   }
 }
 

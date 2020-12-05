@@ -3,14 +3,10 @@ import { useItemFinishListener } from '@rpldy/uploady';
 import { asUploadButton } from '@rpldy/upload-button';
 import { Button } from '@material-ui/core';
 
-function UploaderButton({ setUploadResponse, typeSelected }) {
+function UploaderButton({ setUploadResponse }) {
   const CustomButton = asUploadButton(
     React.forwardRef((props, ref) => (
-      <Button
-        {...props}
-        variant="contained"
-        color="primary"
-        disabled={typeSelected ? false : true}>
+      <Button {...props} variant="contained" color="primary">
         Upload
       </Button>
     ))

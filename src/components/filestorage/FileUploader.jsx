@@ -3,8 +3,8 @@ import Uploady from '@rpldy/uploady';
 import UploaderButton from './UploaderButton';
 import { Dropdown } from 'semantic-ui-react';
 
-function FileUploader({ setUploadResponse, setFileType }) {
-  const [typeSelected, setTypeSelected] = useState(false);
+function FileUploader({ setUploadResponse }) {
+  // const [typeSelected, setTypeSelected] = useState(false);
 
   const fileTypes = [
     'PDF',
@@ -24,33 +24,25 @@ function FileUploader({ setUploadResponse, setFileType }) {
     };
   });
 
-  const dropDownSelectionHandler = data => {
-    console.log(data);
-
-    setFileType(data);
-    setTypeSelected(true);
-  };
+  // const dropDownSelectionHandler = data => {
+  //   setFileType(data);
+  // };
 
   return (
-    <div className="uploader">
-      <Uploady
-        destination={{
-          url: `https://api.cloudinary.com/v1_1/dyge6kiwf/raw/upload`,
-          params: { upload_preset: 'filestorage' }
-        }}>
-        <UploaderButton
-          setUploadResponse={setUploadResponse}
-          typeSelected={typeSelected}
-        />
-      </Uploady>
-      <Dropdown
+    <Uploady
+      destination={{
+        url: `https://api.cloudinary.com/v1_1/dyge6kiwf/raw/upload`,
+        params: { upload_preset: 'filestorage' }
+      }}>
+      <UploaderButton setUploadResponse={setUploadResponse} />
+      {/* <Dropdown
         className="filetype-dropdown"
         onChange={(event, data) => dropDownSelectionHandler(data.value)}
         placeholder="File Icon"
         selection
         options={dropDownOptions}
-      />
-    </div>
+      /> */}
+    </Uploady>
   );
 }
 
