@@ -20,12 +20,10 @@ export default function FileStorageForm({ uploadFile }) {
   }, [uploadResponse]);
 
   return (
-    <div className="card">
-      <div className="card-body">
-        <h4 className="card-title">File Storage</h4>
-        <div className="container col-sm-12 col-md-10 col-lg-8">
-          <FileUploader setUploadResponse={setUploadResponse} setFileType={setFileType} />
-        </div>
+    <div className="card card-filestorage">
+      <h4 className="card-title-upload">File Storage</h4>
+      <div className="card-body storage-uploader">
+        <FileUploader setUploadResponse={setUploadResponse} setFileType={setFileType} />
       </div>
     </div>
   );

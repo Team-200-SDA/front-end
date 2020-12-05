@@ -13,8 +13,7 @@ function FileUploader({ setUploadResponse, setFileType }) {
     'POWER POINT',
     'IMAGE',
     'LINK',
-    'ZIP',
-    'OTHER'
+    'ZIP'
   ];
 
   const dropDownOptions = fileTypes.map(type => {
@@ -25,7 +24,9 @@ function FileUploader({ setUploadResponse, setFileType }) {
     };
   });
 
-  const dropDownSelectionHandler = (event, data) => {
+  const dropDownSelectionHandler = data => {
+    console.log(data);
+
     setFileType(data);
     setTypeSelected(true);
   };
@@ -45,7 +46,7 @@ function FileUploader({ setUploadResponse, setFileType }) {
       <Dropdown
         className="filetype-dropdown"
         onChange={(event, data) => dropDownSelectionHandler(data.value)}
-        placeholder="File Format"
+        placeholder="File Icon"
         selection
         options={dropDownOptions}
       />
