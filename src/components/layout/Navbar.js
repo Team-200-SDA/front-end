@@ -6,7 +6,7 @@ function Navbar({ onLogout }) {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="/">
-        SDA starter
+        EduLane
       </a>
       <button
         className="navbar-toggler"
@@ -70,6 +70,11 @@ function Navbar({ onLogout }) {
           <li className="nav-item">
             <Link to="/filestorage" className="nav-link">
               File Storage
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/todo-list" className="nav-link">
+              Todo-List
             </Link>
           </li>
         </ul>

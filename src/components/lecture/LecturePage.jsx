@@ -7,7 +7,6 @@ import UserAPi from '../../api/UserApi';
 import CreateLecture from './CreateLecture';
 import Lecture from './Lecture';
 
-import '../../css/lecture/lecturePage.css';
 
 export default function LecturePage() {
     const [ lectures, setLectures ] = useState([]);
