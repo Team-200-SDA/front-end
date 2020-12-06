@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useContext } from 'react';
 import { LangContext } from '../../contexts/LanguageContext';
 
-function LoginForm({onSubmit}) {
+function LoginForm({ onSubmit }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const { language } = useContext(LangContext);
@@ -11,11 +11,11 @@ function LoginForm({onSubmit}) {
     return (
         <div className="card">
             <div className="card-body">
-            <h4 className="card-title" >{language.login}</h4>
+                <h4 className="card-title" >{language.login}</h4>
                 <div>
                     <div className="form-group">
                         <label>{language.mail}</label>
-                        <input 
+                        <input
                             type="email"
                             className="form-control"
                             placeholder={language.email}
@@ -25,18 +25,18 @@ function LoginForm({onSubmit}) {
 
                     <div className="form-group">
                         <label>{language.pass}</label>
-                        <input 
-                            type="password" 
+                        <input
+                            type="password"
                             placeholder={language.pass}
-                            className="form-control" 
+                            className="form-control"
                             value={password}
                             onChange={e => setPassword(e.target.value)} />
                     </div>
 
                     <div className="form-group">
-                        <button 
-                            className="btn btn-info" 
-                            onClick={() => onSubmit({email, password})}>
+                        <button
+                            className="btn btn-info"
+                            onClick={() => onSubmit({ email, password })}>
                             {language.login}
                         </button>
                     </div>
