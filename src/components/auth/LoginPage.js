@@ -2,8 +2,12 @@ import React from "react";
 import Auth from "../../services/Auth";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
+
 
 function LoginPage() {
+    const { language } = useContext(LangContext);
     const login = async (loginData) => {
         const loginSuccess = await Auth.login(loginData);
         if (!loginSuccess) {
@@ -24,7 +28,7 @@ function LoginPage() {
                 <div className="row mt-4">
                     <div className="col-md-6 " style={{ color: "white" }}>
                         <h1>SDA</h1>
-                        <p>Starter template</p>
+                        <p>{language.starter}</p>
                     </div>
 
                     <div className="col-md-6">

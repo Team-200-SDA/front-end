@@ -23,12 +23,16 @@ import PrivChatInbox from './components/chat-priv/PrivChatInbox';
 import PrivChatThread from './components/chat-priv/PrivChatThread';
 import TodoCreateComponent from './components/todo/TodoCreateComponent';
 import TodoListComponent from './components/todo/TodoListComponent';
+// import { useContext } from 'react';
+// import { LangContext } from './contexts/LanguageContext';
 
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
   const [conversations, setConversations] = useState([]);
   Auth.bindLoggedInStateSetter(setLoggedIn);
+  // const { language } = useContext(LangContext);
+
 
   const loggedInRouter = (
     <Router>
