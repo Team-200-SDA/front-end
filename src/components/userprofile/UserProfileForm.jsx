@@ -30,46 +30,15 @@ function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicC
   console.log('user address', user.address);
 
   return (
-    /*  <div className="form-group row">
-      <label>Email address</label>
-
-      <input
-        readonly
-        className="form-control-plaintext"
-        type="email"
-        placeholder="name@example.com"
-      ></input>
-    </div> */
     <div className="card user-profile">
       <div className="card-title bg-secondary text-white m-0 p-1">User Profile</div>
 
       <div className="card-body">
         <div className="form-group row ml-3">
-          <label htmlFor="staticUsername" className="col-sm-2 col-form-label">
-            Username
-          </label>
-          <div className="col-sm-10">
-            <input
-              type="text"
-              readonly
-              className="form-control-plaintext"
-              value={user.name}
-            />
-          </div>
+          <div>Email: {user.name}</div>
         </div>
-
         <div className="form-group row ml-3">
-          <label htmlFor="staticEmail" className="col-sm-2 col-form-label">
-            Email
-          </label>
-          <div className="col-sm-10">
-            <input
-              type="text"
-              readonly
-              className="form-control-plaintext"
-              value={user.email}
-            />
-          </div>
+          <div>Name: {user.email}</div>
         </div>
 
         <div className="card address">
@@ -84,8 +53,7 @@ function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicC
                   defaultValue={user.address}
                   onChange={event => setAddress({ address: event.target.value })}></input>
               </div>
-
-              <div className=" coltext-right mt-0 pb-1">
+              <div className="text-right mt-0 mb-0">
                 <button
                   className="btn btn-primary  "
                   onClick={e => clickUpdateAddress(e)}>
@@ -93,7 +61,6 @@ function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicC
                 </button>
               </div>
             </div>
-
             <div className="form-group row mt-1">
               <div className="col input-group">
                 <div className="input-group-prepend">
@@ -113,7 +80,6 @@ function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicC
             </div>
           </div>
         </div>
-
         <div className="card profile m-2">
           <label className="ml-3">Profile Picture</label>
           <div className="form-group row">

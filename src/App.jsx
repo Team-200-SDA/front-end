@@ -24,7 +24,6 @@ import PrivChatThread from './components/chat-priv/PrivChatThread';
 import TodoCreateComponent from './components/todo/TodoCreateComponent';
 import TodoListComponent from './components/todo/TodoListComponent';
 
-
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
   const [conversations, setConversations] = useState([]);
@@ -83,6 +82,7 @@ function App() {
             <TodoCreateComponent />
           </Route>
         </Switch>
+        <Footer />
       </div>
       {/* <Footer /> */}
     </Router>
