@@ -1,68 +1,100 @@
+import {
+  Button,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup
+} from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import LectureApi from '../../api/LectureApi';
-
 import FileUploader from '../filestorage/FileUploader';
+import getFilenameAndExtension from '../../js/functions/fileUpload/getFilenameAndExtention';
 
 export default function CreateLecture(props) {
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
-
   const [uploadResponse, setUploadResponse] = useState(null);
+  const [uploadType, setUploadType] = useState('');
 
   function createLecture() {
     if (link === '') {
       return;
-    } //we dont want to post a Lecture with no links.
+    } //we don't want to post a Lecture with no links.
 
     const newLecture = {
-      title: title,
-      link: link
+      fileName: title,
+      link: link,
+      type:
+        uploadType === 'UPLOAD'
+          ? getFilenameAndExtension(uploadResponse.secure_url)
+          : uploadType
     };
 
     LectureApi.createLecture(newLecture).then(res => {
-      console.log(res);
       props.getAllLectures();
       setLink('');
       setTitle('');
+      setUploadResponse(null);
     });
+  }
+
+  function radioChange(event) {
+    setUploadType(event.target.value);
   }
 
   useEffect(() => {
     if (uploadResponse === null) {
       return;
     }
-    console.log('Hiiiii', uploadResponse);
     setTitle(uploadResponse.original_filename);
     setLink(uploadResponse.secure_url);
-
-    setUploadResponse(null);
+    setUploadType('UPLOAD');
   }, [uploadResponse]);
 
   return (
-    <div className="container col-sm-12 col-md-10 col-lg-8">
-      <div className="form-group">
-        <p className="form-control">Upload a file from your local-storage?</p>
-        <FileUploader setUploadResponse={setUploadResponse} />
-      </div>
-      <div className="form-group">
+    <div className="card card-filestorage">
+      <h4 className="card-title-upload">Create a Lecture</h4>
+      <div className="card-body storage-uploader">
+        <FormControl component="fieldset">
+          <FormLabel component="legend">Lecture Type</FormLabel>
+          <RadioGroup
+            row
+            aria-label="Assignment Type"
+            value={uploadType}
+            onChange={radioChange}>
+            <FormControlLabel value="UPLOAD" control={<Radio />} label="Upload File" />
+            <FormControlLabel value="VIDEO" control={<Radio />} label="Video Link" />
+            <FormControlLabel value="LINK" control={<Radio />} label="External Link" />
+          </RadioGroup>
+        </FormControl>
+        <div>
+          <FileUploader setUploadResponse={setUploadResponse} uploadType={uploadType} />
+        </div>
         <input
-          className="form-control"
-          placeholder="Title"
+          className="form-control assignment"
+          placeholder="Lecture name..."
           value={title}
           onChange={event => setTitle(event.target.value)}
+          disabled={uploadType === ''}
         />
-        <textarea
-          className="form-control"
-          placeholder={`Link to the lecture`}
+        <input
+          className="form-control assignment"
+          placeholder="Link to Lecture"
           value={link}
           onChange={event => setLink(event.target.value)}
+          disabled={uploadType === 'UPLOAD' || uploadType === ''}
         />
-      </div>
-
-      <div className="form-group">
-        <button className="btn btn-primary  " onClick={createLecture}>
-          Publish
-        </button>
+        <div className="form-group">
+          <Button
+            className="upload-button"
+            variant="contained"
+            color="primary"
+            onClick={createLecture}
+            disabled={title === '' || link === ''}>
+            Publish Lecture
+          </Button>
+        </div>
       </div>
     </div>
   );

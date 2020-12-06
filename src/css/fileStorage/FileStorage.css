@@ -1,6 +1,7 @@
 .card-filestorage {
     max-width: 90%;
-    margin: auto !important;
+    margin: auto;
+    margin-bottom: 10px;
 }
 
 .ui.selection.dropdown.filetype-dropdown {

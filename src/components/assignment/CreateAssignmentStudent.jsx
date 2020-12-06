@@ -40,6 +40,7 @@ export default function CreateAssignment({ getAllAssignments }) {
   return (
     <>
       <div className="card card-filestorage">
+        <h4 className="card-title-upload">Submit an Assignment</h4>
         <div className="card-body storage-uploader">
           <p>Upload a file from your local-storage?</p>
           <FileUploader setUploadResponse={setUploadResponse} uploadType={'UPLOAD'} />

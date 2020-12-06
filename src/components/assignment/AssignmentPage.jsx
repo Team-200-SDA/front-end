@@ -87,15 +87,13 @@ export default function AssignmentPage() {
 
           {/* If on Assignment tab, render all assignments 
               already made by teacher */}
-          {teacherAssignments.length === 0
-            ? 'No assignment assigned yet.'
-            : teacherAssignments.map(assignment => (
-                <Assignment
-                  key={uuid()}
-                  assignment={assignment}
-                  deleteAssignment={deleteAssignment}
-                />
-              ))}
+          {teacherAssignments.map(assignment => (
+            <Assignment
+              key={uuid()}
+              assignment={assignment}
+              deleteAssignment={deleteAssignment}
+            />
+          ))}
         </div>
       )}
 

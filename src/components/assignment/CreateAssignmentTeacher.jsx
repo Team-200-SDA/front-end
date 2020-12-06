@@ -54,6 +54,7 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
 
   return (
     <div className="card card-filestorage">
+      <h4 className="card-title-upload">Create an Assignment</h4>
       <div className="card-body storage-uploader">
         <FormControl component="fieldset">
           <FormLabel component="legend">Assignment Type</FormLabel>
