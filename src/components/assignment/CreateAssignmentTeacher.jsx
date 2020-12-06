@@ -91,7 +91,7 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
             color="primary"
             onClick={createAssignment}
             disabled={title === '' || link === ''}>
-            Submit Assignment
+            Create Assignment
           </Button>
         </div>
       </div>

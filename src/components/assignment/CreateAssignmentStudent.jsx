@@ -1,9 +1,10 @@
 import { Button } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import AssignmentApi from '../../api/AssignmentApi';
+import getFilenameAndExtension from '../../js/functions/fileUpload/getFilenameAndExtention';
 import FileUploader from '../filestorage/FileUploader';
 
-export default function CreateAssignment(props) {
+export default function CreateAssignment({ getAllAssignments }) {
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
 
@@ -15,15 +16,16 @@ export default function CreateAssignment(props) {
     } //we don't want to post an assignment with no links.
 
     const newAssignment = {
-      title: title,
-      link: link
+      fileName: title,
+      link: link,
+      type: getFilenameAndExtension(uploadResponse.secure_url)
     };
 
     AssignmentApi.createAssignment(newAssignment).then(res => {
-      console.log(res);
-      props.getAllAssignments();
       setLink('');
       setTitle('');
+      setUploadResponse(null);
+      getAllAssignments();
     });
   }
 
@@ -33,7 +35,6 @@ export default function CreateAssignment(props) {
     }
     setTitle(uploadResponse.original_filename);
     setLink(uploadResponse.secure_url);
-    setUploadResponse(null);
   }, [uploadResponse]);
 
   return (
@@ -41,7 +42,7 @@ export default function CreateAssignment(props) {
       <div className="card card-filestorage">
         <div className="card-body storage-uploader">
           <p>Upload a file from your local-storage?</p>
-          <FileUploader setUploadResponse={setUploadResponse} />
+          <FileUploader setUploadResponse={setUploadResponse} uploadType={'UPLOAD'} />
           <input
             className="form-control assignment"
             placeholder="Assignment name..."

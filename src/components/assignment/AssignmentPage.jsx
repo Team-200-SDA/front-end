@@ -3,135 +3,113 @@ import { v4 as uuid } from 'uuid';
 import AssignmentApi from '../../api/AssignmentApi';
 import CreateAssignmentStudent from './CreateAssignmentStudent';
 import CreateAssignmentTeacher from './CreateAssignmentTeacher';
-
 import Assignment from './Assignment';
 
 export default function AssignmentPage() {
   const [assignments, setAssignments] = useState([]);
   const [teacherAssignments, setTeacherAssignments] = useState([]);
   const [allStudentsAssignments, setAllStudentsAssignments] = useState([]);
-
-  const user_role = window.sessionStorage.getItem('role');
-
   const [assignmentAssignedOn, setAssignmentAssignedOn] = useState(true);
   const [assignmentSubmittedOn, setAssignmentSubmittedOn] = useState(false);
+  const user_role = window.sessionStorage.getItem('role');
 
   // Assign
   const handleAssignAssignment = () => {
-    setAssignmentAssignedOn(!assignmentAssignedOn);
+    setAssignmentAssignedOn(true);
     setAssignmentSubmittedOn(false);
+    getTeacherAssignments();
   };
+
   // Submit
   const handleSubmitAssignment = () => {
     setAssignmentAssignedOn(false);
-    setAssignmentSubmittedOn(!assignmentSubmittedOn);
+    setAssignmentSubmittedOn(true);
+    getAllAssignments();
+    getAllStudentAssignments();
   };
 
-  // Get all
+  // Get all Assignments for logged in Student
   function getAllAssignments() {
     AssignmentApi.getAllAssignments().then(data => {
       setAssignments(data.data);
     });
   }
-  // Get Teacher
+
+  // Get all Teacher Assignments
   function getTeacherAssignments() {
     AssignmentApi.getTeacherAssignments().then(data => {
       setTeacherAssignments(data.data);
     });
   }
-  // Get Student
+
+  // Get all Student Assignments
   function getAllStudentAssignments() {
     AssignmentApi.getAllStudentAssignments().then(data => {
       setAllStudentsAssignments(data.data);
     });
   }
 
-  useEffect(() => {
-    getAllAssignments();
-    getTeacherAssignments();
-    getAllStudentAssignments();
-  }, []);
-
   function deleteAssignment(assignmentId) {
     AssignmentApi.deleteAssignment(assignmentId).then(() => {
       alert('Assignment Deleted');
-      getAllAssignments(); // to refresh the list immediately
-    });
-  }
-  function deleteTeacherAssignment(assignmentId) {
-    AssignmentApi.deleteAssignment(assignmentId).then(() => {
-      alert('Assignment Deleted');
-      getTeacherAssignments(); // to refresh the list immediately
-    });
-  }
-  function deleteAllStudentAssignment(assignmentId) {
-    AssignmentApi.deleteAssignment(assignmentId).then(() => {
-      alert('Assignment Deleted');
-      getAllStudentAssignments(); // to refresh the list immediately
+      getAllAssignments();
+      getTeacherAssignments();
     });
   }
 
+  useEffect(() => {
+    getTeacherAssignments();
+  }, []);
+
   return (
+    // Assign Assignments and Submit Assignment Buttons
     <div className="assignment-page">
       <div
         className="container d-flex justify-content-around mb-4 btn-group btn-group-toggle"
         data-toggle="buttons">
         <label className="btn btn-secondary active">
-          <input
-            type="radio"
-            name="options"
-            id="option1"
-            autoComplete="off"
-            onClick={handleAssignAssignment}
-          />{' '}
+          <input type="radio" autoComplete="off" onClick={handleAssignAssignment} />{' '}
           Assigned Assignments
         </label>
         <label className="btn btn-secondary">
-          <input
-            type="radio"
-            name="options"
-            id="option2"
-            autoComplete="off"
-            onClick={handleSubmitAssignment}
-          />{' '}
+          <input type="radio" autoComplete="off" onClick={handleSubmitAssignment} />{' '}
           Submitted Assignments
         </label>
       </div>
 
+      {/* If Logged in as a teacher and on Assignment tab, render  
+          Assignment Uploader */}
       {assignmentAssignedOn && (
         <div className="assignment-div">
           {user_role === 'teacher' ? (
             <CreateAssignmentTeacher getTeacherAssignments={getTeacherAssignments} />
           ) : null}
 
+          {/* If on Assignment tab, render all assignments 
+              already made by teacher */}
           {teacherAssignments.length === 0
             ? 'No assignment assigned yet.'
             : teacherAssignments.map(assignment => (
                 <Assignment
                   key={uuid()}
                   assignment={assignment}
-                  deleteAssignment={deleteTeacherAssignment}
+                  deleteAssignment={deleteAssignment}
                 />
               ))}
         </div>
       )}
 
+      {/* If Logged in as a student, and on submissions tab, 
+          render Submission Uploader. */}
       {assignmentSubmittedOn && (
         <div className="assignment-div">
           {user_role === 'student' ? (
-            <CreateAssignmentStudent
-              assignments={allStudentsAssignments}
-              getAllAssignments={getAllStudentAssignments}
-            />
+            <CreateAssignmentStudent getAllAssignments={getAllAssignments} />
           ) : null}
 
-          {assignments.length === 0 && user_role === 'student'
-            ? 'No assignment submitted yet.'
-            : null}
-          {allStudentsAssignments.length === 0 && user_role === 'teacher'
-            ? 'No assignment submitted yet.'
-            : null}
-
+          {/* If on submission tab and logged in as student
+              render already submitted assignments, If teacher,
+              render assignments by all students */}
           {user_role === 'student'
             ? assignments.map(assignment => (
                 <Assignment
@@ -140,17 +118,13 @@ export default function AssignmentPage() {
                   deleteAssignment={deleteAssignment}
                 />
               ))
-            : null}
-
-          {user_role === 'teacher'
-            ? allStudentsAssignments.map(assignment => (
+            : allStudentsAssignments.map(assignment => (
                 <Assignment
                   key={uuid()}
                   assignment={assignment}
-                  deleteAssignment={deleteAllStudentAssignment}
+                  deleteAssignment={deleteAssignment}
                 />
-              ))
-            : null}
+              ))}
         </div>
       )}
     </div>
