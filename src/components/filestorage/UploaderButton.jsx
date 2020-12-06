@@ -15,7 +15,6 @@ function UploaderButton({ setUploadResponse, uploadType }) {
       </Button>
     ))
   );
-  console.log(uploadType);
 
   useItemFinishListener(item => {
     const response = item.uploadResponse;

@@ -3,7 +3,6 @@ import fileTypeImage from '../../js/functions/fileUpload/fileTypeImage';
 
 export default function Assignment({ assignment, deleteAssignment }) {
   const user_ = window.sessionStorage.getItem('user');
-  console.log(assignment);
   return (
     <div className="card card-filestorage">
       <div className="card-body-filestorage">

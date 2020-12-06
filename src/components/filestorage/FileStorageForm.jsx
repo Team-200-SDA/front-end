@@ -17,8 +17,6 @@ export default function FileStorageForm({ uploadFile }) {
       type: getFilenameAndExtension(uploadResponse.secure_url)
     };
     uploadFile(fileData);
-    console.log(fileData);
-
     setUploadResponse(null);
   }, [uploadResponse]);
 
