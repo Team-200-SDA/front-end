@@ -2,8 +2,6 @@ import React from 'react';
 import fileTypeImage from '../../js/functions/fileUpload/fileTypeImage';
 
 export default function Lecture({ lecture, deleteLecture, user_role }) {
-  console.log(lecture);
-
   return (
     <div className="card card-filestorage">
       <div className="card-body-filestorage">
