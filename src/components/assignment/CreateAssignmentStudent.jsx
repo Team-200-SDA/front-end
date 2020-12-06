@@ -1,6 +1,6 @@
+import { Button } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import AssignmentApi from '../../api/AssignmentApi';
-
 import FileUploader from '../filestorage/FileUploader';
 
 export default function CreateAssignment(props) {
@@ -33,36 +33,32 @@ export default function CreateAssignment(props) {
     }
     setTitle(uploadResponse.original_filename);
     setLink(uploadResponse.secure_url);
-
     setUploadResponse(null);
   }, [uploadResponse]);
 
   return (
-    <div className="container col-sm-12 col-md-10 col-lg-8">
-      <div className="form-group">
-        <p className="form-control">Upload a file from your local-storage?</p>
-        <FileUploader setUploadResponse={setUploadResponse} />
+    <>
+      <div className="card card-filestorage">
+        <div className="card-body storage-uploader">
+          <p>Upload a file from your local-storage?</p>
+          <FileUploader setUploadResponse={setUploadResponse} />
+          <input
+            className="form-control assignment"
+            placeholder="Assignment name..."
+            value={title}
+            onChange={event => setTitle(event.target.value)}
+          />{' '}
+          <div className="form-group">
+            <Button
+              className="upload-button"
+              variant="contained"
+              color="primary"
+              onClick={createAssignment}>
+              Submit Assignment
+            </Button>
+          </div>
+        </div>
       </div>
-
-      <div className="form-group">
-        <input
-          className="form-control"
-          placeholder="Title"
-          value={title}
-          onChange={event => setTitle(event.target.value)}
-        />
-        <textarea
-          className="form-control"
-          placeholder={`Link to the assignment`}
-          value={link}
-          onChange={event => setLink(event.target.value)}
-        />
-      </div>
-      <div className="form-group">
-        <button className="btn btn-primary  " onClick={createAssignment}>
-          Publish
-        </button>
-      </div>
-    </div>
+    </>
   );
 }

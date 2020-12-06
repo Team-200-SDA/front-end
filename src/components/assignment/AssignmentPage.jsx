@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { v4 as uuid } from 'uuid';
-
 import AssignmentApi from '../../api/AssignmentApi';
+import CreateAssignmentStudent from './CreateAssignmentStudent';
+import CreateAssignmentTeacher from './CreateAssignmentTeacher';
 
-import CreateAssignment from './CreateAssignment';
 import Assignment from './Assignment';
 
 export default function AssignmentPage() {
@@ -12,29 +12,34 @@ export default function AssignmentPage() {
   const [allStudentsAssignments, setAllStudentsAssignments] = useState([]);
 
   const user_role = window.sessionStorage.getItem('role');
-  
+
   const [assignmentAssignedOn, setAssignmentAssignedOn] = useState(true);
   const [assignmentSubmittedOn, setAssignmentSubmittedOn] = useState(false);
 
+  // Assign
   const handleAssignAssignment = () => {
     setAssignmentAssignedOn(!assignmentAssignedOn);
     setAssignmentSubmittedOn(false);
   };
+  // Submit
   const handleSubmitAssignment = () => {
     setAssignmentAssignedOn(false);
     setAssignmentSubmittedOn(!assignmentSubmittedOn);
   };
 
+  // Get all
   function getAllAssignments() {
     AssignmentApi.getAllAssignments().then(data => {
       setAssignments(data.data);
     });
   }
+  // Get Teacher
   function getTeacherAssignments() {
     AssignmentApi.getTeacherAssignments().then(data => {
       setTeacherAssignments(data.data);
     });
   }
+  // Get Student
   function getAllStudentAssignments() {
     AssignmentApi.getAllStudentAssignments().then(data => {
       setAllStudentsAssignments(data.data);
@@ -47,22 +52,21 @@ export default function AssignmentPage() {
     getAllStudentAssignments();
   }, []);
 
-
   function deleteAssignment(assignmentId) {
     AssignmentApi.deleteAssignment(assignmentId).then(() => {
-      alert("Assignment Deleted");
+      alert('Assignment Deleted');
       getAllAssignments(); // to refresh the list immediately
     });
   }
   function deleteTeacherAssignment(assignmentId) {
     AssignmentApi.deleteAssignment(assignmentId).then(() => {
-      alert("Assignment Deleted");
+      alert('Assignment Deleted');
       getTeacherAssignments(); // to refresh the list immediately
     });
   }
   function deleteAllStudentAssignment(assignmentId) {
     AssignmentApi.deleteAssignment(assignmentId).then(() => {
-      alert("Assignment Deleted");
+      alert('Assignment Deleted');
       getAllStudentAssignments(); // to refresh the list immediately
     });
   }
@@ -94,13 +98,11 @@ export default function AssignmentPage() {
         </label>
       </div>
 
-      {assignmentAssignedOn &&  (
+      {assignmentAssignedOn && (
         <div className="assignment-div">
-          { user_role === "teacher" ? 
-          (<CreateAssignment
-            assignments={teacherAssignments}
-            getAllAssignments={getTeacherAssignments}
-          /> ): null}
+          {user_role === 'teacher' ? (
+            <CreateAssignmentTeacher getTeacherAssignments={getTeacherAssignments} />
+          ) : null}
 
           {teacherAssignments.length === 0
             ? 'No assignment assigned yet.'
@@ -112,38 +114,43 @@ export default function AssignmentPage() {
                 />
               ))}
         </div>
-
       )}
+
       {assignmentSubmittedOn && (
         <div className="assignment-div">
-          { user_role === "student" ? 
-          (<CreateAssignment
-            assignments={allStudentsAssignments}
-            getAllAssignments={getAllStudentAssignments}
-          /> ): null}
+          {user_role === 'student' ? (
+            <CreateAssignmentStudent
+              assignments={allStudentsAssignments}
+              getAllAssignments={getAllStudentAssignments}
+            />
+          ) : null}
 
-          {assignments.length === 0 && user_role === "student"
-            ? 'No assignment submitted yet.' : null}
-          { allStudentsAssignments.length === 0 && user_role === "teacher" 
-            ? 'No assignment submitted yet.' : null}  
+          {assignments.length === 0 && user_role === 'student'
+            ? 'No assignment submitted yet.'
+            : null}
+          {allStudentsAssignments.length === 0 && user_role === 'teacher'
+            ? 'No assignment submitted yet.'
+            : null}
 
-            { user_role === "student" 
-            ?  (assignments.map(assignment => (
-              <Assignment
-                key={uuid()}
-                assignment={assignment}
-                deleteAssignment={deleteAssignment}
-              /> )
-            ) ): null}
+          {user_role === 'student'
+            ? assignments.map(assignment => (
+                <Assignment
+                  key={uuid()}
+                  assignment={assignment}
+                  deleteAssignment={deleteAssignment}
+                />
+              ))
+            : null}
 
-              { user_role === "teacher" 
-            ?  (allStudentsAssignments.map(assignment => (
-              <Assignment
-                key={uuid()}
-                assignment={assignment}
-                deleteAssignment={deleteAllStudentAssignment}
-              /> )
-            ) ): null}
+          {user_role === 'teacher'
+            ? allStudentsAssignments.map(assignment => (
+                <Assignment
+                  key={uuid()}
+                  assignment={assignment}
+                  deleteAssignment={deleteAllStudentAssignment}
+                />
+              ))
+            : null}
         </div>
       )}
     </div>

@@ -63,23 +63,25 @@ function fileTypeImage(type) {
     case 'raw':
       return '/images/fileTypes/image.png';
     // Links
-    case 'LINK':
+    case 'link':
       return '/images/fileTypes/link.png';
     // Video
+    case 'video':
+      return '/images/fileTypes/video.png';
     case 'mp4':
-      return '/images/fileTypes/zip.png';
+      return '/images/fileTypes/video.png';
     case 'mpeg-4':
-      return '/images/fileTypes/zip.png';
+      return '/images/fileTypes/video.png';
     case 'mkv':
-      return '/images/fileTypes/zip.png';
+      return '/images/fileTypes/video.png';
     case 'mov':
-      return '/images/fileTypes/zip.png';
+      return '/images/fileTypes/video.png';
     case 'avi':
-      return '/images/fileTypes/zip.png';
+      return '/images/fileTypes/video.png';
     case 'wmv':
-      return '/images/fileTypes/zip.png';
+      return '/images/fileTypes/video.png';
     case 'webm':
-      return '/images/fileTypes/zip.png';
+      return '/images/fileTypes/video.png';
     // Archive
     case 'zip':
       return '/images/fileTypes/zip.png';

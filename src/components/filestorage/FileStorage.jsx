@@ -1,6 +1,5 @@
 import React from 'react';
 import fileTypeImage from '../../js/functions/fileUpload/fileTypeImage';
-import './FileStorage.css';
 
 export default function FileStorage({ file, onFileDelete }) {
   return (
