@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Chatbot from 'react-chatbot-kit';
-import ActionProvider from '../../chatbot-resources/ActionProvider';
-import MessageParser from '../../chatbot-resources/MessageParser';
-import config from '../../chatbot-resources/config';
 import { Button } from '@material-ui/core';
+
+// Chat Bot
+import Chatbot from 'react-chatbot-kit';
+import ActionProvider from '../../js/chatbot-resources/ActionProvider';
+import MessageParser from '../../js/chatbot-resources/MessageParser';
+import config from '../../js/chatbot-resources/config';
 
 export default function Footer() {
   const [botOpen, setBotOpen] = useState(false);
@@ -15,7 +16,6 @@ export default function Footer() {
           Contact-Us <i className="fas fa-envelope"></i>
         </a>
       </Button>
-
       <Button
         className="footer-button"
         onClick={() => setBotOpen(!botOpen)}
@@ -26,7 +26,6 @@ export default function Footer() {
           <i className="fas fa-robot" />
         </span>
       </Button>
-
       {botOpen ? (
         <Chatbot
           config={config}

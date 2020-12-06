@@ -3,11 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Auth from './services/Auth';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
-// Chat Bot
-import Chatbot from 'react-chatbot-kit';
-import ActionProvider from './chatbot-resources/ActionProvider';
-import MessageParser from './chatbot-resources/MessageParser';
-import config from './chatbot-resources/config';
+
 /// Import pages
 import LoginPage from './components/auth/LoginPage';
 import HomePage from './components/home/HomePage';
@@ -27,6 +23,7 @@ import TodoListComponent from './components/todo/TodoListComponent';
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
   const [conversations, setConversations] = useState([]);
+
   Auth.bindLoggedInStateSetter(setLoggedIn);
 
   const loggedInRouter = (
@@ -50,13 +47,6 @@ function App() {
             </Route>
             <Route path="/chat" exact>
               <Chat />
-            </Route>
-            <Route path="/bot" exact>
-              <Chatbot
-                config={config}
-                actionProvider={ActionProvider}
-                messageParser={MessageParser}
-              />
             </Route>
             <Route path="/live">
               <LiveVideo />
@@ -84,6 +74,7 @@ function App() {
             </Route>
           </Switch>
         </div>
+
         <Footer />
       </Router>
     </div>
