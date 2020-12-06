@@ -13,9 +13,7 @@ function Navbar({ onLogout }) {
         type="button"
         data-toggle="collapse"
         data-target="#navbarColor01"
-        aria-controls="navbarColor01"
-        aria-expanded="false"
-        aria-label="Toggle navigation">
+        aria-controls="navbarColor01">
         <span className="navbar-toggler-icon"></span>
       </button>
 
@@ -24,12 +22,6 @@ function Navbar({ onLogout }) {
           <li className="nav-item">
             <Link to="/" className="nav-link">
               Home
-            </Link>
-          </li>
-
-          <li className="nav-item">
-            <Link to="/posts" className="nav-link">
-              Posts
             </Link>
           </li>
 
@@ -46,19 +38,26 @@ function Navbar({ onLogout }) {
           </li>
 
           <li className="nav-item">
+            <Link to="/filestorage" className="nav-link">
+              File Storage
+            </Link>
+          </li>
+
+          <li className="nav-item">
+            <Link to="/chat" className="nav-link">
+              Public Chat
+            </Link>
+          </li>
+
+          <li className="nav-item">
             <Link to="/private-messaging" className="nav-link">
               Private Messaging
             </Link>
           </li>
 
           <li className="nav-item">
-            <Link to="/chat" className="nav-link">
-              Chat
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/userprofile" className="nav-link">
-              User Profile
+            <Link to="/todo-list" className="nav-link">
+              Todo-List
             </Link>
           </li>
 
@@ -67,20 +66,16 @@ function Navbar({ onLogout }) {
               Calendar
             </Link>
           </li>
+
           <li className="nav-item">
-            <Link to="/filestorage" className="nav-link">
-              File Storage
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/todo-list" className="nav-link">
-              Todo-List
+            <Link to="/userprofile" className="nav-link">
+              User Profile
             </Link>
           </li>
         </ul>
 
         <button className="btn btn-outline-info my-2 my-sm-0" onClick={onLogout}>
-          Logout
+          Sign Out
         </button>
       </div>
     </nav>
