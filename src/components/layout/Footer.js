@@ -1,26 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Chatbot from 'react-chatbot-kit';
+import ActionProvider from '../../chatbot-resources/ActionProvider';
+import MessageParser from '../../chatbot-resources/MessageParser';
+import config from '../../chatbot-resources/config';
+import { Button } from '@material-ui/core';
 
 export default function Footer() {
-
+  const [botOpen, setBotOpen] = useState(false);
   return (
-    <footer className="footer mt-auto py-3 bg-dark text-white ">
-      <div className= "container text-center py-4">
-        <ul >
-            <span className= "border rounded p-2 px-3 mr-4 d-none d-md-inline-block">
-                <Link to="mailto: sda.team200@gmail.com">
-                Contact-Us <i className="fas fa-envelope"></i>
-                </Link>
-            </span>
+    <footer className="bottom bg-dark text-white ">
+      <Button className="footer-button" variant="contained" color="primary">
+        <a href="mailto: sda.team200@gmail.com">
+          Contact-Us <i className="fas fa-envelope"></i>
+        </a>
+      </Button>
 
-            <span className= "border rounded p-2 px-3 mr-4 d-none d-md-inline-block">
-                <Link to="/bot" >
-                Chat-Bot <i className="fas fa-robot"></i>
-                </Link>
-            </span>
-        </ul>
-      </div>
-  </footer>
+      <Button
+        className="footer-button"
+        onClick={() => setBotOpen(!botOpen)}
+        variant="contained"
+        color="primary">
+        <span className="bot-button-text">
+          Bot &nbsp;&nbsp;
+          <i className="fas fa-robot" />
+        </span>
+      </Button>
+
+      {botOpen ? (
+        <Chatbot
+          config={config}
+          actionProvider={ActionProvider}
+          messageParser={MessageParser}
+        />
+      ) : null}
+    </footer>
   );
 }
-

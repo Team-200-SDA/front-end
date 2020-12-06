@@ -30,62 +30,63 @@ function App() {
   Auth.bindLoggedInStateSetter(setLoggedIn);
 
   const loggedInRouter = (
-    <Router>
-      <PrivChatHandler
-        conversations={conversations}
-        setConversations={setConversations}
-      />
-      <Navbar onLogout={() => Auth.logout()} />
-      <div className="container mt-5">
-        <Switch>
-          <Route path="/" exact>
-            <HomePage />
-          </Route>
-          <Route path="/lectures" exact>
-            <LecturePage />
-          </Route>
-          <Route path="/assignments" exact>
-            <AssignmentPage />
-          </Route>
-          <Route path="/chat" exact>
-            <Chat />
-          </Route>
-          <Route path="/bot" exact>
-            <Chatbot
-              config={config}
-              actionProvider={ActionProvider}
-              messageParser={MessageParser}
-            />
-          </Route>
-          <Route path="/live">
-            <LiveVideo />
-          </Route>
-          <Route path="/filestorage">
-            <FileStoragePage />
-          </Route>
-          <Route path="/calendar">
-            <Calendar />
-          </Route>
-          <Route path="/userprofile">
-            <Userprofile />
-          </Route>
-          <Route path="/private-messaging">
-            <PrivChatInbox conversations={conversations} />
-          </Route>
-          <Route path="/chat-thread/:receiverName">
-            <PrivChatThread conversations={conversations} />
-          </Route>
-          <Route path="/todo-list">
-            <TodoListComponent />
-          </Route>
-          <Route path="/todo-form">
-            <TodoCreateComponent />
-          </Route>
-        </Switch>
+    <div className="app">
+      <Router>
+        <PrivChatHandler
+          conversations={conversations}
+          setConversations={setConversations}
+        />
+        <Navbar onLogout={() => Auth.logout()} />
+        <div className="container mt-5">
+          <Switch>
+            <Route path="/" exact>
+              <HomePage />
+            </Route>
+            <Route path="/lectures" exact>
+              <LecturePage />
+            </Route>
+            <Route path="/assignments" exact>
+              <AssignmentPage />
+            </Route>
+            <Route path="/chat" exact>
+              <Chat />
+            </Route>
+            <Route path="/bot" exact>
+              <Chatbot
+                config={config}
+                actionProvider={ActionProvider}
+                messageParser={MessageParser}
+              />
+            </Route>
+            <Route path="/live">
+              <LiveVideo />
+            </Route>
+            <Route path="/filestorage">
+              <FileStoragePage />
+            </Route>
+            <Route path="/calendar">
+              <Calendar />
+            </Route>
+            <Route path="/userprofile">
+              <Userprofile />
+            </Route>
+            <Route path="/private-messaging">
+              <PrivChatInbox conversations={conversations} />
+            </Route>
+            <Route path="/chat-thread/:receiverName">
+              <PrivChatThread conversations={conversations} />
+            </Route>
+            <Route path="/todo-list">
+              <TodoListComponent />
+            </Route>
+            <Route path="/todo-form">
+              <TodoCreateComponent />
+            </Route>
+          </Switch>
+        </div>
         <Footer />
-      </div>
-      <Footer />
-    </Router>
+      </Router>
+    </div>
   );
 
   return loggedIn ? loggedInRouter : <LoginPage />;

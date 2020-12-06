@@ -7,5 +7,33 @@ body {
   background: linear-gradient(to right, #cdcfd0, #949dcd);
 }
 
+.app {
+
+  display: grid;
+  height: 100vh;
+  overflow: auto;
+  grid-template-rows: 100px auto 60px;
+  grid-template-areas: 'header' 'body' 'footer';
+}
 
 
+.nav-bar {
+  grid-area: header;
+  -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000,
+    0px 5px 15px 5px rgba(0, 0, 0, 0);
+  box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000,
+    0px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+
+.center {
+  grid-area: body;
+  padding-bottom: 8px;
+}
+
+.bottom {
+  grid-area: footer;
+  -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000,
+    0px 5px 15px 5px rgba(0, 0, 0, 0);
+  box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000,
+    0px 5px 15px 5px rgba(0, 0, 0, 0);
+}

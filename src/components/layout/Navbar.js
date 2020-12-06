@@ -4,7 +4,7 @@ import Calendar from '../calendar/Calendar';
 
 function Navbar({ onLogout }) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar nav-bar navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="/">
         EduLane
       </a>

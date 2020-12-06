@@ -81,7 +81,7 @@ function Chat() {
   });
 
   return (
-    <div className="paper">
+    <div className="paper center">
       <div className="jsx-messages">{messagesToRender}</div>
       <form
         onSubmit={event => sendMessage(event)}
