@@ -10,19 +10,24 @@ import { Send } from '@material-ui/icons';
 import { format } from 'date-fns';
 
 const wsEndpoint = 'http://localhost:8080/ws';
+const sockJsConfig = {
+  transports: ['xhr-streaming'],
+  headers: { Authorization: window.sessionStorage.getItem('_token') }
+};
+// These need to be re-instantiated in a UE for the connection to re-establish the
+// connection when revisiting the page. The initial SockJS instantiation needs to take place
+// outside of the function to avoid NOE. Doing in an a UE,[] is not fast enough.
+let socket = new SockJS(wsEndpoint, null, sockJsConfig);
+let stompClient = Stomp.over(socket);
 
 function Chat() {
   const user = window.sessionStorage.getItem('user');
   const [messages, setMessages] = useState([]);
   const [messageField, setMessageField] = useState('');
   const scroll = Scroll.animateScroll;
-  let stompClient = null;
 
   useEffect(() => {
-    const socket = new SockJS(wsEndpoint, null, {
-      transports: ['xhr-streaming'],
-      headers: { Authorization: window.sessionStorage.getItem('_token') }
-    });
+    socket = new SockJS(wsEndpoint, null, sockJsConfig);
     stompClient = Stomp.over(socket);
     stompClient.connect({}, onConnected, onError);
     // Disconnect the socket connection when component un-mounts.
