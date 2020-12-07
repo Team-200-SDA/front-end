@@ -7,15 +7,17 @@
 .subject-cards {
   margin: 10px;
   width: 256px;
-  height: 312px;
+  max-height: 300px;
   display: flex;
   flex-direction: column; 
   text-align: center; 
+  
 }
 
 .subject-card-body {
   display: flex;
   flex-direction: column;
+  
 }
 
 img.subject-image {

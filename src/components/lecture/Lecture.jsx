@@ -21,7 +21,7 @@ export default function Lecture({ getAllLectures, lecture, user_role }) {
         </span>
 
         {/* Delete Button if logged in user is a teacher */}
-        {user_role === lecture.user.role ? (
+        {user_role !== 'teacher' ? (
           <button
             className="btn btn-danger file-delete"
             onClick={() => deleteLecture(lecture.id)}>
