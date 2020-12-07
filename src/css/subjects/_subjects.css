@@ -1,0 +1,30 @@
+.subject-page-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.subject-cards {
+  margin: 10px;
+  width: 256px;
+  height: 312px;
+  display: flex;
+  flex-direction: column; 
+  text-align: center; 
+}
+
+.subject-card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+img.subject-image {
+  padding-top: 16px;
+  max-height: 180px;
+}
+
+.MuiCardActions-root.MuiCardActions-spacing {
+  margin-top: auto;
+}
+
+

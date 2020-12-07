@@ -1,6 +1,7 @@
-import { Button, FormLabel } from '@material-ui/core';
+import { Button, Card, FormLabel } from '@material-ui/core';
 import React, { useState } from 'react';
 import SubjectApi from '../../api/SubjectApi';
+import ImageUploader from '../imageuploader/ImageUploader';
 
 function CreateSubject({ getSubjects }) {
   const [name, setName] = useState('');
@@ -8,14 +9,14 @@ function CreateSubject({ getSubjects }) {
   const [link, setLink] = useState('');
 
   const createSubject = async () => {
-    await SubjectApi.create({ name, description });
+    await SubjectApi.create({ name, description, link });
     setName('');
     setDescription('');
     getSubjects();
   };
 
   return (
-    <div className="card card-filestorage">
+    <Card className="card card-filestorage">
       <h4 className="card-title-upload">Create a Subject</h4>
       <div className="card-body storage-uploader">
         <FormLabel component="legend">Subject Name and Description</FormLabel>
@@ -31,19 +32,19 @@ function CreateSubject({ getSubjects }) {
           value={description}
           onChange={event => setDescription(event.target.value)}
         />
-
+        <ImageUploader setImgUrl={setLink} uploadPreset={'subjects'} />
         <div className="form-group">
           <Button
             className="upload-button"
             variant="contained"
             color="primary"
             onClick={createSubject}
-            disabled={name === '' || description === ''}>
+            disabled={name === '' || description === '' || link === ''}>
             Create Subject
           </Button>
         </div>
       </div>
-    </div>
+    </Card>
   );
 }
 

@@ -27,7 +27,7 @@ function SubjectsPage() {
   return (
     <>
       <CreateSubject getSubjects={getSubjects} />
-      {jsxSubjects}
+      <div className="subject-page-cards">{jsxSubjects}</div>
     </>
   );
 }

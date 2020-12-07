@@ -37,8 +37,6 @@ function Chat() {
   function onConnected() {
     // Subscribe to the Public Topic
     stompClient.subscribe('/topic/public', onMessageReceived);
-    console.log(stompClient);
-
     //Send Username To Server
     stompClient.send(
       '/app/chat.addUser',
