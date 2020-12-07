@@ -7,22 +7,22 @@ import {
   RadioGroup
 } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
-import LectureApi from '../../api/LectureApi';
-import FileUploader from '../filestorage/FileUploader';
+import AssignmentApi from '../../api/AssignmentApi';
 import getFilenameAndExtension from '../../js/functions/fileUpload/getFilenameAndExtention';
+import FileUploader from '../filestorage/FileUploader';
 
-export default function CreateLecture(props) {
+export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
   const [uploadResponse, setUploadResponse] = useState(null);
   const [uploadType, setUploadType] = useState('');
 
-  function createLecture() {
+  function createAssignment() {
     if (link === '') {
       return;
-    } //we don't want to post a Lecture with no links.
+    } //we don't want to post an assignment with no links.
 
-    const newLecture = {
+    const newAssignment = {
       fileName: title,
       link: link,
       type:
@@ -31,8 +31,8 @@ export default function CreateLecture(props) {
           : uploadType
     };
 
-    LectureApi.createLecture(newLecture).then(res => {
-      props.getAllLectures();
+    AssignmentApi.createAssignment(newAssignment).then(res => {
+      getTeacherAssignments();
       setLink('');
       setTitle('');
       setUploadResponse(null);
@@ -54,10 +54,10 @@ export default function CreateLecture(props) {
 
   return (
     <div className="card card-filestorage">
-      <h4 className="card-title-upload">Create a Lecture</h4>
+      <h4 className="card-title-upload">Create an Assignment</h4>
       <div className="card-body storage-uploader">
         <FormControl component="fieldset">
-          <FormLabel component="legend">Lecture Type</FormLabel>
+          <FormLabel component="legend">Assignment Type</FormLabel>
           <RadioGroup
             row
             aria-label="Assignment Type"
@@ -73,14 +73,14 @@ export default function CreateLecture(props) {
         </div>
         <input
           className="form-control assignment"
-          placeholder="Lecture name..."
+          placeholder="Assignment name..."
           value={title}
           onChange={event => setTitle(event.target.value)}
           disabled={uploadType === ''}
         />
         <input
           className="form-control assignment"
-          placeholder="Link to Lecture"
+          placeholder="Link to Assignment"
           value={link}
           onChange={event => setLink(event.target.value)}
           disabled={uploadType === 'UPLOAD' || uploadType === ''}
@@ -90,9 +90,9 @@ export default function CreateLecture(props) {
             className="upload-button"
             variant="contained"
             color="primary"
-            onClick={createLecture}
+            onClick={createAssignment}
             disabled={title === '' || link === ''}>
-            Publish Lecture
+            Create Assignment
           </Button>
         </div>
       </div>

@@ -1,12 +1,4 @@
-.assignment-card {
-    max-width: 50%;
-    margin: auto !important;
-}
-
-.assignment-card .card-body button {
-    margin-left: 90%;
-}
-
-.assignment-card .card-body .user-name {
-    color: grey;
+.assignment-user-name {
+    margin-left: auto;
+    margin-right: 16px;
 }

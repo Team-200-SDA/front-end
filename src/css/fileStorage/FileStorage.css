@@ -1,0 +1,36 @@
+.card-filestorage {
+    max-width: 90%;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.ui.selection.dropdown.filetype-dropdown {
+    margin-left: 10px;
+}
+
+.card-body-filestorage {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: first baseline;
+}
+
+.file-type {
+    max-width: 64px;
+    max-height: 128px;
+    margin: 10px;
+}
+
+.file-delete {
+    margin-left: auto;
+    margin-right: 12px;
+}
+
+.storage-uploader {
+text-align: center;
+}
+
+.card-title-upload {
+    padding-top: 10px;
+    padding-left: 10px;
+}
