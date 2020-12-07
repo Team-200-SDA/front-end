@@ -102,7 +102,11 @@ export default function AssignmentPage() {
       {assignmentSubmittedOn && (
         <div className="assignment-div">
           {user_role === 'student' ? (
-            <CreateAssignmentStudent getAllAssignments={getAllAssignments} />
+            <CreateAssignmentStudent
+              getAllAssignments={getAllAssignments}
+              teacherAssignments={teacherAssignments}
+              assignments={assignments}
+            />
           ) : null}
 
           {/* If on submission tab and logged in as student
