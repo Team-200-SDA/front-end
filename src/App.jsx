@@ -11,7 +11,6 @@ import Chat from './components/chat/Chat';
 import LiveVideo from './components/live/LiveVideo/LiveVideo';
 import Userprofile from './components/userprofile/UserProfile';
 import Calendar from './components/calendar/Calendar';
-import LecturePage from './components/lecture/LecturePage';
 import AssignmentPage from './components/assignment/AssignmentPage';
 import FileStoragePage from './components/filestorage/FileStoragePage';
 import PrivChatHandler from './components/chat-priv/PrivChatHandler';
@@ -19,6 +18,7 @@ import PrivChatInbox from './components/chat-priv/PrivChatInbox';
 import PrivChatThread from './components/chat-priv/PrivChatThread';
 import TodoCreateComponent from './components/todo/TodoCreateComponent';
 import TodoListComponent from './components/todo/TodoListComponent';
+import SubjectsPage from './components/subject/SubjectsPage';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -39,7 +39,7 @@ function App() {
               <HomePage />
             </Route>
             <Route path="/lectures" exact>
-              <LecturePage />
+              <SubjectsPage />
             </Route>
             <Route path="/assignments" exact>
               <AssignmentPage />
