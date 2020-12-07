@@ -39,7 +39,7 @@ function PrivChatInbox({ conversations }) {
       const receiverName = findUserByEmail(infoArray[0]).name;
       setTimeout(() => {
         history.push(`chat-thread/${receiverName}`);
-      }, 40);
+      }, 500);
     } catch (error) {
       console.log(error);
     }
