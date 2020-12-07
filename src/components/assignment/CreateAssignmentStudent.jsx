@@ -1,14 +1,19 @@
 import { Button } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
+import { Dropdown } from 'semantic-ui-react';
 import AssignmentApi from '../../api/AssignmentApi';
 import getFilenameAndExtension from '../../js/functions/fileUpload/getFilenameAndExtention';
 import FileUploader from '../filestorage/FileUploader';
 
-export default function CreateAssignment({ getAllAssignments }) {
+export default function CreateAssignment({
+  assignments,
+  getAllAssignments,
+  teacherAssignments
+}) {
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
-
   const [uploadResponse, setUploadResponse] = useState(null);
+  console.log(assignments);
 
   function createAssignment() {
     if (link === '') {
@@ -29,11 +34,22 @@ export default function CreateAssignment({ getAllAssignments }) {
     });
   }
 
+  const filteredDropDown = teacherAssignments.filter(
+    assignment => !assignments.find(assigned => assigned.fileName === assignment.fileName)
+  );
+
+  const dropDownOptions = filteredDropDown.map(assignment => {
+    return {
+      key: assignment.fileName,
+      text: assignment.fileName,
+      value: assignment.fileName
+    };
+  });
+
   useEffect(() => {
     if (uploadResponse === null) {
       return;
     }
-    setTitle(uploadResponse.original_filename);
     setLink(uploadResponse.secure_url);
   }, [uploadResponse]);
 
@@ -43,18 +59,25 @@ export default function CreateAssignment({ getAllAssignments }) {
         <h4 className="card-title-upload">Submit an Assignment</h4>
         <div className="card-body storage-uploader">
           <p>Upload a file from your local-storage?</p>
-          <FileUploader setUploadResponse={setUploadResponse} uploadType={'UPLOAD'} />
-          <input
-            className="form-control assignment"
-            placeholder="Assignment name..."
-            value={title}
-            onChange={event => setTitle(event.target.value)}
-          />{' '}
+          <FileUploader
+            setUploadResponse={setUploadResponse}
+            uploadType={title === '' ? null : 'UPLOAD'}
+          />
+          <div className="submit-dropdown">
+            <Dropdown
+              className="conversation-dropdown"
+              onChange={(event, data) => setTitle(data.value)}
+              placeholder="Choose assignment..."
+              selection
+              options={dropDownOptions}
+            />
+          </div>
           <div className="form-group">
             <Button
               className="upload-button"
               variant="contained"
               color="primary"
+              disabled={link === ''}
               onClick={createAssignment}>
               Submit Assignment
             </Button>

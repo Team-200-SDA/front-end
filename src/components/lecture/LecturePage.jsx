@@ -14,7 +14,6 @@ export default function LecturePage() {
   function getAllLectures() {
     LectureApi.getAllLectures().then(data => {
       setLectures(data.data);
-      console.log(data);
     });
   }
 
