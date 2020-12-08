@@ -8,4 +8,8 @@
 @import './layout/footer.css';
 @import './fileStorage//FileStorage.css';
 @import './chatbot/_chatbot.css';
+@import './imageUploader/imageUploader.css';
+@import './subjects/_subjects.css';
+@import './layout//navbar.css';
+@import './news/news.css';
 @import './auth/loginPage.css';
