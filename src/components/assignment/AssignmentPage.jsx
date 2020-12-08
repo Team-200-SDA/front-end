@@ -6,7 +6,11 @@ import AssignmentApi from '../../api/AssignmentApi';
 import CreateAssignment from './CreateAssignment';
 import Assignment from './Assignment';
 
+import { LangContext } from '../../contexts/LanguageContext';
+import { useContext } from 'react';
+
 export default function AssignmentPage() {
+  const { language } = useContext(LangContext);
   const [assignments, setAssignments] = useState([]);
   const [teacherAssignments, setTeacherAssignments] = useState([]);
   const [allStudentsAssignments, setAllStudentsAssignments] = useState([]);
@@ -80,7 +84,7 @@ export default function AssignmentPage() {
             autoComplete="off"
             onClick={handleAssignAssignment}
           />{' '}
-          Assigned Assignments
+          {language.Assigned_Assignments}
         </label>
         <label className="btn btn-secondary">
           <input
@@ -90,7 +94,7 @@ export default function AssignmentPage() {
             autoComplete="off"
             onClick={handleSubmitAssignment}
           />{' '}
-          Submitted Assignments
+          {language.Assigned_Assignments}
         </label>
       </div>
 

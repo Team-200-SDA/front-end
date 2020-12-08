@@ -8,10 +8,14 @@ import ChatMessage from './ChatMessage';
 import { Fab, TextField } from '@material-ui/core';
 import { Send } from '@material-ui/icons';
 import { format } from 'date-fns';
+import { LangContext } from '../../contexts/LanguageContext';
+import { useContext } from 'react';
 
 const wsEndpoint = 'http://localhost:8080/ws';
 
+
 function Chat() {
+  const { language } = useContext(LangContext);
   const user = window.sessionStorage.getItem('user');
   const [messages, setMessages] = useState([]);
   const [messageField, setMessageField] = useState('');
@@ -86,8 +90,8 @@ function Chat() {
         <TextField
           className="message-text-field"
           id="outlined-full-width"
-          placeholder="Type a message..."
-          helperText="Enter or Click to send."
+          placeholder={language.Type_message}
+          helperText={language.Enter_Click}
           fullWidth
           margin="normal"
           onChange={e => setMessageField(e.target.value)}

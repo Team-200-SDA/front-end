@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Calendar from '../calendar/Calendar';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
 
 function Navbar({ onLogout }) {
+  const { language } = useContext(LangContext);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="/">
@@ -23,58 +26,58 @@ function Navbar({ onLogout }) {
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">
             <Link to="/" className="nav-link">
-              Home
+              {language.home}
             </Link>
           </li>
 
           <li className="nav-item">
             <Link to="/posts" className="nav-link">
-              Posts
+              {language.Posts}
             </Link>
           </li>
 
           <li className="nav-item">
             <Link to="/lectures" className="nav-link">
-              Lectures
+              {language.Lectures}
             </Link>
           </li>
 
           <li className="nav-item">
             <Link to="/assignments" className="nav-link">
-              Assignments
+              {language.Assignments}
             </Link>
           </li>
 
           <li className="nav-item">
             <Link to="/private-messaging" className="nav-link">
-              Private Messaging
+              {language.Private_Messaging}
             </Link>
           </li>
 
           <li className="nav-item">
             <Link to="/chat" className="nav-link">
-              Chat
+             {language.Chat}
             </Link>
           </li>
           <li className="nav-item">
             <Link to="/userprofile" className="nav-link">
-              User Profile
+              {language.User_Profile}
             </Link>
           </li>
 
           <li className="nav-item">
             <Link to="#" onClick={Calendar} className="nav-link">
-              Calendar
+              {language.Calendar}
             </Link>
           </li>
           <li className="nav-item">
             <Link to="/filestorage" className="nav-link">
-              File Storage
+              {language.File_Storage}
             </Link>
           </li>
           <li className="nav-item">
             <Link to="/todo-list" className="nav-link">
-              Todo-List
+              {language.Todo}
             </Link>
           </li>
         </ul>

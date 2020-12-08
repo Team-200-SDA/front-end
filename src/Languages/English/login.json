@@ -7,5 +7,27 @@
 	"pass":"Password:",
 	"Signup":"Sign up",
 	"name":"Name:",
-	"create":"Create Account"
+	"create":"Create Account",
+	"Type_message":"Type a message...",
+	"Enter_Click":"Enter or Click to send.",
+	"Assigned_Assignments":"Assigned Assignments",
+	"Submitted_Assignments": "Submitted Assignments",
+	"Upload_file":"Upload a file from your local-storage?",
+	"title":"Title",
+	"link":"Link to the assignment",
+	"Publish":"Publish",
+	"no_assigment":"No assignment submitted yet.",
+	"home":"Home",
+	"Posts":"Posts",
+	"Lectures":"Lectures",
+	"Assignments":"Assignments",
+	"Private_Messaging":"Private Messaging",
+	"Chat": "Chat",
+	"User_Profile": "User Profile",
+	"Calendar":"Calendar",
+	"Todo":"Todo-List",
+	"Logout":"Logout",
+	"File_Storage": "File Storage"
+	
+
 }

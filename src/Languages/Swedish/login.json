@@ -7,5 +7,26 @@
 	"pass":"Lösenord:",
 	"Signup": "Bli Medlem",
 	"name": "Namn:",
-	"create": "Skapa konto"	
+	"create": "Skapa konto",
+	"Type_message":"Skriv ett meddelande...",
+	"Enter_Click":"Enter eller klicka för att skicka.",
+	"Assigned_Assignments": "Tilldelade uppdrag",
+	"Submitted_Assignments": "Uppdrag inlämnade",
+	"Upload_file":"Ladda upp en fil från din lokala lagring?",
+	"title":"Titel",
+	"link":"Länk",
+	"Publish":"Publicera",
+	"no_assigment":"Inget uppdrag har skickats ännu.",
+	"home":"Hem",
+	"Posts":"Inlägg",
+	"Lectures": "Föredrag",
+	"Assignments": "Uppgifter",
+	"Private_Messaging":"Privata meddelanden",
+	"Chat":"Chatt",
+	"User_Profile": "Användarprofil",
+	"Calendar": "Kalender",
+	"Todo": "Att göra lista",
+	"Logout": "Logga ut",
+	"File_Storage": "Fillagring"
+
 }

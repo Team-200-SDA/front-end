@@ -3,7 +3,11 @@ import AssignmentApi from '../../api/AssignmentApi';
 
 import FileUploader from '../filestorage/FileUploader';
 
+import { LangContext } from '../../contexts/LanguageContext';
+import { useContext } from 'react';
+
 export default function CreateAssignment(props) {
+  const { language } = useContext(LangContext);
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
 
@@ -41,27 +45,27 @@ export default function CreateAssignment(props) {
   return (
     <div className="container col-sm-12 col-md-10 col-lg-8">
       <div className="form-group">
-        <p className="form-control">Upload a file from your local-storage?</p>
+        <p className="form-control">{language.Upload_file}</p>
         <FileUploader setUploadResponse={setUploadResponse} />
       </div>
       
       <div className="form-group">
         <input
           className="form-control"
-          placeholder="Title"
+          placeholder={language.title}
           value={title}
           onChange={event => setTitle(event.target.value)}
         />
         <textarea
           className="form-control"
-          placeholder={`Link to the assignment`}
+          placeholder={language.link}
           value={link}
           onChange={event => setLink(event.target.value)}
         />
       </div>
       <div className="form-group">
         <button className="btn btn-primary  " onClick={createAssignment}>
-          Publish
+          {language.Publish}
         </button>
       </div>
     </div>
