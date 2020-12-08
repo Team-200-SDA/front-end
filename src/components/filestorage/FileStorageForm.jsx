@@ -1,55 +1,30 @@
-import React, { useState } from "react";
+/* eslint-disable no-useless-escape */
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from 'react';
+import getFilenameAndExtension from '../../js/functions/fileUpload/getFilenameAndExtention';
+import FileUploader from './FileUploader';
 
+export default function FileStorageForm({ uploadFile }) {
+  const [uploadResponse, setUploadResponse] = useState(null);
 
-export default function FileStorageForm({ onUploadFile }) {
-  const [filename, setFilename] = useState("");
-  const [link, setLink] = useState("");
-
-  function uploadFileHandler(e) {
-    if (link === "") {
+  useEffect(() => {
+    if (uploadResponse === null) {
       return;
     }
-    e.preventDefault();
-
-    const fileData = { fileName: filename, link: link };
-    
-    onUploadFile(fileData)
-      .then(() => {
-        setFilename("");
-        setLink("");
-      })
-      .catch((err) => alert(err));
-  }
+    const fileData = {
+      fileName: uploadResponse.original_filename,
+      link: uploadResponse.secure_url,
+      type: getFilenameAndExtension(uploadResponse.secure_url)
+    };
+    uploadFile(fileData);
+    setUploadResponse(null);
+  }, [uploadResponse]);
 
   return (
-    <div className="card">
-      <div className="card-body">
-        <h4 className="card-title">File Storage</h4>
-
-        <div className="container col-sm-12 col-md-10 col-lg-8">
-          <div className="form-group">
-            <input
-              className="form-control mb-3"
-              placeholder="File name"
-              value={filename}
-              onChange={(event) => setFilename(event.target.value)}
-            />
-            <input
-              className="form-control"
-              placeholder={`Link to the file`}
-              value={link}
-              onChange={(event) => setLink(event.target.value)}
-            />
-          </div>
-          <div className="form-group">
-            <button
-              className="btn btn-primary  "
-              onClick={(e) => uploadFileHandler(e)}
-            >
-              Upload
-            </button>
-          </div>
-        </div>
+    <div className="card card-filestorage">
+      <h4 className="card-title-upload">File Storage</h4>
+      <div className="card-body storage-uploader">
+        <FileUploader setUploadResponse={setUploadResponse} uploadType={`UPLOAD`} />
       </div>
     </div>
   );

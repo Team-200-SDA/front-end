@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import Call from '../Call/Call';
 import StartButton from '../StartButton/StartButton';
-import api from '../../../api/LiveVideoApi';
+import createRoom from '../../../api/LiveVideoApi';
 import Tray from '../Tray/Tray';
 import CallObjectContext from '../../../js/states/CallObjectContext';
 import { roomUrlFromPageUrl, pageUrlFromRoomUrl } from '../../../js/live/urlUtils';
@@ -28,8 +28,7 @@ export default function LiveVideo() {
    */
   const createCall = useCallback(() => {
     setAppState(STATE_CREATING);
-    return api
-      .createRoom()
+    return createRoom()
       .then(room => room.url)
       .catch(error => {
         console.log('Error creating room', error);

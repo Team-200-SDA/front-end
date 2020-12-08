@@ -1,20 +1,19 @@
-import React from "react";
-import "./FileStorage.css";
-import { Link } from "react-router-dom";
+import React from 'react';
+import fileTypeImage from '../../js/functions/fileUpload/fileTypeImage';
 
 export default function FileStorage({ file, onFileDelete }) {
   return (
     <div className="card card-filestorage">
-      <div className="card-body">
+      <div className="card-body-filestorage">
+        <img className="file-type" src={fileTypeImage(file.type)} alt="" />
         <span>
-          <Link to={file.link} className="file-link" target="_blank">
+          <a className="file-link" target="_blank" rel="noreferrer" href={file.link}>
             {file.fileName}
-          </Link>
+          </a>
         </span>
         <button
-          className="btn btn-danger"
-          onClick={() => onFileDelete(file.id)}
-        >
+          className="btn btn-danger file-delete"
+          onClick={() => onFileDelete(file.id)}>
           Delete
         </button>
       </div>
