@@ -30,7 +30,14 @@
 	"File_Storage": "File Storage",
 	"language":"Language",
 	"english":"English",
-	"swedish":"Swedish"
+	"swedish":"Swedish",
+	"Start_conversation":"Start a conversation",
+	"with":"with... ?",
+	"Delete": "Delete",
+	"Upload": " Upload",
+	"Couldnt_register":"Couldn't register check credentials and try again"
+	
+	
 	
 
 }

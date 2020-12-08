@@ -4,25 +4,25 @@ import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 import { useContext } from 'react';
 import { LangContext } from '../../contexts/LanguageContext';
-import Button from 'react-bootstrap/Button';
+import BootstrapSwitchButton from 'bootstrap-switch-button-react'
 
 
 function LoginPage() {
-    const { language, changeEn, changeSv } = useContext(LangContext);
+    const { language, changeEn, changeSv, changeLanguage} = useContext(LangContext);
     const login = async (loginData) => {
         const invalidCredential = language.invalid;
         const loginSuccess = await Auth.login(loginData);
         
         if (!loginSuccess) {
             
-            alert(invalidCredential);
+            alert(langauage.invalid);
         }
     }
 
     const register = async (registrationData) => {
         const registerSuccess = await Auth.register(registrationData);
         if (!registerSuccess) {
-            alert("Couldn't register check credentials and try again");
+            alert(language.Couldnt_register);
         }
     }
 
@@ -31,8 +31,14 @@ function LoginPage() {
             <div className="container">
                 <div className="row mt-4">
                     <div className="col-md-6 " style={{ color: "white" }}>
-                        <Button onClick={changeEn} variant="primary">English</Button>{' '}
-                        <Button onClick={changeSv} variant="primary">Swedish</Button>{' '}   
+                        <BootstrapSwitchButton
+                            checked={false} onlabel='EN'
+                            onstyle='danger'
+                            offlabel='SV'
+                            offstyle='success'
+                            style='w-10 mx-3'
+                            onChange={changeLanguage}
+                        />
                         <h1>SDA</h1>
                         <p>{language.starter}</p>
 

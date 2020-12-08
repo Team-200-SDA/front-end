@@ -30,6 +30,11 @@
 	"File_Storage": "Fillagring",
 	"language":"Språk",
 	"english":"Engelska",
-	"swedish":"Svenska"
+	"swedish":"Svenska",
+	"Start_conversation":"Starta en konversation",
+	"with":"med ...?",
+	"Delete": "Radera",
+	"Upload":"Ladda upp",
+	"Couldnt_register":"Det gick inte att registrera autentiseringsuppgifterna och försök igen"
 
 }

@@ -6,8 +6,11 @@ import { useHistory, useParams } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import PrivChatApi from '../../api/PrivChatApi';
 import PrivMessage from './PrivMessage';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
 
 function PrivChatThread({ conversations }) {
+  const { language } = useContext(LangContext);
   const history = useHistory();
   const [messageField, setMessageField] = useState('');
   const receiverName = useParams().receiverName;
@@ -53,8 +56,8 @@ function PrivChatThread({ conversations }) {
         <TextField
           className="message-text-field"
           id="outlined-full-width"
-          placeholder="Type a message..."
-          helperText="Enter or Click to send."
+          placeholder={language.Type_message}
+          helperText={language.Enter_Click}
           fullWidth
           margin="normal"
           onChange={e => setMessageField(e.target.value)}

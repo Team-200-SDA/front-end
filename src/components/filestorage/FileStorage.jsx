@@ -1,7 +1,10 @@
 import React from 'react';
 import './FileStorage.css';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
 
 export default function FileStorage({ file, onFileDelete }) {
+  const { language } = useContext(LangContext);
   return (
     <div className="card card-filestorage">
       <div className="card-body">
@@ -11,7 +14,7 @@ export default function FileStorage({ file, onFileDelete }) {
           </a>
         </span>
         <button className="btn btn-danger" onClick={() => onFileDelete(file.id)}>
-          Delete
+          {language.Delete}
         </button>
       </div>
     </div>
