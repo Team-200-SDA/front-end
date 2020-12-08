@@ -40,38 +40,47 @@ function PrivChatThread({ conversations }) {
   const messagesToRender = thread.thread.map(message => (
     <PrivMessage key={uuid()} message={message} />
   ));
-  
 
   return (
-    <div className="paper">
-      <div className="jsx-messages">{messagesToRender}</div>
-      <form
-        onSubmit={e => sendMessage(e)}
-        className="message-form"
-        noValidate
-        autoComplete="off">
-        <TextField
-          className="message-text-field"
-          id="outlined-full-width"
-          placeholder="Type a message..."
-          helperText="Enter or Click to send."
-          fullWidth
-          margin="normal"
-          onChange={e => setMessageField(e.target.value)}
-          value={messageField}
-          InputLabelProps={{
-            shrink: true
-          }}
-          variant="outlined"
-        />
-        <Fab size="small" onClick={event => sendMessage(event)}>
-          <Send />
-        </Fab>
-      </form>
+    <div className="public-chat-wrap">
+      <div className="public-chat-title-div">
+        <h1 className="public-chat-title">Private Chat</h1>
+      </div>
+      <div className="card-body public-chat-body">
+        <h3>Chatting with {thread.thread[0].receiverName}</h3>
+        <div className="chat-wrapper">
+          <div className="jsx-messages">{messagesToRender}</div>
+        </div>
 
-      <IconButton onClick={() => deleteMessages()} aria-label="delete">
-        <DeleteRounded />
-      </IconButton>
+        <form
+          onSubmit={e => sendMessage(e)}
+          className="message-form"
+          noValidate
+          autoComplete="off">
+          <TextField
+            className="message-text-field"
+            id="outlined-full-width"
+            placeholder={`Send a message to ${thread.thread[0].receiverName}`}
+            helperText="Enter or Click to send."
+            fullWidth
+            margin="normal"
+            onChange={e => setMessageField(e.target.value)}
+            value={messageField}
+            InputLabelProps={{
+              shrink: true
+            }}
+            variant="outlined"
+          />
+          <Fab size="small" onClick={event => sendMessage(event)}>
+            <Send />
+          </Fab>
+        </form>
+        <div>
+          <IconButton onClick={() => deleteMessages()}>
+            <DeleteRounded />
+          </IconButton>
+        </div>
+      </div>
     </div>
   );
 }

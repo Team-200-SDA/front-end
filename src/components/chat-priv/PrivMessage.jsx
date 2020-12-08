@@ -7,16 +7,12 @@ function PrivMessage({ message }) {
   const senderOrUser = author === user ? 'user' : 'sender';
 
   return (
-    <Paper elevation={3}>
-      <Box
-        className={`message-body message-box-${senderOrUser}`}
-        color="primary.contrastText">
-        <Avatar className={`message-avatar-${senderOrUser}`}>{author.charAt(0)}</Avatar>
-        <div className="message-sender">{author}</div>
-        <div className="message-content">{content}</div>
-        <div className="message-time">{date}</div>
-      </Box>
-    </Paper>
+    <Box className={`message-body message-box-${senderOrUser}`}>
+      <Avatar className={`message-avatar-${senderOrUser}`}>{author.charAt(0)}</Avatar>
+      <div className="message-sender">{author}</div>
+      <div className="message-content">{content}</div>
+      <div className="message-time">{date}</div>
+    </Box>
   );
 }
 

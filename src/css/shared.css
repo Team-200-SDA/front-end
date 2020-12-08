@@ -6,7 +6,7 @@ body {
   padding: 0;
   font-family: 'Poppins', sans-serif !important;
   color: var(--text);
-  background: var(--accent);
+  background: var(--slate-gray);
 }
 
 .app {
