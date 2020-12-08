@@ -30,19 +30,19 @@ export default function HomePage() {
   }
 
   return (
-    <div className="card">
-      <div className="card-body text-center">
-        {/* <h4 className="card-title">News</h4> */}
-        <div className="news-div">
-          {user_role !== 'teacher' ? null : (
-            <CreateNews news={news} getAllNews={getAllNews} />
-          )}
-
-          {news.length === 0
-            ? 'No news yet.'
-            : news.map(news => <News key={uuid()} news={news} deleteNews={deleteNews} />)}
-        </div>
+    <>
+      <div className="news-title-div">
+        <h1 className="news-title">Daily Highlight's </h1>
       </div>
-    </div>
+      <div className="news-div">
+        {user_role !== 'teacher' ? null : (
+          <CreateNews news={news} getAllNews={getAllNews} />
+        )}
+
+        {news.length === 0
+          ? 'No news yet.'
+          : news.map(news => <News key={uuid()} news={news} deleteNews={deleteNews} />)}
+      </div>
+    </>
   );
 }

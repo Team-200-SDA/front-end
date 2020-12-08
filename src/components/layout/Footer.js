@@ -11,7 +11,7 @@ export default function Footer() {
   const [botOpen, setBotOpen] = useState(false);
   return (
     <footer className="bottom bg-dark text-white ">
-      <Button className="footer-button" variant="contained" color="primary">
+      <Button className="footer-button" variant="contained">
         <a href="mailto: sda.team200@gmail.com">
           Contact-Us <i className="fas fa-envelope"></i>
         </a>
@@ -19,8 +19,7 @@ export default function Footer() {
       <Button
         className="footer-button"
         onClick={() => setBotOpen(!botOpen)}
-        variant="contained"
-        color="primary">
+        variant="contained">
         <span className="bot-button-text">
           Bot &nbsp;&nbsp;
           <i className="fas fa-robot" />

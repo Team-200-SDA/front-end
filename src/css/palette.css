@@ -1,7 +1,8 @@
 :root {
-  --dark-jungle-green: hsla(193, 100%, 8%, 1);
-  --tart-orange: hsla(0, 90%, 65%, 1);
-  --cerulean-crayola: hsla(192, 100%, 41%, 1);
-  --alice-blue: hsla(208, 46%, 89%, 1);
-  --cultured: hsla(0, 0%, 94%, 1);
+--dark-jungle-green: hsla(193, 100%, 8%, 1);
+--slate-gray: hsla(215, 14%, 49%, 1);
+--cadmium-orange: hsla(27, 93%, 58%, 1);
+--tan: hsla(35, 42%, 76%, 1);
+--saffron: hsla(44, 93%, 58%, 1);
+--white: #f5f5f5;
 }
