@@ -12,5 +12,6 @@
 
 button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.footer-button {
     margin: 10px;
-    background-color: var(--dominant);
+    /* background-color: var(--dominant); */
+    background-color: var(--accent);
 }

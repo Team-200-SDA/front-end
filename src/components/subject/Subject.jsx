@@ -13,6 +13,7 @@ import SubjectApi from '../../api/SubjectApi';
 function Subject({ subject, getSubjects, userRole }) {
   const deleteSubject = async id => {
     await SubjectApi.delete(id);
+    alert("Subject Deleted");
     getSubjects();
   };
 
@@ -34,7 +35,7 @@ function Subject({ subject, getSubjects, userRole }) {
       </Link>
 
       {userRole !== 'teacher' ? null : (
-        <CardActions>
+        <CardActions className="subject-button-div">
           <Button
             className="subject-button"
             onClick={() => deleteSubject(subject.id)}
