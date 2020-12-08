@@ -7,103 +7,76 @@ import { LangContext } from '../../contexts/LanguageContext';
 function Navbar({ onLogout }) {
   const { language, changeEn, changeSv } = useContext(LangContext);
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar">
       <a className="navbar-brand" href="/">
         EduLane
       </a>
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarColor01"
-        aria-controls="navbarColor01"
-        aria-expanded="false"
-        aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
+
+      <ul className="navbar-nav mr-auto">
+        <li className="nav-item">
+          <Link to="/" className="nav-link">
+            Home
+          </Link>
+        </li>
+
+        <li className="nav-item">
+          <Link to="/lectures" className="nav-link">
+            Lectures
+          </Link>
+        </li>
+
+        <li className="nav-item">
+          <Link to="/live" className="nav-link">
+            Live Stream
+          </Link>
+        </li>
+
+        <li className="nav-item">
+          <Link to="/assignments" className="nav-link">
+            Assignments
+          </Link>
+        </li>
+
+        <li className="nav-item">
+          <Link to="/filestorage" className="nav-link">
+            File Storage
+          </Link>
+        </li>
+
+        <li className="nav-item">
+          <Link to="/chat" className="nav-link">
+            Public Chat
+          </Link>
+        </li>
+
+        <li className="nav-item">
+          <Link to="/private-messaging" className="nav-link">
+            Private Messaging
+          </Link>
+        </li>
+
+        <li className="nav-item">
+          <Link to="/todo-list" className="nav-link">
+            Todo-List
+          </Link>
+        </li>
+
+        <li className="nav-item">
+          <Link to="#" onClick={Calendar} className="nav-link">
+            Calendar
+          </Link>
+        </li>
+
+        <li className="nav-item">
+          <Link to="/userprofile" className="nav-link">
+            User Profile
+          </Link>
+        </li>
+      </ul>
+
+      <button className="sign-out-button" onClick={onLogout}>
+        Sign Out
       </button>
-
-      <div className="collapse navbar-collapse" id="navbarColor01">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <Link to="/" className="nav-link">
-              {language.home}
-            </Link>
-          </li>
-
-          <li className="nav-item">
-            <Link to="/posts" className="nav-link">
-              {language.Posts}
-            </Link>
-          </li>
-
-          <li className="nav-item">
-            <Link to="/lectures" className="nav-link">
-              {language.Lectures}
-            </Link>
-          </li>
-
-          <li className="nav-item">
-            <Link to="/assignments" className="nav-link">
-              {language.Assignments}
-            </Link>
-          </li>
-
-          <li className="nav-item">
-            <Link to="/private-messaging" className="nav-link">
-              {language.Private_Messaging}
-            </Link>
-          </li>
-
-          <li className="nav-item">
-            <Link to="/chat" className="nav-link">
-              {language.Chat}
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/userprofile" className="nav-link">
-              {language.User_Profile}
-            </Link>
-          </li>
-
-          <li className="nav-item">
-            <Link to="#" onClick={Calendar} className="nav-link">
-              {language.Calendar}
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/filestorage" className="nav-link">
-              {language.File_Storage}
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/todo-list" className="nav-link">
-              {language.Todo}
-            </Link>
-          </li>
-          <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {language.language}
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#" onClick={changeEn}>{language.english}</a>
-          <a class="dropdown-item" href="#" onClick={changeSv}>{language.swedish}</a>
-          </div>
-      </li>
-        </ul>
-
-
-
-
-
-
-
-
-
-
-        <button className="btn btn-outline-info my-2 my-sm-0" onClick={onLogout}>
-          {language.Logout}
-        </button>
-      </div>
     </nav>
   );
 }

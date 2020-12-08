@@ -1,20 +1,21 @@
 import React from 'react';
-import './FileStorage.css';
-import { useContext } from 'react';
-import { LangContext } from '../../contexts/LanguageContext';
+import fileTypeImage from '../../js/functions/fileUpload/fileTypeImage';
 
 export default function FileStorage({ file, onFileDelete }) {
   const { language } = useContext(LangContext);
   return (
     <div className="card card-filestorage">
-      <div className="card-body">
+      <div className="card-body-filestorage">
+        <img className="file-type" src={fileTypeImage(file.type)} alt="" />
         <span>
           <a className="file-link" target="_blank" rel="noreferrer" href={file.link}>
             {file.fileName}
           </a>
         </span>
-        <button className="btn btn-danger" onClick={() => onFileDelete(file.id)}>
-          {language.Delete}
+        <button
+          className="btn btn-danger file-delete"
+          onClick={() => onFileDelete(file.id)}>
+          Delete
         </button>
       </div>
     </div>

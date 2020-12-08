@@ -23,15 +23,13 @@ function PrivChatHandler({ conversations, setConversations }) {
       });
       // Error Received
       eventSource.onerror = event => {
-        console.log('Error!', event);
-        // eventSource.close();
+        return;
       };
       // Prevent reconnect if connection is active.
       setListening(true);
     }
     return () => {
       eventSource.close();
-      console.log('Closing event source on unmount');
     };
   }, []);
 

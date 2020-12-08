@@ -6,12 +6,15 @@ import { useContext } from 'react';
 import { LangContext } from '../../contexts/LanguageContext';
 
 
-function UploaderButton({ setUploadResponse }) {
-  const { language } = useContext(LangContext);
+function UploaderButton({ setUploadResponse, uploadType }) {
   const CustomButton = asUploadButton(
     React.forwardRef((props, ref) => (
-      <Button {...props} variant="contained" color="primary">
-       {language.Upload}
+      <Button
+        {...props}
+        variant="contained"
+        color="primary"
+        disabled={uploadType !== 'UPLOAD'}>
+        Upload
       </Button>
     ))
   );

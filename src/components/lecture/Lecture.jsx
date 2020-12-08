@@ -1,30 +1,34 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import LectureApi from '../../api/LectureApi';
+import fileTypeImage from '../../js/functions/fileUpload/fileTypeImage';
 
-export default function Lecture({lecture, deleteLecture, user_role}) {
+export default function Lecture({ getAllLectures, lecture, user_role }) {
+  function deleteLecture(lectureId) {
+    LectureApi.deleteLecture(lectureId).then(() => {
+      alert('Lecture Deleted!');
+      getAllLectures();
+    });
+  }
 
-    return (
-        
-        <div className="card lecture-card">
-            <div className="card-body">
-                <span>
-                    <a target="_blank" 
-                    className="lecture-link" 
-                    rel="noreferrer" 
-                    href={lecture.link}>
-                    {lecture.title} 
-                    </a>
+  return (
+    <div className="card card-filestorage">
+      <div className="card-body-filestorage">
+        <img className="file-type" src={fileTypeImage(lecture.type)} alt="" />
+        <span>
+          <a className="file-link" target="_blank" rel="noreferrer" href={lecture.link}>
+            {lecture.fileName}
+          </a>
+        </span>
 
-                </span>
-                {  user_role !== "teacher" ? null : 
-                <button className="btn btn-light"
-                onClick={() => deleteLecture(lecture.id)}>
-                <i className="fas fa-trash"></i>
-            </button>
-            }
-            </div>
-        </div>
-       
-        );
-
+        {/* Delete Button if logged in user is a teacher */}
+        {user_role !== 'teacher' ? (
+          <button
+            className="btn btn-danger file-delete"
+            onClick={() => deleteLecture(lecture.id)}>
+            Delete
+          </button>
+        ) : null}
+      </div>
+    </div>
+  );
 }
