@@ -1,0 +1,8 @@
+.navbar{
+  background-color: var(--light);
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  border-top-right-radius: 20px;
+  /* border-bottom-right-radius: 20px; */
+}
