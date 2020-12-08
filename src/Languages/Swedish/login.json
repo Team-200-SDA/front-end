@@ -27,6 +27,9 @@
 	"Calendar": "Kalender",
 	"Todo": "Att göra lista",
 	"Logout": "Logga ut",
-	"File_Storage": "Fillagring"
+	"File_Storage": "Fillagring",
+	"language":"Språk",
+	"english":"Engelska",
+	"swedish":"Svenska"
 
 }

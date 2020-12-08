@@ -27,7 +27,10 @@
 	"Calendar":"Calendar",
 	"Todo":"Todo-List",
 	"Logout":"Logout",
-	"File_Storage": "File Storage"
+	"File_Storage": "File Storage",
+	"language":"Language",
+	"english":"English",
+	"swedish":"Swedish"
 	
 
 }

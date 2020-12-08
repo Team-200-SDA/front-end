@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import { LangContext } from '../../contexts/LanguageContext';
 
 function Navbar({ onLogout }) {
-  const { language } = useContext(LangContext);
+  const { language, changeEn, changeSv } = useContext(LangContext);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="/">
@@ -56,7 +56,7 @@ function Navbar({ onLogout }) {
 
           <li className="nav-item">
             <Link to="/chat" className="nav-link">
-             {language.Chat}
+              {language.Chat}
             </Link>
           </li>
           <li className="nav-item">
@@ -80,10 +80,28 @@ function Navbar({ onLogout }) {
               {language.Todo}
             </Link>
           </li>
+          <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {language.language}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#" onClick={changeEn}>{language.english}</a>
+          <a class="dropdown-item" href="#" onClick={changeSv}>{language.swedish}</a>
+          </div>
+      </li>
         </ul>
 
+
+
+
+
+
+
+
+
+
         <button className="btn btn-outline-info my-2 my-sm-0" onClick={onLogout}>
-          Logout
+          {language.Logout}
         </button>
       </div>
     </nav>
