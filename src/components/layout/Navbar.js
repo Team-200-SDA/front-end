@@ -23,6 +23,12 @@ function Navbar({ onLogout }) {
         </li>
 
         <li className="nav-item">
+          <Link to="/live" className="nav-link">
+            Live Stream
+          </Link>
+        </li>
+
+        <li className="nav-item">
           <Link to="/assignments" className="nav-link">
             Assignments
           </Link>
