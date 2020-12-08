@@ -34,7 +34,7 @@ function SubjectsPage() {
     <>
       <div className="subject-div card-body">
         <div className="subject-title-div">
-          <h1 className="subject-title">Lectures</h1>
+          <h1 className="subject-title">Lectures Modules</h1>
           <img className="app-logo" src={Logo} alt="" />
         </div>
       
