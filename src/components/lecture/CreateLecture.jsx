@@ -11,7 +11,7 @@ import LectureApi from '../../api/LectureApi';
 import FileUploader from '../filestorage/FileUploader';
 import getFilenameAndExtension from '../../js/functions/fileUpload/getFilenameAndExtention';
 
-export default function CreateLecture(props) {
+export default function CreateLecture({ urlParams, getAllLectures }) {
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
   const [uploadResponse, setUploadResponse] = useState(null);
@@ -28,11 +28,13 @@ export default function CreateLecture(props) {
       type:
         uploadType === 'UPLOAD'
           ? getFilenameAndExtension(uploadResponse.secure_url)
-          : uploadType
+          : uploadType,
+      subject: { id: urlParams.id }
     };
 
     LectureApi.createLecture(newLecture).then(res => {
-      props.getAllLectures();
+      console.log(res);
+      getAllLectures();
       setLink('');
       setTitle('');
       setUploadResponse(null);

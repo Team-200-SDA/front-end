@@ -1,52 +1,42 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
-
 import LectureApi from '../../api/LectureApi';
-import UserAPi from '../../api/UserApi';
-
+import CreateSubject from '../subject/CreateSubject';
 import CreateLecture from './CreateLecture';
 import Lecture from './Lecture';
 
 export default function LecturePage() {
+  // const subjects = useRecoilValue(subjectsState);
+  const urlParams = useParams();
   const [lectures, setLectures] = useState([]);
-  const [user, setUser] = useState({});
+  const userRole = window.sessionStorage.getItem('role');
 
-  function getAllLectures() {
-    LectureApi.getAllLectures().then(data => {
-      setLectures(data.data);
-    });
-  }
+  const getLectures = async () => {
+    try {
+      const response = await LectureApi.getAllLecturesBySubjectId(urlParams.id);
+      setLectures(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    getAllLectures();
-    getUserRole();
+    getLectures();
   }, []);
-
-  function deleteLecture(lectureId) {
-    LectureApi.deleteLecture(lectureId).then(() => {
-      alert('Lecture Deleted!');
-      getAllLectures(); // to refresh the list immediately
-    });
-  }
-
-  function getUserRole() {
-    UserAPi.getLoggedInUser().then(data => {
-      setUser(data.data);
-    });
-  }
 
   return (
     <div className="lecture-div">
-      {user.role !== 'teacher' ? null : (
-        <CreateLecture lectures={lectures} getAllLectures={getAllLectures} />
+      {/* Loads Lecture Creation component based on user role */}
+      {userRole !== 'teacher' ? null : (
+        <CreateLecture
+          lectures={lectures}
+          getAllLectures={getLectures}
+          urlParams={urlParams}
+        />
       )}
       {lectures.map(lecture => (
-        <Lecture
-          key={uuid()}
-          lecture={lecture}
-          deleteLecture={deleteLecture}
-          user_role={user.role}
-        />
+        <Lecture key={uuid()} getAllLectures={getLectures} lecture={lecture} />
       ))}
     </div>
   );

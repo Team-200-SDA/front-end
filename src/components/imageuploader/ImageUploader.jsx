@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from "react";
-import ReactImageUploadComponent from "react-images-upload";
+import React, { useEffect, useState } from 'react';
+import ReactImageUploadComponent from 'react-images-upload';
 /*
 Image Uploading Note:
 Ideally the API should be in the backend, however, with testing, sending the image to the backend and then uploading takes too long.
 Ideally, the backend should just sign an upload request, return the signed request to the frontend, which then uploads the image 
-with the signed request. Unfortunately cloudinary's java documentation is very limited in this regard and we just did not have 
+with the signed request. Unfortunately Cloudinary's java documentation is very limited in this regard and we just did not have 
 the time to figure it out. I'm sure with more time, we could do it.
 */
 
-function ImageUploader({  setImgUrl, setUploading }) {
+function ImageUploader({ setImgUrl, uploadPreset }) {
   const [payload, setPayload] = useState(null);
 
-  const updateImage = (event) => {
+  const updateImage = event => {
     var file = event[0];
     var data = new FormData();
-    data.append("file", file);
-    data.append("upload_preset", "newspics");
+    data.append('file', file);
+    data.append('upload_preset', uploadPreset);
     setPayload(data);
   };
 
@@ -25,17 +25,15 @@ function ImageUploader({  setImgUrl, setUploading }) {
       try {
         if (payload !== null) {
           const response = await fetch(
-            "https://api.cloudinary.com/v1_1/dyge6kiwf/image/upload", //We should probably put this in .env for now.
+            'https://api.cloudinary.com/v1_1/dyge6kiwf/image/upload', //We should probably put this in .env for now.
             {
-              method: "post",
+              method: 'post',
               body: payload,
-              signal: abortFetch.signal,
+              signal: abortFetch.signal
             }
           );
           const jsonResponse = await response.json();
-          console.log(jsonResponse["secure_url"]);
-          setImgUrl(jsonResponse["secure_url"]);
-          setUploading(false);
+          setImgUrl(jsonResponse['secure_url']);
         }
       } catch (error) {
         console.log(error);
@@ -43,7 +41,7 @@ function ImageUploader({  setImgUrl, setUploading }) {
     };
     sendImage();
     return () => abortFetch.abort();
-  }, [payload, setImgUrl, setUploading]);
+  }, [payload, setImgUrl]);
 
   return (
     <ReactImageUploadComponent
@@ -51,7 +49,9 @@ function ImageUploader({  setImgUrl, setUploading }) {
       onChange={updateImage}
       buttonText="Choose Image"
       className="imgUploader"
-      withPreview={true}
+      withPreview={false}
+      withIcon={false}
+      label="Max file size: 5mb, accepted: jpg, gif, png"
     />
   );
 }

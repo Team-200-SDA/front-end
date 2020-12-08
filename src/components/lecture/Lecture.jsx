@@ -1,7 +1,15 @@
 import React from 'react';
+import LectureApi from '../../api/LectureApi';
 import fileTypeImage from '../../js/functions/fileUpload/fileTypeImage';
 
-export default function Lecture({ lecture, deleteLecture, user_role }) {
+export default function Lecture({ getAllLectures, lecture, user_role }) {
+  function deleteLecture(lectureId) {
+    LectureApi.deleteLecture(lectureId).then(() => {
+      alert('Lecture Deleted!');
+      getAllLectures();
+    });
+  }
+
   return (
     <div className="card card-filestorage">
       <div className="card-body-filestorage">
@@ -13,7 +21,7 @@ export default function Lecture({ lecture, deleteLecture, user_role }) {
         </span>
 
         {/* Delete Button if logged in user is a teacher */}
-        {user_role === lecture.user.role ? (
+        {user_role !== 'teacher' ? (
           <button
             className="btn btn-danger file-delete"
             onClick={() => deleteLecture(lecture.id)}>

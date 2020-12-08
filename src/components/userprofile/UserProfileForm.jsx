@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import defaultImage from '../../assets/images/blank-profile-picture-973460_1280.png';
-import ImageUploader from './ImageUploader';
+import ImageUploader from '../imageuploader/ImageUploader';
 import './UserProfile.css';
 
 function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicClick }) {
@@ -21,13 +21,9 @@ function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicC
 
   function clickUpdateProfilepic(e) {
     e.preventDefault();
-    console.log('image', image);
     onUpdatePicClick(image);
     setImage({ image: '' });
   }
-
-  console.log('user profile pic', user.profilepic);
-  console.log('user address', user.address);
 
   return (
     <div className="card user-profile">
@@ -91,7 +87,7 @@ function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicC
               )}
             </div>
             <div className="col">
-              <ImageUploader user={user} setUploading={true} setImgUrl={setImage} />
+              <ImageUploader setImgUrl={setImage} uploadPreset={'profile'} />
             </div>
           </div>
           <div className="text-right">
