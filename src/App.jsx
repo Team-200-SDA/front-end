@@ -36,7 +36,7 @@ function App() {
             setConversations={setConversations}
           />
           <Navbar onLogout={() => Auth.logout()} />
-          <div className="container mt-5">
+          <div className="center">
             <Switch>
               <Route path="/" exact>
                 <HomePage />
