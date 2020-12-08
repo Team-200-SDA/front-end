@@ -7,4 +7,5 @@
 @import './lecture/lecturePage.css';
 @import './layout/footer.css';
 @import './fileStorage//FileStorage.css';
-@import './chatbot/_chatbot.css'
+@import './chatbot/_chatbot.css';
+@import './auth/loginPage.css';
