@@ -35,6 +35,18 @@
 	"with":"med ...?",
 	"Delete": "Radera",
 	"Upload":"Ladda upp",
-	"Couldnt_register":"Det gick inte att registrera autentiseringsuppgifterna och försök igen"
+	"Couldnt_register":"Det gick inte att registrera autentiseringsuppgifterna och försök igen",
+	"Live_Stream": "Direktsändning",
+	"Public Chat":"Offentlig chatt",
+	"Assignment_Deleted":"Assignment Deleted",
+	"Submit_Assignment":"Skicka ett uppdrag",
+	"Choose_assignment":"Välj uppgift ...",
+	"Create_Assignment":"Skapa en uppgift",
+	"Assignment_Type":"Uppgiftstyp",
+	"Upload_File":"Ladda upp fil",
+	"Video_Link" :"Videolänk",
+	"External_Link":"Extern länk",
+	"Assignment_name":"Uppdragsnamn ...",
+	"Link_Assignment":"Länk till uppdrag"
 
 }

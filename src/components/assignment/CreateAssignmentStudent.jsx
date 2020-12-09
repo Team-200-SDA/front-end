@@ -4,12 +4,15 @@ import { Dropdown } from 'semantic-ui-react';
 import AssignmentApi from '../../api/AssignmentApi';
 import getFilenameAndExtension from '../../js/functions/fileUpload/getFilenameAndExtention';
 import FileUploader from '../filestorage/FileUploader';
+import { LangContext } from '../../contexts/LanguageContext';
+import { useContext } from 'react';
 
 export default function CreateAssignment({
   assignments,
   getAllAssignments,
   teacherAssignments
 }) {
+  const { language } = useContext(LangContext);
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
   const [uploadResponse, setUploadResponse] = useState(null);
@@ -56,9 +59,9 @@ export default function CreateAssignment({
   return (
     <>
       <div className="card card-filestorage">
-        <h4 className="card-title-upload">Submit an Assignment</h4>
+        <h4 className="card-title-upload">{language.Submit_Assignment}</h4>
         <div className="card-body storage-uploader">
-          <p>Upload a file from your local-storage?</p>
+          <p>{language.Upload_file}</p>
           <FileUploader
             setUploadResponse={setUploadResponse}
             uploadType={title === '' ? null : 'UPLOAD'}
@@ -67,7 +70,7 @@ export default function CreateAssignment({
             <Dropdown
               className="conversation-dropdown"
               onChange={(event, data) => setTitle(data.value)}
-              placeholder="Choose assignment..."
+              placeholder={language.Choose_assignment}
               selection
               options={dropDownOptions}
             />
@@ -79,7 +82,7 @@ export default function CreateAssignment({
               color="primary"
               disabled={link === ''}
               onClick={createAssignment}>
-              Submit Assignment
+              {language.Submit_Assignment}
             </Button>
           </div>
         </div>

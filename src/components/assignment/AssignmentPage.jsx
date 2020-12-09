@@ -55,7 +55,7 @@ export default function AssignmentPage() {
 
   function deleteAssignment(assignmentId) {
     AssignmentApi.deleteAssignment(assignmentId).then(() => {
-      alert('Assignment Deleted');
+      alert(language.Assignment_Deleted);
       getAllAssignments();
       getTeacherAssignments();
     });
@@ -73,11 +73,11 @@ export default function AssignmentPage() {
         data-toggle="buttons">
         <label className="btn btn-secondary active">
           <input type="radio" autoComplete="off" onClick={handleAssignAssignment} />{' '}
-          Assigned Assignments
+          {language.Assigned_Assignments}
         </label>
         <label className="btn btn-secondary">
           <input type="radio" autoComplete="off" onClick={handleSubmitAssignment} />{' '}
-          Submitted Assignments
+          {language.Submitted_Assignments}
         </label>
       </div>
 

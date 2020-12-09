@@ -10,8 +10,11 @@ import React, { useState, useEffect } from 'react';
 import AssignmentApi from '../../api/AssignmentApi';
 import getFilenameAndExtension from '../../js/functions/fileUpload/getFilenameAndExtention';
 import FileUploader from '../filestorage/FileUploader';
+import { LangContext } from '../../contexts/LanguageContext';
+import { useContext } from 'react';
 
 export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
+  const { language } = useContext(LangContext);
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
   const [uploadResponse, setUploadResponse] = useState(null);
@@ -54,18 +57,18 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
 
   return (
     <div className="card card-filestorage">
-      <h4 className="card-title-upload">Create an Assignment</h4>
+      <h4 className="card-title-upload">{language.Create_Assignment}</h4>
       <div className="card-body storage-uploader">
         <FormControl component="fieldset">
-          <FormLabel component="legend">Assignment Type</FormLabel>
+          <FormLabel component="legend">{language.Assignment_Type}</FormLabel>
           <RadioGroup
             row
             aria-label="Assignment Type"
             value={uploadType}
             onChange={radioChange}>
-            <FormControlLabel value="UPLOAD" control={<Radio />} label="Upload File" />
-            <FormControlLabel value="VIDEO" control={<Radio />} label="Video Link" />
-            <FormControlLabel value="LINK" control={<Radio />} label="External Link" />
+            <FormControlLabel value="UPLOAD" control={<Radio />} label={language.Upload_File} />
+            <FormControlLabel value="VIDEO" control={<Radio />} label={language.Video_Link}/>
+            <FormControlLabel value="LINK" control={<Radio />} label={language.External_Link} />
           </RadioGroup>
         </FormControl>
         <div>
@@ -73,14 +76,14 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
         </div>
         <input
           className="form-control assignment"
-          placeholder="Assignment name..."
+          placeholder={language.Assignment_name}
           value={title}
           onChange={event => setTitle(event.target.value)}
           disabled={uploadType === ''}
         />
         <input
           className="form-control assignment"
-          placeholder="Link to Assignment"
+          placeholder={language.Link_Assignment}
           value={link}
           onChange={event => setLink(event.target.value)}
           disabled={uploadType === 'UPLOAD' || uploadType === ''}
@@ -92,7 +95,7 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
             color="primary"
             onClick={createAssignment}
             disabled={title === '' || link === ''}>
-            Create Assignment
+            {language.Create_Assignment}
           </Button>
         </div>
       </div>

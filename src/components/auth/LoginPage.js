@@ -8,14 +8,14 @@ import BootstrapSwitchButton from 'bootstrap-switch-button-react'
 
 
 function LoginPage() {
-    const { language, changeEn, changeSv, changeLanguage} = useContext(LangContext);
+    const { language, changeLanguage } = useContext(LangContext);
     const login = async (loginData) => {
-        const invalidCredential = language.invalid;
+
         const loginSuccess = await Auth.login(loginData);
-        
+
         if (!loginSuccess) {
-            
-            alert(langauage.invalid);
+
+            alert(language.invalid);
         }
     }
 
@@ -32,16 +32,10 @@ function LoginPage() {
                 <div className="row mt-4">
                     <div className="col-md-6 " style={{ color: "white" }}>
                         <BootstrapSwitchButton
-                            checked={false} onlabel='EN'
-                            onstyle='danger'
-                            offlabel='SV'
-                            offstyle='success'
-                            style='w-10 mx-3'
-                            onChange={changeLanguage}
-                        />
+                            checked={true} onlabel='EN' onstyle='danger' offlabel='SV' offstyle='success' style='w-10 mx-3'
+                            onChange={changeLanguage} />
                         <h1>SDA</h1>
                         <p>{language.starter}</p>
-
                     </div>
 
                     <div className="col-md-6">

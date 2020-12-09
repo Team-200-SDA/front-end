@@ -35,7 +35,19 @@
 	"with":"with... ?",
 	"Delete": "Delete",
 	"Upload": " Upload",
-	"Couldnt_register":"Couldn't register check credentials and try again"
+	"Couldnt_register":"Couldn't register check credentials and try again",
+	"Live_Stream": "Live Stream",
+	"Public Chat":"Public Chat",
+	"Assignment_Deleted":"Assignment Deleted",
+	"Submit_Assignment":"Submit an Assignment",
+	"Choose_assignment":"Choose assignment...",
+	"Create_Assignment":"Create an Assignment",
+	"Assignment_Type":"Assignment Type",
+	"Upload_File":"Upload File",
+	"Video_Link" :"Video Link" ,
+	"External_Link":"External Link",
+	"Assignment_name":"Assignment name...",
+	"Link_Assignment":"Link to Assignment"
 	
 	
 	

@@ -33,10 +33,7 @@ const LangContextProvider = (props) => {
        
          lang === "sv" ? setLanguage(Swedish) : setLanguage(English) 
     };
-
-   
     
-
     return (
         <LangContext.Provider value={{ language ,changeSv, changeEn, changeLanguage,  detectLang}}>
             {props.children}

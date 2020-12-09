@@ -15,67 +15,76 @@ function Navbar({ onLogout }) {
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
           <Link to="/" className="nav-link">
-            Home
+          {language.home}
           </Link>
         </li>
 
         <li className="nav-item">
           <Link to="/lectures" className="nav-link">
-            Lectures
+          {language.Lectures}
           </Link>
         </li>
 
         <li className="nav-item">
           <Link to="/live" className="nav-link">
-            Live Stream
+            {language.Live_Stream}
           </Link>
         </li>
 
         <li className="nav-item">
           <Link to="/assignments" className="nav-link">
-            Assignments
+          {language.Assignments}
           </Link>
         </li>
 
         <li className="nav-item">
           <Link to="/filestorage" className="nav-link">
-            File Storage
+          {language.File_Storage}
           </Link>
         </li>
 
         <li className="nav-item">
           <Link to="/chat" className="nav-link">
-            Public Chat
+            {language.Public_Chat}
           </Link>
         </li>
 
         <li className="nav-item">
           <Link to="/private-messaging" className="nav-link">
-            Private Messaging
+          {language.Private_Messaging}
           </Link>
         </li>
 
         <li className="nav-item">
           <Link to="/todo-list" className="nav-link">
-            Todo-List
+          {language.Todo}
           </Link>
         </li>
 
         <li className="nav-item">
           <Link to="#" onClick={Calendar} className="nav-link">
-            Calendar
+          {language.Calendar}
           </Link>
         </li>
 
         <li className="nav-item">
           <Link to="/userprofile" className="nav-link">
-            User Profile
+          {language.User_Profile}
           </Link>
         </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {language.language}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#" onClick={changeEn}>{language.english}</a>
+          <a class="dropdown-item" href="#" onClick={changeSv}>{language.swedish}</a>
+          </div>
+      </li>
       </ul>
 
       <button className="sign-out-button" onClick={onLogout}>
-        Sign Out
+      {language.Logout}
       </button>
     </nav>
   );
