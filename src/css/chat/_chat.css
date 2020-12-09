@@ -40,7 +40,6 @@
 }
 
 .public-chat-title {
-  text-align: center;
   padding: 20px;
   color: var(--text);
   font-size: 36pt;
@@ -99,7 +98,7 @@
 .message-content {
   text-align: left;
   min-width: 0; 
-  margin: 10px;
+  margin: 10px 10px 10px 20px;
 }
 
 .message-time {

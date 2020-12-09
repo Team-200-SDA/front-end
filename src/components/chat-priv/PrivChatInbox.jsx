@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { CreateRounded, BorderColorRounded } from '@material-ui/icons';
 import PrivConversationCard from './PrivConversationCard';
 import { v4 as uuid } from 'uuid';
 import { Dropdown } from 'semantic-ui-react';
@@ -80,35 +81,37 @@ function PrivChatInbox({ conversations, setConversations }) {
   return (
     <>
       <div className="public-chat-title-div">
-        <h1 className="public-chat-title">Private Chat</h1>
+        <h1 className="public-chat-title">
+          <i class="fas fa-comments title-icon" />
+          Private Chat
+        </h1>
       </div>
-      <div className="start-conversation">
-        <Button
-          className="conversation-button"
-          onClick={() => sendMessage(selectedUser)}
-          variant="contained"
-          color="primary">
-          {language.Start_conversation}
-        </Button>
-        <Dropdown
-          disabled={dropDownUsers.length === 0}
-          className="conversation-dropdown"
-          onChange={(event, data) => setSelectedUser(data.value)}
-          placeholder={language.with}
-          selection
-          options={dropDownUsers}
-        />
-      </div>
-      <div className="card-body private-chat-wrap private-chat-layout">
-        <div>{jsxConversations}</div>
-        {activeThreadReceiver !== '' ? (
-          <PrivChatThread
-            setConversations={setConversations}
-            setActiveThreadReceiver={setActiveThreadReceiver}
-            activeThreadReceiver={activeThreadReceiver}
-            conversations={conversations}
+      <div className="card-body ">
+        {' '}
+        <div className="start-conversation">
+          <Dropdown
+            disabled={dropDownUsers.length === 0}
+            className="conversation-dropdown"
+            onChange={(event, data) => setSelectedUser(data.value)}
+            placeholder={language.with}
+            selection
+            options={dropDownUsers}
           />
-        ) : null}
+          <CreateRounded
+            className="conversation-button"
+            onClick={() => sendMessage(selectedUser)}></CreateRounded>
+        </div>
+        <div className="private-chat-wrap private-chat-layout">
+          <div>{jsxConversations}</div>
+          {activeThreadReceiver !== '' ? (
+            <PrivChatThread
+              setConversations={setConversations}
+              setActiveThreadReceiver={setActiveThreadReceiver}
+              activeThreadReceiver={activeThreadReceiver}
+              conversations={conversations}
+            />
+          ) : null}
+        </div>
       </div>
     </>
   );

@@ -29,7 +29,8 @@
 .start-conversation {
   margin-bottom: 10px;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
+  align-items: center;
 }
 
 .ui.selection.dropdown.conversation-dropdown {
@@ -65,4 +66,19 @@
 .active-receiver {
   background: var(--primary);
   color: var(--light);
+}
+
+.conversation-button {
+  cursor: pointer;
+  height: 50px;
+}
+
+.ui.selection.dropdown.conversation-dropdown {
+  border-radius: 22px;
+  -webkit-border-radius: 22px;
+  -moz-border-radius: 22px;
+  -ms-border-radius: 22px;
+  -o-border-radius: 22px;
+  margin: 0;
+  margin-right: 10px;
 }
