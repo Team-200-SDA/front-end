@@ -57,13 +57,11 @@
 	"Title_news":"Title of the news",
 	"Body_news":"Body of the news",
 	"Choose_Image":"Choose Image",
-	"Max_file":"Max file size: 5mb, accepted: jpg, gif, png"
-	
-
-	
-
-	
-	
-	
+	"Max_file":"Max file size: 5mb, accepted: jpg, gif, png",
+	"UPLOAD":"UPLOAD",
+	"JOIN":"JOIN",
+	"Joined":"Joined",
+	"LEAVE":"LEAVE",
+	"Left":"Left!"
 
 }

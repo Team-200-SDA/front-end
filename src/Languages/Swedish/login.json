@@ -57,7 +57,10 @@
 	"Title_news":"Nyhetens titel",
 	"Body_news":"Nyhetens kropp",
 	"Choose_Image":"Välj bild",
-	"Max_file":"Max filstorlek: 5 MB, accepterad: jpg, gif, png"
-	
-
+	"Max_file":"Max filstorlek: 5 MB, accepterad: jpg, gif, png",
+	"UPLOAD":"LADDA UPP",
+	"JOIN":"ANSLUTA SIG",
+	"Joined":"Anslöt sig",
+	"LEAVE":"LÄMNA",
+	"Left":"lämnad"
 }
