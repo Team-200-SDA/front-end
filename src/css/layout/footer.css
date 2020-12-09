@@ -1,20 +1,20 @@
-@import '../palette.css';
+@import "../palette.css";
 
 .bottom {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--slate-gray) !important;
-    border-top-left-radius: 20px !important;
-    border-top-right-radius: 20px !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--slate-gray) !important;
+  border-top-left-radius: 20px !important;
+  border-top-right-radius: 20px !important;
 }
 
 button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.footer-button {
-    margin: 10px;
-    /* background-color: var(--dominant); */
-    color: var(--text);
-    background: var(--dominant);
-    background-size: 200% auto;
-    background-position: right center;
+  margin: 10px;
+  /* background-color: var(--dominant); */
+  color: var(--text);
+  background: var(--dominant);
+  background-size: 200% auto;
+  background-position: right center;
 }

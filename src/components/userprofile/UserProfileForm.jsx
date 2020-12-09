@@ -3,6 +3,8 @@ import defaultImage from "../../assets/images/blank-profile-picture-973460_1280.
 //import defaultImage from "../../assets/images/pic_1171831236_1.png";
 import ImageUploader from "../imageuploader/ImageUploader";
 
+import {Card} from '@material-ui/core';
+
 function UserProfileForm({
   user,
   onUpdateClick,
@@ -31,73 +33,84 @@ function UserProfileForm({
   }
 
   return (
-    <div className="card user-profile">
-      <div className="card-body">
-        <h2>User Profile</h2>
-        <div className="form-group row ml-5">
-          <div>Name : {user.name}</div>
-        </div>
-        <div className="form-group row ml-5">
-          <div>E-mail : {user.email}</div>
-        </div>
+    <>
+      <div className="user-profile-title-div">
+        <h1 className="user-profile-title">
+          <i class="far fa-address-card title-icon"></i>
+          User Profile
+        </h1>
+      </div>
 
-        {/*  <div className="grid-Userdetails">
-          <article>Name : {user.name}</article>
-          <article>E-mail : {user.email}</article>
-        </div> */}
-
-        <div className="card-body pb-1">
-          <div className="form-group row mt-1">
-            <div className="col input-group m-0">
-              <div className="input-group-prepend">
-                <span className="input-group-text">Address</span>
-              </div>
-              <input
-                className="form-control"
-                defaultValue={user.address}
-                onChange={(event) =>
-                  setAddress({ address: event.target.value })
-                }
-              ></input>
-            </div>
-            <div className="text-right mt-0 mb-0">
-              <button
-                className="btn btn-light"
-                onClick={(e) => clickUpdateAddress(e)}
-              >
-                <i class="fas fa-pencil-alt"></i>
-              </button>
-            </div>
+      <div className="card user-profile">
+        <div className="card-body">
+         
+          {/* <div className="form-group lbl row">
+            <div>Name : {user.name}</div>
           </div>
-          <div className="form-group row mt-1">
-            <div className="col input-group">
-              <div className="input-group-prepend">
-                <span className="input-group-text">Phoneno</span>
+          <div className="form-group lbl row">
+            <div>E-mail : {user.email}</div>
+          </div> */}
+
+            <div className="grid-Userdetails">
+          <article className="lblname">Name : {user.name}</article>
+          <article className="lblemail">E-mail : {user.email}</article>
+        </div> 
+
+          {/* <div className="card-body pb-1"> */}
+          
+            <div className="form-group row mt-1 mr-2">
+              <div className="col input-group">
+                <div className="input-group-prepend">
+                  <span className="input-group-text">Address</span>
+                </div>
+                <input
+                  className="form-control"
+                  defaultValue={user.address}
+                  onChange={(event) =>
+                    setAddress({ address: event.target.value })
+                  }
+                ></input>
               </div>
-              <input
-                className="form-control"
-                defaultValue={user.phoneno}
-                onChange={(event) =>
-                  setPhoneno({ phoneno: event.target.value })
-                }
-              ></input>
+              <div className="text-right mt-0 mb-0">
+                <button
+                  className="btn btn-light"
+                  onClick={(e) => clickUpdateAddress(e)}
+                >
+                  <i class="fas fa-pencil-alt update-icon"></i>
+                </button>
+              </div>
             </div>
+            <div className="form-group row mt-1 mr-2">
+              <div className="col input-group">
+                <div className="input-group-prepend">
+                  <span className="input-group-text">Phoneno</span>
+                </div>
+                <input
+                  className="form-control"
+                  defaultValue={user.phoneno}
+                  onChange={(event) =>
+                    setPhoneno({ phoneno: event.target.value })
+                  }
+                ></input>
+              </div>
 
-            <div className="text-right mt-0 mb-0">
-              <button
-                className="btn btn-light"
-                onClick={(e) => clickUpdatePhone(e)}
-              >
-                <i class="fas fa-pencil-alt"></i>
-              </button>
+              <div className="text-right mt-0 mb-0">
+                <button
+                  className="btn btn-light"
+                  onClick={(e) => clickUpdatePhone(e)}
+                >
+                  <i class="fas fa-pencil-alt update-icon"></i>
+                </button>
+              </div>
             </div>
-          </div>
-        </div>
+            {/* </div> */}
+          
 
-        <div className="card-body m-2">
-          <label className="ml-3">Profile Picture</label>
+          {/* <div className="card-body m-2"> */}
+          <Card className="profile-pic-card">
+            <label className="ml-3 mt-3">Profile Picture</label>
 
-        {/*  <div className="form-group row">
+            {/*  <div className="form-group row">
             <div className="col ml-3">
               {user.profilepic === null ? (
                 <img src={defaultImage} alt="User profile" width="50%" />
@@ -110,30 +123,32 @@ function UserProfileForm({
             </div>
           </div>  */}
 
-           <div className="grid-profile">
-            <article>
-              {user.profilepic === null ? (
-                <img src={defaultImage} alt="User profile" width="30%" />
-              ) : (
-                <img src={user.profilepic} alt="User profile" width="30%" />
-              )}
-            </article>
-            <article>
-              <ImageUploader setImgUrl={setImage} uploadPreset={"profile"} />
-            </article>
-          </div> 
+            <div className="grid-profile">
+              <article>
+                {user.profilepic === null ? (
+                  <img src={defaultImage} alt="User profile" width="30%" />
+                ) : (
+                  <img src={user.profilepic} alt="User profile" width="30%" />
+                )}
+              </article>
+              <article className="prof-img">
+                <ImageUploader setImgUrl={setImage} uploadPreset={"profile"} />
+              </article>
+            </div>
 
-          <div className="text-right">
-            <button
-              className="button-update  "
-              onClick={(e) => clickUpdateProfilepic(e)}
-            >
-              Update profile picture
-            </button>
-          </div>
+            <div className="text-right">
+              <button
+                className="button-update "
+                onClick={(e) => clickUpdateProfilepic(e)}
+              >
+                Update profile picture
+              </button>
+            </div>
+            {/* </div> */}
+          </Card>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 export default UserProfileForm;
