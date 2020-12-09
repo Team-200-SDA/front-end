@@ -45,7 +45,7 @@ function Navbar({ onLogout }) {
 
         <li className="nav-item">
           <Link to="/chat" className="nav-link">
-            {language.Public_Chat}
+            {language.Chat}
           </Link>
         </li>
 
@@ -72,6 +72,7 @@ function Navbar({ onLogout }) {
             {language.User_Profile}
           </Link>
         </li>
+
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
@@ -83,6 +84,7 @@ function Navbar({ onLogout }) {
             aria-expanded="false">
             {language.language}
           </a>
+
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#" onClick={changeEn}>
               {language.english}
