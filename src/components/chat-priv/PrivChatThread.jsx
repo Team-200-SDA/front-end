@@ -6,6 +6,8 @@ import React, { useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import PrivChatApi from '../../api/PrivChatApi';
 import PrivMessage from './PrivMessage';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
 
 function PrivChatThread({
   conversations,
@@ -16,6 +18,7 @@ function PrivChatThread({
   const [messageField, setMessageField] = useState('');
   // This needs to be let, or inbox (parent component) wont update with
   // messages from other/new 1st time senders 🤷‍♂️
+  // const { language } = useContext(LangContext);
   let thread = conversations.find(thread => thread.receiverName === activeThreadReceiver);
 
   const sendMessage = async event => {

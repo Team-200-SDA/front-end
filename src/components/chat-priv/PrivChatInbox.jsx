@@ -6,9 +6,12 @@ import UserApi from '../../api/UserApi';
 import { format } from 'date-fns';
 import PrivChatApi from '../../api/PrivChatApi';
 import { Button } from '@material-ui/core';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
 import PrivChatThread from './PrivChatThread';
 
 function PrivChatInbox({ conversations, setConversations }) {
+  const { language } = useContext(LangContext);
   const loggedInUser = window.sessionStorage.getItem('user');
   const [activeUserThreads, setActiveUserThreads] = useState([]);
   const [users, setUsers] = useState([]);
@@ -85,13 +88,13 @@ function PrivChatInbox({ conversations, setConversations }) {
           onClick={() => sendMessage(selectedUser)}
           variant="contained"
           color="primary">
-          Start a conversation
+          {language.Start_conversation}
         </Button>
         <Dropdown
           disabled={dropDownUsers.length === 0}
           className="conversation-dropdown"
           onChange={(event, data) => setSelectedUser(data.value)}
-          placeholder="with... ?"
+          placeholder={language.with}
           selection
           options={dropDownUsers}
         />

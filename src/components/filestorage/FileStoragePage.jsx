@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import FileStorageApi from '../../api/FileStorageApi';
 import FileStorageForm from '../filestorage/FileStorageForm';
 import FileStorage from './FileStorage';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
 
 export default function FileStoragePage() {
+  const { language } = useContext(LangContext);
   const [files, setFiles] = useState([]);
 
   const getAll = () => {
@@ -18,13 +21,13 @@ export default function FileStoragePage() {
 
   const uploadFile = async fileData => {
     const res = await FileStorageApi.uploadFile(fileData);
-    alert('File Uploaded');
+    alert(language.File_Uploaded);
     setFiles([...files, res.data]);
   };
 
   const deleteFile = async fileId => {
     await FileStorageApi.deleteFile(fileId);
-    alert('File Deleted');
+    alert(language.File_Deleted);
     getAll();
   };
 
