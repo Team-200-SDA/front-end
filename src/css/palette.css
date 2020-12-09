@@ -1,7 +1,15 @@
 :root {
---dominant: linear-gradient(to right,  #314755 0%, #26a0da  51%, #314755 100%);
+
+--dominant: linear-gradient(to right,  #314755 0%, #26a0da  51%, #314755 100%); 
+--primary: rgb(47, 104, 134);
+
+
 --text: hsla(193, 100%, 8%, 1);
 --accent: #ececec;
- /*--light: #f5f5f5;*/ 
---light: #f2f2f2; 
+--light: #f2f2f2;
+
+/* --dominant: linear-gradient(to right, #1E3C72 0%, #2A5298  51%, #1E3C72  100%);
+--primary: rgb(36, 71, 132); */
+
+--secondary: #d8d8d8;
 }

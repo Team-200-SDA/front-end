@@ -8,12 +8,12 @@
   color: #ffffff;
   text-align: center;
   font-size: 14px;
-  line-height: 17px;
+  line-height: 16px;
 }
 
 .call-message.error {
-  color: #d81a1a;
-  background-color: #ffffff;
+  color: #ffffff;
+  /* background-color: #ffffff; */
 }
 
 .call-message-header {

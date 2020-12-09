@@ -2,6 +2,7 @@
   width: 200px;
   margin: 0 10px;
   position: relative;
+ 
 }
 
 .tile.large {
@@ -13,6 +14,7 @@
   width: 100%;
   position: absolute;
   top: 0px;
+  
 }
 
 .tile .background {
@@ -23,6 +25,7 @@
 
 .tile.local video {
   /* transform: scale(-1, 1); Flip Video */
+ 
 }
 
 .tile.small video {
@@ -31,6 +34,7 @@
   -moz-border-radius: 8px;
   -ms-border-radius: 8px;
   -o-border-radius: 8px;
+ 
 }
 
 .tile.small .background {
@@ -39,6 +43,7 @@
   -moz-border-radius: 8px;
   -ms-border-radius: 8px;
   -o-border-radius: 8px;
+ 
 }
 
 .tile .loading {
@@ -50,4 +55,5 @@
   transform: translate(-50%, -50%);
   font-size: 14px;
   line-height: 17px;
+  
 }
