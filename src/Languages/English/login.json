@@ -82,6 +82,15 @@
 	"Subject_Description":"Subject Description...",
 	"create_Subject":"Create Subject",
 	"Subject_Deleted":"Subject Deleted",
-	"Lectures_Modules":"Lectures Modules"
+	"Lectures_Modules":"Lectures Modules",
+	"Address_Updated":"Address Updated",
+	"Phoneno_Updated":"Phoneno Updated",
+	"Profile_picture_Updated":"Profile picture Updated",
+	"Address":"Address",
+	"Update":"Update",
+	"Profile_Picture":"Profile Picture",
+	"Update_Profile_picture":"Update Profile picture"
+	
+	
 
 }

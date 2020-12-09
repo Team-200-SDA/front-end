@@ -82,5 +82,12 @@
 	"Subject_Description":"Ämnesbeskrivning ...",
 	"create_Subject":"Skapa ämne",
 	"Subject_Deleted":"Ämne borttaget",
-	"Lectures_Modules":"Föreläsningsmoduler"
+	"Lectures_Modules":"Föreläsningsmoduler",
+	"Address_Updated":"Adress uppdaterad",
+	"Phoneno_Updated":"Phoneno uppdaterad",
+	"Profile_picture_Updated":"Profilbild uppdaterad",
+	"Address":"Adress",
+	"Update":"Uppdatering",
+	"Profile_Picture":"Profilbild",
+	"Update_Profile_picture":"Uppdatera profilbild"
 }

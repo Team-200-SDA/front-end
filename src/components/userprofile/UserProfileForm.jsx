@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import defaultImage from '../../assets/images/blank-profile-picture-973460_1280.png';
 import ImageUploader from '../imageuploader/ImageUploader';
 import './UserProfile.css';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
+
 
 function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicClick }) {
+  const { language } = useContext(LangContext);
   const [address, setAddress] = useState({ address: '' });
   const [phoneno, setPhoneno] = useState({ phoneno: '' });
   const [image, setImage] = useState({ image: '' });
@@ -27,14 +31,14 @@ function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicC
 
   return (
     <div className="card user-profile">
-      <div className="card-title bg-secondary text-white m-0 p-1">User Profile</div>
+      <div className="card-title bg-secondary text-white m-0 p-1">{language.User_Profile}</div>
 
       <div className="card-body">
         <div className="form-group row ml-3">
-          <div>Email: {user.name}</div>
+          <div>{language.email} {user.name}</div>
         </div>
         <div className="form-group row ml-3">
-          <div>Name: {user.email}</div>
+          <div>{language.name} {user.email}</div>
         </div>
 
         <div className="card address">
@@ -42,7 +46,7 @@ function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicC
             <div className="form-group row mt-1">
               <div className="col input-group">
                 <div className="input-group-prepend">
-                  <span className="input-group-text">Address</span>
+                  <span className="input-group-text">{language.Address}</span>
                 </div>
                 <input
                   className="form-control"
@@ -53,7 +57,7 @@ function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicC
                 <button
                   className="btn btn-primary  "
                   onClick={e => clickUpdateAddress(e)}>
-                  Update
+                  {language.Update}
                 </button>
               </div>
             </div>
@@ -70,14 +74,14 @@ function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicC
 
               <div className="text-right mt-0 mb-0">
                 <button className="btn btn-primary " onClick={e => clickUpdatePhone(e)}>
-                  Update
+                  {language.Update}
                 </button>
               </div>
             </div>
           </div>
         </div>
         <div className="card profile m-2">
-          <label className="ml-3">Profile Picture</label>
+          <label className="ml-3">{language.Profile_Picture}</label>
           <div className="form-group row">
             <div className="col ml-3">
               {user.profilepic === null ? (
@@ -92,7 +96,7 @@ function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicC
           </div>
           <div className="text-right">
             <button className="btn btn-primary  " onClick={e => clickUpdateProfilepic(e)}>
-              Update Profile picture
+              {language.Update_Profile_picture}
             </button>
           </div>
         </div>
