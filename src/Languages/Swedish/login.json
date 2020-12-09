@@ -47,6 +47,17 @@
 	"Video_Link" :"Videolänk",
 	"External_Link":"Extern länk",
 	"Assignment_name":"Uppdragsnamn ...",
-	"Link_Assignment":"Länk till uppdrag"
+	"Link_Assignment":"Länk till uppdrag",
+	"File_Uploaded":"Fil uppladdad",
+	"File_Deleted":"Fil borttagen",
+	"Contact_Us":"Kontakta oss",
+	"News_Deleted":"Nyheter borttagen",
+	"Daily_Highlight":"Dagliga höjdpunkter",
+	"No_news":"Inga nyheter ännu.",
+	"Title_news":"Nyhetens titel",
+	"Body_news":"Nyhetens kropp",
+	"Choose_Image":"Välj bild",
+	"Max_file":"Max filstorlek: 5 MB, accepterad: jpg, gif, png"
+	
 
 }

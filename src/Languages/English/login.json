@@ -47,7 +47,21 @@
 	"Video_Link" :"Video Link" ,
 	"External_Link":"External Link",
 	"Assignment_name":"Assignment name...",
-	"Link_Assignment":"Link to Assignment"
+	"Link_Assignment":"Link to Assignment",
+	"File_Uploaded":"File Uploaded",
+	"File_Deleted":"File Deleted",
+	"Contact_Us":"Contact-Us",
+	"News_Deleted":"News Deleted",
+	"Daily_Highlight":"Daily Highlight's",
+	"No_news":"No news yet.",
+	"Title_news":"Title of the news",
+	"Body_news":"Body of the news",
+	"Choose_Image":"Choose Image",
+	"Max_file":"Max file size: 5mb, accepted: jpg, gif, png"
+	
+
+	
+
 	
 	
 	

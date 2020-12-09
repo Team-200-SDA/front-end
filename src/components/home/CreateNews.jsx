@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import NewsApi from '../../api/NewsApi';
 
 import ImageUploader from '../imageuploader/ImageUploader';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
 
 export default function CreateNews(props) {
+  const { language } = useContext(LangContext);
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [image, setImage] = useState('');
@@ -33,14 +36,14 @@ export default function CreateNews(props) {
       <div className="form-group">
         <input
           className="form-control"
-          placeholder={`Title of the news`}
+          placeholder={language.Title_news}
           value={title}
           onChange={event => setTitle(event.target.value)}
         />
 
         <textarea
           className="form-control"
-          placeholder={`Body of the news`}
+          placeholder={language.Body_news}
           value={body}
           onChange={event => setBody(event.target.value)}
         />
@@ -52,7 +55,7 @@ export default function CreateNews(props) {
 
       <div className="form-group">
         <button className="btn btn-primary  " onClick={createNews}>
-          Publish
+          {language.Publish}
         </button>
       </div>
     </div>

@@ -15,7 +15,7 @@ export default function FileStorage({ file, onFileDelete }) {
         <button
           className="btn btn-danger file-delete"
           onClick={() => onFileDelete(file.id)}>
-          Delete
+          {language.Delete}
         </button>
       </div>
     </div>
