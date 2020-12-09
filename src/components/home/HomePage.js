@@ -6,7 +6,11 @@ import NewsApi from '../../api/NewsApi';
 import CreateNews from './CreateNews';
 import News from './News';
 
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
+
 export default function HomePage() {
+  const { language } = useContext(LangContext);
   const [news, setNews] = useState([]);
 
   const user_role = window.sessionStorage.getItem('role');
@@ -24,7 +28,7 @@ export default function HomePage() {
 
   function deleteNews(newsId) {
     NewsApi.deleteNews(newsId).then(() => {
-      alert('News Deleted');
+      alert(language.News_Deleted);
       getAllNews(); // to refresh the list immediately
     });
   }
@@ -32,7 +36,7 @@ export default function HomePage() {
   return (
     <>
       <div className="news-title-div">
-        <h1 className="news-title">Daily Highlight's </h1>
+        <h1 className="news-title">{language.Daily_Highlight} </h1>
       </div>
       <div className="news-div">
         {user_role !== 'teacher' ? null : (
@@ -40,7 +44,7 @@ export default function HomePage() {
         )}
 
         {news.length === 0
-          ? 'No news yet.'
+          ? language.No_news
           : news.map(news => <News key={uuid()} news={news} deleteNews={deleteNews} />)}
       </div>
     </>

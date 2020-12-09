@@ -3,8 +3,11 @@
 import React, { useEffect, useState } from 'react';
 import getFilenameAndExtension from '../../js/functions/fileUpload/getFilenameAndExtention';
 import FileUploader from './FileUploader';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
 
 export default function FileStorageForm({ uploadFile }) {
+  const { language } = useContext(LangContext);
   const [uploadResponse, setUploadResponse] = useState(null);
 
   useEffect(() => {
@@ -22,7 +25,7 @@ export default function FileStorageForm({ uploadFile }) {
 
   return (
     <div className="card card-filestorage">
-      <h4 className="card-title-upload">File Storage</h4>
+      <h4 className="card-title-upload">{language.File_Storage}</h4>
       <div className="card-body storage-uploader">
         <FileUploader setUploadResponse={setUploadResponse} uploadType={`UPLOAD`} />
       </div>
