@@ -20,6 +20,9 @@ import TodoCreateComponent from './components/todo/TodoCreateComponent';
 import TodoListComponent from './components/todo/TodoListComponent';
 import SubjectsPage from './components/subject/SubjectsPage';
 import LecturePage from './components/lecture/LecturePage';
+import PostsPage from "./components/forum/posts/PostsPage";
+import CommentPageDetails from "./components/forum/comments/CommentPageDetails";
+import CommentsPage from "./components/forum/comments/CommentsPage";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());

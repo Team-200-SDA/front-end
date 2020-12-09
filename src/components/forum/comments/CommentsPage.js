@@ -34,6 +34,7 @@ function CommentsPage() {
                     comment= {comments}
                     onCommentDelete = {deleteComment} 
                     onCommentUpdate = {updateComment}
+                    getAll = {getAll}
                 />
            }
         </div>

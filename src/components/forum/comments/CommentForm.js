@@ -14,10 +14,17 @@ export default function CommentForm({
   isUpdate,
   comment,
   onSaveUpdatedComment,
-  onCommentUpdate
+  onCommentUpdate,
+  getAll
 }) {
   const [body, setBody] = useState(initialBody || "");
-
+  const [newComment, setNewComment] = useState(comment)
+ 
+  
+  const getCommentsByPostId = (id) => {
+    CommentsApi.getCommentById(id)
+  }
+  
   const onCreateCommentClick = (e) => {
     e.preventDefault();
     const commentData = { body, post:post};
@@ -33,12 +40,21 @@ export default function CommentForm({
 //     .then(()=>{setBody(updatedComment)})
 // }
 
+
+const forupdatedComment  = async (e) => {
+  e.preventDefault();
+  const updatedComment = { ...comment, body };
+  await CommentsApi.updateComment(updatedComment).then(() => {setIsUpdate(false); comment=updatedComment})
+  
+  }
+
+
   return (
     <div className="card mt-4">
       <div className="card-body">
         <h4 className="card-title">{formTitle || "Create a comment"}</h4>
         {/* <form onSubmit = {isUpdate ? toUpdateComment : onCreateCommentClick}> */}
-        <form onSubmit = {isUpdate ? onCommentUpdate : onCreateCommentClick}>
+        <form onSubmit = {isUpdate ? forupdatedComment : onCreateCommentClick}>
           <div className="form-group">
             <label>Body:</label>
             <textarea

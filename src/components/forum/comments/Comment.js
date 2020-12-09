@@ -3,7 +3,7 @@ import CommentForm from './CommentForm';
 import UserApi from '../../../api/UserApi';
 import CommentsApi from '../../../api/CommentsApi'
 
-function Comment({comment, onCommentDelete, onCommentUpdate }) {
+function Comment({comment, onCommentDelete, onCommentUpdate, getAll }) {
   
   const [isUpdate, setIsUpdate] = useState(false);
 
@@ -59,6 +59,7 @@ function Comment({comment, onCommentDelete, onCommentUpdate }) {
             comment = {comment}
             onSaveUpdatedComment = {onSaveUpdatedComment}
             onCommentUpdate = {onCommentUpdate}
+            getAll = {getAll}
         />
     ) : (
       <div className="card mt-4">
