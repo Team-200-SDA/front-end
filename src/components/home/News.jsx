@@ -2,8 +2,11 @@ import React from 'react';
 
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
 
 export default function News({ news, deleteNews }) {
+  const { language } = useContext(LangContext);
   const user_role = window.sessionStorage.getItem('role');
 
   return (
@@ -20,7 +23,7 @@ export default function News({ news, deleteNews }) {
         </div>
         {user_role !== 'teacher' ? null : (
           <button className="btn btn-light" onClick={() => deleteNews(news.id)}>
-            Delete
+           {language.Delete}
           </button>
         )}
       </div>

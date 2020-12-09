@@ -30,6 +30,8 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
   const [conversations, setConversations] = useState([]);
   Auth.bindLoggedInStateSetter(setLoggedIn);
+ 
+
 
   const loggedInRouter = (
     <div className="app">

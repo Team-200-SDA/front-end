@@ -2,8 +2,12 @@ import React from 'react';
 import { useItemFinishListener } from '@rpldy/uploady';
 import { asUploadButton } from '@rpldy/upload-button';
 import { Button } from '@material-ui/core';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
+
 
 function UploaderButton({ setUploadResponse, uploadType }) {
+  const { language } = useContext(LangContext);
   const CustomButton = asUploadButton(
     React.forwardRef((props, ref) => (
       <Button
@@ -11,7 +15,7 @@ function UploaderButton({ setUploadResponse, uploadType }) {
         variant="contained"
         color="primary"
         disabled={uploadType !== 'UPLOAD'}>
-        Upload
+       {language.Upload}
       </Button>
     ))
   );

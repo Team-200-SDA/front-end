@@ -6,14 +6,17 @@ import Chatbot from 'react-chatbot-kit';
 import ActionProvider from '../../js/chatbot-resources/ActionProvider';
 import MessageParser from '../../js/chatbot-resources/MessageParser';
 import config from '../../js/chatbot-resources/config';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
 
 export default function Footer() {
+  const { language } = useContext(LangContext);
   const [botOpen, setBotOpen] = useState(false);
   return (
     <footer className="bottom bg-dark text-white ">
       <Button className="footer-button" variant="contained">
         <a href="mailto: sda.team200@gmail.com">
-          Contact-Us <i className="fas fa-envelope"></i>
+          {language.Contact_Us} <i className="fas fa-envelope"></i>
         </a>
       </Button>
       <Button
