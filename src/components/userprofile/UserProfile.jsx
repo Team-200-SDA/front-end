@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import UserProfileForm from "./UserProfileForm";
+import UserProfileForm1 from "./UserProfileForm1";
 import UserApi from "../../api/UserApi";
 
 function UserProfile() {
@@ -50,7 +51,7 @@ function UserProfile() {
 
   return (
     <div>
-      <UserProfileForm
+      <UserProfileForm1
         user={user}
         onUpdateClick={updatedAddress}
         onUpdatePhoneClick={updatedPhoneno}

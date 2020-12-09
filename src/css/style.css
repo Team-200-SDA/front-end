@@ -11,4 +11,5 @@
 @import './imageUploader/imageUploader.css';
 @import './subjects/_subjects.css';
 @import './layout//navbar.css';
-@import './news/news.css'
+@import './news/news.css';
+@import './userProfile/UserProfile.css';

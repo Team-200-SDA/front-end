@@ -5,12 +5,13 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: var(--light) !important;
+    background-color: var(--slate-gray) !important;
     border-top-left-radius: 20px !important;
     border-top-right-radius: 20px !important;
 }
 
 button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.footer-button {
     margin: 10px;
-    background-color: var(--dominant);
+    background-color: var(--accent);
 }
+
