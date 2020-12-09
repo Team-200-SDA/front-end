@@ -17,10 +17,15 @@
   justify-content: center;
 }
 
-.button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.conversation-button.MuiButton-containedPrimary {
-  /* margin-right: 10px; */
-}
-
 .ui.selection.dropdown.conversation-dropdown {
   margin-left: 10px;
+}
+
+.private-chat-layout {
+  
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 20% 1fr;
+  /* padding-bottom: 30px; */
+  /* grid-template-rows: 100%; */
 }

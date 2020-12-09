@@ -1,19 +1,22 @@
 import { Fab, IconButton, TextField } from '@material-ui/core';
 import { DeleteRounded, Send } from '@material-ui/icons';
 import { format } from 'date-fns';
+import produce from 'immer';
 import React, { useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import PrivChatApi from '../../api/PrivChatApi';
 import PrivMessage from './PrivMessage';
 
-function PrivChatThread({ conversations }) {
-  const history = useHistory();
+function PrivChatThread({
+  conversations,
+  activeThreadReceiver,
+  setActiveThreadReceiver,
+  setConversations
+}) {
   const [messageField, setMessageField] = useState('');
-  const receiverName = useParams().receiverName;
   // This needs to be let, or inbox (parent component) wont update with
   // messages from other/new 1st time senders 🤷‍♂️
-  let thread = conversations.find(thread => thread.receiverName === receiverName);
+  let thread = conversations.find(thread => thread.receiverName === activeThreadReceiver);
 
   const sendMessage = async event => {
     event.preventDefault();
@@ -33,8 +36,16 @@ function PrivChatThread({ conversations }) {
     thread.thread.forEach(async msg => {
       await PrivChatApi.deleteMessage(msg.id);
     });
-    history.push('/private-messaging');
-    window.location.reload();
+    setActiveThreadReceiver('');
+    removeThread(thread);
+  };
+
+  const removeThread = deleteThread => {
+    // This is used to remove the empty thread from the conversations array
+    const immerState = produce(conversations, draft => {
+      return draft.filter(thread => thread.receiverName !== deleteThread.receiverName);
+    });
+    setConversations(immerState);
   };
 
   const messagesToRender = thread.thread.map(message => (
@@ -42,16 +53,12 @@ function PrivChatThread({ conversations }) {
   ));
 
   return (
-    <div className="public-chat-wrap">
-      <div className="public-chat-title-div">
-        <h1 className="public-chat-title">Private Chat</h1>
-      </div>
+    <>
       <div className="card-body public-chat-body">
         <h3>Chatting with {thread.thread[0].receiverName}</h3>
         <div className="chat-wrapper">
           <div className="jsx-messages">{messagesToRender}</div>
         </div>
-
         <form
           onSubmit={e => sendMessage(e)}
           className="message-form"
@@ -81,7 +88,7 @@ function PrivChatThread({ conversations }) {
           </IconButton>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -5,7 +5,7 @@
 }
 
 .card-body.public-chat-body {
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   flex-grow: 1;
   max-height: 78vh;
   display: flex;
@@ -17,6 +17,15 @@
   display: flex;
   flex-direction: column-reverse;
   overflow-y: auto;
+}
+
+.message-form {
+  display: flex;
+  align-items: center;
+}
+
+.jsx-messages {
+  border-left: 1px solid rgb(196, 196, 196);
 }
 
 .message-form {

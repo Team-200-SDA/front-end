@@ -5,15 +5,15 @@ import { Dropdown } from 'semantic-ui-react';
 import UserApi from '../../api/UserApi';
 import { format } from 'date-fns';
 import PrivChatApi from '../../api/PrivChatApi';
-import { useHistory } from 'react-router-dom';
 import { Button } from '@material-ui/core';
+import PrivChatThread from './PrivChatThread';
 
-function PrivChatInbox({ conversations }) {
+function PrivChatInbox({ conversations, setConversations }) {
   const loggedInUser = window.sessionStorage.getItem('user');
   const [activeUserThreads, setActiveUserThreads] = useState([]);
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState('');
-  const history = useHistory();
+  const [activeThreadReceiver, setActiveThreadReceiver] = useState('');
 
   useEffect(() => {
     const getUsers = async () => {
@@ -36,17 +36,14 @@ function PrivChatInbox({ conversations }) {
         date: format(new Date(), 'HH:mm dd-MMM-yyyy'),
         receiverEmail: infoArray[0]
       });
-      const receiverName = findUserByEmail(infoArray[0]).name;
+      infoArray.shift();
       setTimeout(() => {
-        history.push(`chat-thread/${receiverName}`);
-      }, 500);
+        setActiveThreadReceiver(infoArray.join(' '));
+      }, 75);
     } catch (error) {
       console.log(error);
     }
   };
-
-  const findUserByEmail = dropDownEmail =>
-    users.find(user => user.email === dropDownEmail);
 
   const dropDownFiltered = users.filter(
     user => user.name !== loggedInUser && !activeUserThreads.includes(user.name)
@@ -69,11 +66,18 @@ function PrivChatInbox({ conversations }) {
     .sort((a, b) => (a.timeStamp > b.timeStamp ? -1 : a.timeStamp < b.timeStamp ? 1 : 0));
 
   const jsxConversations = sortedConversations.map(conversation => (
-    <PrivConversationCard key={uuid()} conversation={conversation} />
+    <PrivConversationCard
+      key={uuid()}
+      setActiveThreadReceiver={setActiveThreadReceiver}
+      conversation={conversation}
+    />
   ));
 
   return (
-    <div>
+    <>
+      <div className="public-chat-title-div">
+        <h1 className="public-chat-title">Private Chat</h1>
+      </div>
       <div className="start-conversation">
         <Button
           className="conversation-button"
@@ -83,6 +87,7 @@ function PrivChatInbox({ conversations }) {
           Start a conversation
         </Button>
         <Dropdown
+          disabled={dropDownUsers.length === 0}
           className="conversation-dropdown"
           onChange={(event, data) => setSelectedUser(data.value)}
           placeholder="with... ?"
@@ -90,8 +95,19 @@ function PrivChatInbox({ conversations }) {
           options={dropDownUsers}
         />
       </div>
-      {jsxConversations}
-    </div>
+      <div className="public-chat-wrap private-chat-layout">
+        <div>{jsxConversations}</div>
+
+        {activeThreadReceiver !== '' ? (
+          <PrivChatThread
+            setConversations={setConversations}
+            setActiveThreadReceiver={setActiveThreadReceiver}
+            activeThreadReceiver={activeThreadReceiver}
+            conversations={conversations}
+          />
+        ) : null}
+      </div>
+    </>
   );
 }
 

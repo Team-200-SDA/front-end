@@ -8,7 +8,7 @@ import { Fab, TextField } from '@material-ui/core';
 import { Send } from '@material-ui/icons';
 import { format } from 'date-fns';
 
-const wsEndpoint = 'http://localhost:8080/ws';
+const wsEndpoint = 'https://edulane-backend.herokuapp.com/ws';
 const sockJsConfig = {
   transports: ['xhr-streaming'],
   headers: { Authorization: window.sessionStorage.getItem('_token') }
@@ -78,6 +78,7 @@ function Chat() {
       <div className="public-chat-title-div">
         <h1 className="public-chat-title">Public Chat</h1>
       </div>
+
       <div className="card-body public-chat-body">
         <div className="chat-wrapper">
           <div className="jsx-messages">{messagesToRender}</div>
