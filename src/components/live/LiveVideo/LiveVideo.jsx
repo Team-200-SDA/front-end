@@ -177,21 +177,30 @@ export default function LiveVideo() {
   const enableStartButton = appState === STATE_IDLE;
 
   return (
-    <div className={`${showCall ? 'live' : 'offline'}`}>
-      {showCall ? (
-        // Should have used recoil, but anyway, Context it is.
-        <CallObjectContext.Provider value={callObject}>
-          <Call roomUrl={roomUrl} />
-          <Tray disabled={!enableCallButtons} onClickLeaveCall={startLeavingCall} />
-        </CallObjectContext.Provider>
-      ) : (
-        <StartButton
-          disabled={!enableStartButton}
-          onClick={() => {
-            createCall().then(url => startJoiningCall(url));
-          }}
-        />
-      )}
-    </div>
+    <>
+      <div className="public-chat-title-div">
+        <h1 className="public-chat-title">
+          <i class="fas fa-video title-icon" />
+          Live Stream
+        </h1>
+      </div>
+
+      <div className={`card-body ${showCall ? 'live' : 'offline'}`}>
+        {showCall ? (
+          // Should have used recoil, but anyway, Context it is.
+          <CallObjectContext.Provider value={callObject}>
+            <Call roomUrl={roomUrl} />
+            <Tray disabled={!enableCallButtons} onClickLeaveCall={startLeavingCall} />
+          </CallObjectContext.Provider>
+        ) : (
+          <StartButton
+            disabled={!enableStartButton}
+            onClick={() => {
+              createCall().then(url => startJoiningCall(url));
+            }}
+          />
+        )}
+      </div>
+    </>
   );
 }
