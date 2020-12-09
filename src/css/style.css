@@ -3,12 +3,11 @@
 @import './chat/_privChatInbox.css';
 @import './assignment/assignment.css';
 @import './assignment/assignmentPage.css';
-@import './lecture/lecture.css';
-@import './lecture/lecturePage.css';
 @import './layout/footer.css';
 @import './fileStorage//FileStorage.css';
 @import './chatbot/_chatbot.css';
 @import './imageUploader/imageUploader.css';
 @import './subjects/_subjects.css';
+@import './lecture/_lecture.css';
 @import './layout//navbar.css';
 @import './news/news.css'

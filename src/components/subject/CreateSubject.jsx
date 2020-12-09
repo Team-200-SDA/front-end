@@ -12,13 +12,14 @@ function CreateSubject({ getSubjects }) {
     await SubjectApi.create({ name, description, link });
     setName('');
     setDescription('');
+    setLink('');
     getSubjects();
   };
 
   return (
-    <Card className="card card-filestorage">
-      <h4 className="card-title-upload">Create a Subject</h4>
-      <div className="card-body storage-uploader">
+    <Card className="subject-body">
+      <h3 className="card-title-upload">Create a Subject</h3>
+      <div className="storage-uploader">
         <FormLabel component="legend">Subject Name and Description</FormLabel>
         <input
           className="form-control assignment"
