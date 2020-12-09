@@ -1,6 +1,6 @@
 :root {
---dominant: linear-gradient(to right,  #314755 0%, #26a0da  51%, #314755 100%);
---text: hsla(193, 100%, 8%, 1);
---accent: #ececec;
---light: #f5f5f5;
-}
+    --dominant: linear-gradient(to right, #1E3C72 0%, #2A5298  51%, #1E3C72  100%);
+    --text: hsla(193, 100%, 8%, 1);
+    --accent: #ececec;
+    --light: #f2f2f2;
+    }

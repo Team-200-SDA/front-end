@@ -22,13 +22,13 @@ function CreateSubject({ getSubjects }) {
       <div className="storage-uploader">
         <FormLabel component="legend">Subject Name and Description</FormLabel>
         <input
-          className="form-control assignment"
+          className="form-control subject"
           placeholder="Subject Name..."
           value={name}
           onChange={event => setName(event.target.value)}
         />
         <input
-          className="form-control assignment"
+          className="form-control subject"
           placeholder="Subject Description..."
           value={description}
           onChange={event => setDescription(event.target.value)}

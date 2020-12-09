@@ -1,6 +1,5 @@
 .fileContainer .chooseFileButton {
   color: #fff;
-  /* background-color: #3f51b5; */
   background: var(--dominant);
   background-size: 200% auto;
   background-position: left center;

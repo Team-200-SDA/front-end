@@ -25,6 +25,18 @@
   margin-right: 25px;
 }
 
+input.form-control.subject{
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.form-group .upload-button {
+  color: white;
+  /* background: var(--dominant); */
+  background-size: 200% auto;
+  background-position: left center;
+}
+
 .subject-page-cards {
   display: flex;
   flex-wrap: wrap;

@@ -40,7 +40,7 @@ function Subject({ subject, getSubjects, userRole }) {
             className="subject-button"
             onClick={() => deleteSubject(subject.id)}
             size="small"
-            color="primary">
+            color="var(--dominant)">
             Delete
           </Button>
         </CardActions>
