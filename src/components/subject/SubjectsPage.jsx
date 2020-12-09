@@ -31,12 +31,13 @@ function SubjectsPage() {
   });
 
   return (
-    <>
-      <div className="subject-div card-body">
-        <div className="subject-title-div">
-          <h1 className="subject-title">Lectures Modules</h1>
-          <img className="app-logo" src={Logo} alt="" />
-        </div>
+    <div className="public-chat-wrap">
+      <div className="public-chat-title-div">
+        <h1 className="public-chat-title">
+        <i class="fas fa-book-open title-icon" />
+          Lecture Modules
+        </h1>
+      </div>
       
       {/* Loads Lecture Creation component based on user role */}
       {userRole !== 'teacher' ? null : <CreateSubject getSubjects={getSubjects} />}
@@ -44,7 +45,6 @@ function SubjectsPage() {
         {jsxSubjects}
       </div>
       </div>
-    </>
   );
 }
 

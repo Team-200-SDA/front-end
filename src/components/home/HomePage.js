@@ -34,10 +34,14 @@ export default function HomePage() {
   }
 
   return (
-    <>
-      <div className="news-title-div">
-        <h1 className="news-title">{language.Daily_Highlight} </h1>
+    <div className="public-chat-wrap">
+      <div className="public-chat-title-div">
+        <h1 className="public-chat-title">
+        <i class="fas fa-newspaper title-icon" />
+        {language.Daily_Highlight}
+        </h1>
       </div>
+      
       <div className="news-div">
         {user_role !== 'teacher' ? null : (
           <CreateNews news={news} getAllNews={getAllNews} />
@@ -47,6 +51,6 @@ export default function HomePage() {
           ? language.No_news
           : news.map(news => <News key={uuid()} news={news} deleteNews={deleteNews} />)}
       </div>
-    </>
+    </div>
   );
 }
