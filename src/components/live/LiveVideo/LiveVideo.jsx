@@ -178,8 +178,8 @@ export default function LiveVideo() {
 
   return (
     <>
-      <div className="public-chat-title-div">
-        <h1 className="public-chat-title">
+      <div className="title-div">
+        <h1 className="page-title-text">
           <i class="fas fa-video title-icon" />
           Live Stream
         </h1>
