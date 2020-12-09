@@ -13,7 +13,7 @@ export default function Footer() {
     <footer className="bottom">
       <div className="footer-button" variant="contained">
         <a href="mailto: sda.team200@gmail.com">
-          <i class="fas fa-envelope footer-icon" />
+          <i className="fas fa-envelope footer-icon" />
         </a>
       </div>
       <span className="copyright">&#169;2020 EDULANE. All Rights Reserved</span>
@@ -22,7 +22,7 @@ export default function Footer() {
         onClick={() => setBotOpen(!botOpen)}
         variant="contained">
         <span className="bot-button-text">
-          <i class="fas fa-robot footer-icon" />
+          <i className="fas fa-robot footer-icon" />
         </span>
       </div>
       {botOpen ? (

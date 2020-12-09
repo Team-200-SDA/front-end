@@ -180,7 +180,7 @@ export default function LiveVideo() {
     <>
       <div className="title-div">
         <h1 className="page-title-text">
-          <i class="fas fa-video title-icon" />
+          <i className="fas fa-video title-icon" />
           Live Stream
         </h1>
       </div>

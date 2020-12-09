@@ -28,7 +28,7 @@ export default function FileStorageForm({ uploadFile }) {
     <>
       <div className="title-div">
         <h1 className="page-title-text">
-          <i class="fas fa-archive title-icon" />
+          <i className="fas fa-archive title-icon" />
           File Storage
         </h1>
       </div>

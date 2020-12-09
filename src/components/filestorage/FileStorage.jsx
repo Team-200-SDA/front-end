@@ -10,7 +10,7 @@ export default function FileStorage({ file, onFileDelete }) {
 
   return (
     <div className="card-body card-body-filestorage">
-      <i class={`fas ${fileType} file-type-icons`} />
+      <i className={`fas ${fileType} file-type-icons`} />
       <span>
         <a className="file-link" target="_blank" rel="noreferrer" href={file.link}>
           {file.fileName}
