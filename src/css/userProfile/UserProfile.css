@@ -11,7 +11,8 @@
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
   color: var(--text);
-  height: 530px;
+  height: auto;
+  width: 310px;
 }
 
 .body-user-profile {
@@ -24,28 +25,40 @@ button.button-update {
   height: 30px;
   border-radius: 10px;
 }
-/* .grid-Userdetails {
- display: grid;
-    grid-row-gap: 16px;
-} */
+ .grid-Userdetails {
+ text-align: left;
+ margin-left: 50px;
+ margin-bottom: 10px;
+} 
 
 div.col.input-group {
   
 }
 @media only screen and (min-width: 660px) {
+  .user-profile {
+    width: auto;
+  }
+  .grid-Userdetails {
+    display: grid;
+    grid-template-columns: auto auto;
+} 
+.grid-profile {
+    display: grid;
+    grid-template-columns: auto auto;
+} 
 }
 @media only screen and (min-width: 900px) {
-  .user-profile {
+  /* .user-profile {
     height: 530px;
-  }
+  } */
 }
 @media only screen and (min-width: 1100px) {
-  .user-profile {
+  /* .user-profile {
     height: 550px;
-  }
+  } */
 }
 @media only screen and (min-width: 1366px) {
-  .user-profile {
+  /* .user-profile {
     height: 620px;
-  }
+  } */
 }

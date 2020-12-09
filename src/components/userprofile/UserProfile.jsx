@@ -51,7 +51,7 @@ function UserProfile() {
 
   return (
     <div>
-      <UserProfileForm1
+      <UserProfileForm
         user={user}
         onUpdateClick={updatedAddress}
         onUpdatePhoneClick={updatedPhoneno}
