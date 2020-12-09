@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { CreateRounded, BorderColorRounded } from '@material-ui/icons';
+import { CreateRounded } from '@material-ui/icons';
 import PrivConversationCard from './PrivConversationCard';
 import { v4 as uuid } from 'uuid';
 import { Dropdown } from 'semantic-ui-react';
 import UserApi from '../../api/UserApi';
 import { format } from 'date-fns';
 import PrivChatApi from '../../api/PrivChatApi';
-import { Button } from '@material-ui/core';
 import { useContext } from 'react';
 import { LangContext } from '../../contexts/LanguageContext';
 import PrivChatThread from './PrivChatThread';
