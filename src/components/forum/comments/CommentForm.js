@@ -2,13 +2,19 @@ import React, { useState } from "react";
 import CommentsApi from "../../../api/CommentsApi";
 
 
+
 export default function CommentForm({
   onSubmit,
   initialBody,
   onCancel,
   formTitle,
-  isFormOpen,
-  post
+  setIsFormOpen,
+  post,
+  setIsUpdate,
+  isUpdate,
+  comment,
+  onSaveUpdatedComment,
+  onCommentUpdate
 }) {
   const [body, setBody] = useState(initialBody || "");
 
@@ -16,14 +22,23 @@ export default function CommentForm({
     e.preventDefault();
     const commentData = { body, post:post};
     return CommentsApi.createComment(commentData)
-      .then(() => isFormOpen(false));        
+      .then(() => setIsFormOpen(false));        
   };
+
+ 
+//   const toUpdateComment  = (e) => {
+//     e.preventDefault();
+//     const updatedComment = { ...comment, body };
+//     return CommentsApi.updateComment(updatedComment).then(() => {setIsUpdate(false)})
+//     .then(()=>{setBody(updatedComment)})
+// }
 
   return (
     <div className="card mt-4">
       <div className="card-body">
         <h4 className="card-title">{formTitle || "Create a comment"}</h4>
-        <form onSubmit={onCreateCommentClick}>
+        {/* <form onSubmit = {isUpdate ? toUpdateComment : onCreateCommentClick}> */}
+        <form onSubmit = {isUpdate ? onCommentUpdate : onCreateCommentClick}>
           <div className="form-group">
             <label>Body:</label>
             <textarea
@@ -39,6 +54,7 @@ export default function CommentForm({
             <button className="btn btn-info" type="submit">
               Save
             </button>
+            
             <button
               className="btn btn-outline"
               type="button"

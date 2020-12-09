@@ -25,7 +25,7 @@ function CommentsPage() {
        return CommentsApi.deleteComment(comment.id)
             .then(() => setComments(comments.filter(a => a.id !== comment.id)));
     }
- 
+    
     return (
         
         <div>

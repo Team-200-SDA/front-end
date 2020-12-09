@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import CommentForm from './CommentForm';
 import UserApi from '../../../api/UserApi';
-import Auth from '../../../services/Auth';
-
+import CommentsApi from '../../../api/CommentsApi'
 
 function Comment({comment, onCommentDelete, onCommentUpdate }) {
+  
   const [isUpdate, setIsUpdate] = useState(false);
 
 
@@ -23,15 +23,21 @@ function Comment({comment, onCommentDelete, onCommentUpdate }) {
   const isMyPost = comment.user.id === user.id
 
 
-  // const onUpdateComment = () => {
-  //   setIsUpdate(true);
-  // };
+  const onUpdateComment = () => {
+    setIsUpdate(true);
+  };
+
+  const onSaveUpdatedComment = () => {
+    setIsUpdate(false);
+  };
 
   const onCommentFormSubmit = (commentData) => {
     const updatedComment = { ...comment, ...commentData };
     return onCommentUpdate(updatedComment)
         .then(() => setIsUpdate(false));
   };
+
+
 
   const onCommentFormCancel = () => {
     setIsUpdate(false);
@@ -42,9 +48,17 @@ function Comment({comment, onCommentDelete, onCommentUpdate }) {
     { isUpdate ? (
         <CommentForm
             initialBody={comment.body}
-            onSubmit={onCommentFormSubmit}
+            // onSubmit={onCommentFormSubmit}
+            onCommentFormSubmit = {onCommentFormSubmit}
             onCancel={onCommentFormCancel}
             formTitle="Update comment"
+            // value={body}
+            // onChange={(e) => setBody(e.target.value)}
+            isUpdate = {isUpdate}
+            setIsUpdate = {setIsUpdate}
+            comment = {comment}
+            onSaveUpdatedComment = {onSaveUpdatedComment}
+            onCommentUpdate = {onCommentUpdate}
         />
     ) : (
       <div className="card mt-4">
@@ -63,6 +77,10 @@ function Comment({comment, onCommentDelete, onCommentUpdate }) {
               Delete
             </button>
          
+            <button className="btn btn-warning mt-3 ml-3" onClick={onUpdateComment}>
+                    Update
+                  </button>
+
             </>
             )}
           </div>

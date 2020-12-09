@@ -82,6 +82,7 @@ function Post({ post, onPostUpdate, onPostDelete }) {
                   <button className="btn btn-warning" onClick={onUpdateClick}>
                     Update
                   </button>
+                                
                   <button
                     className="btn btn-danger ml-3"
                     onClick={() => onPostDelete(post)}
@@ -98,7 +99,7 @@ function Post({ post, onPostUpdate, onPostDelete }) {
                < CommentForm
                   onCancel={onCreateCommentCancel}
                   onSubmit={onCreateCommentClick}
-                  isFormOpen={setIsFormOpen}
+                  setIsFormOpen={setIsFormOpen}
                   post={post}            
                 />        
               }  
