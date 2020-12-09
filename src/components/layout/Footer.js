@@ -13,12 +13,13 @@ export default function Footer() {
   const { language } = useContext(LangContext);
   const [botOpen, setBotOpen] = useState(false);
   return (
-    <footer className="bottom bg-dark text-white ">
+    <footer className="bottom">
       <Button className="footer-button" variant="contained">
         <a href="mailto: sda.team200@gmail.com">
           {language.Contact_Us} <i className="fas fa-envelope"></i>
         </a>
       </Button>
+      <span className="copyright">&#169;2020 EDULANE. All Rights Reserved</span>
       <Button
         className="footer-button"
         onClick={() => setBotOpen(!botOpen)}
