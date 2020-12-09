@@ -1,5 +1,7 @@
 import React from 'react';
 import fileTypeImage from '../../js/functions/fileUpload/fileTypeImage';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
 
 export default function FileStorage({ file, onFileDelete }) {
   const { language } = useContext(LangContext);
