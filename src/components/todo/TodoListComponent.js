@@ -71,7 +71,7 @@ function TodoListComponent() {
     <div className="container">
       <div className="card">
         <div className="card-header bg-secondary text-white">
-          <h4>Todo List</h4>
+          <h4>To-do List</h4>
         </div>
 
         <div className="card-body">
@@ -81,14 +81,15 @@ function TodoListComponent() {
                 <td>Title</td>
                 <td>Description</td>
                 <td>Due Date</td>
-                <td>Complete</td>
+                <td>Mark as Complete</td>
+                <td>Delete</td>
               </tr>
             </thead>
             <tbody>{jsxTodos}</tbody>
           </table>
         </div>
         <div className="card-footer">
-          <Link to="/todo-form" className="btn btn-danger">
+          <Link to="/todo-form" className="btn btn-success">
             Create
           </Link>
         </div>

@@ -10,4 +10,5 @@
 @import './subjects/_subjects.css';
 @import './lecture/_lecture.css';
 @import './layout//navbar.css';
-@import './news/news.css'
+@import './news/news.css';
+@import './todo/_todo.css'

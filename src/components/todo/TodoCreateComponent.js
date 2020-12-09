@@ -22,7 +22,7 @@ function StudentCreateComponent() {
       <form onSubmit={event => createTodo(event)}>
         <div className="card">
           <div className="card-header bg-secondary text-white">
-            <h4>Create Todo</h4>
+            <h4>Create To-do</h4>
             <span style={{ color: 'red' }}>{null}</span>
           </div>
 
