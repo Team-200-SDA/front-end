@@ -5,8 +5,11 @@ import SubjectApi from '../../api/SubjectApi';
 import CreateSubject from './CreateSubject';
 import Subject from './Subject';
 import Logo from '../../assets/images/logo.png';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
 
 function SubjectsPage() {
+  const { language } = useContext(LangContext);
   const [subjects, setSubjects] = useState([]);
   const userRole = window.sessionStorage.getItem('role');
 
@@ -34,7 +37,7 @@ function SubjectsPage() {
     <>
       <div className="subject-div card-body">
         <div className="subject-title-div">
-          <h1 className="subject-title">Lectures Modules</h1>
+          <h1 className="subject-title">{language.Lectures_Modules}</h1>
           <img className="app-logo" src={Logo} alt="" />
         </div>
       

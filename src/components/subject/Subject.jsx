@@ -9,11 +9,14 @@ import {
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SubjectApi from '../../api/SubjectApi';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
 
 function Subject({ subject, getSubjects, userRole }) {
+  const { language } = useContext(LangContext);
   const deleteSubject = async id => {
     await SubjectApi.delete(id);
-    alert("Subject Deleted");
+    alert(language.Subject_Deleted);
     getSubjects();
   };
 
@@ -41,7 +44,7 @@ function Subject({ subject, getSubjects, userRole }) {
             onClick={() => deleteSubject(subject.id)}
             size="small"
             color="primary">
-            Delete
+            {language.Delete}
           </Button>
         </CardActions>
       )}

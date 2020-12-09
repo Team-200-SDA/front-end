@@ -2,8 +2,11 @@ import { Button, Card, FormLabel } from '@material-ui/core';
 import React, { useState } from 'react';
 import SubjectApi from '../../api/SubjectApi';
 import ImageUploader from '../imageuploader/ImageUploader';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
 
 function CreateSubject({ getSubjects }) {
+  const { language } = useContext(LangContext);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [link, setLink] = useState('');
@@ -18,18 +21,18 @@ function CreateSubject({ getSubjects }) {
 
   return (
     <Card className="subject-body">
-      <h3 className="card-title-upload">Create a Subject</h3>
+      <h3 className="card-title-upload">{language.Create_Subject}</h3>
       <div className="storage-uploader">
-        <FormLabel component="legend">Subject Name and Description</FormLabel>
+        <FormLabel component="legend">{language.Subject_Name_Description}</FormLabel>
         <input
           className="form-control assignment"
-          placeholder="Subject Name..."
+          placeholder={language.Subject_Name}
           value={name}
           onChange={event => setName(event.target.value)}
         />
         <input
           className="form-control assignment"
-          placeholder="Subject Description..."
+          placeholder={language.Subject_Description}
           value={description}
           onChange={event => setDescription(event.target.value)}
         />
@@ -41,7 +44,7 @@ function CreateSubject({ getSubjects }) {
             color="primary"
             onClick={createSubject}
             disabled={name === '' || description === '' || link === ''}>
-            Create Subject
+            {language.create_Subject}
           </Button>
         </div>
       </div>
