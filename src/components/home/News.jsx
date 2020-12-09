@@ -1,5 +1,8 @@
 import React from 'react';
-
+import {
+  Card, CardActionArea
+} from '@material-ui/core';
+import { DeleteRounded } from '@material-ui/icons';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { useContext } from 'react';
@@ -10,23 +13,19 @@ export default function News({ news, deleteNews }) {
   const user_role = window.sessionStorage.getItem('role');
 
   return (
-    <div className="card news-card">
-      <div className="card-body">
-        <div>
-          <h3>{news.title}</h3>
-          <img className="news-image" src={news.image} alt="News" width="90%" />
-          <CardContent>
-            <Typography variant="body2" className="news-article-body" component="p">
+    <div className="card news-div">
+          <h2>{news.title}</h2>
+          <img className="news-image" src={news.image} alt="News" width="70%" />
+          <div>
+            <div className="news-article-body">
               {news.body}
-            </Typography>
-          </CardContent>
+            </div>
+          </div>
+          {user_role !== 'teacher' ? null : (
+          <div>
+          <DeleteRounded className="delete-thread news-delete" onClick={() => deleteNews(news.id)} />
         </div>
-        {user_role !== 'teacher' ? null : (
-          <button className="btn btn-light" onClick={() => deleteNews(news.id)}>
-           {language.Delete}
-          </button>
         )}
       </div>
-    </div>
   );
 }
