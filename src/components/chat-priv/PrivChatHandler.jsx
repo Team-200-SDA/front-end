@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useReducer, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { EventSourcePolyfill } from 'event-source-polyfill';
 import { produce } from 'immer';
 import PrivChatApi from '../../api/PrivChatApi';

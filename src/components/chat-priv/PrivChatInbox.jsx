@@ -68,6 +68,7 @@ function PrivChatInbox({ conversations, setConversations }) {
   const jsxConversations = sortedConversations.map(conversation => (
     <PrivConversationCard
       key={uuid()}
+      activeThreadReceiver={activeThreadReceiver}
       setActiveThreadReceiver={setActiveThreadReceiver}
       conversation={conversation}
     />
@@ -95,9 +96,8 @@ function PrivChatInbox({ conversations, setConversations }) {
           options={dropDownUsers}
         />
       </div>
-      <div className="public-chat-wrap private-chat-layout">
+      <div className="card-body private-chat-wrap private-chat-layout">
         <div>{jsxConversations}</div>
-
         {activeThreadReceiver !== '' ? (
           <PrivChatThread
             setConversations={setConversations}

@@ -53,42 +53,38 @@ function PrivChatThread({
   ));
 
   return (
-    <>
-      <div className="card-body public-chat-body">
-        <h3>Chatting with {thread.thread[0].receiverName}</h3>
-        <div className="chat-wrapper">
-          <div className="jsx-messages">{messagesToRender}</div>
-        </div>
-        <form
-          onSubmit={e => sendMessage(e)}
-          className="message-form"
-          noValidate
-          autoComplete="off">
-          <TextField
-            className="message-text-field"
-            id="outlined-full-width"
-            placeholder={`Send a message to ${thread.thread[0].receiverName}`}
-            helperText="Enter or Click to send."
-            fullWidth
-            margin="normal"
-            onChange={e => setMessageField(e.target.value)}
-            value={messageField}
-            InputLabelProps={{
-              shrink: true
-            }}
-            variant="outlined"
-          />
-          <Fab size="small" onClick={event => sendMessage(event)}>
-            <Send />
-          </Fab>
-        </form>
-        <div>
-          <IconButton onClick={() => deleteMessages()}>
-            <DeleteRounded />
-          </IconButton>
-        </div>
+    <div className="card public-chat-body">
+      <div className="private-chat-wrapper">
+        <div className="jsx-messages">{messagesToRender}</div>
       </div>
-    </>
+      <form
+        onSubmit={e => sendMessage(e)}
+        className="message-form"
+        noValidate
+        autoComplete="off">
+        <TextField
+          color="primary"
+          className="message-text-field"
+          id="outlined-full-width"
+          placeholder={`Send a message to ${thread.thread[0].receiverName}`}
+          helperText="Enter or Click to send."
+          fullWidth
+          margin="normal"
+          onChange={e => setMessageField(e.target.value)}
+          value={messageField}
+          InputLabelProps={{
+            shrink: true
+          }}
+          variant="outlined"
+        />
+        <Fab size="small" onClick={event => sendMessage(event)}>
+          <Send />
+        </Fab>
+      </form>
+      <div>
+        <DeleteRounded className="delete-thread" onClick={() => deleteMessages()} />
+      </div>
+    </div>
   );
 }
 

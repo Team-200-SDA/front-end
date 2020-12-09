@@ -25,7 +25,6 @@ body {
 
 .navbar {
   grid-area: sidebar;
-  /* width: 160px; */
   -webkit-box-shadow: -10px 0px 13px -7px #00000048, 10px 0px 13px -7px #00000048,
     0px 5px 15px 5px rgba(0, 0, 0, 0);
   box-shadow: -10px 0px 13px -7px #00000048, 10px 0px 13px -7px #00000048,
@@ -69,6 +68,13 @@ a:visited,
 a:active {
   color: var(--text);
   text-decoration: none;
+}
+
+button {
+  color: var(--light);
+  background: var(--dominant);
+  background-size: 200% auto;
+  background-position: right center;
 }
 
 

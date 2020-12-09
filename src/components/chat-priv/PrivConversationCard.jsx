@@ -2,14 +2,27 @@ import React from 'react';
 import { Avatar, Box } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
-function PrivConversationCard({ conversation, setActiveThreadReceiver }) {
+function PrivConversationCard({
+  conversation,
+  setActiveThreadReceiver,
+  activeThreadReceiver
+}) {
   return (
-    <Box className={`message-box-priv`} color="primary.contrastText">
-      <Link to="#" onClick={() => setActiveThreadReceiver(conversation.receiverName)}>
+    <Link to="#" onClick={() => setActiveThreadReceiver(conversation.receiverName)}>
+      <Box
+        className={`message-box-priv ${
+          activeThreadReceiver === conversation.receiverName ? 'active-receiver' : null
+        }`}
+        color="primary.contrastText">
         <Avatar className={`message-avatar-priv`}>T</Avatar>
-        <div className="message-sender">{conversation.receiverName}</div>
-      </Link>
-    </Box>
+        <div
+          className={`private-message-sender ${
+            activeThreadReceiver === conversation.receiverName ? 'active-receiver' : null
+          }`}>
+          {conversation.receiverName}
+        </div>
+      </Box>
+    </Link>
   );
 }
 
