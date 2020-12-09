@@ -11,7 +11,7 @@
 }
 
 button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.footer-button {
-    min-width: 120px;
+    min-width: 126px;
 }
 
 .copyright {
@@ -19,11 +19,8 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.footer-button {
     color: var(--text);
 }
 
-.bot-button-text {
-    color: var(--light)
-}
 
-.bottom a:link {
-    color: var(--light);
-    text-decoration: none;
+.footer-icon {
+    font-size: 24pt;
+    cursor: pointer; 
 }
