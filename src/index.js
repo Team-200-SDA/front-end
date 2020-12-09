@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import 'semantic-ui-css/semantic.min.css';
 import './css/style.css';
+import LangContextProvider from './contexts/LanguageContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <LangContextProvider>
+      <App />
+    </LangContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

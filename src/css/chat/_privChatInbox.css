@@ -1,14 +1,29 @@
 .message-box-priv {
   display: flex;
   align-items: center;
-  background-color: rgb(23, 90, 162);
+  flex-wrap: wrap;
+  background-color: var(--secondary);
+ 
   margin-bottom: 10px;
+  border-radius: 22px;
+  -webkit-border-radius: 22px;
+  -moz-border-radius: 22px;
+  -ms-border-radius: 22px;
+  -o-border-radius: 22px;
+}
+
+.private-chat-wrap {
+  max-height: 100%;
+  min-height: 62vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Priv Avatar */
 .MuiAvatar-root.MuiAvatar-circle.message-avatar-priv.MuiAvatar-colorDefault {
-  background-color: rgb(92, 148, 110);
-  margin: 10px;
+  background-color: var(--text);
+  color: var(--light);
+  margin: 4px;
 }
 
 .start-conversation {
@@ -17,10 +32,37 @@
   justify-content: center;
 }
 
-.button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.conversation-button.MuiButton-containedPrimary {
-  /* margin-right: 10px; */
-}
-
 .ui.selection.dropdown.conversation-dropdown {
   margin-left: 10px;
+}
+
+.private-chat-wrap.private-chat-layout {
+  flex: 1;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 20% 1fr;
+}
+
+.private-message-sender {
+  padding: 10px;
+  color: var(--text);
+  border-top-left-radius: 0;
+}
+
+.delete-thread{
+  color: var(--text);
+  cursor: pointer;
+}
+
+.private-chat-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow-y: auto;
+  border-left: 1px solid rgb(196, 196, 196);
+}
+
+.active-receiver {
+  background: var(--primary);
+  color: var(--light);
 }

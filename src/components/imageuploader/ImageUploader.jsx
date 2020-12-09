@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactImageUploadComponent from 'react-images-upload';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
 /*
 Image Uploading Note:
 Ideally the API should be in the backend, however, with testing, sending the image to the backend and then uploading takes too long.
@@ -9,6 +11,7 @@ the time to figure it out. I'm sure with more time, we could do it.
 */
 
 function ImageUploader({ setImgUrl, uploadPreset }) {
+  const { language } = useContext(LangContext);
   const [payload, setPayload] = useState(null);
 
   const updateImage = event => {
@@ -47,11 +50,11 @@ function ImageUploader({ setImgUrl, uploadPreset }) {
     <ReactImageUploadComponent
       singleImage={true}
       onChange={updateImage}
-      buttonText="Choose Image"
+      buttonText={language.Choose_Image}
       className="imgUploader"
       withPreview={false}
       withIcon={false}
-      label="Max file size: 5mb, accepted: jpg, gif, png"
+      label={language.Max_file}
     />
   );
 }
