@@ -16,13 +16,13 @@ function Navbar({ onLogout }) {
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
           <Link to="/" className="nav-link">
-          {language.home}
+            {language.home}
           </Link>
         </li>
 
         <li className="nav-item">
           <Link to="/lectures" className="nav-link">
-          {language.Lectures}
+            {language.Lectures}
           </Link>
         </li>
 
@@ -34,13 +34,13 @@ function Navbar({ onLogout }) {
 
         <li className="nav-item">
           <Link to="/assignments" className="nav-link">
-          {language.Assignments}
+            {language.Assignments}
           </Link>
         </li>
 
         <li className="nav-item">
           <Link to="/filestorage" className="nav-link">
-          {language.File_Storage}
+            {language.File_Storage}
           </Link>
         </li>
 
@@ -51,14 +51,14 @@ function Navbar({ onLogout }) {
         </li>
 
         <li className="nav-item">
-          <Link to="/private-messaging" className="nav-link">
-          {language.Private_Messaging}
+          <Link to="/private-chat" className="nav-link">
+            {language.Private_Messaging}
           </Link>
         </li>
 
         <li className="nav-item">
           <Link to="/todo-list" className="nav-link">
-          {language.Todo}
+            {language.Todo}
           </Link>
         </li>
 
@@ -76,28 +76,39 @@ function Navbar({ onLogout }) {
         
         <li className="nav-item">
           <Link to="#" onClick={Calendar} className="nav-link">
-          {language.Calendar}
+            {language.Calendar}
           </Link>
         </li>
 
         <li className="nav-item">
           <Link to="/userprofile" className="nav-link">
-          {language.User_Profile}
+            {language.User_Profile}
           </Link>
         </li>
         <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {language.language}
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#" onClick={changeEn}>{language.english}</a>
-          <a class="dropdown-item" href="#" onClick={changeSv}>{language.swedish}</a>
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false">
+            {language.language}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#" onClick={changeEn}>
+              {language.english}
+            </a>
+            <a class="dropdown-item" href="#" onClick={changeSv}>
+              {language.swedish}
+            </a>
           </div>
-      </li>
+        </li>
       </ul>
 
       <button className="sign-out-button" onClick={onLogout}>
-      {language.Logout}
+        {language.Logout}
       </button>
     </nav>
 );
