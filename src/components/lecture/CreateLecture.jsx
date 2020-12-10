@@ -56,11 +56,13 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
   }, [uploadResponse]);
 
   return (
-    <Card className="lecture-body">
-      <h3 className="card-title-upload">Create a Lecture</h3>
+    <div className="card-body create-lecture-div">
+      <div className="form-group">
+    {/* <Card className="lecture-body">
+      <h3 className="card-title-upload">Create a Lecture</h3>*/}
       <div className="storage-uploader">
-        <FormControl component="fieldset">
-          <FormLabel component="legend">Lecture Type</FormLabel>
+       <FormControl component="fieldset">
+         <FormLabel component="legend">Lecture Type</FormLabel> 
           <RadioGroup
             row
             aria-label="Assignment Type"
@@ -90,7 +92,7 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
         />
         <div className="form-group">
           <Button
-            className="upload-button"
+            className="upload-button" 
             variant="contained"
             color="primary"
             onClick={createLecture}
@@ -99,6 +101,8 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
           </Button>
         </div>
       </div>
-    </Card>
+    {/* </Card>*/}
+    </div>
+    </div> 
   );
 }

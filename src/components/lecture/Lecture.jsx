@@ -38,7 +38,7 @@ export default function Lecture({ getAllLectures, lecture, userRole }) {
             className="lecture-button"
             onClick={() => deleteLecture(lecture.id)}
             size="small"
-            color="primary">
+            color="var(--dominant)">
             Delete
           </Button>
       </CardActions>

@@ -20,23 +20,27 @@ function CreateSubject({ getSubjects }) {
   };
 
   return (
-    <Card className="subject-body">
-      <h3 className="card-title-upload">{language.Create_Subject}</h3>
-      <div className="storage-uploader">
-        <FormLabel component="legend">{language.Subject_Name_Description}</FormLabel>
+    <div className="card-body create-subject-div">
+      <div className="form-group">
+        
         <input
-          className="form-control assignment"
-          placeholder={language.Subject_Name}
+          className="form-control"
+          placeholder="Subject Name..."
           value={name}
           onChange={event => setName(event.target.value)}
         />
+
         <input
-          className="form-control assignment"
-          placeholder={language.Subject_Description}
+          className="form-control"
+          placeholder="Subject Description..."
           value={description}
           onChange={event => setDescription(event.target.value)}
         />
+
         <ImageUploader setImgUrl={setLink} uploadPreset={'subjects'} />
+
+        </div>
+
         <div className="form-group">
           <Button
             className="upload-button"
@@ -47,8 +51,8 @@ function CreateSubject({ getSubjects }) {
             {language.create_Subject}
           </Button>
         </div>
+
       </div>
-    </Card>
   );
 }
 
