@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import CommentForm from './CommentForm';
 import UserApi from '../../../api/UserApi';
+import { useContext } from 'react';
+import { LangContext } from '../../../contexts/LanguageContext';
 
 function Comment({ comment, onCommentDelete, onCommentUpdate }) {
   //props come from CommentsList
 
+  const { language } = useContext(LangContext);
   const [isUpdate, setIsUpdate] = useState(false); //opens the Comment update form
   const [user, setUser] = useState([]);
 
@@ -57,11 +60,11 @@ function Comment({ comment, onCommentDelete, onCommentUpdate }) {
                   <button
                     className="btn btn-danger mt-3"
                     onClick={() => onCommentDelete(comment)}>
-                    Delete
+                    {language.Delete}
                   </button>
 
                   <button className="btn btn-warning mt-3 ml-3" onClick={onUpdateComment}>
-                    Update
+                    {language.Update}
                   </button>
                 </>
               )}
