@@ -75,12 +75,6 @@ function Navbar({ onLogout }) {
           </li>
         
         <li className="nav-item">
-          <Link to="#" onClick={Calendar} className="nav-link">
-            {language.Calendar}
-          </Link>
-        </li>
-
-        <li className="nav-item">
           <Link to="/userprofile" className="nav-link">
             {language.User_Profile}
           </Link>

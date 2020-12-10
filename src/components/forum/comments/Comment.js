@@ -3,7 +3,7 @@ import CommentForm from './CommentForm';
 import UserApi from '../../../api/UserApi';
 import CommentsApi from '../../../api/CommentsApi'
 
-function Comment({comment, onCommentDelete, onCommentUpdate, getAll }) {
+function Comment({comment, onCommentDelete, onCommentUpdate, getAll, setComments }) {
   
   const [isUpdate, setIsUpdate] = useState(false);
 
@@ -20,7 +20,7 @@ function Comment({comment, onCommentDelete, onCommentUpdate, getAll }) {
     getUser();
   }, []);
 
-  const isMyPost = comment.user.id === user.id
+  const isMyComment = comment.user.id === user.id
 
 
   const onUpdateComment = () => {
@@ -48,18 +48,14 @@ function Comment({comment, onCommentDelete, onCommentUpdate, getAll }) {
     { isUpdate ? (
         <CommentForm
             initialBody={comment.body}
-            // onSubmit={onCommentFormSubmit}
             onCommentFormSubmit = {onCommentFormSubmit}
             onCancel={onCommentFormCancel}
             formTitle="Update comment"
-            // value={body}
-            // onChange={(e) => setBody(e.target.value)}
             isUpdate = {isUpdate}
             setIsUpdate = {setIsUpdate}
             comment = {comment}
             onSaveUpdatedComment = {onSaveUpdatedComment}
             onCommentUpdate = {onCommentUpdate}
-            getAll = {getAll}
         />
     ) : (
       <div className="card mt-4">
@@ -69,7 +65,7 @@ function Comment({comment, onCommentDelete, onCommentUpdate, getAll }) {
 
 
           <div className="mt-3">
-          {isMyPost && (
+          {isMyComment && (
              <>
             <button
               className="btn btn-danger mt-3"

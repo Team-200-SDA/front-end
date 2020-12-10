@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import CommentsApi from "../../../api/CommentsApi";
 
-
-
 export default function CommentForm({
   onSubmit,
   initialBody,
@@ -10,51 +8,32 @@ export default function CommentForm({
   formTitle,
   setIsFormOpen,
   post,
-  setIsUpdate,
   isUpdate,
   comment,
-  onSaveUpdatedComment,
-  onCommentUpdate,
-  getAll
 }) {
   const [body, setBody] = useState(initialBody || "");
-  const [newComment, setNewComment] = useState(comment)
- 
-  
-  const getCommentsByPostId = (id) => {
-    CommentsApi.getCommentById(id)
-  }
-  
+
   const onCreateCommentClick = (e) => {
     e.preventDefault();
-    const commentData = { body, post:post};
-    return CommentsApi.createComment(commentData)
-      .then(() => setIsFormOpen(false));        
+    const commentData = { body, post: post };
+    return CommentsApi.createComment(commentData).then(() =>
+      setIsFormOpen(false)
+    );
   };
 
- 
-//   const toUpdateComment  = (e) => {
-//     e.preventDefault();
-//     const updatedComment = { ...comment, body };
-//     return CommentsApi.updateComment(updatedComment).then(() => {setIsUpdate(false)})
-//     .then(()=>{setBody(updatedComment)})
-// }
-
-
-const forupdatedComment  = async (e) => {
-  e.preventDefault();
-  const updatedComment = { ...comment, body };
-  await CommentsApi.updateComment(updatedComment).then(() => {setIsUpdate(false); comment=updatedComment})
-  
-  }
-
+  const onUpdateCommentClick = (e) => {
+    e.preventDefault();
+    const updatedComment = { ...comment, body };
+    return CommentsApi.updateComment(updatedComment).then(() => {
+      window.location.reload();
+    });
+  };
 
   return (
     <div className="card mt-4">
       <div className="card-body">
         <h4 className="card-title">{formTitle || "Create a comment"}</h4>
-        {/* <form onSubmit = {isUpdate ? toUpdateComment : onCreateCommentClick}> */}
-        <form onSubmit = {isUpdate ? forupdatedComment : onCreateCommentClick}>
+        <form onSubmit={isUpdate ? onUpdateCommentClick : onCreateCommentClick}>
           <div className="form-group">
             <label>Body:</label>
             <textarea
@@ -67,10 +46,12 @@ const forupdatedComment  = async (e) => {
           </div>
 
           <div className="form-group">
-            <button className="btn btn-info" type="submit">
+            <button 
+            className="btn btn-info" t
+            ype="submit">
               Save
             </button>
-            
+
             <button
               className="btn btn-outline"
               type="button"

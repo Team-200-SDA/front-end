@@ -4,7 +4,7 @@ import PostForm from "./PostForm";
 import {Link} from "react-router-dom";
 import CommentForm from '../comments/CommentForm';
 import UserApi from '../../../api/UserApi';
-import Comment from '../comments/Comment';
+
 
 
 function Post({ post, onPostUpdate, onPostDelete }) {
@@ -26,6 +26,7 @@ function Post({ post, onPostUpdate, onPostDelete }) {
     getUser();
   }, []);
 
+console.log(post.comment)
 
   const isMyPost = post.user.id === user.id
 
@@ -72,9 +73,14 @@ function Post({ post, onPostUpdate, onPostDelete }) {
                 <h3>{post.title}</h3>
               </Link>
               
-              <p className="badge badge-primary text-wrap">{post.user.name}</p>
+              <p className="badge badge-primary text-wrap">
+                {post.user.name}
+              </p>
+            
             </div>
             <div>{post.body}</div>
+           
+
 
             <div className="mt-3">
               {isMyPost && (
@@ -91,7 +97,11 @@ function Post({ post, onPostUpdate, onPostDelete }) {
                   </button>
                 </>
               )}
-              <button type="button" className="btn btn-info ml-3" data-toggle="modal" data-target="#myModal" onClick={onCreateCommentClick}>
+              <button type="button" 
+              className="btn btn-info ml-3" 
+              data-toggle="modal" 
+              data-target="#myModal" 
+              onClick={onCreateCommentClick}>
                   Add Comment 
               </button>
               </div>
@@ -102,8 +112,8 @@ function Post({ post, onPostUpdate, onPostDelete }) {
                   setIsFormOpen={setIsFormOpen}
                   post={post}            
                 />        
-              }  
-                 {/* <Comment isMyPost={isMyPost}/> */}
+              }
+              {}  
           </div>
         </div>
         )

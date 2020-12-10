@@ -2,6 +2,7 @@
 import React ,{ useState, useEffect } from "react";
 import CommentsList from './CommentsList';
 import CommentsApi from "../../../api/CommentsApi";
+import PostsPage from "../posts/PostsPage";
 
 function CommentsPage() {
   const [comments, setComments] = useState([]);
@@ -29,12 +30,14 @@ function CommentsPage() {
     return (
         
         <div>
+           
            {
                <CommentsList
                     comment= {comments}
+                    setComments = {setComments}
                     onCommentDelete = {deleteComment} 
                     onCommentUpdate = {updateComment}
-                    getAll = {getAll}
+
                 />
            }
         </div>
