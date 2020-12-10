@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState } from 'react';
 import English from '../Languages/English/login.json';
 import Swedish from '../Languages/Swedish/login.json';
 import detector from 'detect-browser-language';

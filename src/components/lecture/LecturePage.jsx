@@ -26,11 +26,15 @@ export default function LecturePage() {
   }, []);
 
   return (
-    <div className="lecture-div card-body">
-      <div className="lecture-title-div">
-          <h1 className="lecture-title">Lectures</h1>
-          <img className="app-logo" src={Logo} alt="" />
-        </div>
+    <div className="lecture-page-wrap">
+      <div className="title-div">
+        <h1 className="page-title-text">
+        <i className="fas fa-book-open title-icon" />
+            Lectures
+        </h1>
+      </div>
+
+      <div className="card-body">
       {/* Loads Lecture Creation component based on user role */}
       {userRole !== 'teacher' ? null : (
         <CreateLecture
@@ -39,11 +43,12 @@ export default function LecturePage() {
           urlParams={urlParams}
         />
       )}
-      <div className="lecture-page-cards">
+      <div className="  -page-cards">
       {lectures.map(lecture => (
           <Lecture key={uuid()} getAllLectures={getLectures} lecture={lecture} userRole={userRole} /> 
       ))}
       </div>
+    </div>
     </div>
   );
 }

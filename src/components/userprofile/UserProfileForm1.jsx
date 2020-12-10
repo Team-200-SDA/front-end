@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import defaultImage from '../../assets/images/blank-profile-picture-973460_1280.png';
 import ImageUploader from '../imageuploader/ImageUploader';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
 
 function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicClick }) {
+  const { language } = useContext(LangContext);
   const [address, setAddress] = useState({ address: '' });
   const [phoneno, setPhoneno] = useState({ phoneno: '' });
   const [image, setImage] = useState({ image: '' });
@@ -26,14 +29,16 @@ function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicC
 
   return (
     <div className="card user-profile">
-      <div className="card-title">User Profile</div>
+      <div className="card-title">
+        {language.User_Profile}
+      </div>
 
       <div className="card body-user-profile">
         <div className="form-group row ml-3">
-          <div>Name: {user.name}</div>
+          <div>{language.name} {user.name}</div>
         </div>
         <div className="form-group row ml-3">
-          <div>Email: {user.email}</div>
+          <div>{language.email} {user.email}</div>
         </div>
 
         <div className="card address">
@@ -71,7 +76,7 @@ function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicC
           </div>
         </div>
         <div className="card profile m-2">
-          <label className="ml-3">Profile Picture</label>
+          <label className="ml-3">{language.Profile_Picture}</label>
           <div className="form-group row">
             <div className="col ml-3">
               {user.profilepic === null ? (
@@ -85,8 +90,11 @@ function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicC
             </div>
           </div>
           <div className="text-right">
-            <button className="btn btn-primary  " onClick={e => clickUpdateProfilepic(e)}>
-              Update Profile picture
+            <button
+              className="btn btn-primary  "
+              onClick={(e) => clickUpdateProfilepic(e)}
+            >
+              {language.Update_Profile_picture}
             </button>
           </div>
         </div>

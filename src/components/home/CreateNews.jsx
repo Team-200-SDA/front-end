@@ -32,7 +32,7 @@ export default function CreateNews(props) {
   }
 
   return (
-    <div className="container col-sm-12 col-md-10 col-lg-8">
+    <div className="card-body create-news-div">
       <div className="form-group">
         <input
           className="form-control"
@@ -46,18 +46,18 @@ export default function CreateNews(props) {
           placeholder={language.Body_news}
           value={body}
           onChange={event => setBody(event.target.value)}
-        />
+        />    
 
-        <div className="col">
-          <ImageUploader setImgUrl={setImage} uploadPreset={'newspics'} />
-        </div>
+        <ImageUploader setImgUrl={setImage} uploadPreset={'newspics'} />
+        
       </div>
 
       <div className="form-group">
-        <button className="btn btn-primary  " onClick={createNews}>
+        <button className="btn btn-primary" onClick={createNews}>
           {language.Publish}
         </button>
       </div>
+      
     </div>
   );
 }
