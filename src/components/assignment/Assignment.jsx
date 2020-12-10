@@ -1,7 +1,10 @@
 import React from 'react';
 import fileTypeImage from '../../js/functions/fileUpload/fileTypeImage';
+import { LangContext } from '../../contexts/LanguageContext';
+import { useContext } from 'react';
 
 export default function Assignment({ assignment, deleteAssignment }) {
+  const { language } = useContext(LangContext);
   const user_ = window.sessionStorage.getItem('user');
   return (
     <div className="card card-filestorage">
@@ -27,7 +30,7 @@ export default function Assignment({ assignment, deleteAssignment }) {
           <button
             className="btn btn-danger file-delete"
             onClick={() => deleteAssignment(assignment.id)}>
-            Delete
+            {language.Delete}
           </button>
         ) : null}
       </div>

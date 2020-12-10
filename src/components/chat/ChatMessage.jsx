@@ -7,16 +7,12 @@ function ChatMessage({ message }) {
   const senderOrUser = sender === user ? 'user' : 'sender';
 
   return (
-    <Paper elevation={3}>
-      <Box
-        className={`message-body message-box-${senderOrUser}`}
-        color="primary.contrastText">
-        <Avatar className={`message-avatar-${senderOrUser}`}>{sender.charAt(0)}</Avatar>
-        <div className="message-sender">{sender}</div>
-        <div className="message-content">{content}</div>
-        <div className="message-time">{time}</div>
-      </Box>
-    </Paper>
+    <Box className={`message-body message-box-${senderOrUser}`}>
+      <Avatar className={`message-avatar-${senderOrUser}`}>{sender.charAt(0)}</Avatar>
+      <div className="message-sender">{sender}</div>
+      <div className="message-content">{content}</div>
+      <div className="message-time">{time}</div>
+    </Box>
   );
 }
 

@@ -1,10 +1,19 @@
+@import '../palette.css';
+
 .tray {
   flex: none;
   height: 60px;
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: var(--secondary);
   padding: 0 10px;
   display: flex;
   align-items: center;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+  border-radius: 22px;
+  -webkit-border-radius: 22px;
+  -moz-border-radius: 22px;
+  -ms-border-radius: 22px;
+  -o-border-radius: 22px;
+}
+
+.tray-button {
+  background: transparent !important;
 }

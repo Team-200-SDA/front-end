@@ -1,15 +1,19 @@
 .live {
+  text-align: left !important;
   background-color: rgba(0, 0, 0, 0.4);
-
-  border-radius: 8px;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  -ms-border-radius: 8px;
-  -o-border-radius: 8px;
+  border-radius: 22px;
+  -webkit-border-radius: 22px;
+  -moz-border-radius: 22px;
+  -ms-border-radius: 22px;
+  -o-border-radius: 22px;
 }
+
+
 
 .offline {
   display: flex;
+  flex-direction: column;
+  height: calc(100% - 130px);
   justify-content: center;
-  margin-top: 40vh;
+  align-items: center;
 }

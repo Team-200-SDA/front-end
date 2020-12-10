@@ -1,7 +1,5 @@
 .card-filestorage {
-    max-width: 90%;
-    margin: auto;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 
 .ui.selection.dropdown.filetype-dropdown {
@@ -13,17 +11,14 @@
     flex-direction: row;
     align-items: center;
     justify-content: first baseline;
-}
-
-.file-type {
-    max-width: 64px;
-    max-height: 128px;
-    margin: 10px;
+    max-height: 80px;
+    margin-bottom: 16px;
 }
 
 .file-delete {
     margin-left: auto;
     margin-right: 12px;
+    cursor: pointer;
 }
 
 .storage-uploader {
@@ -33,4 +28,10 @@ text-align: center;
 .card-title-upload {
     padding-top: 10px;
     padding-left: 10px;
+}
+
+.file-type-icons {
+    margin-left: 10px;
+    margin-right: 20px;
+    font-size: 32pt;
 }

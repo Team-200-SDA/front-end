@@ -1,5 +1,6 @@
 import {
   Button,
+  Card,
   FormControl,
   FormControlLabel,
   FormLabel,
@@ -55,9 +56,9 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
   }, [uploadResponse]);
 
   return (
-    <div className="card card-filestorage">
-      <h4 className="card-title-upload">Create a Lecture</h4>
-      <div className="card-body storage-uploader">
+    <Card className="lecture-body">
+      <h3 className="card-title-upload">Create a Lecture</h3>
+      <div className="storage-uploader">
         <FormControl component="fieldset">
           <FormLabel component="legend">Lecture Type</FormLabel>
           <RadioGroup
@@ -82,7 +83,7 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
         />
         <input
           className="form-control assignment"
-          placeholder="Link to Lecture"
+          placeholder="Link to Lecture..."
           value={link}
           onChange={event => setLink(event.target.value)}
           disabled={uploadType === 'UPLOAD' || uploadType === ''}
@@ -98,6 +99,6 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
           </Button>
         </div>
       </div>
-    </div>
+    </Card>
   );
 }

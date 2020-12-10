@@ -10,21 +10,21 @@ import config from '../../js/chatbot-resources/config';
 export default function Footer() {
   const [botOpen, setBotOpen] = useState(false);
   return (
-    <footer className="bottom bg-dark text-white ">
-      <Button className="footer-button" variant="contained">
+    <footer className="bottom">
+      <div className="footer-button" variant="contained">
         <a href="mailto: sda.team200@gmail.com">
-          Contact-Us <i className="fas fa-envelope"></i>
+          <i className="fas fa-envelope footer-icon" />
         </a>
-      </Button>
-      <Button
+      </div>
+      <span className="copyright">&#169;2020 EDULANE. All Rights Reserved</span>
+      <div
         className="footer-button"
         onClick={() => setBotOpen(!botOpen)}
         variant="contained">
         <span className="bot-button-text">
-          Bot &nbsp;&nbsp;
-          <i className="fas fa-robot" />
+          <i className="fas fa-robot footer-icon" />
         </span>
-      </Button>
+      </div>
       {botOpen ? (
         <Chatbot
           config={config}

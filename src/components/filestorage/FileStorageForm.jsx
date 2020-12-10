@@ -3,8 +3,12 @@
 import React, { useEffect, useState } from 'react';
 import getFilenameAndExtension from '../../js/functions/fileUpload/getFilenameAndExtention';
 import FileUploader from './FileUploader';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
+import { FormLabel } from '@material-ui/core';
 
 export default function FileStorageForm({ uploadFile }) {
+  const { language } = useContext(LangContext);
   const [uploadResponse, setUploadResponse] = useState(null);
 
   useEffect(() => {
@@ -21,11 +25,19 @@ export default function FileStorageForm({ uploadFile }) {
   }, [uploadResponse]);
 
   return (
-    <div className="card card-filestorage">
-      <h4 className="card-title-upload">File Storage</h4>
-      <div className="card-body storage-uploader">
-        <FileUploader setUploadResponse={setUploadResponse} uploadType={`UPLOAD`} />
+    <>
+      <div className="title-div">
+        <h1 className="page-title-text">
+          <i className="fas fa-archive title-icon" />
+          File Storage
+        </h1>
       </div>
-    </div>
+      <div className="card-body card-filestorage">
+        <FormLabel component="legend">{language.File_Storage}</FormLabel>
+        <div className="storage-uploader">
+          <FileUploader setUploadResponse={setUploadResponse} uploadType={`UPLOAD`} />
+        </div>
+      </div>
+    </>
   );
 }

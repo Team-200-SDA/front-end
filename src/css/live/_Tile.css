@@ -6,19 +6,33 @@
 
 .tile.large {
   position: relative;
-  /* margin: 2px; */
+  border-radius: 22px;
+  -webkit-border-radius: 22px;
+  -moz-border-radius: 22px;
+  -ms-border-radius: 22px;
+  -o-border-radius: 22px;
 }
 
 .tile video {
   width: 100%;
   position: absolute;
   top: 0px;
+  border-radius: 22px;
+  -webkit-border-radius: 22px;
+  -moz-border-radius: 22px;
+  -ms-border-radius: 22px;
+  -o-border-radius: 22px; 
 }
 
 .tile .background {
   background-color: transparent;
   width: 100%;
   padding-top: 56.25%; /* Hard-coded 16:9 aspect ratio */
+  border-radius: 22px;
+  -webkit-border-radius: 22px;
+  -moz-border-radius: 22px;
+  -ms-border-radius: 22px;
+  -o-border-radius: 22px;
 }
 
 .tile.local video {
@@ -26,11 +40,12 @@
 }
 
 .tile.small video {
-  border-radius: 8px;
+   border-radius: 8px;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   -ms-border-radius: 8px;
   -o-border-radius: 8px;
+ 
 }
 
 .tile.small .background {
@@ -39,6 +54,7 @@
   -moz-border-radius: 8px;
   -ms-border-radius: 8px;
   -o-border-radius: 8px;
+ 
 }
 
 .tile .loading {
@@ -50,4 +66,5 @@
   transform: translate(-50%, -50%);
   font-size: 14px;
   line-height: 17px;
+  
 }
