@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import UserProfileForm from "./UserProfileForm";
+import UserProfileForm1 from "./UserProfileForm1";
 import UserApi from "../../api/UserApi";
 import { useContext } from 'react';
 import { LangContext } from '../../contexts/LanguageContext';

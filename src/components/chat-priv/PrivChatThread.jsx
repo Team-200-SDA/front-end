@@ -1,22 +1,23 @@
-import { Fab, IconButton, TextField } from '@material-ui/core';
+import { Fab, TextField } from '@material-ui/core';
 import { DeleteRounded, Send } from '@material-ui/icons';
 import { format } from 'date-fns';
+import produce from 'immer';
 import React, { useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import PrivChatApi from '../../api/PrivChatApi';
 import PrivMessage from './PrivMessage';
-import { useContext } from 'react';
-import { LangContext } from '../../contexts/LanguageContext';
 
-function PrivChatThread({ conversations }) {
-  const { language } = useContext(LangContext);
-  const history = useHistory();
+function PrivChatThread({
+  conversations,
+  activeThreadReceiver,
+  setActiveThreadReceiver,
+  setConversations
+}) {
   const [messageField, setMessageField] = useState('');
-  const receiverName = useParams().receiverName;
   // This needs to be let, or inbox (parent component) wont update with
   // messages from other/new 1st time senders 🤷‍♂️
-  let thread = conversations.find(thread => thread.receiverName === receiverName);
+  // const { language } = useContext(LangContext);
+  let thread = conversations.find(thread => thread.receiverName === activeThreadReceiver);
 
   const sendMessage = async event => {
     event.preventDefault();
@@ -36,28 +37,38 @@ function PrivChatThread({ conversations }) {
     thread.thread.forEach(async msg => {
       await PrivChatApi.deleteMessage(msg.id);
     });
-    history.push('/private-messaging');
-    window.location.reload();
+    setActiveThreadReceiver('');
+    removeThread(thread);
+  };
+
+  const removeThread = deleteThread => {
+    // This is used to remove the empty thread from the conversations array
+    const immerState = produce(conversations, draft => {
+      return draft.filter(thread => thread.receiverName !== deleteThread.receiverName);
+    });
+    setConversations(immerState);
   };
 
   const messagesToRender = thread.thread.map(message => (
     <PrivMessage key={uuid()} message={message} />
   ));
-  
 
   return (
-    <div className="paper">
-      <div className="jsx-messages">{messagesToRender}</div>
+    <div className="card public-chat-body">
+      <div className="private-chat-wrapper">
+        <div className="jsx-messages">{messagesToRender}</div>
+      </div>
       <form
         onSubmit={e => sendMessage(e)}
         className="message-form"
         noValidate
         autoComplete="off">
         <TextField
+          color="primary"
           className="message-text-field"
           id="outlined-full-width"
-          placeholder={language.Type_message}
-          helperText={language.Enter_Click}
+          placeholder={`Send a message to ${thread.thread[0].receiverName}`}
+          helperText="Enter or Click to send."
           fullWidth
           margin="normal"
           onChange={e => setMessageField(e.target.value)}
@@ -71,10 +82,9 @@ function PrivChatThread({ conversations }) {
           <Send />
         </Fab>
       </form>
-
-      <IconButton onClick={() => deleteMessages()} aria-label="delete">
-        <DeleteRounded />
-      </IconButton>
+      <div>
+        <DeleteRounded className="delete-thread" onClick={() => deleteMessages()} />
+      </div>
     </div>
   );
 }

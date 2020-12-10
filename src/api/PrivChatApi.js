@@ -9,7 +9,7 @@ class PrivChatApi {
     return Api.delete(`/message/${id}`);
   }
 
-  stream = 'http://localhost:8080/message/stream';
+  stream = 'https://edulane-backend.herokuapp.com/message/stream';
 }
 
 export default new PrivChatApi();

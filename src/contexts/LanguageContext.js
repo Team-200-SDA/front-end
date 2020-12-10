@@ -5,39 +5,36 @@ import detector from 'detect-browser-language';
 
 export const LangContext = createContext();
 
-const LangContextProvider = (props) => {
-    
-    const [language, setLanguage] = useState(English, Swedish)
+const LangContextProvider = props => {
+  const [language, setLanguage] = useState(English, Swedish);
 
-    const lang = detector();
+  const lang = detector();
 
-    const changeEn = () => {
+  const changeEn = () => {
+    setLanguage(English);
+  };
 
-        setLanguage(English)
-    
+  const changeSv = () => {
+    setLanguage(Swedish);
+  };
+  const changeLanguage = () => {
+    if (language === English) {
+      setLanguage(Swedish);
     }
-    
-    const changeSv = () => {
-        
-        setLanguage(Swedish)
+    if (language === Swedish) {
+      setLanguage(English);
     }
-    const changeLanguage = () => {
-        if (language===English)
-        {setLanguage(Swedish)}
-        if (language===Swedish)
-        {setLanguage(English)}
-    
-    }
-    
-    const detectLang= () => {       
-       
-         lang === "sv" ? setLanguage(Swedish) : setLanguage(English) 
-    };
-    
-    return (
-        <LangContext.Provider value={{ language ,changeSv, changeEn, changeLanguage,  detectLang}}>
-            {props.children}
-        </LangContext.Provider>
-    )
-}
+  };
+
+  const detectLang = () => {
+    lang === 'sv' ? setLanguage(Swedish) : setLanguage(English);
+  };
+
+  return (
+    <LangContext.Provider
+      value={{ language, changeSv, changeEn, changeLanguage, detectLang }}>
+      {props.children}
+    </LangContext.Provider>
+  );
+};
 export default LangContextProvider;
