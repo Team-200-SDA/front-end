@@ -30,9 +30,9 @@ function SubjectsPage() {
   });
 
   return (
-    <div className="public-chat-wrap">
-      <div className="public-chat-title-div">
-        <h1 className="public-chat-title">
+    <div className="subject-page-wrap">
+      <div className="title-div">
+        <h1 className="page-title-text">
           <i class="fas fa-book-open title-icon" />
           Lecture Modules
         </h1>

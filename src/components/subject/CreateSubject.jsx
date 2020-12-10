@@ -17,7 +17,7 @@ function CreateSubject({ getSubjects }) {
   };
 
   return (
-    <div className="card-body create-news-div">
+    <div className="card-body create-subject-div">
       <div className="form-group">
         
         <input

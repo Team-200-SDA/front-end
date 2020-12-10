@@ -67,9 +67,9 @@ export default function AssignmentPage() {
 
   return (
     // Assign Assignments and Submit Assignment Buttons
-    <div className="public-chat-wrap">
-      <div className="public-chat-title-div">
-        <h1 className="public-chat-title">
+    <div className="assignment-page-wrap">
+      <div className="title-div">
+        <h1 className="page-title-text">
         <i class="fas fa-clipboard title-icon" />
           Assignments
         </h1>
