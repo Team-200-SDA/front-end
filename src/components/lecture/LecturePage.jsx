@@ -4,7 +4,6 @@ import { v4 as uuid } from 'uuid';
 import LectureApi from '../../api/LectureApi';
 import CreateLecture from './CreateLecture';
 import Lecture from './Lecture';
-import Logo from '../../assets/images/logo.png';
 
 export default function LecturePage() {
   // const subjects = useRecoilValue(subjectsState);
@@ -43,7 +42,7 @@ export default function LecturePage() {
           urlParams={urlParams}
         />
       )}
-      <div className="  -page-cards">
+      <div className="lecture-page-cards">
       {lectures.map(lecture => (
           <Lecture key={uuid()} getAllLectures={getLectures} lecture={lecture} userRole={userRole} /> 
       ))}
