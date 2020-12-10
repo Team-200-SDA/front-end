@@ -7,7 +7,7 @@
 }  
 
 .login-container {
-    margin : 30px;
+    
 }
 
 div.container.logincont {
@@ -16,6 +16,7 @@ div.container.logincont {
 
 .login-card{
     margin-top:5px;
+    max-height: 568px;
 }
 .login-header {
     height: 50px;
@@ -27,5 +28,9 @@ div.col.name {
 
 div.row.loginregforms {
     width:300px;
-   
+   max-height: 568px;
 }
+div.row.loginrow {
+    max-height: 568px;
+}
+

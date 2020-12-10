@@ -10,7 +10,7 @@ function LoginForm({ onSubmit }) {
 
     return (
             <div className="card">
-            <div className="card-body">
+            <div className="card-body loginregpage">
                 <h4 className="card-title" >{language.login}</h4>
                 <div>
                     <div className="form-group">

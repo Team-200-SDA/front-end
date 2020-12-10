@@ -44,16 +44,28 @@ function LoginPage() {
           </div>
         </div>
       </div>
-      <div className="container logincont">
+      {/*  <div className="container logincont">
         <div className="login-card">
           <div className="row loginregforms">
-            <div className="col-12  strong-shadow">
+            <div className="col 12 strong-shadow">
               <LoginForm onSubmit={login} />
             </div>
 
-            <div className="col-12 mt-4">
+            <div className="col 12 mt-4">
               <RegisterForm onSubmit={register} />
             </div>
+          </div>
+        </div>
+      </div> */}
+
+      <div className="col-md-6">
+        <div className="row loginrow">
+          <div className="col-12  strong-shadow">
+            <LoginForm onSubmit={login} />
+          </div>
+
+          <div className="col-12 mt-4">
+            <RegisterForm onSubmit={register} />
           </div>
         </div>
       </div>
