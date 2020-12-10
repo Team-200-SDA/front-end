@@ -11,8 +11,11 @@ import React, { useState, useEffect } from 'react';
 import LectureApi from '../../api/LectureApi';
 import FileUploader from '../filestorage/FileUploader';
 import getFilenameAndExtension from '../../js/functions/fileUpload/getFilenameAndExtention';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
 
 export default function CreateLecture({ urlParams, getAllLectures }) {
+  const { language } = useContext(LangContext);
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
   const [uploadResponse, setUploadResponse] = useState(null);
@@ -63,16 +66,16 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
 
           <FormControl component="fieldset">
 
-            <FormLabel component="legend">Lecture Type</FormLabel> 
+            <FormLabel component="legend">{language.Lecture_Type}</FormLabel> 
             <RadioGroup
               row
               aria-label="Assignment Type"
               value={uploadType}
               onChange={radioChange}>
 
-              <FormControlLabel value="UPLOAD" control={<Radio />} label="Upload File" />
-              <FormControlLabel value="VIDEO" control={<Radio />} label="Video Link" />
-              <FormControlLabel value="LINK" control={<Radio />} label="External Link" />
+              <FormControlLabel value="UPLOAD" control={<Radio />} label={language.Upload_File} />
+              <FormControlLabel value="VIDEO" control={<Radio />} label={language.Video_Link} />
+              <FormControlLabel value="LINK" control={<Radio />} label={language.External_Link} />
 
             </RadioGroup>
           </FormControl>

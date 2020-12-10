@@ -104,5 +104,6 @@
 	"News":"Nyheter",
 	"Lecture_Name":"Föreläsningsnamn ...",
 	"Link_Lecture":"Länk till föreläsning ...",
-	"Publish_Lecture":"Publicera föreläsning"
+	"Publish_Lecture":"Publicera föreläsning",
+	"Lecture_Type":"Föreläsningstyp"
 }
