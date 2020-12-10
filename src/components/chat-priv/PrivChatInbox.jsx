@@ -58,7 +58,7 @@ function PrivChatInbox({ conversations, setConversations }) {
 
   const dropDownUsers = dropDownSorted.map(user => {
     return {
-      key: user.name,
+      key: user.email,
       text: user.name,
       value: `${user.email} ${user.name}` // Have to use string. Object will break dropdown.
     };
@@ -77,11 +77,17 @@ function PrivChatInbox({ conversations, setConversations }) {
     />
   ));
 
+  useEffect(() => {
+    if (conversations.length !== 0) {
+      setActiveThreadReceiver(sortedConversations[0].receiverName);
+    }
+  }, []);
+
   return (
     <>
-      <div className="public-chat-title-div">
-        <h1 className="public-chat-title">
-          <i class="fas fa-comments title-icon" />
+      <div className="title-div">
+        <h1 className="page-title-text">
+          <i className="fas fa-comments title-icon" />
           Private Chat
         </h1>
       </div>
