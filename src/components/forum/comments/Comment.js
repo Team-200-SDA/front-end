@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CommentForm from './CommentForm';
 import UserApi from '../../../api/UserApi';
 
-function Comment({ comment, onCommentDelete, onCommentUpdate }) {
+function Comment({ comment, onCommentDelete, onCommentUpdate, getAllCommentsByPostId }) {
   //props come from CommentsList
 
   const [isUpdate, setIsUpdate] = useState(false); //opens the Comment update form
@@ -44,6 +44,7 @@ function Comment({ comment, onCommentDelete, onCommentUpdate }) {
           comment={comment}
           onSaveUpdatedComment={onSaveUpdatedComment}
           onCommentUpdate={onCommentUpdate}
+          getAllCommentsByPostId={getAllCommentsByPostId}
         />
       ) : (
         <div className="card mt-4">

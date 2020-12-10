@@ -80,7 +80,6 @@ function Post({
                   <button className="btn btn-warning" onClick={onUpdateClick}>
                     Update
                   </button>
-
                   <button
                     className="btn btn-danger ml-3"
                     onClick={() => onPostDelete(post)}>

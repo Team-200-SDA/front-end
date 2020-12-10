@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { useRecoilState } from 'recoil';
 import CommentsApi from '../../../api/CommentsApi';
+import { commentState } from '../../../js/states/CommentState';
 
 export default function CommentForm({
   initialBody,
@@ -8,31 +10,45 @@ export default function CommentForm({
   setIsFormOpen,
   post,
   isUpdate,
+  setIsUpdate,
   comment
 }) {
   //props come from Comment
 
   const [body, setBody] = useState(initialBody || '');
+  const [commentAtom, setCommentAtom] = useRecoilState(commentState);
 
-  const onCreateCommentClick = e => {
-    e.preventDefault();
-    const commentData = { body, post: post };
-    return CommentsApi.createComment(commentData).then(() => setIsFormOpen(false));
+  // another copy of whatever.
+  const getAllCommentsByPostId = async () => {
+    const res = await CommentsApi.getCommentById(commentAtom[0].post.id);
+    return setCommentAtom(res.data);
   };
 
-  const onUpdateCommentClick = e => {
+  const onCreateCommentClick = async e => {
+    e.preventDefault();
+    const commentData = { body, post: post };
+    await CommentsApi.createComment(commentData);
+    setIsFormOpen(false);
+    getAllCommentsByPostId(commentAtom[0].post.id);
+  };
+
+  const onUpdateCommentClick = async e => {
     e.preventDefault();
     const updatedComment = { ...comment, body };
-    return CommentsApi.updateComment(updatedComment).then(() => {
-      window.location.reload();
-    });
+    await CommentsApi.updateComment(updatedComment);
+    getAllCommentsByPostId(commentAtom[0].post.id);
+    setIsUpdate(false);
   };
 
   return (
     <div className="card mt-4">
       <div className="card-body">
         <h4 className="card-title">{formTitle || 'Create a comment'}</h4>
-        <form onSubmit={isUpdate ? onUpdateCommentClick : onCreateCommentClick}>
+
+        <form
+          onSubmit={
+            isUpdate ? e => onUpdateCommentClick(e) : e => onCreateCommentClick(e)
+          }>
           <div className="form-group">
             <label>Body:</label>
             <textarea

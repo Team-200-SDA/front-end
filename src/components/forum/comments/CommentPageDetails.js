@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import CommentsList from './CommentsList';
 import CommentsApi from '../../../api/CommentsApi';
+import { useRecoilState } from 'recoil';
+import { commentState } from '../../../js/states/CommentState';
 
 export default function CommentPageDetails({ match, post }) {
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useRecoilState(commentState);
 
   const getAllCommentsByPostId = async () => {
     const res = await CommentsApi.getCommentById(post.id);
-    console.log('response', res.data);
     return setComments(res.data);
   };
 
