@@ -4,8 +4,12 @@ import { v4 as uuid } from 'uuid';
 import SubjectApi from '../../api/SubjectApi';
 import CreateSubject from './CreateSubject';
 import Subject from './Subject';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
+
 
 function SubjectsPage() {
+  const { language } = useContext(LangContext);
   const [subjects, setSubjects] = useState([]);
   const userRole = window.sessionStorage.getItem('role');
 
@@ -34,7 +38,7 @@ function SubjectsPage() {
       <div className="title-div">
         <h1 className="page-title-text">
           <i className="fas fa-book-open title-icon" />
-          Lecture Modules
+          {language.Lecture_Modules}
         </h1>
       </div>
 
