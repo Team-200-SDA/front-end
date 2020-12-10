@@ -3,6 +3,7 @@ import PostForm from './PostForm';
 import { Link } from 'react-router-dom';
 import CommentForm from '../comments/CommentForm';
 import UserApi from '../../../api/UserApi';
+import CommentPageDetails from '../comments/CommentPageDetails';
 
 function Post({
   post,
@@ -11,8 +12,8 @@ function Post({
 }) {
   const [isUpdate, setIsUpdate] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
-
   const [user, setUser] = useState([]);
+  const [activePost, setActivePost] = useState(false);
 
   const getUser = () => {
     UserApi.getLoggedInUser().then(res => {
@@ -65,7 +66,7 @@ function Post({
         <div className="card mt-4">
           <div className="card-body">
             <div className="card-title">
-              <Link to={`/post/${post.id}/comments`}>
+              <Link to="#" onClick={() => setActivePost(!activePost)}>
                 <h3>{post.title}</h3>
               </Link>
 
@@ -96,6 +97,9 @@ function Post({
                 Add Comment
               </button>
             </div>
+
+            {activePost ? <CommentPageDetails post={post} /> : null}
+
             {isFormOpen && (
               <CommentForm
                 onCancel={onCreateCommentCancel}
@@ -104,7 +108,6 @@ function Post({
                 post={post}
               />
             )}
-            {}
           </div>
         </div>
       )}
