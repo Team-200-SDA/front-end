@@ -15,7 +15,7 @@ function RegisterForm({ onSubmit }) {
   }, [isTeacher]);
 
   return (
-    <div className="card">
+     <div className="card">
       <div className="card-body">
         <h4 className="card-title">{language.signup}</h4>
         <div>
@@ -67,7 +67,8 @@ function RegisterForm({ onSubmit }) {
           </div>
         </div>
       </div>
-    </div>
+    </div> 
+   
   );
 }
 

@@ -9,7 +9,7 @@ function LoginForm({ onSubmit }) {
 
 
     return (
-        <div className="card">
+            <div className="card">
             <div className="card-body">
                 <h4 className="card-title" >{language.login}</h4>
                 <div>
@@ -42,7 +42,8 @@ function LoginForm({ onSubmit }) {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> 
+    
     );
 }
 
