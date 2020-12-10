@@ -38,9 +38,7 @@ function SubjectsPage() {
       <div className="title-div">
         <h1 className="page-title-text">
           <i className="fas fa-book-open title-icon" />
-          {language.Lecture_Modules} 
-          {/* //Erkan */}
-          Lecture Modules
+          {language.Lecture_Modules}
         </h1>
       </div>
 

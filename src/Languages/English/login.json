@@ -98,7 +98,13 @@
 	"Add_Comment":"Add Comment",
 	"error_occured":"error occured",
 	"Post_Body":"Post Body",
-	"Create_new_Post":"Create a new Post"
+	"Create_new_Post":"Create a new Post",
+	"News_Title":"News Title...",
+	"News_Body":"News Body...",
+	"News":"News",
+	"Lecture_Name":"Lecture Name...",
+	"Link_Lecture":"Link to Lecture...",
+	"Publish_Lecture":"Publish Lecture"
 	
 
 }

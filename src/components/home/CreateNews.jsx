@@ -36,14 +36,14 @@ export default function CreateNews(props) {
       <div className="form-group">
         <input
           className="form-control"
-          placeholder="News Title..."    //Erkan  
+          placeholder={language.News_Title} 
           value={title}
           onChange={event => setTitle(event.target.value)}
         />
 
         <textarea
           className="form-control"
-          placeholder="News Body..."    //Erkan  
+          placeholder={language.News_Body} 
           value={body}
           onChange={event => setBody(event.target.value)}
         />    

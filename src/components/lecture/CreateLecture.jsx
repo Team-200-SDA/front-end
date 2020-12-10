@@ -87,7 +87,7 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
       <div className="form-group">
         <input
           className="form-control"
-          placeholder="Lecture Name..."  //Erkan  
+          placeholder={language.Lecture_Name}
           value={title}
           onChange={event => setTitle(event.target.value)}
           disabled={uploadType === ''}
@@ -95,7 +95,7 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
 
         <input
           className="form-control"
-          placeholder="Link to Lecture..."
+          placeholder={language.Link_Lecture}
           value={link}
           onChange={event => setLink(event.target.value)}
           disabled={uploadType === 'UPLOAD' || uploadType === ''}
@@ -109,7 +109,7 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
           color="primary"
           onClick={createLecture}
           disabled={title === '' || link === ''}>
-          Publish Lecture
+          {language.Publish_Lecture}
         </Button>
       </div>
 

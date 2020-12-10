@@ -38,7 +38,7 @@ export default function HomePage() {
       <div className="title-div">
         <h1 className="page-title-text">
         <i className="fas fa-newspaper title-icon" /> 
-        News          {/* //Erkan   */}
+        {language.News}
         </h1> 
       </div>
       
