@@ -9,7 +9,21 @@
   text-align: left;
 }
 .card-header {
-  border-radius: 10px;
+  padding: 20px;
+  color: var(--dominant);
+  font-size: 48pt;
+  background-color: var(--light);
+}
+.page-title-text {
+  padding: 20px;
+  color: var(--text);
+  font-size: 36pt;
+  background-color: var(--light);
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
 }
 
 .card-header:first-child {
@@ -39,10 +53,25 @@ td {
   margin-bottom: 1rem;
   color: #212529;
 }
-.btn-success {
+a.firstbuttontodo {
   color: #fff;
-  background-color: #287ea7;
-  border-color: #2185d0;
+  /* background-color: #3f51b5; */
+  background: var(--dominant);
+  background-size: 200% auto;
+  background-position: left center;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  padding: 6px 16px;
+  font-size: 0.700rem;
+  min-width: 64px;
+  box-sizing: border-box;
+  /* transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; */
+  /* font-family: "Roboto", "Helvetica", "Arial", sans-serif; */
+  font-weight: 500;
+  line-height: 1.75;
+  border-radius: 4px;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
 }
 .card-body {
   text-align: left;
@@ -55,7 +84,9 @@ td {
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
 }
-
+.bg-secondary {
+  background-color: #d4d4d5 !important;
+}
 /* td:hover {
   border: 1px solid blue;
 } */
@@ -77,4 +108,31 @@ td {
   border: 1px solid rgba(0, 0, 0, 0.95);
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.fileContainer .chooseFileButton:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}
+.table-bordered td,
+.table-bordered th {
+  border: 1px solid #1b1c1d;
+}
+.news-title-div {
+  -webkit-box-shadow: -10px 0px 13px -7px #00000048, 10px 0px 13px -7px #00000048,
+    0px 5px 15px 5px rgba(0, 0, 0, 0);
+  box-shadow: -10px 0px 13px -7px #00000048, 10px 0px 13px -7px #00000048,
+    0px 5px 15px 5px rgba(0, 0, 0, 0);
+  margin-bottom: 30px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+.btn-info {
+  color: #fff;
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+  margin-top: 20px;
 }

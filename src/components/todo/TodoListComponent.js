@@ -68,33 +68,39 @@ function TodoListComponent() {
 
   //Using a table to display the list of the tasks in a table format.
   return (
-    <div className="container">
-      <div className="card">
-        <div className="card-header bg-secondary text-white">
+    <>
+      <div className="news-title-div">
+        <h1 className="news-title">To-do List </h1>
+      </div>
+      <div className="container">
+        <div className="card">
+          {/* <div className="card-header bg-secondary text-white">
           <h4>To-do List</h4>
-        </div>
+        </div> */}
 
-        <div className="card-body">
-          <table className="table table-striped table-bordered">
-            <thead>
-              <tr>
-                <td>Title</td>
-                <td>Description</td>
-                <td>Due Date</td>
-                <td>Mark as Complete</td>
-                <td>Delete</td>
-              </tr>
-            </thead>
-            <tbody>{jsxTodos}</tbody>
-          </table>
-        </div>
-        <div className="card-footer">
-          <Link to="/todo-form" className="btn btn-success">
-            Create
-          </Link>
+          <div className="card-body">
+            <table className="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <td>Title</td>
+                  <td>Description</td>
+                  <td>Due Date</td>
+                  <td>Mark as Complete</td>
+                  <td>Delete</td>
+                </tr>
+              </thead>
+              <tbody>{jsxTodos}</tbody>
+            </table>
+          </div>
+          <div className="card-footer">
+            <button type="/todo-form" className="firstbuttontodo">
+              <Link to="/todo-form" className="firstbuttontodo"></Link>
+              Create
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
