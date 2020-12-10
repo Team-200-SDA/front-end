@@ -1,49 +1,9 @@
-.subject-div {
-  background-color: var(--light);
-  min-height: 600px;
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
-}
-
-.subject-title-div {
-  display: flex;
-  justify-content: space-between;
-}
-
-.subject-title {
-  color: var(--dominant);
-  font-size: 36pt;
-  margin-left: 45px;
-  margin-top: 60px!important;
-}
-
-.app-logo {
-  max-width: 15%;
-  margin-right: 25px;
-}
-
-input.form-control.subject{
-  margin-top: 16px;
-  margin-bottom: 16px;
-}
-
-.form-group .upload-button {
-  color: white;
-  /* background: var(--dominant); */
-  background-size: 200% auto;
-  background-position: left center;
-}
 
 .subject-page-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-bottom: 20px!important;
-  padding-top: 20px;
-  font-size: medium;
+  margin-top: 20px;
 }
 
 .subject-cards {
@@ -53,28 +13,12 @@ input.form-control.subject{
   display: flex;
   flex-direction: column; 
   text-align: center; 
-  
 }
 
-.subject-body {
-  text-align: left;
-  background-color: var(--light);
-  -webkit-box-shadow: -10px 0px 13px -7px #00000048, 10px 0px 13px -7px #00000048,  0px 5px 15px 5px rgba(0, 0, 0, 0);
-  box-shadow: -10px 0px 13px -7px #00000048, 10px 0px 13px -7px #00000048,  0px 5px 15px 5px rgba(0, 0, 0, 0);
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
-  margin-top: 10px;
-  margin-left: 45px;
-  margin-right: 40px;
-
-}
 .subject-card-body {
   display: flex;
   flex-direction: column;
-  
+  background: white;
 }
 
 img.subject-image {
@@ -82,14 +26,8 @@ img.subject-image {
   max-height: 180px;
 }
 
-.subject-button-div {
+.subject-delete-div {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-/* .MuiCardActions-root.MuiCardActions-spacing {
-  margin-top: auto;
-  display: flex;
-  justify-self: centre;
-} */
-

@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  Card, CardActionArea
-} from '@material-ui/core';
 import { DeleteRounded } from '@material-ui/icons';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
 import { useContext } from 'react';
 import { LangContext } from '../../contexts/LanguageContext';
 
