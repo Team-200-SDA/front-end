@@ -5,7 +5,6 @@ import TodoApi from '../../api/TodoApi';
 import { useContext } from 'react';
 import { LangContext } from '../../contexts/LanguageContext';
 
-
 function TodoListComponent() {
   const { language } = useContext(LangContext);
   const [todos, setTodos] = useState([]);
