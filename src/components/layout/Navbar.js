@@ -6,7 +6,8 @@ import { LangContext } from '../../contexts/LanguageContext';
 
 const logo = '/images/logo/logo.png';
 function Navbar({ onLogout }) {
-  const { language, changeEn, changeSv, changeEs } = useContext(LangContext);
+  const { language } = useContext(LangContext);
+
   return (
     <div className="nav-wrap">
       <div className="navbar">
@@ -87,32 +88,12 @@ function Navbar({ onLogout }) {
           </li>
 
           <li>
-            <i className="fas fa-door-open sign-out-button" onClick={onLogout} />
+            <Link to="#" className="nav-link">
+              <i className="fas fa-sign-out-alt nav-icon sign-out" onClick={onLogout} />
+              Sign Out
+            </Link>
           </li>
         </ul>
-        <div className="lang-drop">
-          <div
-            className="nav-link dropdown-toggle"
-            href="#"
-            id="navbarDropdown"
-            role="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false">
-            {language.language}
-          </div>
-          <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-            <div className="dropdown-item" href="#" onClick={changeEn}>
-              {language.english}
-            </div>
-            <div className="dropdown-item" href="#" onClick={changeSv}>
-              {language.swedish}
-            </div>
-            <div className="dropdown-item" href="#" onClick={changeEs}>
-              {language.spanish}
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );

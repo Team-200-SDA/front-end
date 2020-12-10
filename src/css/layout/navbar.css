@@ -37,6 +37,10 @@
   list-style: none;
 }
 
+.nav-wrap .navbar ul li:hover {
+  background-color: var(--secondary);
+}
+
 .nav-wrap .navbar .nav-link {
   display: flex;
   align-items: center;
@@ -47,11 +51,3 @@
   margin-right: 16px;
   font-size: 22px;
 }
-
-/* .sign-out-button {
-  font-size: 24pt;
-  width: 100%;
-  text-align: center;
-  cursor: pointer;
-  margin-bottom: 32px;
-}  */
