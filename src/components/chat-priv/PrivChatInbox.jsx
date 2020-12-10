@@ -88,7 +88,7 @@ function PrivChatInbox({ conversations, setConversations }) {
       <div className="title-div">
         <h1 className="page-title-text">
           <i className="fas fa-comments title-icon" />
-          Private Chat
+          {language.Private_Chat}
         </h1>
       </div>
       <div className="card-body ">

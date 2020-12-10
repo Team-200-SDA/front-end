@@ -1,6 +1,7 @@
 import { createContext, useState } from 'react';
 import English from '../Languages/English/login.json';
 import Swedish from '../Languages/Swedish/login.json';
+import Spanish from '../Languages/Spanish/login.json';
 import detector from 'detect-browser-language';
 
 export const LangContext = createContext();
@@ -17,6 +18,10 @@ const LangContextProvider = props => {
   const changeSv = () => {
     setLanguage(Swedish);
   };
+
+  const changeEs = () => {
+    setLanguage(Spanish);
+  };
   const changeLanguage = () => {
     if (language === English) {
       setLanguage(Swedish);
@@ -26,13 +31,13 @@ const LangContextProvider = props => {
     }
   };
 
-  const detectLang = () => {
-    lang === 'sv' ? setLanguage(Swedish) : setLanguage(English);
-  };
+  // const detectLang = () => {
+  //   lang === 'sv' ? setLanguage(Swedish) : setLanguage(English);
+  // };
 
   return (
     <LangContext.Provider
-      value={{ language, changeSv, changeEn, changeLanguage, detectLang }}>
+      value={{ language, changeSv, changeEn, changeLanguage, changeEs }}>
       {props.children}
     </LangContext.Provider>
   );

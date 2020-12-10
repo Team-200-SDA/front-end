@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
- import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import TodoApi from '../../api/TodoApi';
 import { useContext } from 'react';
@@ -42,7 +42,6 @@ function TodoListComponent() {
     setUpdate(value => value + 1);
   };
 
-  
   //Calling the functions ...
 
   const jsxTodos = todos.map(todo => {
