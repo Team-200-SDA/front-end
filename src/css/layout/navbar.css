@@ -4,5 +4,13 @@
   flex-direction: column;
   margin-top: 30px;
   border-top-right-radius: 20px;
-  /* border-bottom-right-radius: 20px; */
+  align-content: center;
+}
+
+.sign-out-button {
+  font-size: 24pt;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 32px;
 }

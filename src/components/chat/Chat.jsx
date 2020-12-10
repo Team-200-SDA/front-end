@@ -78,9 +78,9 @@ function Chat() {
 
   return (
     <div className="public-chat-wrap">
-      <div className="public-chat-title-div">
-        <h1 className="public-chat-title">
-          <i class="far fa-comments title-icon" />
+      <div className="title-div">
+        <h1 className="page-title-text">
+          <i className="far fa-comments title-icon" />
           Public Chat
         </h1>
       </div>

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Auth from './services/Auth';
-import Navbar from './components/layout/Navbar';
-import Footer from './components/layout/Footer';
-import { RecoilRoot } from 'recoil';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Auth from "./services/Auth";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+import { RecoilRoot } from "recoil";
 
 /// Import pages
 import LoginPage from './components/auth/LoginPage';
@@ -20,6 +20,9 @@ import TodoCreateComponent from './components/todo/TodoCreateComponent';
 import TodoListComponent from './components/todo/TodoListComponent';
 import SubjectsPage from './components/subject/SubjectsPage';
 import LecturePage from './components/lecture/LecturePage';
+import PostsPage from "./components/forum/posts/PostsPage";
+import CommentPageDetails from "./components/forum/comments/CommentPageDetails";
+import CommentsPage from "./components/forum/comments/CommentsPage";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -44,7 +47,7 @@ function App() {
                 <HomePage />
               </Route>
               <Route path="/lectures" exact>
-                <SubjectsPage />
+                <LecturePage />
               </Route>
               <Route path="/lectures/:id" exact>
                 <LecturePage />
@@ -55,6 +58,7 @@ function App() {
               <Route path="/chat" exact>
                 <Chat />
               </Route>
+
               <Route path="/live">
                 <LiveVideo />
               </Route>
@@ -79,6 +83,18 @@ function App() {
               <Route path="/todo-form">
                 <TodoCreateComponent />
               </Route>
+
+              <Route path="/forum" exact>
+                <PostsPage />
+              </Route>
+
+              <Route exact path="/comments">
+                <CommentsPage />
+              </Route>
+              <Route
+                path="/post/:id/comments"
+                render={({ match }) => <CommentPageDetails match={match} />}
+              />
             </Switch>
           </div>
 

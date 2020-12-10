@@ -4,7 +4,6 @@ import ImageUploader from '../imageuploader/ImageUploader';
 import { useContext } from 'react';
 import { LangContext } from '../../contexts/LanguageContext';
 
-
 function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicClick }) {
   const { language } = useContext(LangContext);
   const [address, setAddress] = useState({ address: '' });
@@ -44,24 +43,17 @@ function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicC
 
         <div className="card address">
           <div className="form-group address-form row mt-1">
-            
-              <div className="input-group-prepend">
-                <span className="input-group-text">Address</span>
-              </div>
-              <input
-                className="form-control"
-                defaultValue={user.address}
-                onChange={(event) =>
-                  setAddress({ address: event.target.value })
-                }
-              ></input>
-            
+            <div className="input-group-prepend">
+              <span className="input-group-text">Address</span>
+            </div>
+            <input
+              className="form-control"
+              defaultValue={user.address}
+              onChange={event => setAddress({ address: event.target.value })}></input>
+
             <div className="text-right mt-0 mb-0">
-              <button
-                className="btn btn-primary  "
-                onClick={(e) => clickUpdateAddress(e)}
-              >
-                <i class="fas fa-pencil-alt"></i>
+              <button className="btn btn-primary  " onClick={e => clickUpdateAddress(e)}>
+                <i className="fas fa-pencil-alt"></i>
               </button>
             </div>
           </div>
@@ -73,18 +65,12 @@ function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicC
               <input
                 className="form-control"
                 defaultValue={user.phoneno}
-                onChange={(event) =>
-                  setPhoneno({ phoneno: event.target.value })
-                }
-              ></input>
+                onChange={event => setPhoneno({ phoneno: event.target.value })}></input>
             </div>
 
             <div className="text-right mt-0 mb-0">
-              <button
-                className="btn btn-primary "
-                onClick={(e) => clickUpdatePhone(e)}
-              >
-                <i class="fas fa-pencil-alt"></i>
+              <button className="btn btn-primary " onClick={e => clickUpdatePhone(e)}>
+                <i className="fas fa-pencil-alt"></i>
               </button>
             </div>
           </div>
@@ -100,7 +86,7 @@ function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicC
               )}
             </div>
             <div className="col">
-              <ImageUploader setImgUrl={setImage} uploadPreset={"profile"} />
+              <ImageUploader setImgUrl={setImage} uploadPreset={'profile'} />
             </div>
           </div>
           <div className="text-right">
