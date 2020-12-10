@@ -67,6 +67,13 @@ export default function AssignmentPage() {
 
   return (
     // Assign Assignments and Submit Assignment Buttons
+    <div className="assignment-page-wrap">
+      <div className="title-div">
+        <h1 className="page-title-text">
+        <i className="fas fa-clipboard title-icon" />
+          Assignments
+        </h1>
+      </div>
     <div className="assignment-page">
       <div
         className="container d-flex justify-content-around mb-4 btn-group btn-group-toggle"
@@ -133,6 +140,7 @@ export default function AssignmentPage() {
               ))}
         </div>
       )}
+    </div>
     </div>
   );
 }

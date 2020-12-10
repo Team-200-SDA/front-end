@@ -4,7 +4,6 @@ import { v4 as uuid } from 'uuid';
 import SubjectApi from '../../api/SubjectApi';
 import CreateSubject from './CreateSubject';
 import Subject from './Subject';
-import Logo from '../../assets/images/logo.png';
 
 function SubjectsPage() {
   const [subjects, setSubjects] = useState([]);
@@ -31,20 +30,22 @@ function SubjectsPage() {
   });
 
   return (
-    <>
-      <div className="subject-div card-body">
-        <div className="subject-title-div">
-          <h1 className="subject-title">Lectures Modules</h1>
-          <img className="app-logo" src={Logo} alt="" />
+    <div className="subject-page-wrap">
+      <div className="title-div">
+        <h1 className="page-title-text">
+          <i className="fas fa-book-open title-icon" />
+          Lecture Modules
+        </h1>
+      </div>
+
+      <div className="card-body">
+        {/* Loads Lecture Creation component based on user role */}
+        {userRole !== 'teacher' ? null : <CreateSubject getSubjects={getSubjects} />}
+        <div className="subject-page-cards">
+          {jsxSubjects}
         </div>
-      
-      {/* Loads Lecture Creation component based on user role */}
-      {userRole !== 'teacher' ? null : <CreateSubject getSubjects={getSubjects} />}
-      <div className="subject-page-cards">
-        {jsxSubjects}
       </div>
-      </div>
-    </>
+    </div>
   );
 }
 
