@@ -4,15 +4,16 @@ import Calendar from '../calendar/Calendar';
 import { useContext } from 'react';
 import { LangContext } from '../../contexts/LanguageContext';
 
+const logo = '/images/logo/logo.png';
 function Navbar({ onLogout }) {
   const { language, changeEn, changeSv } = useContext(LangContext);
   return (
     <nav className="navbar">
-      <a className="navbar-brand" href="/">
-        EduLane
-      </a>
+      <Link to="/" className="navbar-brand">
+        <img src={logo} alt="" />
+      </Link>
 
-      <ul className="navbar-nav mr-auto">
+      <ul className="nav-links">
         <li className="nav-item">
           <Link to="/" className="nav-link">
             {language.home}
@@ -39,7 +40,7 @@ function Navbar({ onLogout }) {
 
         <li className="nav-item">
           <Link to="/filestorage" className="nav-link">
-            {language.File_Storage}
+            File Storage
           </Link>
         </li>
 
@@ -73,9 +74,9 @@ function Navbar({ onLogout }) {
           </Link>
         </li>
 
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
+        <li className="nav-item dropdown">
+          <div
+            className="nav-link dropdown-toggle"
             href="#"
             id="navbarDropdown"
             role="button"
@@ -83,22 +84,18 @@ function Navbar({ onLogout }) {
             aria-haspopup="true"
             aria-expanded="false">
             {language.language}
-          </a>
-
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#" onClick={changeEn}>
+          </div>
+          <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div className="dropdown-item" href="#" onClick={changeEn}>
               {language.english}
-            </a>
-            <a class="dropdown-item" href="#" onClick={changeSv}>
+            </div>
+            <div className="dropdown-item" href="#" onClick={changeSv}>
               {language.swedish}
-            </a>
+            </div>
           </div>
         </li>
       </ul>
-
-      <button className="sign-out-button" onClick={onLogout}>
-        {language.Logout}
-      </button>
+      <i className="fas fa-door-open sign-out-button" onClick={onLogout} />
     </nav>
   );
 }

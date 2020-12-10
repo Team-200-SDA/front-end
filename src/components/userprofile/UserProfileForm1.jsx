@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import defaultImage from '../../assets/images/blank-profile-picture-973460_1280.png';
 import ImageUploader from '../imageuploader/ImageUploader';
 
-
 function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicClick }) {
   const [address, setAddress] = useState({ address: '' });
   const [phoneno, setPhoneno] = useState({ phoneno: '' });
@@ -27,9 +26,7 @@ function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicC
 
   return (
     <div className="card user-profile">
-      <div className="card-title">
-        User Profile
-      </div>
+      <div className="card-title">User Profile</div>
 
       <div className="card body-user-profile">
         <div className="form-group row ml-3">
@@ -41,24 +38,17 @@ function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicC
 
         <div className="card address">
           <div className="form-group address-form row mt-1">
-            
-              <div className="input-group-prepend">
-                <span className="input-group-text">Address</span>
-              </div>
-              <input
-                className="form-control"
-                defaultValue={user.address}
-                onChange={(event) =>
-                  setAddress({ address: event.target.value })
-                }
-              ></input>
-            
+            <div className="input-group-prepend">
+              <span className="input-group-text">Address</span>
+            </div>
+            <input
+              className="form-control"
+              defaultValue={user.address}
+              onChange={event => setAddress({ address: event.target.value })}></input>
+
             <div className="text-right mt-0 mb-0">
-              <button
-                className="btn btn-primary  "
-                onClick={(e) => clickUpdateAddress(e)}
-              >
-                <i class="fas fa-pencil-alt"></i>
+              <button className="btn btn-primary  " onClick={e => clickUpdateAddress(e)}>
+                <i className="fas fa-pencil-alt"></i>
               </button>
             </div>
           </div>
@@ -70,18 +60,12 @@ function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicC
               <input
                 className="form-control"
                 defaultValue={user.phoneno}
-                onChange={(event) =>
-                  setPhoneno({ phoneno: event.target.value })
-                }
-              ></input>
+                onChange={event => setPhoneno({ phoneno: event.target.value })}></input>
             </div>
 
             <div className="text-right mt-0 mb-0">
-              <button
-                className="btn btn-primary "
-                onClick={(e) => clickUpdatePhone(e)}
-              >
-                <i class="fas fa-pencil-alt"></i>
+              <button className="btn btn-primary " onClick={e => clickUpdatePhone(e)}>
+                <i className="fas fa-pencil-alt"></i>
               </button>
             </div>
           </div>
@@ -97,14 +81,11 @@ function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicC
               )}
             </div>
             <div className="col">
-              <ImageUploader setImgUrl={setImage} uploadPreset={"profile"} />
+              <ImageUploader setImgUrl={setImage} uploadPreset={'profile'} />
             </div>
           </div>
           <div className="text-right">
-            <button
-              className="btn btn-primary  "
-              onClick={(e) => clickUpdateProfilepic(e)}
-            >
+            <button className="btn btn-primary  " onClick={e => clickUpdateProfilepic(e)}>
               Update Profile picture
             </button>
           </div>

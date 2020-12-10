@@ -12,7 +12,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
   align-items: center;
-  overflow-y: scroll;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 }
