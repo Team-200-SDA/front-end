@@ -27,31 +27,6 @@
   
 } */
 
-
-.public-chat-title-div {
-  -webkit-box-shadow: -10px 0px 13px -7px #00000048, 10px 0px 13px -7px #00000048,  0px 5px 15px 5px rgba(0, 0, 0, 0);
-  box-shadow: -10px 0px 13px -7px #00000048, 10px 0px 13px -7px #00000048,  0px 5px 15px 5px rgba(0, 0, 0, 0);
-  margin-bottom: 30px;
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
-}
-
-.public-chat-title {
-  text-align: center;
-  padding: 20px;
-  color: var(--text);
-  font-size: 36pt;
-  background-color: var(--light);
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
-}
-
 .message-body {
   display: flex;
   align-items: center;
@@ -99,7 +74,7 @@
 .message-content {
   text-align: left;
   min-width: 0; 
-  margin: 10px;
+  margin: 10px 10px 10px 20px;
 }
 
 .message-time {
