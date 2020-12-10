@@ -1,4 +1,5 @@
 @import './shared.css';
+@import './layout//navbar.css';
 @import './chat/_chat.css';
 @import './chat/_privChatInbox.css';
 @import './assignment/assignment.css';
@@ -12,3 +13,4 @@
 @import './layout//navbar.css';
 @import './news/news.css';
 @import './todo/_todo.css'
+@import './userProfile/UserProfile.css';

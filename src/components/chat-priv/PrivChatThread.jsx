@@ -1,4 +1,4 @@
-import { Fab, IconButton, TextField } from '@material-ui/core';
+import { Fab, TextField } from '@material-ui/core';
 import { DeleteRounded, Send } from '@material-ui/icons';
 import { format } from 'date-fns';
 import produce from 'immer';
@@ -6,8 +6,6 @@ import React, { useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import PrivChatApi from '../../api/PrivChatApi';
 import PrivMessage from './PrivMessage';
-import { useContext } from 'react';
-import { LangContext } from '../../contexts/LanguageContext';
 
 function PrivChatThread({
   conversations,
