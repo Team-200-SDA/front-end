@@ -17,67 +17,72 @@ function Navbar({ onLogout }) {
         <ul>
           <li>
             <Link to="/" className="nav-link">
-              {language.home}
+              {/* Erkan */}
+              <i className="fas fa-newspaper nav-icon" /> News
             </Link>
           </li>
 
           <li>
             <Link to="/lectures" className="nav-link">
+              <i className="fas fa-newspaper nav-icon" />
               {language.Lectures}
             </Link>
           </li>
 
           <li>
             <Link to="/live" className="nav-link">
+              <i className="fas fa-newspaper nav-icon" />
               {language.Live_Stream}
             </Link>
           </li>
 
           <li>
             <Link to="/assignments" className="nav-link">
+              <i className="fas fa-newspaper nav-icon" />
               {language.Assignments}
             </Link>
           </li>
-
+          {/* Erkan */}
           <li>
             <Link to="/filestorage" className="nav-link">
-              File Storage
+              <i className="fas fa-newspaper nav-icon" /> File Storage
             </Link>
           </li>
 
           <li>
             <Link to="/chat" className="nav-link">
+              <i className="fas fa-newspaper nav-icon" />
               {language.Chat}
             </Link>
           </li>
-
+          {/* Erkan */}
           <li>
             <Link to="/private-chat" className="nav-link">
-              {language.Private_Messaging}
+              <i className="fas fa-newspaper nav-icon" /> Private Chat
             </Link>
           </li>
 
           <li>
             <Link to="/todo-list" className="nav-link">
-              {language.Todo}
+              <i className="fas fa-newspaper nav-icon" /> {language.Todo}
             </Link>
           </li>
 
           <li>
             <Link to="#" onClick={Calendar} className="nav-link">
-              Calendar
+              <i className="fas fa-newspaper nav-icon" /> Calendar
             </Link>
           </li>
 
           <li>
             <Link to="/forum" className="nav-link">
-              Forum
+              <i className="fas fa-newspaper nav-icon" /> Forum
             </Link>
           </li>
 
           <li>
             <Link to="/userprofile" className="nav-link">
-              {language.User_Profile}
+              <i className="fas fa-newspaper nav-icon" /> {language.User_Profile}
             </Link>
           </li>
 
