@@ -139,3 +139,10 @@ a.firstbuttontodo {
   border-color: #17a2b8;
   margin-top: 20px;
 }
+.table-bordered td,
+.table-bordered th {
+  border: 1px solid #212529;
+}
+.card-body {
+  border: 1px solid #112d4a;
+}
