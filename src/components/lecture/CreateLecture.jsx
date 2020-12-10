@@ -57,27 +57,34 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
 
   return (
     <div className="card-body create-lecture-div">
-      <div className="form-group">
 
+      <div className="form-group">
         <div className="storage-uploader">
 
           <FormControl component="fieldset">
-           <FormLabel component="legend">Lecture Type</FormLabel> 
+
+            <FormLabel component="legend">Lecture Type</FormLabel> 
             <RadioGroup
               row
               aria-label="Assignment Type"
               value={uploadType}
               onChange={radioChange}>
+
               <FormControlLabel value="UPLOAD" control={<Radio />} label="Upload File" />
               <FormControlLabel value="VIDEO" control={<Radio />} label="Video Link" />
               <FormControlLabel value="LINK" control={<Radio />} label="External Link" />
+
             </RadioGroup>
           </FormControl>
 
           <div>
             <FileUploader setUploadResponse={setUploadResponse} uploadType={uploadType} />
           </div>
-
+         
+        </div>
+      </div>
+        
+      <div className="form-group">
         <input
           className="form-control"
           placeholder="Lecture Name..."  //Erkan  
@@ -93,20 +100,19 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
           onChange={event => setLink(event.target.value)}
           disabled={uploadType === 'UPLOAD' || uploadType === ''}
         />
-
-        <div className="form-group">
-          <Button
-            className="upload-button" 
-            variant="contained"
-            color="primary"
-            onClick={createLecture}
-            disabled={title === '' || link === ''}>
-            Publish Lecture
-          </Button>
-        </div>
       </div>
-    {/* </Card>*/}
+
+      <div className="form-group">
+        <Button
+          className="upload-button" 
+          variant="contained"
+          color="primary"
+          onClick={createLecture}
+          disabled={title === '' || link === ''}>
+          Publish Lecture
+        </Button>
+      </div>
+
     </div>
-    </div> 
   );
 }
