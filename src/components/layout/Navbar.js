@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Calendar from '../calendar/Calendar';
+import Postspage from '../forum/posts/PostsPage'
 import { useContext } from 'react';
 import { LangContext } from '../../contexts/LanguageContext';
 
@@ -62,12 +63,18 @@ function Navbar({ onLogout }) {
           </Link>
         </li>
 
-        <li className="nav-item">
-          <Link to="#" onClick={Calendar} className="nav-link">
-            {language.Calendar}
-          </Link>
-        </li>
-
+          <li className="nav-item">
+            <Link to="#" onClick={Calendar} className="nav-link">
+              Calendar
+            </Link>
+          </li>
+          
+          <li className="nav-item">
+            <Link to="/forum" className="nav-link">
+              Forum
+            </Link>
+          </li>
+        
         <li className="nav-item">
           <Link to="/userprofile" className="nav-link">
             {language.User_Profile}
@@ -97,7 +104,7 @@ function Navbar({ onLogout }) {
       </ul>
       <i className="fas fa-door-open sign-out-button" onClick={onLogout} />
     </nav>
-  );
+);
 }
 
 export default Navbar;
