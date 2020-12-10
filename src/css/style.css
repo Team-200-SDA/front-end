@@ -2,14 +2,13 @@
 @import './layout//navbar.css';
 @import './chat/_chat.css';
 @import './chat/_privChatInbox.css';
-@import './assignment/assignment.css';
-@import './assignment/assignmentPage.css';
 @import './layout/footer.css';
 @import './fileStorage//FileStorage.css';
 @import './chatbot/_chatbot.css';
 @import './imageUploader/imageUploader.css';
 @import './subjects/_subjects.css';
 @import './lecture/_lecture.css';
+@import './assignment/_assignment.css';
 @import './layout//navbar.css';
 @import './news/news.css';
 @import './todo/_todo.css'

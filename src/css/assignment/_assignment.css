@@ -1,0 +1,51 @@
+.assignment-page-wrap {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.create-assignment-div {
+  max-width: 80%;
+  margin: auto;
+}
+
+.assignment-cards {
+  margin-top: 20px;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-body-assignment {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: first baseline;
+  max-height: 80px;
+  margin-bottom: 16px;
+}
+
+.assignment-delete {
+  margin-left: auto;
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.assignment-user-name {
+    margin-left: auto;
+    margin-right: 16px;
+}
+
+.assignment-div {
+  margin-bottom: 16px;
+}
+
+/* input.form-control.assignment{
+  margin-top: 16px;
+  margin-bottom: 16px;
+} */
+
+.submit-dropdown{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
