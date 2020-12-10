@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import defaultImage from "../../assets/images/blank-profile-picture-973460_1280.png";
 //import defaultImage from "../../assets/images/pic_1171831236_1.png";
 import ImageUploader from "../imageuploader/ImageUploader";
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
 
 import {Card} from '@material-ui/core';
 
@@ -11,6 +13,7 @@ function UserProfileForm({
   onUpdatePhoneClick,
   onUpdatePicClick,
 }) {
+  const { language } = useContext(LangContext);
   const [address, setAddress] = useState({ address: "" });
   const [phoneno, setPhoneno] = useState({ phoneno: "" });
   const [image, setImage] = useState({ image: "" });
@@ -37,7 +40,7 @@ function UserProfileForm({
       <div className="user-profile-title-div">
         <h1 className="user-profile-title">
           <i class="far fa-address-card title-icon"></i>
-          User Profile
+          {language.User_Profile}
         </h1>
       </div>
 
