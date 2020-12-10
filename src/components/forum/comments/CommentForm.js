@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import CommentsApi from "../../../api/CommentsApi";
 
 export default function CommentForm({
-  onSubmit,
   initialBody,
   onCancel,
   formTitle,
@@ -10,7 +9,9 @@ export default function CommentForm({
   post,
   isUpdate,
   comment,
-}) {
+}) { //props come from Comment
+
+
   const [body, setBody] = useState(initialBody || "");
 
   const onCreateCommentClick = (e) => {
@@ -46,9 +47,7 @@ export default function CommentForm({
           </div>
 
           <div className="form-group">
-            <button 
-            className="btn btn-info" t
-            ype="submit">
+            <button className="btn btn-info" t ype="submit">
               Save
             </button>
 

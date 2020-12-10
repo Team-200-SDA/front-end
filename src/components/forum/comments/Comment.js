@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
-import CommentForm from './CommentForm';
-import UserApi from '../../../api/UserApi';
-import CommentsApi from '../../../api/CommentsApi'
+import CommentForm from "./CommentForm";
+import UserApi from "../../../api/UserApi";
 
-function Comment({comment, onCommentDelete, onCommentUpdate, getAll, setComments }) {
-  
-  const [isUpdate, setIsUpdate] = useState(false);
 
+function Comment({
+  comment,
+  onCommentDelete,
+  onCommentUpdate
+}) {     //props come from CommentsList
+
+
+  const [isUpdate, setIsUpdate] = useState(false); //opens the Comment update form
 
   const [user, setUser] = useState([]);
 
@@ -20,8 +24,7 @@ function Comment({comment, onCommentDelete, onCommentUpdate, getAll, setComments
     getUser();
   }, []);
 
-  const isMyComment = comment.user.id === user.id
-
+  const isMyComment = comment.user.id === user.id;  //checks if comment belongs to the loggedin user if true makes buttons visible
 
   const onUpdateComment = () => {
     setIsUpdate(true);
@@ -31,61 +34,53 @@ function Comment({comment, onCommentDelete, onCommentUpdate, getAll, setComments
     setIsUpdate(false);
   };
 
-  const onCommentFormSubmit = (commentData) => {
-    const updatedComment = { ...comment, ...commentData };
-    return onCommentUpdate(updatedComment)
-        .then(() => setIsUpdate(false));
-  };
-
-
-
   const onCommentFormCancel = () => {
     setIsUpdate(false);
   };
 
-  return(
-  <div>
-    { isUpdate ? (
+  return (
+    <div>
+      {isUpdate ? (
         <CommentForm
-            initialBody={comment.body}
-            onCommentFormSubmit = {onCommentFormSubmit}
-            onCancel={onCommentFormCancel}
-            formTitle="Update comment"
-            isUpdate = {isUpdate}
-            setIsUpdate = {setIsUpdate}
-            comment = {comment}
-            onSaveUpdatedComment = {onSaveUpdatedComment}
-            onCommentUpdate = {onCommentUpdate}
+          formTitle="Update comment"
+          initialBody={comment.body}
+        
+          onCancel={onCommentFormCancel}
+          isUpdate={isUpdate}
+          setIsUpdate={setIsUpdate}
+          comment={comment}
+          onSaveUpdatedComment={onSaveUpdatedComment}
+          onCommentUpdate={onCommentUpdate}
         />
-    ) : (
-      <div className="card mt-4">
-        <div className="card-body">
-          <div>{comment.body}</div>
-          <p className="badge badge-primary text-wrap">{comment.user.name}</p>
+      ) : (
+        <div className="card mt-4">
+          <div className="card-body">
+            <div>{comment.body}</div>
+            <p className="badge badge-primary text-wrap">{comment.user.name}</p>
 
-
-          <div className="mt-3">
-          {isMyComment && (
-             <>
-            <button
-              className="btn btn-danger mt-3"
-              onClick={() => onCommentDelete(comment)}
-            >
-              Delete
-            </button>
-         
-            <button className="btn btn-warning mt-3 ml-3" onClick={onUpdateComment}>
-                    Update
+            <div className="mt-3">
+              {isMyComment && (
+                <>
+                  <button
+                    className="btn btn-danger mt-3"
+                    onClick={() => onCommentDelete(comment)}
+                  >
+                    Delete
                   </button>
 
-            </>
-            )}
+                  <button
+                    className="btn btn-warning mt-3 ml-3"
+                    onClick={onUpdateComment}
+                  >
+                    Update
+                  </button>
+                </>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    )
-    }
-  </div>
+      )}
+    </div>
   );
 }
 

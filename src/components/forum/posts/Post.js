@@ -1,18 +1,16 @@
-
 import React, { useState, useEffect } from "react";
 import PostForm from "./PostForm";
-import {Link} from "react-router-dom";
-import CommentForm from '../comments/CommentForm';
-import UserApi from '../../../api/UserApi';
+import { Link } from "react-router-dom";
+import CommentForm from "../comments/CommentForm";
+import UserApi from "../../../api/UserApi";
 
-
-
-function Post({ post, onPostUpdate, onPostDelete }) {
-
+function Post({
+  post,
+  onPostUpdate,
+  onPostDelete, //Props come from PostsList
+}) {
   const [isUpdate, setIsUpdate] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
-
-
 
   const [user, setUser] = useState([]);
 
@@ -26,9 +24,9 @@ function Post({ post, onPostUpdate, onPostDelete }) {
     getUser();
   }, []);
 
-console.log(post.comment)
+  console.log(post.comment);
 
-  const isMyPost = post.user.id === user.id
+  const isMyPost = post.user.id === user.id;
 
   const onUpdateClick = () => {
     setIsUpdate(true);
@@ -36,51 +34,42 @@ console.log(post.comment)
 
   const onPostFormSubmit = (postData) => {
     const updatedPost = { ...post, ...postData };
-    return onPostUpdate(updatedPost)
-      .then(() => setIsUpdate(false));
+    return onPostUpdate(updatedPost).then(() => setIsUpdate(false));
   };
 
   const onPostFormCancel = () => {
-    setIsUpdate(false)
-  }
+    setIsUpdate(false);
+  };
 
   const onCreateCommentClick = (data) => {
     setIsFormOpen(true);
-  }
+  };
 
   const onCreateCommentCancel = () => {
-    setIsFormOpen(false)
-  }
+    setIsFormOpen(false);
+  };
 
   return (
     <div>
-      {
-      isUpdate ? (
-       
-       <PostForm
+      {isUpdate ? (
+        <PostForm
           initialTitle={post.title}
           initialBody={post.body}
           onSubmit={onPostFormSubmit}
           onCancel={onPostFormCancel}
           formTitle="Update post"
         />
-        )
-       : (
+      ) : (
         <div className="card mt-4">
           <div className="card-body">
             <div className="card-title">
               <Link to={`/post/${post.id}/comments`}>
                 <h3>{post.title}</h3>
               </Link>
-              
-              <p className="badge badge-primary text-wrap">
-                {post.user.name}
-              </p>
-            
+
+              <p className="badge badge-primary text-wrap">{post.user.name}</p>
             </div>
             <div>{post.body}</div>
-           
-
 
             <div className="mt-3">
               {isMyPost && (
@@ -88,7 +77,7 @@ console.log(post.comment)
                   <button className="btn btn-warning" onClick={onUpdateClick}>
                     Update
                   </button>
-                                
+
                   <button
                     className="btn btn-danger ml-3"
                     onClick={() => onPostDelete(post)}
@@ -97,29 +86,29 @@ console.log(post.comment)
                   </button>
                 </>
               )}
-              <button type="button" 
-              className="btn btn-info ml-3" 
-              data-toggle="modal" 
-              data-target="#myModal" 
-              onClick={onCreateCommentClick}>
-                  Add Comment 
+              <button
+                type="button"
+                className="btn btn-info ml-3"
+                data-toggle="modal"
+                data-target="#myModal"
+                onClick={onCreateCommentClick}
+              >
+                Add Comment
               </button>
-              </div>
-              { isFormOpen &&
-               < CommentForm
-                  onCancel={onCreateCommentCancel}
-                  onSubmit={onCreateCommentClick}
-                  setIsFormOpen={setIsFormOpen}
-                  post={post}            
-                />        
-              }
-              {}  
+            </div>
+            {isFormOpen && (
+              <CommentForm
+                onCancel={onCreateCommentCancel}
+                onSubmit={onCreateCommentClick}
+                setIsFormOpen={setIsFormOpen}
+                post={post}
+              />
+            )}
+            {}
           </div>
         </div>
-        )
-      }  
+      )}
     </div>
   );
 }
 export default Post;
-

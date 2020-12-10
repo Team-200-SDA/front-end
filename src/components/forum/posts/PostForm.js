@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 
-function PostForm({initialTitle, initialBody, onSubmit, onCancel, formTitle}) {
+function PostForm({
+  initialTitle,
+  initialBody,
+  onSubmit,
+  onCancel,
+  formTitle,
+}) {
+  // props come from Post
+
   const [title, setTitle] = useState(initialTitle || "");
   const [body, setBody] = useState(initialBody || "");
 
@@ -10,7 +18,7 @@ function PostForm({initialTitle, initialBody, onSubmit, onCancel, formTitle}) {
     onSubmit(postData).catch((err) => {
       alert("error occured");
     });
-};
+  };
 
   return (
     <div className="card mt-4">
@@ -41,20 +49,17 @@ function PostForm({initialTitle, initialBody, onSubmit, onCancel, formTitle}) {
           </div>
 
           <div className="form-group">
-            
-            <button
-              className="btn btn-primary"
-              type="submit">
+            <button className="btn btn-primary" type="submit">
               Save
             </button>
-            
+
             <button
               className="btn btn-outline"
               type="button"
-              onClick={onCancel}>
+              onClick={onCancel}
+            >
               Cancel
             </button>
-            
           </div>
         </form>
       </div>
