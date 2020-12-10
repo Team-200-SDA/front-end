@@ -2,8 +2,11 @@ import { Button, Card, FormLabel } from '@material-ui/core';
 import React, { useState } from 'react';
 import SubjectApi from '../../api/SubjectApi';
 import ImageUploader from '../imageuploader/ImageUploader';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
 
 function CreateSubject({ getSubjects }) {
+  const { language } = useContext(LangContext);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [link, setLink] = useState('');
@@ -45,7 +48,7 @@ function CreateSubject({ getSubjects }) {
             color="primary"
             onClick={createSubject}
             disabled={name === '' || description === '' || link === ''}>
-            Create Subject
+            {language.create_Subject}
           </Button>
         </div>
 

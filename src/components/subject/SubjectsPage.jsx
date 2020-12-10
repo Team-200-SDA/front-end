@@ -6,6 +6,7 @@ import CreateSubject from './CreateSubject';
 import Subject from './Subject';
 
 function SubjectsPage() {
+  const { language } = useContext(LangContext);
   const [subjects, setSubjects] = useState([]);
   const userRole = window.sessionStorage.getItem('role');
 
