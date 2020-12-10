@@ -91,6 +91,13 @@
   "Profile_Picture":"Foto de perfil",
   "Update_Profile_picture":"Foto del perfil de actualización",
   "Private_Chat":"Chat privado",
-  "spanish":"Español"
+  "spanish":"Español",
+  "Body":"Cuerpo:",
+  "Comment_Body":"Cuerpo del comentario",
+  "Cancel":"Cancelar",
+  "Add_Comment":"Agregar comentario",
+  "error_occured":"ocurrió un error",
+  "Post_Body":"Post Cuerpo",
+  "Create_new_Post":"Crear una publicación nueva"
 }
 

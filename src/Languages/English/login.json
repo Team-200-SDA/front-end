@@ -91,7 +91,14 @@
 	"Profile_Picture":"Profile Picture",
 	"Update_Profile_picture":"Update Profile picture",
 	"Private_Chat":"Private Chat",
-	"spanish":"Spanish"
+	"spanish":"Spanish",
+	"Body":"Body:",
+	"Comment_Body":"Comment Body",
+	"Cancel":"Cancel",
+	"Add_Comment":"Add Comment",
+	"error_occured":"error occured",
+	"Post_Body":"Post Body",
+	"Create_new_Post":"Create a new Post"
 	
 
 }

@@ -91,5 +91,12 @@
 	"Profile_Picture":"Profilbild",
 	"Update_Profile_picture":"Uppdatera profilbild",
 	"Private_Chat":"Privat chatt",
-	"spanish":"Spanska"
+	"spanish":"Spanska",
+	"Body":"Kropp:",
+	"Comment_Body":"Kommentar kropp",
+	"Cancel":"Annullera",
+	"Add_Comment":"Lägg till kommentar",
+	"error_occured":"fel uppstod",
+	"Post_Body":"Post Kropp",
+	"Create_new_Post":"Skapa ett nytt inlägg"
 }
