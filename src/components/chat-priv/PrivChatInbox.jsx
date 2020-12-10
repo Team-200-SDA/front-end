@@ -102,9 +102,9 @@ function PrivChatInbox({ conversations, setConversations }) {
             selection
             options={dropDownUsers}
           />
-          <CreateRounded
-            className="conversation-button"
-            onClick={() => sendMessage(selectedUser)}></CreateRounded>
+          <i
+            className="fas fa-paper-plane conversation-button"
+            onClick={() => sendMessage(selectedUser)}></i>
         </div>
         <div className="private-chat-wrap private-chat-layout">
           <div>{jsxConversations}</div>
