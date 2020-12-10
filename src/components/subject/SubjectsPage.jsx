@@ -33,7 +33,7 @@ function SubjectsPage() {
     <div className="subject-page-wrap">
       <div className="title-div">
         <h1 className="page-title-text">
-          <i class="fas fa-book-open title-icon" />
+          <i className="fas fa-book-open title-icon" />
           Lecture Modules
         </h1>
       </div>

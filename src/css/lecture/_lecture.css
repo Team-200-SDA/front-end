@@ -4,6 +4,12 @@
   flex-direction: column;
 }
 
+
+.create-lecture-div {
+  max-width: 80%;
+  margin: auto;
+}
+
 .lecture-div {
     background-color: var(--light);
     min-height: 600px;

@@ -29,10 +29,12 @@ export default function LecturePage() {
     <div className="lecture-page-wrap">
       <div className="title-div">
         <h1 className="page-title-text">
-        <i class="fas fa-book-open title-icon" />
+        <i className="fas fa-book-open title-icon" />
             Lectures
         </h1>
       </div>
+
+      <div className="card-body">
       {/* Loads Lecture Creation component based on user role */}
       {userRole !== 'teacher' ? null : (
         <CreateLecture
@@ -41,11 +43,12 @@ export default function LecturePage() {
           urlParams={urlParams}
         />
       )}
-      <div className="lecture-page-cards">
+      <div className="  -page-cards">
       {lectures.map(lecture => (
           <Lecture key={uuid()} getAllLectures={getLectures} lecture={lecture} userRole={userRole} /> 
       ))}
       </div>
+    </div>
     </div>
   );
 }

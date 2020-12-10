@@ -37,7 +37,7 @@ export default function HomePage() {
     <div className="home-page-wrap">
       <div className="title-div">
         <h1 className="page-title-text">
-        <i class="fas fa-newspaper title-icon" />
+        <i className="fas fa-newspaper title-icon" />
         {language.Daily_Highlight}
         </h1>
       </div>

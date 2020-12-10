@@ -70,7 +70,7 @@ export default function AssignmentPage() {
     <div className="assignment-page-wrap">
       <div className="title-div">
         <h1 className="page-title-text">
-        <i class="fas fa-clipboard title-icon" />
+        <i className="fas fa-clipboard title-icon" />
           Assignments
         </h1>
       </div>
