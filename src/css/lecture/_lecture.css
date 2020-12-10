@@ -4,88 +4,29 @@
   flex-direction: column;
 }
 
-
 .create-lecture-div {
   max-width: 80%;
   margin: auto;
 }
 
-.lecture-div {
-    background-color: var(--light);
-    min-height: 600px;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
-  }
-  
-  .lecture-title-div {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .lecture-title {
-    color: var(--dominant);
-    font-size: 36pt;
-    margin-left: 45px;
-    margin-top: 60px!important;
-  }
-  
-  .app-logo {
-    max-width: 15%;
-    margin-right: 25px;
-  }
-  
-  .lecture-page-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-bottom: 20px!important;
-    padding-top: 20px;
-    font-size: medium;
-  }
-  
-  .lecture-cards {
-    margin: 10px 10px 20px 10px;
-    width: 256px;
-    max-height: 300px;
-    display: flex;
-    flex-direction: column; 
-    text-align: center; 
-    
-  }
-  
-  .lecture-body {
-    text-align: left;
-    background-color: var(--light);
-    -webkit-box-shadow: -10px 0px 13px -7px #00000048, 10px 0px 13px -7px #00000048,  0px 5px 15px 5px rgba(0, 0, 0, 0);
-    box-shadow: -10px 0px 13px -7px #00000048, 10px 0px 13px -7px #00000048,  0px 5px 15px 5px rgba(0, 0, 0, 0);
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
-    margin-top: 10px;
-    margin-left: 45px;
-    margin-right: 40px;
-  
-  }
-  .lecture-card-body {
-    display: flex!important;
-    flex-direction: column;
-    
-  }
-  
-  img.lecture-image {
-    padding-top: 16px;
-    max-height: 180px;
-  }
-  
-  .lecture-button-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.lecture-cards {
+  margin-top: 20px;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
 
- 
+.card-body-lecture {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: first baseline;
+  max-height: 80px;
+  margin-bottom: 16px;
+}
+
+.lecture-delete {
+  margin-left: auto;
+  margin-right: 12px;
+  cursor: pointer;
+}

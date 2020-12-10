@@ -47,7 +47,7 @@ function App() {
                 <HomePage />
               </Route>
               <Route path="/lectures" exact>
-                <LecturePage />
+                <SubjectsPage />
               </Route>
               <Route path="/lectures/:id" exact>
                 <LecturePage />
