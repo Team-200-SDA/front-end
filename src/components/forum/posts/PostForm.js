@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useContext } from 'react';
+import { LangContext } from '../../../contexts/LanguageContext';
+
 
 function PostForm({
   initialTitle,
@@ -8,7 +11,7 @@ function PostForm({
   formTitle,
 }) {
   // props come from Post
-
+  const { language } = useContext(LangContext);
   const [title, setTitle] = useState(initialTitle || "");
   const [body, setBody] = useState(initialBody || "");
 
@@ -16,7 +19,7 @@ function PostForm({
     e.preventDefault();
     const postData = { title, body };
     onSubmit(postData).catch((err) => {
-      alert("error occured");
+      alert(language.error_occured);
     });
   };
 
@@ -26,11 +29,11 @@ function PostForm({
         <h4 className="card-title">{formTitle || "Create a post"}</h4>
         <form onSubmit={onCreatePostClick}>
           <div className="form-group">
-            <label>Title:</label>
+            <label>{language.title}</label>
             <input
               type="text"
               className="form-control"
-              placeholder="Title"
+              placeholder={language.title}
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               required
@@ -38,10 +41,10 @@ function PostForm({
           </div>
 
           <div className="form-group">
-            <label>Body:</label>
+            <label>{language.Body}</label>
             <textarea
               className="form-control"
-              placeholder="Post Body"
+              placeholder={language.Post_Body}
               value={body}
               onChange={(e) => setBody(e.target.value)}
               required
@@ -50,7 +53,7 @@ function PostForm({
 
           <div className="form-group">
             <button className="btn btn-primary" type="submit">
-              Save
+              {language.Save}
             </button>
 
             <button
@@ -58,7 +61,7 @@ function PostForm({
               type="button"
               onClick={onCancel}
             >
-              Cancel
+              {language.Cancel}
             </button>
           </div>
         </form>
