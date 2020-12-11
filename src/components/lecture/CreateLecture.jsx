@@ -86,7 +86,7 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
         </FormLabel>
         <input
           className="form-control subject-input"
-          placeholder={langauge.Lecture_Name}
+          placeholder={language.Lecture_Name}
           value={title}
           onChange={event => setTitle(event.target.value)}
           disabled={uploadType === ''}
