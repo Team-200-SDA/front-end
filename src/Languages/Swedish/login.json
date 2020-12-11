@@ -98,5 +98,14 @@
 	"Add_Comment":"Lägg till kommentar",
 	"error_occured":"fel uppstod",
 	"Post_Body":"Post Kropp",
-	"Create_new_Post":"Skapa ett nytt inlägg"
+	"Create_new_Post":"Skapa ett nytt inlägg",
+	"News_Title":"Nyhetstitel ...",
+	"News_Body":"Nyhetskropp ...",
+	"News":"Nyheter",
+	"Lecture_Name":"Föreläsningsnamn ...",
+	"Link_Lecture":"Länk till föreläsning ...",
+	"Publish_Lecture":"Publicera föreläsning",
+	"Lecture_Type":"Föreläsningstyp",
+	"Forum":"Forum",
+	"Sign_Out":"Logga ut"
 }

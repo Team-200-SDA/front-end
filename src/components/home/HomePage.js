@@ -37,9 +37,9 @@ export default function HomePage() {
     <div className="home-page-wrap">
       <div className="title-div">
         <h1 className="page-title-text">
-          <i className="fas fa-newspaper title-icon" />
-          News {/* //Erkan   */}
-        </h1>
+        <i className="fas fa-newspaper title-icon" /> 
+        {language.News}
+        </h1> 
       </div>
 
       <div className="card-body">

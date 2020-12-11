@@ -1,6 +1,5 @@
 import {
   Button,
-  Card,
   FormControl,
   FormControlLabel,
   FormLabel,
@@ -11,8 +10,11 @@ import React, { useState, useEffect } from 'react';
 import LectureApi from '../../api/LectureApi';
 import FileUploader from '../filestorage/FileUploader';
 import getFilenameAndExtension from '../../js/functions/fileUpload/getFilenameAndExtention';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
 
 export default function CreateLecture({ urlParams, getAllLectures }) {
+  const { language } = useContext(LangContext);
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
   const [uploadResponse, setUploadResponse] = useState(null);
@@ -34,7 +36,6 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
     };
 
     LectureApi.createLecture(newLecture).then(res => {
-      console.log(res);
       getAllLectures();
       setLink('');
       setTitle('');
@@ -109,7 +110,7 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
           color="primary"
           onClick={createLecture}
           disabled={title === '' || link === ''}>
-          Publish Lecture
+          {language.Publish_Lecture}
         </Button>
       </div>
     </div>
