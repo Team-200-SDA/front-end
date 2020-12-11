@@ -15,7 +15,7 @@ function Subject({ subject, getSubjects, userRole }) {
   };
 
   return (
-    <div className="subject-cards">
+    <div className="card-body subject-cards">
       <Link to={`/lectures/${subject.id}`}>
         <CardActionArea className="subject-card-body">
           <img className="subject-image" src={subject.link} alt="" />

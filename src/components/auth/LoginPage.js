@@ -4,10 +4,9 @@ import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 import { useContext } from 'react';
 import { LangContext } from '../../contexts/LanguageContext';
-import BootstrapSwitchButton from 'bootstrap-switch-button-react';
 
 function LoginPage() {
-  const { language, changeLanguage, changeEn, changeSv, changeEs } = useContext(
+  const { language, changeEn, changeSv, changeEs } = useContext(
     LangContext
   );
   const login = async loginData => {
