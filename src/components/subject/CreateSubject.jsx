@@ -20,39 +20,33 @@ function CreateSubject({ getSubjects }) {
   };
 
   return (
-    <div className="card-body create-subject-div">
+    <div className="create-subject-div">
       <div className="form-group">
-        
         <input
           className="form-control"
           placeholder="Subject Name..."
           value={name}
           onChange={event => setName(event.target.value)}
         />
-
         <input
           className="form-control"
           placeholder="Subject Description..."
           value={description}
           onChange={event => setDescription(event.target.value)}
         />
-
         <ImageUploader setImgUrl={setLink} uploadPreset={'subjects'} />
-
-        </div>
-
-        <div className="form-group">
-          <Button
-            className="upload-button"
-            variant="contained"
-            color="primary"
-            onClick={createSubject}
-            disabled={name === '' || description === '' || link === ''}>
-            {language.create_Subject}
-          </Button>
-        </div>
-
       </div>
+      <div className="form-group">
+        <Button
+          className="upload-button"
+          variant="contained"
+          color="primary"
+          onClick={createSubject}
+          disabled={name === '' || description === '' || link === ''}>
+          {language.create_Subject}
+        </Button>
+      </div>
+    </div>
   );
 }
 
