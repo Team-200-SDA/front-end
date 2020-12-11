@@ -58,10 +58,9 @@ export default function CreateAssignmentStudent({
 
   return (
     <div className="card-body create-assignment-div">
-      {/* Erkan */}
-      <div className="creation-form">Submit an Assignment</div>
+      <div className="creation-form">{language.Submit_Assignment}</div>
       <div className="lecture-create-form">
-        <FormLabel component="legend">Select assignment</FormLabel>
+        <FormLabel component="legend">{language.Select_assignment}</FormLabel>
         <div className="submit-dropdown">
           <Dropdown
             className="conversation-dropdown"
@@ -84,8 +83,7 @@ export default function CreateAssignmentStudent({
             color="primary"
             disabled={link === ''}
             onClick={createAssignment}>
-            {/* Erkan */}
-            Submit Assignment
+            {language.Submit_Assignment}
           </Button>
         </div>
       </div>

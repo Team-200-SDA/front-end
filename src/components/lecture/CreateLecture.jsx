@@ -82,11 +82,11 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
 
       <div className="form-group lecture-inputs">
         <FormLabel className="form-label" component="legend">
-          Enter a lecture name
+          {language.Enter_lecture_name}
         </FormLabel>
         <input
           className="form-control subject-input"
-          placeholder="Lecture Name" //Erkan
+          placeholder={langauge.Lecture_Name}
           value={title}
           onChange={event => setTitle(event.target.value)}
           disabled={uploadType === ''}

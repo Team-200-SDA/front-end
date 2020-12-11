@@ -113,5 +113,7 @@
 	"Enter_subject_description":"Ange en ämnesbeskrivning",
 	"Create_new_Subject":"Skapa ett nytt ämne",
 	"Join_Classroom":"Gå med i klassrummet",
-	"Update_profile_picture":"Uppdatera profilbild"
+	"Update_profile_picture":"Uppdatera profilbild",
+	"Select_assignment":"Välj uppgift",
+	"Enter_lecture_name":"Ange ett föreläsningsnamn"
 }
