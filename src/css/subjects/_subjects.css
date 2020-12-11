@@ -1,3 +1,5 @@
+@import '../palette.css';
+
 .subject-page-wrap {
   min-height: 100%;
   display: flex;
@@ -21,19 +23,28 @@
   width: 256px;
   max-height: 300px;
   display: flex;
-  flex-direction: column; 
-  text-align: center; 
+  flex-direction: column;
+  text-align: center;
+  background: #f9f9f9 !important;
+  border-radius: 16px;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  -ms-border-radius: 16px;
+  -o-border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .subject-card-body {
   display: flex;
   flex-direction: column;
-  background: white;
+  background: var(--text);
 }
 
 img.subject-image {
-  padding-top: 16px;
-  max-height: 180px;
+  max-width: 100%;
+  min-height: 180px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 }
 
 .subject-delete-div {
