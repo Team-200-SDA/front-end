@@ -1,7 +1,7 @@
 .assignment-page-wrap {
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .create-assignment-div {
@@ -32,20 +32,11 @@
 }
 
 .assignment-user-name {
-    margin-left: auto;
-    margin-right: 16px;
+  margin-left: auto;
+  margin-right: 16px;
 }
 
-.assignment-div {
-  margin-bottom: 16px;
-}
-
-/* input.form-control.assignment{
-  margin-top: 16px;
-  margin-bottom: 16px;
-} */
-
-.submit-dropdown{
+.submit-dropdown {
   margin-top: 10px;
   margin-bottom: 10px;
 }

@@ -60,10 +60,8 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
 
   return (
     <div className="card-body create-lecture-div">
-
       <div className="form-group">
         <div className="storage-uploader">
-
           <FormControl component="fieldset">
 
             <FormLabel component="legend">{language.Lecture_Type}</FormLabel> 
@@ -72,21 +70,18 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
               aria-label="Assignment Type"
               value={uploadType}
               onChange={radioChange}>
-
-              <FormControlLabel value="UPLOAD" control={<Radio />} label={language.Upload_File} />
-              <FormControlLabel value="VIDEO" control={<Radio />} label={language.Video_Link} />
-              <FormControlLabel value="LINK" control={<Radio />} label={language.External_Link} />
-
+              <FormControlLabel value="UPLOAD" control={<Radio />} label="Upload File" />
+              <FormControlLabel value="VIDEO" control={<Radio />} label="Video Link" />
+              <FormControlLabel value="LINK" control={<Radio />} label="External Link" />
             </RadioGroup>
           </FormControl>
 
           <div>
             <FileUploader setUploadResponse={setUploadResponse} uploadType={uploadType} />
           </div>
-         
         </div>
       </div>
-        
+
       <div className="form-group">
         <input
           className="form-control"
@@ -107,7 +102,7 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
 
       <div className="form-group">
         <Button
-          className="upload-button" 
+          className="upload-button"
           variant="contained"
           color="primary"
           onClick={createLecture}
@@ -115,7 +110,6 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
           {language.Publish_Lecture}
         </Button>
       </div>
-
     </div>
   );
 }

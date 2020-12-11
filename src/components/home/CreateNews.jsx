@@ -46,10 +46,9 @@ export default function CreateNews(props) {
           placeholder={language.News_Body} 
           value={body}
           onChange={event => setBody(event.target.value)}
-        />    
+        />
 
         <ImageUploader setImgUrl={setImage} uploadPreset={'newspics'} />
-        
       </div>
 
       <div className="form-group">
@@ -57,7 +56,6 @@ export default function CreateNews(props) {
           {language.Publish}
         </button>
       </div>
-      
     </div>
   );
 }

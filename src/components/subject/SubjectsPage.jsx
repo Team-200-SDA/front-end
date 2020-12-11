@@ -7,7 +7,6 @@ import Subject from './Subject';
 import { useContext } from 'react';
 import { LangContext } from '../../contexts/LanguageContext';
 
-
 function SubjectsPage() {
   const { language } = useContext(LangContext);
   const [subjects, setSubjects] = useState([]);
@@ -45,9 +44,7 @@ function SubjectsPage() {
       <div className="card-body">
         {/* Loads Lecture Creation component based on user role */}
         {userRole !== 'teacher' ? null : <CreateSubject getSubjects={getSubjects} />}
-        <div className="subject-page-cards">
-          {jsxSubjects}
-        </div>
+        <div className="subject-page-cards">{jsxSubjects}</div>
       </div>
     </div>
   );

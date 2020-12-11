@@ -41,17 +41,16 @@ export default function HomePage() {
         {language.News}
         </h1> 
       </div>
-      
+
       <div className="card-body">
         {user_role !== 'teacher' ? null : (
           <CreateNews news={news} getAllNews={getAllNews} />
         )}
-        
+
         {news.length === 0
           ? null
           : news.map(news => <News key={uuid()} news={news} deleteNews={deleteNews} />)}
       </div>
     </div>
-   
   );
 }
