@@ -88,7 +88,7 @@ function PrivChatInbox({ conversations, setConversations }) {
       <div className="title-div">
         <h1 className="page-title-text">
           <i className="fas fa-comments title-icon" />
-          Private Chat
+          {language.Private_Chat}
         </h1>
       </div>
       <div className="card-body ">
@@ -102,9 +102,9 @@ function PrivChatInbox({ conversations, setConversations }) {
             selection
             options={dropDownUsers}
           />
-          <CreateRounded
-            className="conversation-button"
-            onClick={() => sendMessage(selectedUser)}></CreateRounded>
+          <i
+            className="fas fa-paper-plane conversation-button"
+            onClick={() => sendMessage(selectedUser)}></i>
         </div>
         <div className="private-chat-wrap private-chat-layout">
           <div>{jsxConversations}</div>

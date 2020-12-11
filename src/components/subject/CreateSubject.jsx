@@ -22,7 +22,6 @@ function CreateSubject({ getSubjects }) {
   return (
     <div className="card-body create-subject-div">
       <div className="form-group">
-        
         <input
           className="form-control"
           placeholder="Subject Name..."
@@ -38,21 +37,19 @@ function CreateSubject({ getSubjects }) {
         />
 
         <ImageUploader setImgUrl={setLink} uploadPreset={'subjects'} />
-
-        </div>
-
-        <div className="form-group">
-          <Button
-            className="upload-button"
-            variant="contained"
-            color="primary"
-            onClick={createSubject}
-            disabled={name === '' || description === '' || link === ''}>
-            {language.create_Subject}
-          </Button>
-        </div>
-
       </div>
+
+      <div className="form-group">
+        <Button
+          className="upload-button"
+          variant="contained"
+          color="primary"
+          onClick={createSubject}
+          disabled={name === '' || description === '' || link === ''}>
+          {language.create_Subject}
+        </Button>
+      </div>
+    </div>
   );
 }
 

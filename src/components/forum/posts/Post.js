@@ -4,12 +4,15 @@ import { Link } from 'react-router-dom';
 import CommentForm from '../comments/CommentForm';
 import UserApi from '../../../api/UserApi';
 import CommentPageDetails from '../comments/CommentPageDetails';
+import { useContext } from 'react';
+import { LangContext } from '../../../contexts/LanguageContext';
 
 function Post({
   post,
   onPostUpdate,
   onPostDelete //Props come from PostsList
 }) {
+  const { language } = useContext(LangContext);
   const [isUpdate, setIsUpdate] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [user, setUser] = useState([]);
@@ -78,12 +81,12 @@ function Post({
               {isMyPost && (
                 <>
                   <button className="btn btn-warning" onClick={onUpdateClick}>
-                    Update
+                    {language.Update}
                   </button>
                   <button
                     className="btn btn-danger ml-3"
                     onClick={() => onPostDelete(post)}>
-                    Delete
+                    {language.Delete}
                   </button>
                 </>
               )}
@@ -93,7 +96,7 @@ function Post({
                 data-toggle="modal"
                 data-target="#myModal"
                 onClick={onCreateCommentClick}>
-                Add Comment
+                {language.Add_Comment}
               </button>
             </div>
 

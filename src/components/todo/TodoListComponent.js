@@ -5,9 +5,8 @@ import TodoApi from '../../api/TodoApi';
 import { useContext } from 'react';
 import { LangContext } from '../../contexts/LanguageContext';
 
-
 function TodoListComponent() {
-  const { language } = useContext(LangContext);
+  //const { language } = useContext(LangContext);
   const [todos, setTodos] = useState([]);
   const [update, setUpdate] = useState(0);
 
@@ -75,17 +74,17 @@ function TodoListComponent() {
     <div className="container">
       <div className="card">
         <div className="card-header bg-secondary text-white">
-          <h4>{language.Todo_List}</h4>
+          <h4>Todo List</h4>
         </div>
 
         <div className="card-body">
           <table className="table table-striped table-bordered">
             <thead>
               <tr>
-                <td>{language.title}</td>
-                <td>{language.description}</td>
-                <td>{language.due_Date}</td>
-                <td>{language.Complete}</td>
+                <td>Title</td>
+                <td>Description</td>
+                <td>Due Date</td>
+                <td>Complete</td>
               </tr>
             </thead>
             <tbody>{jsxTodos}</tbody>
@@ -93,7 +92,7 @@ function TodoListComponent() {
         </div>
         <div className="card-footer">
           <Link to="/todo-form" className="btn btn-danger">
-            {language.Create}
+            Create
           </Link>
         </div>
       </div>

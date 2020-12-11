@@ -4,7 +4,6 @@ import { v4 as uuid } from 'uuid';
 import LectureApi from '../../api/LectureApi';
 import CreateLecture from './CreateLecture';
 import Lecture from './Lecture';
-import Logo from '../../assets/images/logo.png';
 
 export default function LecturePage() {
   // const subjects = useRecoilValue(subjectsState);
@@ -29,26 +28,31 @@ export default function LecturePage() {
     <div className="lecture-page-wrap">
       <div className="title-div">
         <h1 className="page-title-text">
-        <i className="fas fa-book-open title-icon" />
-            Lectures
+          <i className="fas fa-book-open title-icon" />
+          Lectures
         </h1>
       </div>
 
       <div className="card-body">
-      {/* Loads Lecture Creation component based on user role */}
-      {userRole !== 'teacher' ? null : (
-        <CreateLecture
-          lectures={lectures}
-          getAllLectures={getLectures}
-          urlParams={urlParams}
-        />
-      )}
-      <div className="  -page-cards">
-      {lectures.map(lecture => (
-          <Lecture key={uuid()} getAllLectures={getLectures} lecture={lecture} userRole={userRole} /> 
-      ))}
+        {/* Loads Lecture Creation component based on user role */}
+        {userRole !== 'teacher' ? null : (
+          <CreateLecture
+            lectures={lectures}
+            getAllLectures={getLectures}
+            urlParams={urlParams}
+          />
+        )}
+        <div className="lecture-page-cards">
+          {lectures.map(lecture => (
+            <Lecture
+              key={uuid()}
+              getAllLectures={getLectures}
+              lecture={lecture}
+              userRole={userRole}
+            />
+          ))}
+        </div>
       </div>
-    </div>
     </div>
   );
 }

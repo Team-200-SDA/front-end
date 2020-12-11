@@ -56,48 +56,67 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
   }, [uploadResponse]);
 
   return (
-    <div className="card card-filestorage">
-      <h4 className="card-title-upload">{language.Create_Assignment}</h4>
-      <div className="card-body storage-uploader">
-        <FormControl component="fieldset">
-          <FormLabel component="legend">{language.Assignment_Type}</FormLabel>
-          <RadioGroup
-            row
-            aria-label="Assignment Type"
-            value={uploadType}
-            onChange={radioChange}>
-            <FormControlLabel value="UPLOAD" control={<Radio />} label={language.Upload_File} />
-            <FormControlLabel value="VIDEO" control={<Radio />} label={language.Video_Link}/>
-            <FormControlLabel value="LINK" control={<Radio />} label={language.External_Link} />
-          </RadioGroup>
-        </FormControl>
-        <div>
-          <FileUploader setUploadResponse={setUploadResponse} uploadType={uploadType} />
+    <div className="card-body create-assignment-div">
+      <div className="form-group">
+        <div className="storage-uploader">
+          <FormControl component="fieldset">
+            <FormLabel component="legend">{language.Assignment_Type}</FormLabel>
+
+            <RadioGroup
+              row
+              aria-label="Assignment Type"
+              value={uploadType}
+              onChange={radioChange}>
+              <FormControlLabel
+                value="UPLOAD"
+                control={<Radio />}
+                label={language.Upload_File}
+              />
+              <FormControlLabel
+                value="VIDEO"
+                control={<Radio />}
+                label={language.Video_Link}
+              />
+              <FormControlLabel
+                value="LINK"
+                control={<Radio />}
+                label={language.External_Link}
+              />
+            </RadioGroup>
+          </FormControl>
+
+          <div>
+            <FileUploader setUploadResponse={setUploadResponse} uploadType={uploadType} />
+          </div>
         </div>
+      </div>
+
+      <div className="form-group">
         <input
-          className="form-control assignment"
+          className="form-control"
           placeholder={language.Assignment_name}
           value={title}
           onChange={event => setTitle(event.target.value)}
           disabled={uploadType === ''}
         />
         <input
-          className="form-control assignment"
+          className="form-control"
           placeholder={language.Link_Assignment}
           value={link}
           onChange={event => setLink(event.target.value)}
           disabled={uploadType === 'UPLOAD' || uploadType === ''}
         />
-        <div className="form-group">
-          <Button
-            className="upload-button"
-            variant="contained"
-            color="primary"
-            onClick={createAssignment}
-            disabled={title === '' || link === ''}>
-            {language.Create_Assignment}
-          </Button>
-        </div>
+      </div>
+
+      <div className="form-group">
+        <Button
+          className="upload-button"
+          variant="contained"
+          color="primary"
+          onClick={createAssignment}
+          disabled={title === '' || link === ''}>
+          {language.Create_Assignment}
+        </Button>
       </div>
     </div>
   );

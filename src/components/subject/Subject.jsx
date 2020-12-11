@@ -22,30 +22,33 @@ function Subject({ subject, getSubjects, userRole }) {
   };
 
   return (
-      <Card className="subject-cards">
-        <Link to={`/lectures/${subject.id}`}>
-          <CardActionArea className="subject-card-body">
-            <img className="subject-image" src={subject.link} alt="" />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                {subject.name}
-              </Typography>
+    <Card className="subject-cards">
+      <Link to={`/lectures/${subject.id}`}>
+        <CardActionArea className="subject-card-body">
+          <img className="subject-image" src={subject.link} alt="" />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+              {subject.name}
+            </Typography>
 
-              <Typography variant="body2" color="textSecondary" component="p">
-                {subject.description}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Link>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {subject.description}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Link>
 
-        {userRole !== 'teacher' ? null : (
-          <CardActions className="subject-delete-div">
-            <div>
-              <DeleteRounded className="delete-thread subject-delete" onClick={() => deleteSubject(subject.id)} />
-            </div>
-          </CardActions>
-        )}
-      </Card>
+      {userRole !== 'teacher' ? null : (
+        <CardActions className="subject-delete-div">
+          <div>
+            <DeleteRounded
+              className="delete-thread subject-delete"
+              onClick={() => deleteSubject(subject.id)}
+            />
+          </div>
+        </CardActions>
+      )}
+    </Card>
   );
 }
 

@@ -57,36 +57,34 @@ export default function CreateAssignment({
   }, [uploadResponse]);
 
   return (
-    <>
-      <div className="card card-filestorage">
-        <h4 className="card-title-upload">{language.Submit_Assignment}</h4>
-        <div className="card-body storage-uploader">
-          <p>{language.Upload_file}</p>
-          <FileUploader
-            setUploadResponse={setUploadResponse}
-            uploadType={title === '' ? null : 'UPLOAD'}
-          />
-          <div className="submit-dropdown">
-            <Dropdown
-              className="conversation-dropdown"
-              onChange={(event, data) => setTitle(data.value)}
-              placeholder={language.Choose_assignment}
-              selection
-              options={dropDownOptions}
-            />
-          </div>
-          <div className="form-group">
-            <Button
-              className="upload-button"
-              variant="contained"
-              color="primary"
-              disabled={link === ''}
-              onClick={createAssignment}>
-              {language.Submit_Assignment}
-            </Button>
-          </div>
-        </div>
+    <div className="card-body create-assignment-div">
+      <p>{language.Upload_file}</p>
+
+      <FileUploader
+        setUploadResponse={setUploadResponse}
+        uploadType={title === '' ? null : 'UPLOAD'}
+      />
+
+      <div className="submit-dropdown">
+        <Dropdown
+          className="conversation-dropdown"
+          onChange={(event, data) => setTitle(data.value)}
+          placeholder={language.Choose_assignment}
+          selection
+          options={dropDownOptions}
+        />
       </div>
-    </>
+
+      <div className="form-group">
+        <Button
+          className="upload-button"
+          variant="contained"
+          color="primary"
+          disabled={link === ''}
+          onClick={createAssignment}>
+          {language.Submit_Assignment}
+        </Button>
+      </div>
+    </div>
   );
 }

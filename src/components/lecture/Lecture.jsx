@@ -1,16 +1,10 @@
-import {
-  Button,
-  Card,
-  CardActionArea,
-  CardActions,
-  CardContent,
-  Typography
-} from '@material-ui/core';
 import React from 'react';
 import LectureApi from '../../api/LectureApi';
-import fileTypeImage from '../../js/functions/fileUpload/fileTypeImage';
+import fileTypeImageFA from '../../js/functions/fileUpload/fileTypeImageFA';
 
 export default function Lecture({ getAllLectures, lecture, userRole }) {
+  const fileType = fileTypeImageFA(lecture.type);
+
   function deleteLecture(lectureId) {
     LectureApi.deleteLecture(lectureId).then(() => {
       alert('Lecture Deleted!');
@@ -19,30 +13,21 @@ export default function Lecture({ getAllLectures, lecture, userRole }) {
   }
 
   return (
-    <Card className="lecture-cards">
-      <a className="file-link" target="_blank" rel="noreferrer" href={lecture.link}>
-        <CardActionArea className="lecture-card-body">
-          <img className="file-type" src={fileTypeImage(lecture.type)} alt="" />
-          <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                {lecture.fileName}
-              </Typography>
-          </CardContent>
-        </CardActionArea>
-      </a>
+    <div className="lecture-cards">
+      <div className="card-body card-body-lecture">
+        <i className={`fas ${fileType} file-type-icons`} />
+        <span>
+          <a className="file-link" target="_blank" rel="noreferrer" href={lecture.link}>
+            {lecture.fileName}
+          </a>
+        </span>
 
-      {/* Delete Button if logged in user is a teacher */}
-      {userRole !== 'teacher' ? null : (
-        <CardActions className="lecture-button-div">
-          <Button
-            className="lecture-button"
-            onClick={() => deleteLecture(lecture.id)}
-            size="small"
-            color="var(--dominant)">
-            Delete
-          </Button>
-      </CardActions>
-      )}
-    </Card>
+        {userRole !== 'teacher' ? null : (
+          <i
+            className="fas fa-trash lecture-delete"
+            onClick={() => deleteLecture(lecture.id)}></i>
+        )}
+      </div>
+    </div>
   );
 }

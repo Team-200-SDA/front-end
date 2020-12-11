@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import CommentsApi from '../../../api/CommentsApi';
 import { commentState } from '../../../js/states/CommentState';
+import { useContext } from 'react';
+import { LangContext } from '../../../contexts/LanguageContext';
 
 export default function CommentForm({
   initialBody,
@@ -14,8 +16,8 @@ export default function CommentForm({
   comment
 }) {
   //props come from Comment
-
   const [body, setBody] = useState(initialBody || '');
+  const { language } = useContext(LangContext);
   const [commentAtom, setCommentAtom] = useRecoilState(commentState);
 
   // another copy of whatever.
@@ -50,10 +52,10 @@ export default function CommentForm({
             isUpdate ? e => onUpdateCommentClick(e) : e => onCreateCommentClick(e)
           }>
           <div className="form-group">
-            <label>Body:</label>
+            <label>{language.Body}</label>
             <textarea
               className="form-control"
-              placeholder="Comment Body"
+              placeholder={language.Comment_Body}
               value={body}
               onChange={e => setBody(e.target.value)}
               required
@@ -61,12 +63,12 @@ export default function CommentForm({
           </div>
 
           <div className="form-group">
-            <button className="btn btn-info" type="submit">
-              Save
+            <button className="btn btn-info" t ype="submit">
+              {language.Save}
             </button>
 
             <button className="btn btn-outline" type="button" onClick={onCancel}>
-              Cancel
+              {language.Cancel}
             </button>
           </div>
         </form>

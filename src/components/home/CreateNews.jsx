@@ -36,20 +36,19 @@ export default function CreateNews(props) {
       <div className="form-group">
         <input
           className="form-control"
-          placeholder={language.Title_news}
+          placeholder="News Title..." //Erkan
           value={title}
           onChange={event => setTitle(event.target.value)}
         />
 
         <textarea
           className="form-control"
-          placeholder={language.Body_news}
+          placeholder="News Body..." //Erkan
           value={body}
           onChange={event => setBody(event.target.value)}
-        />    
+        />
 
         <ImageUploader setImgUrl={setImage} uploadPreset={'newspics'} />
-        
       </div>
 
       <div className="form-group">
@@ -57,7 +56,6 @@ export default function CreateNews(props) {
           {language.Publish}
         </button>
       </div>
-      
     </div>
   );
 }

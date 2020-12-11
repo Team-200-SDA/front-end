@@ -37,21 +37,20 @@ export default function HomePage() {
     <div className="home-page-wrap">
       <div className="title-div">
         <h1 className="page-title-text">
-        <i className="fas fa-newspaper title-icon" />
-        {language.Daily_Highlight}
+          <i className="fas fa-newspaper title-icon" />
+          News {/* //Erkan   */}
         </h1>
       </div>
-      
+
       <div className="card-body">
         {user_role !== 'teacher' ? null : (
           <CreateNews news={news} getAllNews={getAllNews} />
         )}
-        
+
         {news.length === 0
           ? null
           : news.map(news => <News key={uuid()} news={news} deleteNews={deleteNews} />)}
       </div>
     </div>
-   
   );
 }
