@@ -3,7 +3,7 @@
 @import './chat/_chat.css';
 @import './chat/_privChatInbox.css';
 @import './layout/footer.css';
-@import './fileStorage//FileStorage.css';
+@import './fileStorage/FileStorage.css';
 @import './chatbot/_chatbot.css';
 @import './imageUploader/imageUploader.css';
 @import './subjects/_subjects.css';
