@@ -34,19 +34,24 @@ export default function HomePage() {
   }
 
   return (
-    <>
-      <div className="news-title-div">
-        <h1 className="news-title">{language.Daily_Highlight} </h1>
+    <div className="home-page-wrap">
+      <div className="title-div">
+        <h1 className="page-title-text">
+        <i className="fas fa-newspaper title-icon" /> 
+        News          {/* //Erkan   */}
+        </h1> 
       </div>
-      <div className="news-div">
+      
+      <div className="card-body">
         {user_role !== 'teacher' ? null : (
           <CreateNews news={news} getAllNews={getAllNews} />
         )}
-
+        
         {news.length === 0
-          ? language.No_news
+          ? null
           : news.map(news => <News key={uuid()} news={news} deleteNews={deleteNews} />)}
       </div>
-    </>
+    </div>
+   
   );
 }

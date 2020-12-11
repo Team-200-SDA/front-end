@@ -3,7 +3,7 @@
   align-items: center;
   flex-wrap: wrap;
   background-color: var(--secondary);
- 
+
   margin-bottom: 10px;
   border-radius: 22px;
   -webkit-border-radius: 22px;
@@ -50,7 +50,7 @@
   border-top-left-radius: 0;
 }
 
-.delete-thread{
+.delete-thread {
   color: var(--text);
   cursor: pointer;
 }
@@ -70,7 +70,7 @@
 
 .conversation-button {
   cursor: pointer;
-  height: 50px;
+  font-size: 16pt;
 }
 
 .ui.selection.dropdown.conversation-dropdown {

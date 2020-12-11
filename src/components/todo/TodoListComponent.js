@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import TodoApi from '../../api/TodoApi';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
 
 function TodoListComponent() {
+  //const { language } = useContext(LangContext);
   const [todos, setTodos] = useState([]);
   const [update, setUpdate] = useState(0);
 

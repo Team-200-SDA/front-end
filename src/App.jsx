@@ -20,14 +20,15 @@ import TodoCreateComponent from './components/todo/TodoCreateComponent';
 import TodoListComponent from './components/todo/TodoListComponent';
 import SubjectsPage from './components/subject/SubjectsPage';
 import LecturePage from './components/lecture/LecturePage';
+import PostsPage from './components/forum/posts/PostsPage';
+import CommentPageDetails from './components/forum/comments/CommentPageDetails';
+import CommentsPage from './components/forum/comments/CommentsPage';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
   const [conversations, setConversations] = useState([]);
 
   Auth.bindLoggedInStateSetter(setLoggedIn);
- 
-
 
   const loggedInRouter = (
     <div className="app">
@@ -55,6 +56,7 @@ function App() {
               <Route path="/chat" exact>
                 <Chat />
               </Route>
+
               <Route path="/live">
                 <LiveVideo />
               </Route>
@@ -79,6 +81,18 @@ function App() {
               <Route path="/todo-form">
                 <TodoCreateComponent />
               </Route>
+
+              <Route path="/forum" exact>
+                <PostsPage />
+              </Route>
+
+              <Route exact path="/comments">
+                <CommentsPage />
+              </Route>
+              <Route
+                path="/post/:id/comments"
+                render={({ match }) => <CommentPageDetails match={match} />}
+              />
             </Switch>
           </div>
 
