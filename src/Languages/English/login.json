@@ -105,7 +105,9 @@
 	"Lecture_Name":"Lecture Name...",
 	"Link_Lecture":"Link to Lecture...",
 	"Publish_Lecture":"Publish Lecture",
-	"Lecture_Type":"Lecture Type"
+	"Lecture_Type":"Lecture Type",
+	"Forum":"Forum",
+	"Sign_Out":"Sign Out"
 	
 
 }

@@ -105,5 +105,7 @@
 	"Lecture_Name":"Föreläsningsnamn ...",
 	"Link_Lecture":"Länk till föreläsning ...",
 	"Publish_Lecture":"Publicera föreläsning",
-	"Lecture_Type":"Föreläsningstyp"
+	"Lecture_Type":"Föreläsningstyp",
+	"Forum":"Forum",
+	"Sign_Out":"Logga ut"
 }
