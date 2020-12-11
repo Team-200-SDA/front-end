@@ -1,4 +1,5 @@
-import { Button } from '@material-ui/core';
+import { Button, FormLabel } from '@material-ui/core';
+import { v4 as uuid } from 'uuid';
 import React, { useState, useEffect } from 'react';
 import { Dropdown } from 'semantic-ui-react';
 import AssignmentApi from '../../api/AssignmentApi';
@@ -7,7 +8,7 @@ import FileUploader from '../filestorage/FileUploader';
 import { LangContext } from '../../contexts/LanguageContext';
 import { useContext } from 'react';
 
-export default function CreateAssignment({
+export default function CreateAssignmentStudent({
   assignments,
   getAllAssignments,
   teacherAssignments
@@ -16,7 +17,6 @@ export default function CreateAssignment({
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
   const [uploadResponse, setUploadResponse] = useState(null);
-  console.log(assignments);
 
   function createAssignment() {
     if (link === '') {
@@ -43,7 +43,7 @@ export default function CreateAssignment({
 
   const dropDownOptions = filteredDropDown.map(assignment => {
     return {
-      key: assignment.fileName,
+      key: uuid(),
       text: assignment.fileName,
       value: assignment.fileName
     };
@@ -58,32 +58,36 @@ export default function CreateAssignment({
 
   return (
     <div className="card-body create-assignment-div">
-      <p>{language.Upload_file}</p>
-
-      <FileUploader
-        setUploadResponse={setUploadResponse}
-        uploadType={title === '' ? null : 'UPLOAD'}
-      />
-
-      <div className="submit-dropdown">
-        <Dropdown
-          className="conversation-dropdown"
-          onChange={(event, data) => setTitle(data.value)}
-          placeholder={language.Choose_assignment}
-          selection
-          options={dropDownOptions}
+      {/* Erkan */}
+      <div className="creation-form">Submit an Assignment</div>
+      <div className="lecture-create-form">
+        <FormLabel component="legend">Select assignment</FormLabel>
+        <div className="submit-dropdown">
+          <Dropdown
+            className="conversation-dropdown"
+            onChange={(event, data) => setTitle(data.value)}
+            placeholder={language.Choose_assignment}
+            selection
+            options={dropDownOptions}
+            defaultValue=""
+          />
+        </div>
+        <FormLabel component="legend">Upload assignment</FormLabel>
+        <FileUploader
+          setUploadResponse={setUploadResponse}
+          uploadType={title === '' ? null : 'UPLOAD'}
         />
-      </div>
-
-      <div className="form-group">
-        <Button
-          className="upload-button"
-          variant="contained"
-          color="primary"
-          disabled={link === ''}
-          onClick={createAssignment}>
-          {language.Submit_Assignment}
-        </Button>
+        <div className="form-group submit-assignment-button">
+          <Button
+            className="upload-button"
+            variant="contained"
+            color="primary"
+            disabled={link === ''}
+            onClick={createAssignment}>
+            {/* Erkan */}
+            Submit Assignment
+          </Button>
+        </div>
       </div>
     </div>
   );

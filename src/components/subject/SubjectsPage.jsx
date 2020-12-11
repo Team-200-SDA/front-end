@@ -43,7 +43,7 @@ function SubjectsPage() {
         </h1>
       </div>
 
-      <div className="card-body">
+      <div className="">
         {/* Loads Lecture Creation component based on user role */}
         {userRole !== 'teacher' ? null : <CreateSubject getSubjects={getSubjects} />}
         <div className="subject-page-cards">{jsxSubjects}</div>
