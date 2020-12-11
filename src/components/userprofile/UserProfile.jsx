@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import UserProfileForm from "./UserProfileForm";
-import UserProfileForm1 from "./UserProfileForm1";
 import UserApi from "../../api/UserApi";
-import { useContext } from 'react';
-import { LangContext } from '../../contexts/LanguageContext';
-
+import { useContext } from "react";
+import { LangContext } from "../../contexts/LanguageContext";
 
 function UserProfile() {
   const { language } = useContext(LangContext);
@@ -21,7 +19,7 @@ function UserProfile() {
   }, []);
 
   function updatedAddress(address) {
-       console.log(address);
+    console.log(address);
 
     UserApi.updateAddress(address)
       .then((res) => {
@@ -32,7 +30,7 @@ function UserProfile() {
   }
 
   function updatedPhoneno(phoneno) {
-    console.log("Phoneno",phoneno);
+    console.log("Phoneno", phoneno);
 
     UserApi.updatePhoneno(phoneno)
       .then((res) => {
@@ -47,7 +45,7 @@ function UserProfile() {
     UserApi.updateProfilepic(image)
       .then((res) => {
         alert(language.Profile_picture_Updated);
-        console.log("RESPONSE",res);
+        console.log("RESPONSE", res);
         setUser(res.data);
       })
       .catch((err) => console.log(err));

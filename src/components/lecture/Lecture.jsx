@@ -1,6 +1,5 @@
 import React from 'react';
 import LectureApi from '../../api/LectureApi';
-import fileTypeImage from '../../js/functions/fileUpload/fileTypeImage';
 import fileTypeImageFA from '../../js/functions/fileUpload/fileTypeImageFA';
 
 export default function Lecture({ getAllLectures, lecture, userRole }) {
