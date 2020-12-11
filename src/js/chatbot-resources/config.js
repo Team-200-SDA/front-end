@@ -40,7 +40,7 @@ const config = {
       widgetFunc: props => <BotOptions {...props} />
     },
     {
-      widgetName: 'javascriptLinks',
+      widgetName1: 'javascriptLinks1',
       widgetFunc: props => <BotLinks {...props} />,
       props: {
         options: [

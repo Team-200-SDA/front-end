@@ -14,7 +14,8 @@ class ActionProvider {
     const message = this.createChatBotMessage(
       "Fantastic, I've got the following resources for you on Javascript:",
       {
-        widget: 'javascriptLinks'
+        widget: 'javascriptLinks',
+        widget1:'javascriptLinks1'
       }
     );
     this.updateChatbotState(message);

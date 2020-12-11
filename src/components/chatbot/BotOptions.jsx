@@ -9,6 +9,11 @@ const BotOptions = props => {
       handler: props.actionProvider.handleJavascriptList,
       id: 1
     },
+    {
+      text: 'javascriptLinks1',
+      handler: props.actionProvider.handleJavascriptList,
+      id: 6
+    },
     { text: 'React JS', handler: () => {}, id: 2 },
     { text: 'APIs', handler: () => {}, id: 3 },
     { text: 'Material UI', handler: () => {}, id: 4 },
