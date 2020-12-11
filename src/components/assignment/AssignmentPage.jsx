@@ -70,83 +70,83 @@ export default function AssignmentPage() {
     <div className="assignment-page-wrap">
       <div className="title-div">
         <h1 className="page-title-text">
-        <i className="fas fa-clipboard title-icon" />
+          <i className="fas fa-clipboard title-icon" />
           Assignments
         </h1>
       </div>
-      
-    <div className="card-body">
 
-      <div className="container d-flex justify-content-around mb-4 btn-group btn-group-toggle"
-        data-toggle="buttons">
-        <label className="btn btn-secondary active">
-          <input type="radio" autoComplete="off" onClick={handleAssignAssignment} />{' '}
-          {language.Assigned_Assignments}
-        </label>
+      <div className="card-body">
+        <div
+          className="container d-flex justify-content-around mb-4 btn-group btn-group-toggle"
+          data-toggle="buttons">
+          <label className="btn btn-secondary active">
+            <input type="radio" autoComplete="off" onClick={handleAssignAssignment} />{' '}
+            {language.Assigned_Assignments}
+          </label>
 
-        <label className="btn btn-secondary">
-          <input type="radio" autoComplete="off" onClick={handleSubmitAssignment} />{' '}
-          {language.Submitted_Assignments}
-        </label>
-      </div>
+          <label className="btn btn-secondary">
+            <input type="radio" autoComplete="off" onClick={handleSubmitAssignment} />{' '}
+            {language.Submitted_Assignments}
+          </label>
+        </div>
 
-      {/* If Logged in as a teacher and on Assignment tab, render  
+        {/* If Logged in as a teacher and on Assignment tab, render  
           Assignment Uploader */}
-      {assignmentAssignedOn && (
-        <div className="assignment-page-cards">
-          {user_role === 'teacher' ? (
-            <CreateAssignmentTeacher getTeacherAssignments={getTeacherAssignments} />
-          ) : null}
+        {assignmentAssignedOn && (
+          <div className="assignment-page-cards">
+            {user_role === 'teacher' ? (
+              <CreateAssignmentTeacher getTeacherAssignments={getTeacherAssignments} />
+            ) : null}
 
-          {/* If on Assignment tab, render all assignments 
+            {/* If on Assignment tab, render all assignments 
               already made by teacher */}
-          <div className="assignment-page-cards">
-          {teacherAssignments.map(assignment => (
-            <Assignment
-              key={uuid()}
-              assignment={assignment}
-              deleteAssignment={deleteAssignment}
-            />
-          ))}
-        </div>
-        </div>
-      )}
-
-      {/* If Logged in as a student, and on submissions tab, 
-          render Submission Uploader. */}
-      {assignmentSubmittedOn && (
-        <div className="assignment-page-cards">
-          {user_role === 'student' ? (
-            <CreateAssignmentStudent
-              getAllAssignments={getAllAssignments}
-              teacherAssignments={teacherAssignments}
-              assignments={assignments}
-            />
-          ) : null}
-
-          {/* If on submission tab and logged in as student
-              render already submitted assignments, If teacher,
-              render assignments by all students */}
-          <div className="assignment-page-cards">
-          {user_role === 'student'
-            ? assignments.map(assignment => (
-                <Assignment
-                  key={uuid()}
-                  assignment={assignment}
-                  deleteAssignment={deleteAssignment}
-                />
-              ))
-            : allStudentsAssignments.map(assignment => (
+            <div className="assignment-page-cards">
+              {teacherAssignments.map(assignment => (
                 <Assignment
                   key={uuid()}
                   assignment={assignment}
                   deleteAssignment={deleteAssignment}
                 />
               ))}
-        </div>
-        </div>
-      )}
-    </div>
+            </div>
+          </div>
+        )}
+
+        {/* If Logged in as a student, and on submissions tab, 
+          render Submission Uploader. */}
+        {assignmentSubmittedOn && (
+          <div className="assignment-page-cards">
+            {user_role === 'student' ? (
+              <CreateAssignmentStudent
+                getAllAssignments={getAllAssignments}
+                teacherAssignments={teacherAssignments}
+                assignments={assignments}
+              />
+            ) : null}
+
+            {/* If on submission tab and logged in as student
+              render already submitted assignments, If teacher,
+              render assignments by all students */}
+            <div className="assignment-page-cards">
+              {user_role === 'student'
+                ? assignments.map(assignment => (
+                    <Assignment
+                      key={uuid()}
+                      assignment={assignment}
+                      deleteAssignment={deleteAssignment}
+                    />
+                  ))
+                : allStudentsAssignments.map(assignment => (
+                    <Assignment
+                      key={uuid()}
+                      assignment={assignment}
+                      deleteAssignment={deleteAssignment}
+                    />
+                  ))}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

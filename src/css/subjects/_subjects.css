@@ -21,8 +21,8 @@
   width: 256px;
   max-height: 300px;
   display: flex;
-  flex-direction: column; 
-  text-align: center; 
+  flex-direction: column;
+  text-align: center;
 }
 
 .subject-card-body {
