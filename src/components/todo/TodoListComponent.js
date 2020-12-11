@@ -6,7 +6,7 @@ import { useContext } from 'react';
 import { LangContext } from '../../contexts/LanguageContext';
 
 function TodoListComponent() {
-  //const { language } = useContext(LangContext);
+  const { language } = useContext(LangContext);
   const [todos, setTodos] = useState([]);
   const [update, setUpdate] = useState(0);
 
