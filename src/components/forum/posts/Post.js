@@ -51,10 +51,6 @@ function Post({
     setIsFormOpen(false);
   };
 
-  useEffect(() => {
-    console.log(post);
-  }, []);
-
   return (
     <div>
       {isUpdate ? (

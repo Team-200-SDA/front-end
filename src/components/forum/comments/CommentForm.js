@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import CommentsApi from '../../../api/CommentsApi';
 import { commentState } from '../../../js/states/CommentState';
@@ -25,14 +25,18 @@ export default function CommentForm({
     const res = await CommentsApi.getCommentById(commentAtom[0].post.id);
     return setCommentAtom(res.data);
   };
-
+  
+  useEffect(() => {
+    console.log(post);
+  }, []);
+  
   const onCreateCommentClick = async e => {
     e.preventDefault();
     const commentData = { body, post: post };
-    await CommentsApi.createComment(commentData);
+    await CommentsApi.createComment(commentData).then(() => {getAllCommentsByPostId(post.id)});
     setIsFormOpen(false);
-    getAllCommentsByPostId(commentAtom[0].post.id);
   };
+
 
   const onUpdateCommentClick = async e => {
     e.preventDefault();
