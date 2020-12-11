@@ -4,10 +4,8 @@
   justify-content: center;
   align-items: center;
 }
-
-.card-body {
-  text-align: left;
-}
+​
+​
 .card-header {
   padding: 20px;
   color: var(--dominant);
@@ -25,22 +23,22 @@
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
 }
-
+​
 .card-header:first-child {
   border-radius: 20px;
 }
 .card-footer {
   background-color: var(--light);
-  border-radius: 20px;
+  border-radius: 60px;
 }
 .card-footer {
   border-radius: 10px;
 }
-
+​
 .card-footer:first-child {
   border-radius: 20px;
 }
-
+​
 table,
 tr,
 td {
@@ -78,26 +76,26 @@ a.firstbuttontodo {
   letter-spacing: 0.02857em;
   text-transform: uppercase;
 }
-.card-body {
-  text-align: left;
-  background-color: var(--light);
-  box-shadow: -10px 0px 13px -7px #00000048, 10px 0px 13px -7px #00000048,
-    0px 5px 15px 5px rgba(0, 0, 0, 0);
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
+​
+.card-body-todo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: first baseline;
+  max-height: 80px;
+  margin-bottom: 16px;
 }
+​
+
 .bg-secondary {
   background-color: #d4d4d5 !important;
 }
-
+​
 .table-bordered td,
 .table-bordered th {
   border: 1px solid #767676;
 }
-.form-control {
+/* .form-control {
   display: block;
   width: 100%;
   height: calc(1.5em + 0.75rem + 2px);
@@ -110,8 +108,8 @@ a.firstbuttontodo {
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.95);
   border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; */
+
 .fileContainer .chooseFileButton:hover {
   background-position: right center;
   color: #fff;
@@ -121,7 +119,7 @@ a.firstbuttontodo {
 .table-bordered th {
   border: 1px solid #1b1c1d;
 }
-.news-title-div {
+ .news-title-div {
   -webkit-box-shadow: -10px 0px 13px -7px #00000048, 10px 0px 13px -7px #00000048,
     0px 5px 15px 5px rgba(0, 0, 0, 0);
   box-shadow: -10px 0px 13px -7px #00000048, 10px 0px 13px -7px #00000048,
@@ -132,7 +130,7 @@ a.firstbuttontodo {
   -moz-border-radius: 20px;
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
-}
+} 
 .btn-info {
   color: #fff;
   background-color: #17a2b8;
@@ -143,6 +141,19 @@ a.firstbuttontodo {
 .table-bordered th {
   border: 1px solid #212529;
 }
-.card-body {
-  border: 1px solid #112d4a;
+​
+.ToDoList-Page-Wrap {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.create-assignment-div {
+  max-width: 120%;
+  margin: auto;
+}
+
+.todo-icon{
+  flex-direction: column;
 }

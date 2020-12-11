@@ -56,14 +56,14 @@ function TodoListComponent() {
             type="submit"
             onClick={() => deleteTodo(todo.id)}
             className="btn btn-info">
-            <i className="fas fa-trash-alt" />
+            <i className="fas fa-trash-alt todo-icon" />
           </button>
         </td>
         <button
           type="submit"
           onClick={() => updateComplete(todo)}
           className="btn btn-info">
-          <i className="fas fa-clipboard-check"></i>
+          <i className="fas fa-clipboard-check todo-icon"></i>
         </button>
       </tr>
     );
@@ -71,25 +71,32 @@ function TodoListComponent() {
 
   //Using a table to display the list of the tasks in a table format.
   return (
-    <div className="container">
-      <div className="card">
-        <div className="card-header bg-secondary text-white">
-          <h4>Todo List</h4>
+    <div className="ToDoList-Page-Wrap">
+      <div className="title-div">
+        <div className="page-title-text">
+          <h1>
+            <i className="fas fa-tasks nav-icon" />
+            Todo List
+          </h1>
         </div>
+      </div>
 
-        <div className="card-body">
+      <div className="card-body-todo create-assignment-div">
+        <div className="container d-flex justify-content-around mb-4 btn-group btn-group-toggle">
           <table className="table table-striped table-bordered">
             <thead>
               <tr>
                 <td>Title</td>
                 <td>Description</td>
                 <td>Due Date</td>
-                <td>Complete</td>
+                <td>Mark as Complete</td>
+                <td>Delete</td>
               </tr>
             </thead>
             <tbody>{jsxTodos}</tbody>
           </table>
         </div>
+
         <div className="card-footer">
           <Link to="/todo-form" className="btn btn-danger">
             Create

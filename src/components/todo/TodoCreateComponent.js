@@ -21,7 +21,9 @@ function StudentCreateComponent() {
   };
 
   return (
-    <div className="container">
+    <div
+    className="container d-flex justify-content-around mb-4 btn-group btn-group-toggle"
+    data-toggle="buttons">
       <form onSubmit={event => createTodo(event)}>
         <div className="card">
           <div className="card-header bg-secondary text-white">
