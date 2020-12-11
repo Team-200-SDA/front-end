@@ -7,7 +7,7 @@ import { LangContext } from '../../contexts/LanguageContext';
 
 const logo = '/images/logo/logo.png';
 function Navbar({ onLogout }) {
-  const { language, changeEn, changeSv } = useContext(LangContext);
+  const { language, changeEn, changeSv, changeEs } = useContext(LangContext);
   return (
     <nav className="navbar">
       <Link to="/" className="navbar-brand">
@@ -98,6 +98,9 @@ function Navbar({ onLogout }) {
             </div>
             <div className="dropdown-item" href="#" onClick={changeSv}>
               {language.swedish}
+            </div>
+            <div className="dropdown-item" href="#" onClick={changeEs}>
+              {language.spanish}
             </div>
           </div>
         </li>

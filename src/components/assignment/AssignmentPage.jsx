@@ -67,14 +67,23 @@ export default function AssignmentPage() {
 
   return (
     // Assign Assignments and Submit Assignment Buttons
-    <div className="assignment-page">
-      <div
-        className="container d-flex justify-content-around mb-4 btn-group btn-group-toggle"
+    <div className="assignment-page-wrap">
+      <div className="title-div">
+        <h1 className="page-title-text">
+        <i className="fas fa-clipboard title-icon" />
+          Assignments
+        </h1>
+      </div>
+      
+    <div className="card-body">
+
+      <div className="container d-flex justify-content-around mb-4 btn-group btn-group-toggle"
         data-toggle="buttons">
         <label className="btn btn-secondary active">
           <input type="radio" autoComplete="off" onClick={handleAssignAssignment} />{' '}
           {language.Assigned_Assignments}
         </label>
+
         <label className="btn btn-secondary">
           <input type="radio" autoComplete="off" onClick={handleSubmitAssignment} />{' '}
           {language.Submitted_Assignments}
@@ -84,13 +93,14 @@ export default function AssignmentPage() {
       {/* If Logged in as a teacher and on Assignment tab, render  
           Assignment Uploader */}
       {assignmentAssignedOn && (
-        <div className="assignment-div">
+        <div className="assignment-page-cards">
           {user_role === 'teacher' ? (
             <CreateAssignmentTeacher getTeacherAssignments={getTeacherAssignments} />
           ) : null}
 
           {/* If on Assignment tab, render all assignments 
               already made by teacher */}
+          <div className="assignment-page-cards">
           {teacherAssignments.map(assignment => (
             <Assignment
               key={uuid()}
@@ -99,12 +109,13 @@ export default function AssignmentPage() {
             />
           ))}
         </div>
+        </div>
       )}
 
       {/* If Logged in as a student, and on submissions tab, 
           render Submission Uploader. */}
       {assignmentSubmittedOn && (
-        <div className="assignment-div">
+        <div className="assignment-page-cards">
           {user_role === 'student' ? (
             <CreateAssignmentStudent
               getAllAssignments={getAllAssignments}
@@ -116,6 +127,7 @@ export default function AssignmentPage() {
           {/* If on submission tab and logged in as student
               render already submitted assignments, If teacher,
               render assignments by all students */}
+          <div className="assignment-page-cards">
           {user_role === 'student'
             ? assignments.map(assignment => (
                 <Assignment
@@ -132,7 +144,9 @@ export default function AssignmentPage() {
                 />
               ))}
         </div>
+        </div>
       )}
+    </div>
     </div>
   );
 }

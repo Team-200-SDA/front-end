@@ -57,15 +57,16 @@ export default function CreateAssignment({
   }, [uploadResponse]);
 
   return (
-    <>
-      <div className="card card-filestorage">
-        <h4 className="card-title-upload">{language.Submit_Assignment}</h4>
-        <div className="card-body storage-uploader">
+
+    <div className="card-body create-assignment-div">
+
           <p>{language.Upload_file}</p>
+
           <FileUploader
             setUploadResponse={setUploadResponse}
             uploadType={title === '' ? null : 'UPLOAD'}
           />
+
           <div className="submit-dropdown">
             <Dropdown
               className="conversation-dropdown"
@@ -75,6 +76,7 @@ export default function CreateAssignment({
               options={dropDownOptions}
             />
           </div>
+
           <div className="form-group">
             <Button
               className="upload-button"
@@ -85,8 +87,7 @@ export default function CreateAssignment({
               {language.Submit_Assignment}
             </Button>
           </div>
+
         </div>
-      </div>
-    </>
   );
 }

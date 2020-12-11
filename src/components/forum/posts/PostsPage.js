@@ -2,8 +2,12 @@ import React, { useEffect, useState } from "react";
 import PostsApi from "../../../api/PostsApi";
 import PostForm from "./PostForm";
 import PostsList from "./PostsList";
+import { useContext } from 'react';
+import { LangContext } from '../../../contexts/LanguageContext';
+
 
 function PostsPage() {
+  const { language } = useContext(LangContext);
   const [posts, setPosts] = useState([]);
   const [createForm, setCreateForm] = useState(false);
 
@@ -49,7 +53,7 @@ function PostsPage() {
         <>
           <button className="btn btn-primary" onClick={onCreateNewPost}>
             {" "}
-            Create a new Post
+            {language.Create_new_Post}
           </button>
           <PostsList
             posts={posts}

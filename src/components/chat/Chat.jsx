@@ -81,7 +81,7 @@ function Chat() {
       <div className="title-div">
         <h1 className="page-title-text">
           <i className="far fa-comments title-icon" />
-          Public Chat
+          {language.Public_Chat}
         </h1>
       </div>
 
