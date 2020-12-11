@@ -47,7 +47,7 @@ export default function CommentForm({
           </div>
 
           <div className="form-group">
-            <button className="btn btn-info" t ype="submit">
+            <button className="btn btn-info" type="submit">
               Save
             </button>
 
