@@ -21,23 +21,23 @@ function CreateSubject({ getSubjects }) {
 
   return (
     <div className="create-subject-div">
-      <div className="creation-form">Create a new Subject</div>
+      <div className="creation-form">{language.Create_new_Subject}</div>
       <div className="form-group subject-inputs">
         <FormLabel className="form-label" component="legend">
-          Enter a subject name
+          {language.Enter_subject_name}
         </FormLabel>
         <input
           className="form-control subject-input"
-          placeholder="Subject Name..."
+          placeholder={language.Subject_Name}
           value={name}
           onChange={event => setName(event.target.value)}
         />
         <FormLabel className="form-label" component="legend">
-          Enter a subject description
+          {language.Enter_subject_description}
         </FormLabel>
         <input
           className="form-control subject-input"
-          placeholder="Subject Description..."
+          placeholder={language.Subject_Description}
           value={description}
           onChange={event => setDescription(event.target.value)}
         />

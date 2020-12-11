@@ -108,7 +108,13 @@
 	"Lecture_Type":"Lecture Type",
 	"Forum":"Forum",
 	"Sign_Out":"Sign Out",
-	"Lecture_Deleted":"Lecture Deleted!"
+	"Lecture_Deleted":"Lecture Deleted!",
+	"Enter_subject_name":"Enter a subject name",
+	"Enter_subject_description":"Enter a subject description",
+	"Create_new_Subject":"Create a new Subject",
+	"Join_Classroom":"Join Classroom",
+	"Update_profile_picture":"Update profile picture"
+
 	
 
 }

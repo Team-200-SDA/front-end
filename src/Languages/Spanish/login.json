@@ -108,6 +108,11 @@
   "Lecture_Type":"Tipo de conferencia",
   "Forum":"Foro",
   "Sign_Out":"Desconectar",
-  "Lecture_Deleted":"Conferencia eliminada!"
+  "Lecture_Deleted":"Conferencia eliminada!",
+  "Enter_subject_name":"Ingrese un nombre de asunto",
+  "Enter_subject_description":"Ingrese una descripción del tema",
+  "Create_new_Subject":"Crear un nuevo asunto",
+  "Join_Classroom":"Unirse a Classroom",
+  "Update_profile_picture":"Actualizar foto de perfil"
 }
 

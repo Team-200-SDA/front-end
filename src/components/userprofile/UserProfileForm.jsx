@@ -96,7 +96,7 @@ function UserProfileForm({
           </div>
 
           <Card className="profile-pic-card">
-            <label className="ml-3 mt-3">Profile Picture</label>
+            <label className="ml-3 mt-3">{language.Profile_Picture}</label>
 
             <div className="grid-profile">
               <article>
@@ -116,7 +116,7 @@ function UserProfileForm({
                 className="button-update "
                 onClick={(e) => clickUpdateProfilepic(e)}
               >
-                Update profile picture
+                {language.Update_profile_picture}
               </button>
             </div>
           </Card>
