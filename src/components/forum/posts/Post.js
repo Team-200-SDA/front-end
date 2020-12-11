@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
-import PostForm from "./PostForm";
-import { Link } from "react-router-dom";
-import CommentForm from "../comments/CommentForm";
-import UserApi from "../../../api/UserApi";
+import React, { useState, useEffect } from 'react';
+import PostForm from './PostForm';
+import { Link } from 'react-router-dom';
+import CommentForm from '../comments/CommentForm';
+import UserApi from '../../../api/UserApi';
 import { useContext } from 'react';
 import { LangContext } from '../../../contexts/LanguageContext';
 
 function Post({
   post,
   onPostUpdate,
-  onPostDelete, //Props come from PostsList
+  onPostDelete //Props come from PostsList
 }) {
   const { language } = useContext(LangContext);
   const [isUpdate, setIsUpdate] = useState(false);
@@ -18,7 +18,7 @@ function Post({
   const [user, setUser] = useState([]);
 
   const getUser = () => {
-    UserApi.getLoggedInUser().then((res) => {
+    UserApi.getLoggedInUser().then(res => {
       setUser(res.data);
     });
   };
@@ -27,15 +27,13 @@ function Post({
     getUser();
   }, []);
 
-  console.log(post.comment);
-
   const isMyPost = post.user.id === user.id;
 
   const onUpdateClick = () => {
     setIsUpdate(true);
   };
 
-  const onPostFormSubmit = (postData) => {
+  const onPostFormSubmit = postData => {
     const updatedPost = { ...post, ...postData };
     return onPostUpdate(updatedPost).then(() => setIsUpdate(false));
   };
@@ -44,13 +42,17 @@ function Post({
     setIsUpdate(false);
   };
 
-  const onCreateCommentClick = (data) => {
+  const onCreateCommentClick = data => {
     setIsFormOpen(true);
   };
 
   const onCreateCommentCancel = () => {
     setIsFormOpen(false);
   };
+
+  useEffect(() => {
+    console.log(post);
+  }, []);
 
   return (
     <div>
@@ -83,8 +85,7 @@ function Post({
 
                   <button
                     className="btn btn-danger ml-3"
-                    onClick={() => onPostDelete(post)}
-                  >
+                    onClick={() => onPostDelete(post)}>
                     {language.Delete}
                   </button>
                 </>
@@ -94,8 +95,7 @@ function Post({
                 className="btn btn-info ml-3"
                 data-toggle="modal"
                 data-target="#myModal"
-                onClick={onCreateCommentClick}
-              >
+                onClick={onCreateCommentClick}>
                 {language.Add_Comment}
               </button>
             </div>

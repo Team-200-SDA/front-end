@@ -9,7 +9,7 @@ export const LangContext = createContext();
 const LangContextProvider = props => {
   const [language, setLanguage] = useState(English, Swedish);
 
-  const lang = detector();
+  // const lang = detector();
 
   const changeEn = () => {
     setLanguage(English);

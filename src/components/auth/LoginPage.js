@@ -4,7 +4,7 @@ import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 import { useContext } from 'react';
 import { LangContext } from '../../contexts/LanguageContext';
-import BootstrapSwitchButton from 'bootstrap-switch-button-react'
+// import BootstrapSwitchButton from 'bootstrap-switch-button-react'
 
 
 function LoginPage() {
@@ -31,9 +31,9 @@ function LoginPage() {
             <div className="container">
                 <div className="row mt-4">
                     <div className="col-md-6 " style={{ color: "white" }}>
-                        <BootstrapSwitchButton
+                        {/* <BootstrapSwitchButton
                             checked={true} onlabel='EN' onstyle='danger' offlabel='SV' offstyle='success' style='w-10 mx-3'
-                            onChange={changeLanguage} />
+                            onChange={changeLanguage} /> */}
                         <h1>SDA</h1>
                         <p>{language.starter}</p>
                     </div>
