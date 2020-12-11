@@ -11,8 +11,11 @@ import React, { useState, useEffect } from 'react';
 import LectureApi from '../../api/LectureApi';
 import FileUploader from '../filestorage/FileUploader';
 import getFilenameAndExtension from '../../js/functions/fileUpload/getFilenameAndExtention';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
 
 export default function CreateLecture({ urlParams, getAllLectures }) {
+  const { language } = useContext(LangContext);
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
   const [uploadResponse, setUploadResponse] = useState(null);
@@ -60,7 +63,8 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
       <div className="form-group">
         <div className="storage-uploader">
           <FormControl component="fieldset">
-            <FormLabel component="legend">Lecture Type</FormLabel>
+
+            <FormLabel component="legend">{language.Lecture_Type}</FormLabel> 
             <RadioGroup
               row
               aria-label="Assignment Type"
@@ -81,7 +85,7 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
       <div className="form-group">
         <input
           className="form-control"
-          placeholder="Lecture Name..." //Erkan
+          placeholder={language.Lecture_Name}
           value={title}
           onChange={event => setTitle(event.target.value)}
           disabled={uploadType === ''}
@@ -89,7 +93,7 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
 
         <input
           className="form-control"
-          placeholder="Link to Lecture..."
+          placeholder={language.Link_Lecture}
           value={link}
           onChange={event => setLink(event.target.value)}
           disabled={uploadType === 'UPLOAD' || uploadType === ''}
@@ -103,7 +107,7 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
           color="primary"
           onClick={createLecture}
           disabled={title === '' || link === ''}>
-          Publish Lecture
+          {language.Publish_Lecture}
         </Button>
       </div>
     </div>
