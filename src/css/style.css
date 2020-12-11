@@ -12,4 +12,5 @@
 @import './layout//navbar.css';
 @import './news/news.css';
 @import './userProfile/UserProfile.css';
+@import './auth/loginPage.css';
 /* @import './todo/_todo.css'; */

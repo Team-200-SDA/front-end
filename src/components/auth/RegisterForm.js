@@ -15,8 +15,8 @@ function RegisterForm({ onSubmit }) {
   }, [isTeacher]);
 
   return (
-    <div className="card">
-      <div className="card-body">
+     <div className="card">
+      <div className="card-body loginregpage">
         <h4 className="card-title">{language.signup}</h4>
         <div>
           <div className="form-group">
@@ -67,7 +67,8 @@ function RegisterForm({ onSubmit }) {
           </div>
         </div>
       </div>
-    </div>
+    </div> 
+   
   );
 }
 
