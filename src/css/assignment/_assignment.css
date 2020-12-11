@@ -6,12 +6,15 @@
 
 .create-assignment-div {
   max-width: 80%;
-  margin: auto;
+  margin: 30px auto 40px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .assignment-cards {
   margin-top: 20px;
-  width: 70%;
+  width: 60%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -22,7 +25,6 @@
   align-items: center;
   justify-content: first baseline;
   max-height: 80px;
-  margin-bottom: 16px;
 }
 
 .assignment-delete {
@@ -39,4 +41,45 @@
 .submit-dropdown {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.submit-assignment-button {
+  margin-top: 30px;
+}
+
+.assignment-inputs {
+  width: 75%;
+}
+
+.assignment-toggle {
+  width: 80%;
+  margin-bottom: 30px;
+}
+
+html
+  body
+  div#root
+  div.app
+  div.center
+  div.assignment-page-wrap
+  div
+  div.card-body.assignment-toggle.container.d-flex.justify-content-around.btn-group.btn-group-toggle
+  label.btn.btn-secondary.active {
+  background: var(--primary) !important;
+  color: var(--light);
+  border: none;
+}
+
+html
+  body
+  div#root
+  div.app
+  div.center
+  div.assignment-page-wrap
+  div
+  div.card-body.assignment-toggle.container.d-flex.justify-content-around.btn-group.btn-group-toggle
+  label.btn.btn-secondary {
+  background: var(--secondary);
+  color: var(--text);
+  border: none;
 }

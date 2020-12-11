@@ -1,6 +1,5 @@
 import {
   Button,
-  Card,
   FormControl,
   FormControlLabel,
   FormLabel,
@@ -37,7 +36,6 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
     };
 
     LectureApi.createLecture(newLecture).then(res => {
-      console.log(res);
       getAllLectures();
       setLink('');
       setTitle('');
@@ -60,11 +58,11 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
 
   return (
     <div className="card-body create-lecture-div">
-      <div className="form-group">
+      <div className="creation-form">Create a new Lecture</div>
+      <div className="form-group lecture-create-form">
         <div className="storage-uploader">
           <FormControl component="fieldset">
-
-            <FormLabel component="legend">{language.Lecture_Type}</FormLabel> 
+            <FormLabel component="legend">Select lecture type</FormLabel>
             <RadioGroup
               row
               aria-label="Assignment Type"
@@ -82,18 +80,23 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
         </div>
       </div>
 
-      <div className="form-group">
+      <div className="form-group lecture-inputs">
+        <FormLabel className="form-label" component="legend">
+          Enter a lecture name
+        </FormLabel>
         <input
-          className="form-control"
-          placeholder={language.Lecture_Name}
+          className="form-control subject-input"
+          placeholder="Lecture Name" //Erkan
           value={title}
           onChange={event => setTitle(event.target.value)}
           disabled={uploadType === ''}
         />
-
+        <FormLabel className="form-label" component="legend">
+          Link to the lecture
+        </FormLabel>
         <input
-          className="form-control"
-          placeholder={language.Link_Lecture}
+          className="form-control subject-input"
+          placeholder="Link to the Lecture"
           value={link}
           onChange={event => setLink(event.target.value)}
           disabled={uploadType === 'UPLOAD' || uploadType === ''}

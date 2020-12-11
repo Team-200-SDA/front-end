@@ -36,7 +36,7 @@ export default function LecturePage() {
         </h1>
       </div>
 
-      <div className="card-body">
+      <div className="">
         {/* Loads Lecture Creation component based on user role */}
         {userRole !== 'teacher' ? null : (
           <CreateLecture
