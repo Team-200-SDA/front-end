@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Auth from "./services/Auth";
-import Navbar from "./components/layout/Navbar";
-import Footer from "./components/layout/Footer";
-import { RecoilRoot } from "recoil";
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Auth from './services/Auth';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
+import { RecoilRoot } from 'recoil';
 
 /// Import pages
 import LoginPage from './components/auth/LoginPage';
@@ -20,17 +20,15 @@ import TodoCreateComponent from './components/todo/TodoCreateComponent';
 import TodoListComponent from './components/todo/TodoListComponent';
 import SubjectsPage from './components/subject/SubjectsPage';
 import LecturePage from './components/lecture/LecturePage';
-import PostsPage from "./components/forum/posts/PostsPage";
-import CommentPageDetails from "./components/forum/comments/CommentPageDetails";
-import CommentsPage from "./components/forum/comments/CommentsPage";
+import PostsPage from './components/forum/posts/PostsPage';
+import CommentPageDetails from './components/forum/comments/CommentPageDetails';
+import CommentsPage from './components/forum/comments/CommentsPage';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
   const [conversations, setConversations] = useState([]);
 
   Auth.bindLoggedInStateSetter(setLoggedIn);
- 
-
 
   const loggedInRouter = (
     <div className="app">
