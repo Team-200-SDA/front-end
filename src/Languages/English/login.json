@@ -72,7 +72,7 @@
 	"Save":"Save",
 	"Title":"Title:",
 	"Todo_List":"Todo List",
-	"description":"Beskrivning",
+	"description":"Description",
 	"due_Date":"Due Date",
 	"Complete":"Complete",
 	"Create":"Create",
@@ -107,7 +107,8 @@
 	"Publish_Lecture":"Publish Lecture",
 	"Lecture_Type":"Lecture Type",
 	"Forum":"Forum",
-	"Sign_Out":"Sign Out"
+	"Sign_Out":"Sign Out",
+	"Lecture_Deleted":"Lecture Deleted!"
 	
 
 }

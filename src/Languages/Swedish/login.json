@@ -107,5 +107,6 @@
 	"Publish_Lecture":"Publicera föreläsning",
 	"Lecture_Type":"Föreläsningstyp",
 	"Forum":"Forum",
-	"Sign_Out":"Logga ut"
+	"Sign_Out":"Logga ut",
+	"Lecture_Deleted":"Föreläsning borttagen!"
 }

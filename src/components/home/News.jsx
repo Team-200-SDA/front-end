@@ -1,10 +1,7 @@
 import React from 'react';
 import { DeleteRounded } from '@material-ui/icons';
-import { useContext } from 'react';
-import { LangContext } from '../../contexts/LanguageContext';
 
 export default function News({ news, deleteNews }) {
-  const { language } = useContext(LangContext);
   const user_role = window.sessionStorage.getItem('role');
 
   return (
