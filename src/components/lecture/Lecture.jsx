@@ -4,7 +4,6 @@ import fileTypeImage from '../../js/functions/fileUpload/fileTypeImage';
 import fileTypeImageFA from '../../js/functions/fileUpload/fileTypeImageFA';
 
 export default function Lecture({ getAllLectures, lecture, userRole }) {
-
   const fileType = fileTypeImageFA(lecture.type);
 
   function deleteLecture(lectureId) {
@@ -16,7 +15,6 @@ export default function Lecture({ getAllLectures, lecture, userRole }) {
 
   return (
     <div className="lecture-cards">
-
       <div className="card-body card-body-lecture">
         <i className={`fas ${fileType} file-type-icons`} />
         <span>
@@ -24,11 +22,13 @@ export default function Lecture({ getAllLectures, lecture, userRole }) {
             {lecture.fileName}
           </a>
         </span>
-        
+
         {userRole !== 'teacher' ? null : (
-          <i className="fas fa-trash lecture-delete" onClick={() => deleteLecture(lecture.id)}></i>
+          <i
+            className="fas fa-trash lecture-delete"
+            onClick={() => deleteLecture(lecture.id)}></i>
         )}
       </div>
-  </div>
+    </div>
   );
 }
