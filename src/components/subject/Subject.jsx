@@ -1,11 +1,4 @@
-import {
-  Button,
-  Card,
-  CardActionArea,
-  CardActions,
-  CardContent,
-  Typography
-} from '@material-ui/core';
+import { CardActionArea, CardActions, CardContent, Typography } from '@material-ui/core';
 import { DeleteRounded } from '@material-ui/icons';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -22,7 +15,7 @@ function Subject({ subject, getSubjects, userRole }) {
   };
 
   return (
-    <Card className="subject-cards">
+    <div className="subject-cards">
       <Link to={`/lectures/${subject.id}`}>
         <CardActionArea className="subject-card-body">
           <img className="subject-image" src={subject.link} alt="" />
@@ -48,7 +41,7 @@ function Subject({ subject, getSubjects, userRole }) {
           </div>
         </CardActions>
       )}
-    </Card>
+    </div>
   );
 }
 
