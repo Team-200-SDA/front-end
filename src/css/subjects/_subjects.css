@@ -8,19 +8,42 @@
 
 .create-subject-div {
   max-width: 80%;
-  margin: auto;
+  margin: 20px auto 20px auto;
+  background: #f9f9f9;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 18px;
+  -webkit-border-radius: 18px;
+  -moz-border-radius: 18px;
+  -ms-border-radius: 18px;
+  -o-border-radius: 18px;
+}
+
+.subject-inputs {
+  padding: 30px 30px 0 30px;
+}
+
+.form-label {
+  text-align: left;
+  margin-left: 4px;
+}
+
+.subject-input {
+  margin-bottom: 20px;
+  border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
 }
 
 .subject-page-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 20px;
 }
 
 .subject-cards {
-  margin: 10px 10px 20px 10px;
+  margin: 15px;
   width: 256px;
   max-height: 300px;
   display: flex;
@@ -33,6 +56,10 @@
   -ms-border-radius: 16px;
   -o-border-radius: 16px;
   border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.create-subject-button {
+  padding-bottom: 30px;
 }
 
 .subject-card-body {
@@ -52,4 +79,22 @@ img.subject-image {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+html
+  body
+  div#root
+  div.app
+  div.center
+  div.subject-page-wrap
+  div.card-body
+  div.subject-page-cards
+  div.subject-cards
+  a
+  button.MuiButtonBase-root.MuiCardActionArea-root.subject-card-body:hover {
+  border-radius: 16px; /*overwrite hover corners*/
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  -ms-border-radius: 16px;
+  -o-border-radius: 16px;
 }

@@ -117,6 +117,10 @@ button:disabled {
   -o-border-radius: 20px;
 }
 
+.creation-form {
+  padding-top: 10px;
+}
+
 /* .app {
   display: flex;
   flex-direction: column;
