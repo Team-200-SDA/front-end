@@ -57,36 +57,41 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
 
   return (
     <div className="card-body create-assignment-div">
-
       <div className="form-group">
         <div className="storage-uploader">
-
           <FormControl component="fieldset">
+            <FormLabel component="legend">{language.Assignment_Type}</FormLabel>
 
-          <FormLabel component="legend">{language.Assignment_Type}</FormLabel>
+            <RadioGroup
+              row
+              aria-label="Assignment Type"
+              value={uploadType}
+              onChange={radioChange}>
+              <FormControlLabel
+                value="UPLOAD"
+                control={<Radio />}
+                label={language.Upload_File}
+              />
+              <FormControlLabel
+                value="VIDEO"
+                control={<Radio />}
+                label={language.Video_Link}
+              />
+              <FormControlLabel
+                value="LINK"
+                control={<Radio />}
+                label={language.External_Link}
+              />
+            </RadioGroup>
+          </FormControl>
 
-          <RadioGroup
-            row
-            aria-label="Assignment Type"
-            value={uploadType}
-            onChange={radioChange}>
-
-            <FormControlLabel value="UPLOAD" control={<Radio />} label={language.Upload_File} />
-            <FormControlLabel value="VIDEO" control={<Radio />} label={language.Video_Link}/>
-            <FormControlLabel value="LINK" control={<Radio />} label={language.External_Link} />
-
-          </RadioGroup>
-        </FormControl>
-
-        <div>
-          <FileUploader setUploadResponse={setUploadResponse} uploadType={uploadType} />
-        </div>
-
+          <div>
+            <FileUploader setUploadResponse={setUploadResponse} uploadType={uploadType} />
+          </div>
         </div>
       </div>
 
       <div className="form-group">
-
         <input
           className="form-control"
           placeholder={language.Assignment_name}
@@ -101,19 +106,18 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
           onChange={event => setLink(event.target.value)}
           disabled={uploadType === 'UPLOAD' || uploadType === ''}
         />
-        </div>
-
-        <div className="form-group">
-          <Button
-            className="upload-button"
-            variant="contained"
-            color="primary"
-            onClick={createAssignment}
-            disabled={title === '' || link === ''}>
-            {language.Create_Assignment}
-          </Button>
-        </div>
-        
       </div>
+
+      <div className="form-group">
+        <Button
+          className="upload-button"
+          variant="contained"
+          color="primary"
+          onClick={createAssignment}
+          disabled={title === '' || link === ''}>
+          {language.Create_Assignment}
+        </Button>
+      </div>
+    </div>
   );
 }

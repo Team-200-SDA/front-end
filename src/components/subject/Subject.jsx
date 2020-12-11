@@ -1,10 +1,4 @@
-import {
-  Card,
-  CardActionArea,
-  CardActions,
-  CardContent,
-  Typography
-} from '@material-ui/core';
+import { CardActionArea, CardActions, CardContent, Typography } from '@material-ui/core';
 import { DeleteRounded } from '@material-ui/icons';
 import React from 'react';
 import { Link } from 'react-router-dom';
