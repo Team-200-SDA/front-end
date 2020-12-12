@@ -117,7 +117,8 @@
 	"Select_assignment":"Select assignment",
 	"Enter_lecture_name":"Enter a lecture name",
 	"Mark_Complete":"Mark as Complete",
-	"Status":"Status"
+	"Status":"Status",
+	"Create_new_Assignment":"Create a new Assignment"
 	
 
 }

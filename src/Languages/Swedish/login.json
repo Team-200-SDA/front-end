@@ -117,5 +117,6 @@
 	"Select_assignment":"Välj uppgift",
 	"Enter_lecture_name":"Ange ett föreläsningsnamn",
 	"Mark_Complete":"Markera som slutfört",
-	"Status":"Status"
+	"Status":"Status",
+	"Create_new_Assignment":"Skapa ett nytt uppdrag"
 }

@@ -57,7 +57,7 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
 
   return (
     <div className="card-body create-assignment-div">
-      <div className="creation-form">Create a new Assignment</div>
+      <div className="creation-form">{language.Create_new_Assignment}</div>
       <div className="form-group lecture-create-form">
         <div className="storage-uploader">
           <FormControl component="fieldset">
