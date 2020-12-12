@@ -77,6 +77,10 @@ a:active {
   text-decoration: none;
 }
 
+a {
+  height: 100%;
+}
+
 button {
   color: var(--light);
   background: var(--dominant);
@@ -121,30 +125,22 @@ button:disabled {
   padding-top: 10px;
 }
 
-/* .app {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  overflow: auto;
+@media screen and (max-width: 767px) {
+  .app {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-bar {
+    min-height: 80px;
+  }
+
+  .center {
+    margin: 0 10px 0 10px;
+  }
+
+  .bottom {
+    min-height: 100px;
+    margin-top: auto;
+  }
 }
-
-
-.nav-bar {
-  min-height: 80px;
-  -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000,
-    0px 5px 15px 5px rgba(0, 0, 0, 0);
-  box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000,
-    0px 5px 15px 5px rgba(0, 0, 0, 0);
-}
-
-.center {
-  margin-bottom: 10px;
-}
-
-.bottom {
-  min-height: 60px;
-  -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000,
-    0px 5px 15px 5px rgba(0, 0, 0, 0);
-  box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000,
-    0px 5px 15px 5px rgba(0, 0, 0, 0);
-} */

@@ -82,3 +82,52 @@
   margin: 0;
   margin-right: 10px;
 }
+.private-users-toggle {
+  display: none;
+}
+
+.private-users {
+  display: none;
+}
+
+.no-active-conversation {
+  margin-top: 30%;
+  margin-right: 25%;
+  font-size: 12pt;
+}
+
+@media screen and (max-width: 767px) {
+  .private-chat-wrap.private-chat-layout {
+    display: flex;
+  }
+  .private-chat-wrapper {
+    border: 0;
+  }
+
+  .priv-chat-title {
+    padding-left: 16px;
+    padding-right: 12px;
+    font-size: 32pt;
+  }
+
+  .private-users-toggle {
+    display: block;
+    margin-left: auto;
+    margin-right: 4px;
+    font-size: 18pt;
+    cursor: pointer;
+  }
+
+  .priv-chat-border {
+    border-bottom: 1px solid rgb(196, 196, 196);
+  }
+
+  .start-conversation {
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(196, 196, 196);
+  }
+
+  .no-active-conversation {
+    margin-right: 0;
+  }
+}

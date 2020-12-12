@@ -83,3 +83,17 @@ html
   color: var(--text);
   border: none;
 }
+
+@media screen and (max-width: 767px) {
+  .create-assignment-div {
+    max-width: 98%;
+  }
+
+  .assignment-toggle {
+    width: 98%;
+  }
+
+  .assignment-cards {
+    width: 78%;
+  }
+}
