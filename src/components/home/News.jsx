@@ -1,17 +1,14 @@
 import React from 'react';
 import { DeleteRounded } from '@material-ui/icons';
-import { useContext } from 'react';
-import { LangContext } from '../../contexts/LanguageContext';
 
 export default function News({ news, deleteNews }) {
-  const { language } = useContext(LangContext);
   const user_role = window.sessionStorage.getItem('role');
 
   return (
-    <div className="card news-div">
-      <h2>{news.title}</h2>
+    <div className="card-body news-div">
       <img className="news-image" src={news.image} alt="News" width="70%" />
       <div>
+        <h2>{news.title}</h2>
         <div className="news-article-body">{news.body}</div>
       </div>
       {user_role !== 'teacher' ? null : (

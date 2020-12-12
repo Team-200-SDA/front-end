@@ -13,15 +13,15 @@ export default function Footer() {
   const [botOpen, setBotOpen] = useState(false);
   return (
     <footer className="bottom">
-      <div class="btn-group dropup">
+      <div className="btn-group dropup">
         <i
           type="button"
-          class="fas fa-globe language-icon"
+          className="fas fa-globe language-icon"
           data-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false"
         />
-        <div class="dropdown-menu dropdown-menu-right">
+        <div className="dropdown-menu dropdown-menu-right">
           {' '}
           <li className="dropdown-item" href="#" onClick={changeEn}>
             {language.english}
@@ -36,7 +36,7 @@ export default function Footer() {
       </div>
       <div className="footer-button" variant="contained">
         <a href="https://www.youtube.com/">
-          <i class="fas fa-info-circle footer-icon" />
+          <i className="fas fa-info-circle footer-icon" />
         </a>
       </div>
       <span className="copyright">&#169;2020 EDULANE. All Rights Reserved</span>

@@ -98,19 +98,17 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
         </FormLabel>
         <input
           className="form-control subject-input"
-          // Erkan
-          placeholder="Assignment name"
+          placeholder={language.Assignment_name}
           value={title}
           onChange={event => setTitle(event.target.value)}
           disabled={uploadType === ''}
         />
         <FormLabel className="form-label" component="legend">
-          Link to the assignment
+          {language.link}
         </FormLabel>
         <input
           className="form-control subject-input"
-          // Erkan
-          placeholder="Link to the assignment"
+          placeholder={language.link}
           value={link}
           onChange={event => setLink(event.target.value)}
           disabled={uploadType === 'UPLOAD' || uploadType === ''}

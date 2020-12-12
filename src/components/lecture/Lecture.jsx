@@ -1,13 +1,15 @@
 import React from 'react';
 import LectureApi from '../../api/LectureApi';
 import fileTypeImageFA from '../../js/functions/fileUpload/fileTypeImageFA';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
 
 export default function Lecture({ getAllLectures, lecture, userRole }) {
+  const { language } = useContext(LangContext);
   const fileType = fileTypeImageFA(lecture.type);
-
   function deleteLecture(lectureId) {
     LectureApi.deleteLecture(lectureId).then(() => {
-      alert('Lecture Deleted!');
+      alert(language.Lecture_Deleted);
       getAllLectures();
     });
   }
