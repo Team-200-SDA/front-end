@@ -6,12 +6,14 @@
 .create-news-div {
   width: 80%;
   margin: auto;
+  margin-bottom: 30px;
 }
 
 .news-div {
   max-width: 80%;
   padding: 0;
-  margin: 30px auto 0 auto;
+  margin: 0 auto 30px auto;
+  transition: all 0.5s linear;
 }
 
 img.news-image {
@@ -30,4 +32,10 @@ img.news-image {
 
 .news-delete {
   margin-bottom: 16px;
+}
+
+.toggle-news-view {
+  padding-top: 20px;
+  color: rgb(152, 152, 152);
+  cursor: pointer;
 }
