@@ -19,6 +19,24 @@ class ActionProvider {
     );
     this.updateChatbotState(message);
   };
+  ReactJS = () => {
+    const message1 = this.createChatBotMessage(
+      "Fantastic, I've got the following resources for you on React:",
+      {
+        widget: 'ReactJS'
+      }
+    );
+    this.updateChatbotState(message1);
+  };
+  apis = () => {
+    const message1 = this.createChatBotMessage(
+      "Fantastic, I've got the following resources for you on API:",
+      {
+        widget: 'apis'
+      }
+    );
+    this.updateChatbotState(message1);
+  };
 
   //This method updates the state of the bot.
   updateChatbotState(message) {
