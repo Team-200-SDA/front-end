@@ -4,6 +4,7 @@ import NewsApi from '../../api/NewsApi';
 import ImageUploader from '../imageuploader/ImageUploader';
 import { useContext } from 'react';
 import { LangContext } from '../../contexts/LanguageContext';
+import { Button, FormLabel } from '@material-ui/core';
 
 export default function CreateNews(props) {
   const { language } = useContext(LangContext);
@@ -33,17 +34,24 @@ export default function CreateNews(props) {
 
   return (
     <div className="card-body create-news-div">
+      {/* Erkan */}
+      <div className="creation-form upload-file-tag">Post an Article or Announcement</div>
+      <FormLabel className="form-label" component="legend">
+        Enter an article or announcement title
+      </FormLabel>
       <div className="form-group">
         <input
-          className="form-control"
-          placeholder="News Title..." //Erkan
+          className="form-control subject-input"
+          placeholder="News or Announcement Title"
           value={title}
           onChange={event => setTitle(event.target.value)}
         />
-
+        <FormLabel className="form-label" component="legend">
+          Article or announcement content
+        </FormLabel>
         <textarea
-          className="form-control"
-          placeholder="News Body..." //Erkan
+          className="form-control subject-input"
+          placeholder="News or Article Content"
           value={body}
           onChange={event => setBody(event.target.value)}
         />
@@ -52,9 +60,14 @@ export default function CreateNews(props) {
       </div>
 
       <div className="form-group">
-        <button className="btn btn-primary" onClick={createNews}>
+        <Button
+          className="upload-button"
+          variant="contained"
+          color="primary"
+          onClick={createNews}
+          disabled={image === ''}>
           {language.Publish}
-        </button>
+        </Button>
       </div>
     </div>
   );

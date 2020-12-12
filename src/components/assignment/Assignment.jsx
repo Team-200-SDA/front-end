@@ -1,18 +1,17 @@
 import React from 'react';
 import fileTypeImage from '../../js/functions/fileUpload/fileTypeImage';
 import fileTypeImageFA from '../../js/functions/fileUpload/fileTypeImageFA';
-import { LangContext } from '../../contexts/LanguageContext';
-import { useContext } from 'react';
+
 
 export default function Assignment({ assignment, deleteAssignment }) {
-  const { language } = useContext(LangContext);
   const user_ = window.sessionStorage.getItem('user');
+  const role_ = window.sessionStorage.getItem('role');
 
   const fileType = fileTypeImageFA(assignment.type);
 
   return (
-    <div className="assignment-cards">
-      <div className="card-body card-body-assignment">
+    <div className="card-body assignment-cards">
+      <div className="card-body-assignment">
         <i className={`fas ${fileType} file-type-icons`} />
         <span>
           <a
@@ -30,7 +29,7 @@ export default function Assignment({ assignment, deleteAssignment }) {
         ) : null}
 
         {/* Delete Button if logged in user is assignment author */}
-        {user_ === assignment.user.name ? (
+        {role_ === assignment.user.role ? (
           <i
             className="fas fa-trash assignment-delete"
             onClick={() => deleteAssignment(assignment.id)}></i>

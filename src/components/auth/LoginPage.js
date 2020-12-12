@@ -4,11 +4,9 @@ import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 import { useContext } from 'react';
 import { LangContext } from '../../contexts/LanguageContext';
-import BootstrapSwitchButton from 'bootstrap-switch-button-react';
-import { Card } from '@material-ui/core';
 
 function LoginPage() {
-  const { language, changeLanguage } = useContext(LangContext);
+  const { language, changeEn, changeSv, changeEs } = useContext(LangContext);
   const login = async loginData => {
     const loginSuccess = await Auth.login(loginData);
 
@@ -38,12 +36,29 @@ function LoginPage() {
         </div>
       </div>
       <footer className="login-footer">
-        <span className="footer-link">
-          <a>English</a>
-        </span>
-        <span className="footer-link">
-          <a>Swedish</a>
-        </span>
+        <div className="col-md-6 " style={{ color: 'white' }}>
+          <div className="btn-group">
+            <button
+              type="button"
+              className="btn btn-danger dropdown-toggle"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false">
+              {language.language}
+            </button>
+            <div className="dropdown-menu">
+              <a className="dropdown-item" onClick={changeEn} href="#">
+                {language.english}
+              </a>
+              <a className="dropdown-item" onClick={changeSv} href="#">
+                {language.swedish}
+              </a>
+              <a className="dropdown-item" onClick={changeEs} href="#">
+                {language.spanish}
+              </a>
+            </div>
+          </div>
+        </div>
       </footer>
     </div>
   );

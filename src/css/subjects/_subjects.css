@@ -5,39 +5,112 @@
 }
 
 .create-subject-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   max-width: 80%;
-  margin: auto;
+  margin: 20px auto 20px auto;
+  background: var(--light);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 18px;
+  -webkit-border-radius: 18px;
+  -moz-border-radius: 18px;
+  -ms-border-radius: 18px;
+  -o-border-radius: 18px;
+}
+
+.subject-inputs {
+  width: 75%;
+  padding: 30px 30px 0 30px;
+}
+
+.form-label {
+  text-align: left;
+  margin-left: 4px;
+}
+
+.subject-input {
+  margin-bottom: 20px;
+  border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
 }
 
 .subject-page-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 20px;
 }
 
 .subject-cards {
-  margin: 10px 10px 20px 10px;
-  width: 256px;
+  margin: 15px;
+  padding: 0;
+  max-width: 262px;
   max-height: 300px;
   display: flex;
   flex-direction: column;
   text-align: center;
+  background: #f9f9f9 !important;
+  border-radius: 16px;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  -ms-border-radius: 16px;
+  -o-border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.create-subject-button {
+  padding-bottom: 30px;
 }
 
 .subject-card-body {
   display: flex;
   flex-direction: column;
-  background: white;
+  background: var(--text);
 }
 
 img.subject-image {
-  padding-top: 16px;
-  max-height: 180px;
+  max-width: 100%;
+  min-height: 180px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 }
 
 .subject-delete-div {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+html
+  body
+  div#root
+  div.app
+  div.center
+  div.subject-page-wrap
+  div.card-body
+  div.subject-page-cards
+  div.subject-cards
+  a
+  button.MuiButtonBase-root.MuiCardActionArea-root.subject-card-body:hover {
+  border-radius: 16px; /*overwrite hover corners*/
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  -ms-border-radius: 16px;
+  -o-border-radius: 16px;
+}
+
+html
+  body
+  div#root
+  div.app
+  div.center
+  div.subject-page-wrap
+  div
+  div.subject-page-cards
+  div.card-body.subject-cards
+  div.MuiCardActions-root.subject-delete-div.MuiCardActions-spacing {
+  padding: 0 0 20px 0; /*overwrite default bottom padding corners*/
 }

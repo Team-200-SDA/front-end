@@ -1,43 +1,38 @@
-import React, { useState } from "react";
-import ImageUploader from "../imageuploader/ImageUploader";
-import { useContext } from "react";
-import { LangContext } from "../../contexts/LanguageContext";
+import React, { useState } from 'react';
+import ImageUploader from '../imageuploader/ImageUploader';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
 
-import { Card } from "@material-ui/core";
-const defaultImage = "/images/defaultUserImage/blank-profile-pic.png";
-function UserProfileForm({
-  user,
-  onUpdateClick,
-  onUpdatePhoneClick,
-  onUpdatePicClick,
-}) {
+import { Card } from '@material-ui/core';
+const defaultImage = '/images/defaultUserImage/blank-profile-pic.png';
+function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicClick }) {
   const { language } = useContext(LangContext);
-  const [address, setAddress] = useState({ address: "" });
-  const [phoneno, setPhoneno] = useState({ phoneno: "" });
-  const [image, setImage] = useState({ image: "" });
+  const [address, setAddress] = useState({ address: '' });
+  const [phoneno, setPhoneno] = useState({ phoneno: '' });
+  const [image, setImage] = useState({ image: '' });
 
   function clickUpdateAddress(e) {
     e.preventDefault();
     onUpdateClick(address.address);
-    setAddress({ address: "" });
+    setAddress({ address: '' });
   }
   function clickUpdatePhone(e) {
     e.preventDefault();
     onUpdatePhoneClick(phoneno.phoneno);
-    setPhoneno({ phoneno: "" });
+    setPhoneno({ phoneno: '' });
   }
 
   function clickUpdateProfilepic(e) {
     e.preventDefault();
     onUpdatePicClick(image);
-    setImage({ image: "" });
+    setImage({ image: '' });
   }
 
   return (
     <>
       <div className="user-profile-title-div">
         <h1 className="user-profile-title">
-          <i class="far fa-address-card title-icon"></i>
+          <i className="far fa-address-card title-icon"></i>
           {language.User_Profile}
         </h1>
       </div>
@@ -57,17 +52,11 @@ function UserProfileForm({
               <input
                 className="form-control"
                 defaultValue={user.address}
-                onChange={(event) =>
-                  setAddress({ address: event.target.value })
-                }
-              ></input>
+                onChange={event => setAddress({ address: event.target.value })}></input>
             </div>
             <div className="text-right mt-0 mb-0">
-              <button
-                className="btn btn-light"
-                onClick={(e) => clickUpdateAddress(e)}
-              >
-                <i class="fas fa-pencil-alt update-icon"></i>
+              <button className="btn btn-light" onClick={e => clickUpdateAddress(e)}>
+                <i className="fas fa-pencil-alt update-icon"></i>
               </button>
             </div>
           </div>
@@ -79,24 +68,18 @@ function UserProfileForm({
               <input
                 className="form-control"
                 defaultValue={user.phoneno}
-                onChange={(event) =>
-                  setPhoneno({ phoneno: event.target.value })
-                }
-              ></input>
+                onChange={event => setPhoneno({ phoneno: event.target.value })}></input>
             </div>
 
             <div className="text-right mt-0 mb-0">
-              <button
-                className="btn btn-light"
-                onClick={(e) => clickUpdatePhone(e)}
-              >
+              <button className="btn btn-light" onClick={e => clickUpdatePhone(e)}>
                 <i className="fas fa-pencil-alt update-icon"></i>
               </button>
             </div>
           </div>
 
           <Card className="profile-pic-card">
-            <label className="ml-3 mt-3">Profile Picture</label>
+            <label className="ml-3 mt-3">{language.Profile_Picture}</label>
 
             <div className="grid-profile">
               <article>
@@ -107,15 +90,12 @@ function UserProfileForm({
                 )}
               </article>
               <article className="prof-img">
-                <ImageUploader setImgUrl={setImage} uploadPreset={"profile"} />
+                <ImageUploader setImgUrl={setImage} uploadPreset={'profile'} />
               </article>
             </div>
 
             <div className="text-right">
-              <button
-                className="button-update "
-                onClick={(e) => clickUpdateProfilepic(e)}
-              >
+              <button className="button-update " onClick={e => clickUpdateProfilepic(e)}>
                 Update profile picture
               </button>
             </div>

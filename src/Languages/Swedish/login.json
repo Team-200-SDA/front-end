@@ -98,5 +98,22 @@
 	"Add_Comment":"Lägg till kommentar",
 	"error_occured":"fel uppstod",
 	"Post_Body":"Post Kropp",
-	"Create_new_Post":"Skapa ett nytt inlägg"
+	"Create_new_Post":"Skapa ett nytt inlägg",
+	"News_Title":"Nyhetstitel ...",
+	"News_Body":"Nyhetskropp ...",
+	"News":"Nyheter",
+	"Lecture_Name":"Föreläsningsnamn ...",
+	"Link_Lecture":"Länk till föreläsning ...",
+	"Publish_Lecture":"Publicera föreläsning",
+	"Lecture_Type":"Föreläsningstyp",
+	"Forum":"Forum",
+	"Sign_Out":"Logga ut",
+	"Lecture_Deleted":"Föreläsning borttagen!",
+	"Enter_subject_name":"Ange ett ämnesnamn",
+	"Enter_subject_description":"Ange en ämnesbeskrivning",
+	"Create_new_Subject":"Skapa ett nytt ämne",
+	"Join_Classroom":"Gå med i klassrummet",
+	"Update_profile_picture":"Uppdatera profilbild",
+	"Select_assignment":"Välj uppgift",
+	"Enter_lecture_name":"Ange ett föreläsningsnamn"
 }

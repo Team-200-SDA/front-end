@@ -98,6 +98,23 @@
   "Add_Comment":"Agregar comentario",
   "error_occured":"ocurrió un error",
   "Post_Body":"Post Cuerpo",
-  "Create_new_Post":"Crear una publicación nueva"
+  "Create_new_Post":"Crear una publicación nueva",
+  "News_Title":"Título de la noticia ...",
+  "News_Body":"Cuerpo de noticias ...",
+  "News":"Noticias",
+  "Lecture_Name":"Nombre de la conferencia ...",
+  "Link_Lecture":"Enlace a la conferencia ...",
+  "Publish_Lecture":"Publicar conferencia",
+  "Lecture_Type":"Tipo de conferencia",
+  "Forum":"Foro",
+  "Sign_Out":"Desconectar",
+  "Lecture_Deleted":"Conferencia eliminada!",
+  "Enter_subject_name":"Ingrese un nombre de asunto",
+  "Enter_subject_description":"Ingrese una descripción del tema",
+  "Create_new_Subject":"Crear un nuevo asunto",
+  "Join_Classroom":"Unirse a Classroom",
+  "Update_profile_picture":"Actualizar foto de perfil",
+  "Select_assignment":"Seleccionar tarea",
+  "Enter_lecture_name":"Ingrese un nombre de conferencia"
 }
 

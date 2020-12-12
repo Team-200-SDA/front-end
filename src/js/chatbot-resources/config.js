@@ -62,6 +62,54 @@ const config = {
           }
         ]
       }
+    },
+    {
+      widgetName: 'ReactJS',
+      widgetFunc: props => <BotLinks {...props} />,
+      props: {
+        options: [
+          {
+            text: 'Introduction to ReactJS',
+            url: 'https://reactjs.org/tutorial/tutorial.html',
+            id: 1
+          },
+          {
+            text: 'React projects',
+            url:
+              'https://dev.to/nerdjfpb/15-react-js-project-ideas-beginner-to-expert-with-free-tutorial-f41',
+            id: 2
+          },
+          {
+            text: 'React Realworld projects',
+            url:
+              'https://medium.com/front-end-weekly/5-real-world-react-projects-to-inspire-growth-no-todo-apps-allowed-8c5b6cffbadd',
+            id: 3
+          }
+        ]
+      }
+    },
+    {
+      widgetName: 'apis',
+      widgetFunc: props => <BotLinks {...props} />,
+      props: {
+        options: [
+          {
+            text: 'REST APIS',
+            url: 'https://www.sitepoint.com/developers-rest-api/',
+            id: 1
+          },
+          {
+            text: 'REACT API',
+            url: 'https://www.smashingmagazine.com/2020/06/rest-api-react-fetch-axios/',
+            id: 2
+          },
+          {
+            text: 'Web Services Api',
+            url: 'https://www.guru99.com/webservice-testing-beginner-guide.html',
+            id: 3
+          }
+        ]
+      }
     }
   ]
 };

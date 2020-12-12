@@ -4,9 +4,12 @@ import { v4 as uuid } from 'uuid';
 import LectureApi from '../../api/LectureApi';
 import CreateLecture from './CreateLecture';
 import Lecture from './Lecture';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
 
 export default function LecturePage() {
   // const subjects = useRecoilValue(subjectsState);
+  const { language } = useContext(LangContext);
   const urlParams = useParams();
   const [lectures, setLectures] = useState([]);
   const userRole = window.sessionStorage.getItem('role');
@@ -29,11 +32,11 @@ export default function LecturePage() {
       <div className="title-div">
         <h1 className="page-title-text">
           <i className="fas fa-book-open title-icon" />
-          Lectures
+          {language.Lectures}
         </h1>
       </div>
 
-      <div className="card-body">
+      <div className="">
         {/* Loads Lecture Creation component based on user role */}
         {userRole !== 'teacher' ? null : (
           <CreateLecture
