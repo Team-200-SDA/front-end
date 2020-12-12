@@ -79,7 +79,7 @@ function Chat() {
   return (
     <div className="public-chat-wrap">
       <div className="title-div">
-        <h1 className="page-title-text">
+        <h1 className="page-title-text priv-chat-title">
           <i className="far fa-comments title-icon" />
           {language.Public_Chat}
         </h1>
