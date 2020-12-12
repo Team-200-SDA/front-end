@@ -7,6 +7,12 @@ import CommentPageDetails from '../comments/CommentPageDetails';
 import { useContext } from 'react';
 import { LangContext } from '../../../contexts/LanguageContext';
 
+//styling import
+import { Button } from '@material-ui/core';
+import './style.css';
+import '../../../css/shared.css';
+import '../../../css/subjects/_subjects.css'
+
 function Post({
   post,
   onPostUpdate,
@@ -62,12 +68,12 @@ function Post({
           formTitle="Update post"
         />
       ) : (
-        <div className="card mt-4">
+        <div className="card">
           <div className="card-body">
             <div className="card-title">
-              <Link to="#" onClick={() => setActivePost(!activePost)}>
+              
                 <h3>{post.title}</h3>
-              </Link>
+             
 
               <p className="badge badge-primary text-wrap">{post.user.name}</p>
             </div>
@@ -76,25 +82,35 @@ function Post({
             <div className="mt-3">
               {isMyPost && (
                 <>
-                  <button className="btn btn-warning" onClick={onUpdateClick}>
+                  <Button className="upload-button"
+                  variant="contained"
+                   color="primary" onClick={onUpdateClick}>
                     {language.Update}
-                  </button>
-                  <button
-                    className="btn btn-danger ml-3"
+                    <i class="fas fa-edit"></i>
+                  </Button>
+
+                  <Button
+                    className="button" 
+                    color="primary"
+                    variant="contained"
                     onClick={() => onPostDelete(post)}>
                     {language.Delete}
-                  </button>
+                  </Button>
                 </>
               )}
-              <button
+              <Button
                 type="button"
-                className="btn btn-info ml-3"
+                color="primary"
+                variant="contained"
                 data-toggle="modal"
                 data-target="#myModal"
                 onClick={onCreateCommentClick}>
                 {language.Add_Comment}
-              </button>
+              </Button>
             </div>
+            <Link to="#" >
+              <u className = "showComment"  onClick={() => setActivePost(!activePost)}>show comments</u>
+              </Link>
 
             {activePost ? <CommentPageDetails post={post} /> : null}
 

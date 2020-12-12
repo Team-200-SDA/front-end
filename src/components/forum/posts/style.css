@@ -1,0 +1,9 @@
+.showComment{
+    color:rgb(73, 73, 225);
+    position: absolute;
+    right: 15px;
+    width: 200px;
+}
+.showComment:hover{
+    color:hotpink;
+}
