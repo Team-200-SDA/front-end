@@ -33,8 +33,9 @@ export default function FileStorageForm({ uploadFile }) {
         </h1>
       </div>
       <div className="card-body card-filestorage">
-        <FormLabel component="legend">{language.File_Storage}</FormLabel>
-        <div className="storage-uploader">
+        <div className="creation-form upload-file-tag">Store files Online</div>
+        <FormLabel component="legend">Select a file to upload</FormLabel>
+        <div className="storage-uploader file-storage-button">
           <FileUploader setUploadResponse={setUploadResponse} uploadType={`UPLOAD`} />
         </div>
       </div>
