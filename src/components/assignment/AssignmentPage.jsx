@@ -74,8 +74,6 @@ export default function AssignmentPage() {
           Assignments
         </h1>
       </div>
-
-      {/* card body for full page card */}
       <div className="">
         <div
           className="card-body assignment-toggle container d-flex justify-content-around btn-group btn-group-toggle"

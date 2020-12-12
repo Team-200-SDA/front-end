@@ -6,9 +6,7 @@ import { useContext } from 'react';
 import { LangContext } from '../../contexts/LanguageContext';
 
 function LoginPage() {
-  const { language, changeEn, changeSv, changeEs } = useContext(
-    LangContext
-  );
+  const { language, changeEn, changeSv, changeEs } = useContext(LangContext);
   const login = async loginData => {
     const loginSuccess = await Auth.login(loginData);
 
@@ -29,23 +27,23 @@ function LoginPage() {
       <div className="container">
         <div className="row mt-4">
           <div className="col-md-6 " style={{ color: 'white' }}>
-            <div class="btn-group">
+            <div className="btn-group">
               <button
                 type="button"
-                class="btn btn-danger dropdown-toggle"
+                className="btn btn-danger dropdown-toggle"
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false">
                 {language.language}
               </button>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" onClick={changeEn} href="#">
+              <div className="dropdown-menu">
+                <a className="dropdown-item" onClick={changeEn} href="#">
                   {language.english}
                 </a>
-                <a class="dropdown-item" onClick={changeSv} href="#">
+                <a className="dropdown-item" onClick={changeSv} href="#">
                   {language.swedish}
                 </a>
-                <a class="dropdown-item" onClick={changeEs} href="#">
+                <a className="dropdown-item" onClick={changeEs} href="#">
                   {language.spanish}
                 </a>
               </div>
