@@ -94,6 +94,11 @@ html body div#root div.app div.nav-wrap div.navbar.navbar-expand-md {
     margin-bottom: 10px;
     height: 33px;
     width: 50px;
+    border-radius: 18px;
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    -ms-border-radius: 18px;
+    -o-border-radius: 18px;
   }
 
   .navbar-brand {
@@ -102,5 +107,11 @@ html body div#root div.app div.nav-wrap div.navbar.navbar-expand-md {
     margin-top: 10px;
     padding-top: 10px;
     font-size: 28pt;
+  }
+
+  .navbar {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 0px !important;
   }
 }

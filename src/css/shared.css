@@ -132,14 +132,10 @@ button:disabled {
   }
 
   .center {
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 0 10px 0 10px;
   }
 
   .bottom {
     min-height: 100px;
-  }
-  .collapse {
-    display: none !important;
   }
 }
