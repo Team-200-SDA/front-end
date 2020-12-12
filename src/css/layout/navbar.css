@@ -4,16 +4,28 @@
   text-decoration: none;
 }
 
-.nav-wrap .navbar {
-  display: flex;
-  align-content: flex-start;
-  border-top-right-radius: 20px;
+.navbar {
   width: 200px;
+}
+
+.navbar-brand {
+  display: none;
+}
+
+.nav-wrap .navbar {
+  border-top-right-radius: 20px;
   height: 100%;
   background: var(--light);
   padding: 0px 0px 20px 0px;
   position: fixed;
   overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: column !important;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
 }
@@ -50,4 +62,45 @@
 .nav-icon {
   margin-right: 16px;
   font-size: 22px;
+}
+
+html body div#root div.app div.nav-wrap div.navbar.navbar-expand-md {
+  align-items: flex-start;
+}
+
+@media screen and (max-width: 767px) {
+  .nav-wrap {
+    margin-top: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-wrap .navbar {
+    width: 100%;
+    /* min-height: 80px; */
+    overflow: visible;
+    position: static;
+    padding: 0;
+    align-content: center;
+  }
+
+  .nav-wrap .navbar img {
+    display: none;
+  }
+
+  .navbar-toggler {
+    margin-right: 20px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+    height: 33px;
+    width: 50px;
+  }
+
+  .navbar-brand {
+    display: block;
+    margin-left: 20px;
+    margin-top: 10px;
+    padding-top: 10px;
+    font-size: 28pt;
+  }
 }

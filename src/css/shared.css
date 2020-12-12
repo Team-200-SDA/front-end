@@ -121,30 +121,25 @@ button:disabled {
   padding-top: 10px;
 }
 
-/* .app {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  overflow: auto;
+@media screen and (max-width: 767px) {
+  .app {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-bar {
+    min-height: 80px;
+  }
+
+  .center {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .bottom {
+    min-height: 100px;
+  }
+  .collapse {
+    display: none !important;
+  }
 }
-
-
-.nav-bar {
-  min-height: 80px;
-  -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000,
-    0px 5px 15px 5px rgba(0, 0, 0, 0);
-  box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000,
-    0px 5px 15px 5px rgba(0, 0, 0, 0);
-}
-
-.center {
-  margin-bottom: 10px;
-}
-
-.bottom {
-  min-height: 60px;
-  -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000,
-    0px 5px 15px 5px rgba(0, 0, 0, 0);
-  box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000,
-    0px 5px 15px 5px rgba(0, 0, 0, 0);
-} */
