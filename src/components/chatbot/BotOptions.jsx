@@ -9,10 +9,20 @@ const BotOptions = props => {
       handler: props.actionProvider.handleJavascriptList,
       id: 1
     },
-    { text: 'React JS', handler: () => {}, id: 2 },
-    { text: 'APIs', handler: () => {}, id: 3 },
-    { text: 'Material UI', handler: () => {}, id: 4 },
-    { text: 'React Hooks and Routers', handler: () => {}, id: 5 }
+    {
+      text: 'ReactJS',
+      handler: props.actionProvider.ReactJS,
+      id: 6
+    },
+    {
+      text: 'APIs',
+      handler: props.actionProvider.apis,
+      id: 6
+    },
+    // { text: 'React JS', handler: () => {}, id: 2 },
+    // { text: 'APIs', handler: () => {}, id: 3 },
+    // { text: 'Material UI', handler: () => {}, id: 4 },
+    
   ];
 
   const optionsMarkup = options.map(option => (

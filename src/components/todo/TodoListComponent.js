@@ -4,6 +4,7 @@ import { v4 as uuid } from 'uuid';
 import TodoApi from '../../api/TodoApi';
 import { useContext } from 'react';
 import { LangContext } from '../../contexts/LanguageContext';
+import { Button } from '@material-ui/core';
 
 function TodoListComponent() {
   const { language } = useContext(LangContext);
@@ -59,42 +60,58 @@ function TodoListComponent() {
             <i className="fas fa-trash-alt" />
           </button>
         </td>
+
+        <td>
         <button
           type="submit"
           onClick={() => updateComplete(todo)}
           className="btn btn-info">
           <i className="fas fa-clipboard-check"></i>
         </button>
+        </td>
       </tr>
+      
     );
   });
 
   //Using a table to display the list of the tasks in a table format.
   return (
-    <div className="container">
-      <div className="card">
-        <div className="card-header bg-secondary text-white">
-          <h4>{language.Todo}</h4>
+    <div className="ToDoList-Page-Wrap">
+      <div className="title-div">
+        <div className="page-title-text">
+          <h1>
+            <i className="fas fa-tasks mr-3" />
+            Todo List
+          </h1>
         </div>
+      </div>
 
-        <div className="card-body">
+      <div className="card-body-todo create-assignment-div">
+        <div className="container d-flex justify-content-around mb-4 btn-group btn-group-toggle">
           <table className="table table-striped table-bordered">
             <thead>
               <tr>
-                <td>{language.title}</td>
-                <td>{language.description}</td>
-                <td>{language.due_Date}</td>
-                <td>{language.Complete}</td>
+                <td>Title</td>
+                <td>Description</td>
+                <td>Due Date</td>
+                <td>Mark as Complete</td>
+                <td>Delete</td>
+                <td>Status</td>
               </tr>
             </thead>
             <tbody>{jsxTodos}</tbody>
           </table>
         </div>
-        <div className="card-footer">
-          <Link to="/todo-form" className="btn btn-danger">
-            {language.Create}
+
+       
+          <Link to="/todo-form" className="btn info">
+            <Button
+            variant="contained"
+            color="primary">
+            Create
+            </Button>
           </Link>
-        </div>
+        
       </div>
     </div>
   );
