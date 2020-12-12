@@ -17,21 +17,21 @@ function Navbar({ onLogout }) {
 
         {/* Burger Button */}
         <button
-          class="navbar-toggler toggler-example"
+          className="navbar-toggler toggler-example"
           type="button"
           data-toggle="collapse"
           data-target="#navbarlinks"
           aria-controls="navbarlinks"
           aria-expanded="true"
           aria-label="Toggle navigation">
-          <span class="dark-blue-text">
-            <i class="fas fa-bars fa-1x"></i>
+          <span className="dark-blue-text">
+            <i className="fas fa-bars fa-1x"></i>
           </span>
         </button>
         {/* End of Burger Button */}
 
         {/* Collapse Content */}
-        <div class="collapse navbar-collapse" id="navbarlinks">
+        <div className="collapse navbar-collapse" id="navbarlinks">
           {/* The List */}
           <ul className="navbar-nav mr-auto">
             <Link to="/" className="">

@@ -8,12 +8,18 @@
   -o-border-radius: 22px;
 }
 
-
-
 .offline {
   display: flex;
   flex-direction: column;
   height: calc(100% - 130px);
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (max-width: 767px) {
+  .offline {
+    margin-top: auto;
+    height: calc(100vh - 352px);
+    margin-bottom: auto;
+  }
 }

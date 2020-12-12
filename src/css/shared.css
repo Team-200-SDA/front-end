@@ -77,6 +77,10 @@ a:active {
   text-decoration: none;
 }
 
+a {
+  height: 100%;
+}
+
 button {
   color: var(--light);
   background: var(--dominant);
@@ -137,5 +141,6 @@ button:disabled {
 
   .bottom {
     min-height: 100px;
+    margin-top: auto;
   }
 }

@@ -39,3 +39,13 @@ img.news-image {
   color: rgb(152, 152, 152);
   cursor: pointer;
 }
+
+@media screen and (max-width: 767px) {
+  .create-news-div {
+    width: 98%;
+  }
+
+  .news-div {
+    max-width: 98%;
+  }
+}

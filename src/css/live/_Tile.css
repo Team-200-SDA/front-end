@@ -21,7 +21,7 @@
   -webkit-border-radius: 22px;
   -moz-border-radius: 22px;
   -ms-border-radius: 22px;
-  -o-border-radius: 22px; 
+  -o-border-radius: 22px;
 }
 
 .tile .background {
@@ -40,12 +40,11 @@
 }
 
 .tile.small video {
-   border-radius: 8px;
+  border-radius: 8px;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   -ms-border-radius: 8px;
   -o-border-radius: 8px;
- 
 }
 
 .tile.small .background {
@@ -54,7 +53,6 @@
   -moz-border-radius: 8px;
   -ms-border-radius: 8px;
   -o-border-radius: 8px;
- 
 }
 
 .tile .loading {
@@ -66,5 +64,4 @@
   transform: translate(-50%, -50%);
   font-size: 14px;
   line-height: 17px;
-  
 }
