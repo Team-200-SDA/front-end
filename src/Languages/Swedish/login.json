@@ -107,5 +107,13 @@
 	"Publish_Lecture":"Publicera föreläsning",
 	"Lecture_Type":"Föreläsningstyp",
 	"Forum":"Forum",
-	"Sign_Out":"Logga ut"
+	"Sign_Out":"Logga ut",
+	"Lecture_Deleted":"Föreläsning borttagen!",
+	"Enter_subject_name":"Ange ett ämnesnamn",
+	"Enter_subject_description":"Ange en ämnesbeskrivning",
+	"Create_new_Subject":"Skapa ett nytt ämne",
+	"Join_Classroom":"Gå med i klassrummet",
+	"Update_profile_picture":"Uppdatera profilbild",
+	"Select_assignment":"Välj uppgift",
+	"Enter_lecture_name":"Ange ett föreläsningsnamn"
 }

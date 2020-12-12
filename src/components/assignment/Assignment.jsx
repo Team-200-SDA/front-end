@@ -1,11 +1,9 @@
 import React from 'react';
 import fileTypeImage from '../../js/functions/fileUpload/fileTypeImage';
 import fileTypeImageFA from '../../js/functions/fileUpload/fileTypeImageFA';
-import { LangContext } from '../../contexts/LanguageContext';
-import { useContext } from 'react';
+
 
 export default function Assignment({ assignment, deleteAssignment }) {
-  const { language } = useContext(LangContext);
   const user_ = window.sessionStorage.getItem('user');
   const role_ = window.sessionStorage.getItem('role');
 

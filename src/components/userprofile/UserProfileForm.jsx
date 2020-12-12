@@ -79,7 +79,7 @@ function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicC
           </div>
 
           <Card className="profile-pic-card">
-            <label className="ml-3 mt-3">Profile Picture</label>
+            <label className="ml-3 mt-3">{language.Profile_Picture}</label>
 
             <div className="grid-profile">
               <article>
