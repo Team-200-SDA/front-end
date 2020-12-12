@@ -11,11 +11,11 @@
   margin-top: 60px;
 }
 
-.brandName {
+.brand-name {
   color: var(--text);
 }
 
-.registerForm {
+.register-form {
   margin-top: 20px;
 }
 
@@ -30,7 +30,7 @@
   margin-right: 20px;
 }
 
-.loginbutton {
+.login-button {
   width: 120px;
   color: white;
 }

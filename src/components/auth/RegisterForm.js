@@ -60,7 +60,7 @@ function RegisterForm({ onSubmit }) {
             color="var(--primary)"
           />
           <button
-            className="btn loginbutton"
+            className="btn login-button"
             onClick={e => onSubmit({ name, email, password, isTeacher })}>
             {language.create}
           </button>

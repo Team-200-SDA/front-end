@@ -34,7 +34,9 @@ function LoginForm({ onSubmit }) {
         </div>
 
         <div className="form-group">
-          <button className="btn loginbutton" onClick={() => onSubmit({ email, password })}>
+          <button
+            className="btn login-button"
+            onClick={() => onSubmit({ email, password })}>
             {language.login}
           </button>
         </div>
