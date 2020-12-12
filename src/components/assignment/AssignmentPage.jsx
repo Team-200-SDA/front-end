@@ -75,11 +75,12 @@ export default function AssignmentPage() {
         </h1>
       </div>
 
-      <div className="card-body">
+      {/* card body for full page card */}
+      <div className="">
         <div
-          className="container d-flex justify-content-around mb-4 btn-group btn-group-toggle"
+          className="card-body assignment-toggle container d-flex justify-content-around btn-group btn-group-toggle"
           data-toggle="buttons">
-          <label className="btn btn-secondary active">
+          <label className="btn btn-secondary checked active">
             <input type="radio" autoComplete="off" onClick={handleAssignAssignment} />{' '}
             {language.Assigned_Assignments}
           </label>

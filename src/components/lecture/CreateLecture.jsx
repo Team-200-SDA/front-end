@@ -1,6 +1,5 @@
 import {
   Button,
-  Card,
   FormControl,
   FormControlLabel,
   FormLabel,
@@ -11,8 +10,11 @@ import React, { useState, useEffect } from 'react';
 import LectureApi from '../../api/LectureApi';
 import FileUploader from '../filestorage/FileUploader';
 import getFilenameAndExtension from '../../js/functions/fileUpload/getFilenameAndExtention';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
 
 export default function CreateLecture({ urlParams, getAllLectures }) {
+  const { language } = useContext(LangContext);
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
   const [uploadResponse, setUploadResponse] = useState(null);
@@ -34,7 +36,6 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
     };
 
     LectureApi.createLecture(newLecture).then(res => {
-      console.log(res);
       getAllLectures();
       setLink('');
       setTitle('');
@@ -57,10 +58,11 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
 
   return (
     <div className="card-body create-lecture-div">
-      <div className="form-group">
+      <div className="creation-form">Create a new Lecture</div>
+      <div className="form-group lecture-create-form">
         <div className="storage-uploader">
           <FormControl component="fieldset">
-            <FormLabel component="legend">Lecture Type</FormLabel>
+            <FormLabel component="legend">Select lecture type</FormLabel>
             <RadioGroup
               row
               aria-label="Assignment Type"
@@ -78,18 +80,23 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
         </div>
       </div>
 
-      <div className="form-group">
+      <div className="form-group lecture-inputs">
+        <FormLabel className="form-label" component="legend">
+          Enter a lecture name
+        </FormLabel>
         <input
-          className="form-control"
-          placeholder="Lecture Name..." //Erkan
+          className="form-control subject-input"
+          placeholder="Lecture Name" //Erkan
           value={title}
           onChange={event => setTitle(event.target.value)}
           disabled={uploadType === ''}
         />
-
+        <FormLabel className="form-label" component="legend">
+          Link to the lecture
+        </FormLabel>
         <input
-          className="form-control"
-          placeholder="Link to Lecture..."
+          className="form-control subject-input"
+          placeholder="Link to the Lecture"
           value={link}
           onChange={event => setLink(event.target.value)}
           disabled={uploadType === 'UPLOAD' || uploadType === ''}
@@ -103,7 +110,7 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
           color="primary"
           onClick={createLecture}
           disabled={title === '' || link === ''}>
-          Publish Lecture
+          {language.Publish_Lecture}
         </Button>
       </div>
     </div>

@@ -18,8 +18,8 @@ function Navbar({ onLogout }) {
         <ul>
           <li>
             <Link to="/" className="nav-link">
-              {/* Erkan */}
-              <i className="fas fa-newspaper nav-icon" /> News
+              
+              <i className="fas fa-newspaper nav-icon" /> {language.News}
             </Link>
           </li>
 
@@ -43,10 +43,9 @@ function Navbar({ onLogout }) {
               {language.Assignments}
             </Link>
           </li>
-          {/* Erkan */}
           <li>
             <Link to="/filestorage" className="nav-link">
-              <i className="fas fa-archive nav-icon" /> File Storage
+              <i className="fas fa-archive nav-icon" /> {language.File_Storage}
             </Link>
           </li>
 
@@ -56,10 +55,9 @@ function Navbar({ onLogout }) {
               {language.Chat}
             </Link>
           </li>
-          {/* Erkan */}
           <li>
             <Link to="/private-chat" className="nav-link">
-              <i className="fas fa-comments nav-icon" /> Private Chat
+              <i className="fas fa-comments nav-icon" /> {language.Private_Chat}
             </Link>
           </li>
 
@@ -71,13 +69,13 @@ function Navbar({ onLogout }) {
 
           <li>
             <Link to="#" onClick={Calendar} className="nav-link">
-              <i className="fas fa-calendar-alt nav-icon" /> Calendar
+              <i className="fas fa-calendar-alt nav-icon" /> {language.Calendar}
             </Link>
           </li>
 
           <li>
             <Link to="/forum" className="nav-link">
-              <i className="fas fa-pencil-alt nav-icon" /> Forum
+              <i className="fas fa-pencil-alt nav-icon" /> {language.Forum}
             </Link>
           </li>
 
@@ -90,7 +88,7 @@ function Navbar({ onLogout }) {
           <li>
             <Link to="#" className="nav-link">
               <i className="fas fa-sign-out-alt nav-icon sign-out" onClick={onLogout} />
-              Sign Out
+              {language.Sign_Out}
             </Link>
           </li>
         </ul>

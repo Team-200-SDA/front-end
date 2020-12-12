@@ -38,12 +38,10 @@ function SubjectsPage() {
         <h1 className="page-title-text">
           <i className="fas fa-book-open title-icon" />
           {language.Lecture_Modules}
-          {/* //Erkan */}
-          Lecture Modules
         </h1>
       </div>
 
-      <div className="card-body">
+      <div className="">
         {/* Loads Lecture Creation component based on user role */}
         {userRole !== 'teacher' ? null : <CreateSubject getSubjects={getSubjects} />}
         <div className="subject-page-cards">{jsxSubjects}</div>

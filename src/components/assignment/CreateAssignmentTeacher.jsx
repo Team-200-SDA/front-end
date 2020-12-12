@@ -57,7 +57,8 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
 
   return (
     <div className="card-body create-assignment-div">
-      <div className="form-group">
+      <div className="creation-form">Create a new Assignment</div>
+      <div className="form-group lecture-create-form">
         <div className="storage-uploader">
           <FormControl component="fieldset">
             <FormLabel component="legend">{language.Assignment_Type}</FormLabel>
@@ -91,17 +92,25 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
         </div>
       </div>
 
-      <div className="form-group">
+      <div className="form-group assignment-inputs">
+        <FormLabel className="form-label" component="legend">
+          Enter an assignment name
+        </FormLabel>
         <input
-          className="form-control"
-          placeholder={language.Assignment_name}
+          className="form-control subject-input"
+          // Erkan
+          placeholder="Assignment name"
           value={title}
           onChange={event => setTitle(event.target.value)}
           disabled={uploadType === ''}
         />
+        <FormLabel className="form-label" component="legend">
+          Link to the assignment
+        </FormLabel>
         <input
-          className="form-control"
-          placeholder={language.Link_Assignment}
+          className="form-control subject-input"
+          // Erkan
+          placeholder="Link to the assignment"
           value={link}
           onChange={event => setLink(event.target.value)}
           disabled={uploadType === 'UPLOAD' || uploadType === ''}
