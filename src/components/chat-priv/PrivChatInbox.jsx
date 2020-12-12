@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { CreateRounded } from '@material-ui/icons';
 import PrivConversationCard from './PrivConversationCard';
 import { v4 as uuid } from 'uuid';
 import { Dropdown } from 'semantic-ui-react';
