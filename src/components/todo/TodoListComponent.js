@@ -4,6 +4,7 @@ import { v4 as uuid } from 'uuid';
 import TodoApi from '../../api/TodoApi';
 import { useContext } from 'react';
 import { LangContext } from '../../contexts/LanguageContext';
+import { Button } from '@material-ui/core';
 
 function TodoListComponent() {
   const { language } = useContext(LangContext);
@@ -56,16 +57,20 @@ function TodoListComponent() {
             type="submit"
             onClick={() => deleteTodo(todo.id)}
             className="btn btn-info">
-            <i className="fas fa-trash-alt todo-icon" />
+            <i className="fas fa-trash-alt" />
           </button>
         </td>
+
+        <td>
         <button
           type="submit"
           onClick={() => updateComplete(todo)}
           className="btn btn-info">
-          <i className="fas fa-clipboard-check todo-icon"></i>
+          <i className="fas fa-clipboard-check"></i>
         </button>
+        </td>
       </tr>
+      
     );
   });
 
@@ -75,7 +80,7 @@ function TodoListComponent() {
       <div className="title-div">
         <div className="page-title-text">
           <h1>
-            <i className="fas fa-tasks nav-icon" />
+            <i className="fas fa-tasks mr-3" />
             Todo List
           </h1>
         </div>
@@ -91,17 +96,22 @@ function TodoListComponent() {
                 <td>Due Date</td>
                 <td>Mark as Complete</td>
                 <td>Delete</td>
+                <td>Status</td>
               </tr>
             </thead>
             <tbody>{jsxTodos}</tbody>
           </table>
         </div>
 
-        <div className="card-footer">
-          <Link to="/todo-form" className="btn btn-danger">
+       
+          <Link to="/todo-form" className="btn info">
+            <Button
+            variant="contained"
+            color="primary">
             Create
+            </Button>
           </Link>
-        </div>
+        
       </div>
     </div>
   );
