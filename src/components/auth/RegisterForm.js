@@ -15,7 +15,7 @@ function RegisterForm({ onSubmit }) {
   }, [isTeacher]);
 
   return (
-    <div className="card-body">
+    <div className="card-body register-form">
       <h4 className="card-title">Sign up</h4> {/* //Erkan */}
       <div>
         <div className="form-group">

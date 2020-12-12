@@ -6,17 +6,21 @@
 
 .login-form-div {
   width: 40%;
-  background-color: white;
   margin: auto;
-  margin-top: 60px;
+  margin-top: 50px;
 }
 
 .brand-name {
   color: var(--text);
 }
 
+.login-form {
+  background-color: white;
+}
+
 .register-form {
   margin-top: 20px;
+  background-color: white;
 }
 
 .login-footer {
@@ -33,4 +37,24 @@
 .login-button {
   width: 120px;
   color: white;
+}
+
+@media screen and (max-width: 767px) {
+  .login-picture {
+    max-height: 300px;
+  }
+
+  .login-form-div {
+    width: 70%;
+    margin-top: 20px;
+  }
+
+  .register-form {
+    margin-top: 10px;
+  }
+
+  .login-footer {
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
 }

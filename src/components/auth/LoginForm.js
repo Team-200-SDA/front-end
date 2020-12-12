@@ -8,7 +8,7 @@ function LoginForm({ onSubmit }) {
   const { language } = useContext(LangContext);
 
   return (
-    <div className="card-body">
+    <div className="card-body login-form">
       <h4 className="card-title">{language.login}</h4>
       <div>
         <div className="form-group">

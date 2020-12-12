@@ -27,32 +27,26 @@ function LoginPage() {
       <div className="login-picture">
         <div className="card-body login-form-div">
           <h1 className="brand-name">Edulane</h1>
-          <div className="login-form">
-            <LoginForm onSubmit={login} />
-          </div>
-          <div className="register-form">
-            <RegisterForm onSubmit={register} />
-          </div>
+          <LoginForm onSubmit={login} />
+          <RegisterForm onSubmit={register} />
         </div>
       </div>
       <footer className="login-footer">
-        <div className="btn-group">
-          <span>
-            <a className="footer-link" onClick={changeEn} href="#">
-              {language.english}
-            </a>
-          </span>
-          <span>
-            <a className="footer-link" onClick={changeSv} href="#">
-              {language.swedish}
-            </a>
-          </span>
-          <span>
-            <a className="footer-link" onClick={changeEs} href="#">
-              {language.spanish}
-            </a>
-          </span>
-        </div>
+        <span>
+          <a className="footer-link" onClick={changeEn} href="#">
+            {language.english}
+          </a>
+        </span>
+        <span>
+          <a className="footer-link" onClick={changeSv} href="#">
+            {language.swedish}
+          </a>
+        </span>
+        <span>
+          <a className="footer-link" onClick={changeEs} href="#">
+            {language.spanish}
+          </a>
+        </span>
       </footer>
     </div>
   );
