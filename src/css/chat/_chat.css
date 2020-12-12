@@ -6,12 +6,12 @@
 
 .public-chat-body {
   flex-grow: 1;
-  max-height: 78vh;
+  max-height: calc(100vh - 292px);
   display: flex;
   flex-direction: column;
 }
 
-.chat-wrapper{
+.chat-wrapper {
   flex: 1;
   display: flex;
   flex-direction: column-reverse;
@@ -23,10 +23,6 @@
   align-items: center;
 }
 
-/* .jsx-messages {
-  
-} */
-
 .message-body {
   display: flex;
   align-items: center;
@@ -37,7 +33,7 @@
   -ms-border-radius: 60px;
   -o-border-radius: 60px;
   margin-bottom: 10px;
-  overflow-wrap:break-word;
+  overflow-wrap: break-word;
 }
 
 .message-box-user {
@@ -73,7 +69,7 @@
 
 .message-content {
   text-align: left;
-  min-width: 0; 
+  min-width: 0;
   margin: 10px 10px 10px 20px;
 }
 
@@ -100,4 +96,42 @@
   -moz-border-radius: 22px;
   -ms-border-radius: 22px;
   -o-border-radius: 22px;
+}
+
+@media screen and (max-width: 767px) {
+  .message-body {
+    display: flex;
+    align-items: center;
+    max-width: 90%;
+    overflow-wrap: break-word;
+  }
+
+  /* User Avatar */
+  .MuiAvatar-root.MuiAvatar-circle.message-avatar-user.MuiAvatar-colorDefault {
+    display: none;
+  }
+
+  /* Sender Avatar */
+  .MuiAvatar-root.MuiAvatar-circle.message-avatar-sender.MuiAvatar-colorDefault {
+    display: none;
+  }
+
+  .message-time {
+    display: none;
+  }
+
+  .message-sender {
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: 8pt;
+  }
+
+  .message-content {
+    margin: 4px 6px 4px 6px;
+    padding-left: 6px;
+  }
+
+  .public-chat-body {
+    min-height: calc(100vh - 252px);
+  }
 }

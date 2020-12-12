@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { CreateRounded } from '@material-ui/icons';
 import PrivConversationCard from './PrivConversationCard';
 import { v4 as uuid } from 'uuid';
 import { Dropdown } from 'semantic-ui-react';
@@ -17,6 +16,7 @@ function PrivChatInbox({ conversations, setConversations }) {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState('');
   const [activeThreadReceiver, setActiveThreadReceiver] = useState('');
+  const [displayUsers, setDisplayUsers] = useState(false); // For mobile mode
 
   useEffect(() => {
     const getUsers = async () => {
@@ -86,7 +86,7 @@ function PrivChatInbox({ conversations, setConversations }) {
   return (
     <>
       <div className="title-div">
-        <h1 className="page-title-text">
+        <h1 className="page-title-text priv-chat-title">
           <i className="fas fa-comments title-icon" />
           {language.Private_Chat}
         </h1>
@@ -104,10 +104,17 @@ function PrivChatInbox({ conversations, setConversations }) {
           />
           <i
             className="fas fa-paper-plane conversation-button"
-            onClick={() => sendMessage(selectedUser)}></i>
+            onClick={() => sendMessage(selectedUser)}
+          />
+          <i
+            onClick={() => setDisplayUsers(!displayUsers)}
+            className="fas fa-bars private-users-toggle"
+          />
         </div>
         <div className="private-chat-wrap private-chat-layout">
-          <div>{jsxConversations}</div>
+          <div className={`priv-chat-border ${displayUsers ? null : 'private-users'}`}>
+            {jsxConversations}
+          </div>
           {activeThreadReceiver !== '' ? (
             <PrivChatThread
               setConversations={setConversations}
@@ -115,7 +122,9 @@ function PrivChatInbox({ conversations, setConversations }) {
               activeThreadReceiver={activeThreadReceiver}
               conversations={conversations}
             />
-          ) : null}
+          ) : (
+            <div className="no-active-conversation">No Active Conversations</div>
+          )}
         </div>
       </div>
     </>
