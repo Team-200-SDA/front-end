@@ -71,11 +71,9 @@ export default function AssignmentPage() {
       <div className="title-div">
         <h1 className="page-title-text">
           <i className="fas fa-clipboard title-icon" />
-          Assignments
+          <p>Assignments</p>
         </h1>
       </div>
-
-      {/* card body for full page card */}
       <div className="">
         <div
           className="card-body assignment-toggle container d-flex justify-content-around btn-group btn-group-toggle"
