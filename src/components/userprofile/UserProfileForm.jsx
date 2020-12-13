@@ -82,7 +82,9 @@ function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicC
                   />
                 </div>
                 <div className="text-right mt-4 mb-0">
-                  <button className="btn btn-light" onClick={e => clickUpdateAddress(e)}>
+                  <button
+                    className="btn btn-light profile-update-button"
+                    onClick={e => clickUpdateAddress(e)}>
                     <i className="fas fa-save update-icon"></i>
                   </button>
                 </div>
@@ -105,7 +107,9 @@ function UserProfileForm({ user, onUpdateClick, onUpdatePhoneClick, onUpdatePicC
                   />
                 </div>
                 <div className="text-right mt-4 mb-0">
-                  <button className="btn btn-light" onClick={e => clickUpdatePhone(e)}>
+                  <button
+                    className="btn btn-light profile-update-button"
+                    onClick={e => clickUpdatePhone(e)}>
                     <i className="fas fa-save update-icon"></i>
                   </button>
                 </div>

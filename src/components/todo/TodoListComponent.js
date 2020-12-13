@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { v4 as uuid } from "uuid";
-import TodoApi from "../../api/TodoApi";
-import { useContext } from "react";
-import { LangContext } from "../../contexts/LanguageContext";
-import { Button } from "@material-ui/core";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { v4 as uuid } from 'uuid';
+import TodoApi from '../../api/TodoApi';
+import { useContext } from 'react';
+import { LangContext } from '../../contexts/LanguageContext';
+import { Button } from '@material-ui/core';
 
 function TodoListComponent() {
   const { language } = useContext(LangContext);
@@ -23,7 +23,7 @@ function TodoListComponent() {
 
   //Sorting the tasks
 
-  const responseSorter = (response) => {
+  const responseSorter = response => {
     return response.sort((a, b) =>
       a.complete > b.complete ? -1 : a.complete < b.complete ? 1 : 0
     );
@@ -31,45 +31,36 @@ function TodoListComponent() {
 
   //Updating of the taks
 
-  const updateComplete = async (todo) => {
+  const updateComplete = async todo => {
     await TodoApi.updateTodo({ ...todo, complete: !todo.complete });
-    setUpdate((value) => value + 1);
+    setUpdate(value => value + 1);
   };
 
-  const deleteTodo = async (id) => {
+  const deleteTodo = async id => {
     console.log(id);
 
     await TodoApi.deleteTodo(id);
-    setUpdate((value) => value + 1);
+    setUpdate(value => value + 1);
   };
 
   //Calling the functions ...
 
-  const jsxTodos = todos.map((todo) => {
+  const jsxTodos = todos.map(todo => {
     return (
-      <tr key={uuid()}>
-        <td>{todo.title}</td>
+      <tr key={uuid()} className={todo.complete ? 'todo-complete' : null}>
+        <th scope="row">{todo.title}</th>
         <td>{todo.description}</td>
         <td>{todo.dueDate}</td>
-        <td>{todo.complete ? <i className="fas fa-check" /> : null}</td>
         <td>
-          <button
-            type="submit"
-            onClick={() => deleteTodo(todo.id)}
-            className="btn btn-info"
-          >
-            <i className="fas fa-trash-alt" />
-          </button>
-        </td>
-
-        <td>
-          <button
-            type="submit"
+          <i
             onClick={() => updateComplete(todo)}
-            className="btn btn-info"
-          >
-            <i className="fas fa-clipboard-check"></i>
-          </button>
+            className={`${
+              todo.complete ? 'far fa-check-circle' : 'far fa-circle'
+            } todo-icon`}
+          />
+        </td>
+        <td>
+          <i onClick={() => deleteTodo(todo.id)} className="fas fa-trash todo-icon" />
         </td>
       </tr>
     );
@@ -79,38 +70,34 @@ function TodoListComponent() {
   return (
     <div className="ToDoList-Page-Wrap">
       <div className="title-div">
-        <div className="page-title-text">
-          <h1>
-            <i className="fas fa-tasks mr-3" />
-            {language.Todo_List}
-          </h1>
-        </div>
+        <h1 className="page-title-text">
+          <i className="fas fa-tasks title-icon"></i>
+          {language.Todo_List}
+        </h1>
       </div>
 
-      <div className="card-body-todo create-assignment-div">
-        <div className="container d-flex justify-content-around btn-group btn-group-toggle">
-          <table className="table mt-3 mb-2 table-striped table-bordered">
+      <div className="card-body todo-card">
+        {jsxTodos.length === 0 ? null : (
+          <table className="table table-striped">
             <thead>
               <tr>
-                <td>{language.Title}</td>
-                <td>{language.Description}</td>
-                <td>{language.Due_Date}</td>
-                <td>{language.Status}</td>
-                <td>{language.Delete}</td>
-                <td>{language.Mark_Complete}</td>
+                <th scope="col">{language.Title}</th>
+                <th scope="col">{language.Description}</th>
+                <th scope="col">{language.Due_Date}</th>
+                <th scope="col">{language.Status}</th>
+                <th scope="col">{language.Delete}</th>
               </tr>
             </thead>
             <tbody>{jsxTodos}</tbody>
           </table>
-        </div>
-          <Link to="/todo-form" className="btn info">
-            <Button
-            variant="contained"
-            color="primary">
-            {language.Create}
-            </Button>
-          </Link>
-        
+        )}
+
+        <Link to="/todo-form" className="btn info">
+          <Button variant="contained" color="primary">
+            {/* Erkan Change from 'Create' to 'Create Todo' */}
+            Create Todo
+          </Button>
+        </Link>
       </div>
     </div>
   );

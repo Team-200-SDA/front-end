@@ -1,4 +1,4 @@
-import { Checkbox } from '@material-ui/core';
+import { Checkbox, FormLabel } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { LangContext } from '../../contexts/LanguageContext';
@@ -15,14 +15,16 @@ function RegisterForm({ onSubmit }) {
   }, [isTeacher]);
 
   return (
-    <div className="card-body register-form">
-      <h4 className="card-title">{language.Signup}</h4>
+    <div className=" register-form">
+      <h4 className="card-title">Register</h4> {/* //Erkan */}
       <div>
         <div className="form-group">
-          <label>{language.name}:</label>
+          <FormLabel className="form-label" component="legend">
+            {language.name}
+          </FormLabel>
           <input
             type="text"
-            className="form-control"
+            className="form-control subject-input"
             value={name}
             onChange={e => setName(e.target.value)}
             placeholder={language.name}
@@ -30,41 +32,44 @@ function RegisterForm({ onSubmit }) {
         </div>
 
         <div className="form-group">
-          <label>{language.email}:</label>
+          <FormLabel className="form-label" component="legend">
+            {language.email}
+          </FormLabel>
           <input
             type="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
-            className="form-control"
+            className="form-control subject-input"
             placeholder={language.email}
           />
         </div>
-
         <div className="form-group">
-          <label>{language.pass}:</label>
+          <FormLabel className="form-label" component="legend">
+            {language.pass}
+          </FormLabel>
           <input
             type="password"
             placeholder={language.pass}
-            className="form-control"
+            className="form-control subject-input"
             value={password}
             onChange={e => setPassword(e.target.value)}
           />
         </div>
 
         <div className="form-group">
-          <label>{language.Register_teacher}</label>
           <Checkbox
             checked={isTeacher}
             onChange={e => setIsTeacher(!isTeacher)}
             name="checkedB"
             color="var(--primary)"
           />
-          <button
-            className="btn login-button"
-            onClick={e => onSubmit({ name, email, password, isTeacher })}>
-            {language.create}
-          </button>
+          <label className="checkbox-label">Register as a teacher</label>
         </div>
+        <button
+          className="btn login-button"
+          onClick={e => onSubmit({ name, email, password, isTeacher })}>
+          {language.create}
+        </button>
       </div>
     </div>
   );

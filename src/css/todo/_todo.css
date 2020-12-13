@@ -1,81 +1,39 @@
-@import "../palette.css";
-.fas fa-clipboard-check {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-​ .page-title-text {
-  padding: 20px;
-  color: var(--text);
-  font-size: 36pt;
-  background-color: var(--light);
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
-}
-​​ table,
-tr,
-td {
-  border: 1px inset grey;
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-.table {
-  width: 100%;
-  margin-bottom: 1rem;
-  color: #212529;
-}
-.table {
-  width: 100%;
-  margin-bottom: 2rem;
-  color: #212529;
+.todo-card {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.card-body-todo {
-  text-align: center;
-  background-color: var(--light);
-  -webkit-box-shadow: -10px 0px 13px -7px #00000048,
-    10px 0px 13px -7px #00000048, 0px 5px 15px 5px rgba(0, 0, 0, 0);
-  box-shadow: -10px 0px 13px -7px #00000048, 10px 0px 13px -7px #00000048,
-    0px 5px 15px 5px rgba(0, 0, 0, 0);
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
+.todo-complete {
+  background-color: rgb(208, 244, 211) !important; /* Green bar on complete*/
 }
 
-div.card-body-todo.create-assignment-div {
-  text-align: center;
-  background-color: var(--light);
-  -webkit-box-shadow: -10px 0px 13px -7px #00000048,
-    10px 0px 13px -7px #00000048, 0px 5px 15px 5px rgba(0, 0, 0, 0);
-  box-shadow: -10px 0px 13px -7px #00000048, 10px 0px 13px -7px #00000048,
-    0px 5px 15px 5px rgba(0, 0, 0, 0);
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
-}
-​ .table-bordered td,
-.table-bordered th {
-  border: 1px solid #767676;
+.todo-icon {
+  font-size: 12pt;
 }
 
-.table-bordered td,
-.table-bordered th {
-  border: 1px solid #1b1c1d;
+.create-todo-label {
+  margin-bottom: 10px;
 }
 
-.table-bordered td,
-.table-bordered th {
-  border: 1px solid #212529;
+.create-todo-card {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
-​ .ToDoList-Page-Wrap {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
+
+.last-input-todo {
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 767px) {
+  .todo-card {
+    width: 98%;
+    padding: 0;
+    padding-top: 18px;
+  }
+
+  .create-todo-card {
+    width: 98%;
+  }
 }
