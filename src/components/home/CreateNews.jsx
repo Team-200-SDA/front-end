@@ -34,24 +34,23 @@ export default function CreateNews(props) {
 
   return (
     <div className="card-body create-news-div">
-      {/* Erkan */}
-      <div className="creation-form upload-file-tag">Post an Article or Announcement</div>
+      <div className="creation-form upload-file-tag">{language.Post_Article_Announcement}</div>
       <FormLabel className="form-label" component="legend">
-        Enter an article or announcement title
+        {language.Enter_article_announcement_title}
       </FormLabel>
       <div className="form-group">
         <input
           className="form-control subject-input"
-          placeholder="News or Announcement Title"
+          placeholder={language.News_Announcement_Title}
           value={title}
           onChange={event => setTitle(event.target.value)}
         />
         <FormLabel className="form-label" component="legend">
-          Article or announcement content
+          {language.Article_announcement_content}
         </FormLabel>
         <textarea
           className="form-control subject-input"
-          placeholder="News or Article Content"
+          placeholder={language.News_Article_Content}
           value={body}
           onChange={event => setBody(event.target.value)}
         />

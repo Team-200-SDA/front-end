@@ -118,5 +118,13 @@
   "Enter_lecture_name": "Enter a lecture name",
   "Mark_Complete": "Mark as Complete",
   "Status": "Status",
-  "Create_new_Assignment": "Create a new Assignment"
+  "Create_new_Assignment": "Create a new Assignment",
+  "Register_teacher":"Register as a teacher",
+  "Post_Article_Announcement":"Post an Article or Announcement",
+  "Enter_article_announcement_title":"Enter an article or announcement title",
+  "Article_announcement_content":"Article or announcement content",
+  "News_Announcement_Title":"News or Announcement Title",
+  "News_Article_Content":"News or Article Content",
+  "Subjects":"Subjects"
+  
 }

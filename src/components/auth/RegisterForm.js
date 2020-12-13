@@ -16,7 +16,7 @@ function RegisterForm({ onSubmit }) {
 
   return (
     <div className="card-body register-form">
-      <h4 className="card-title">Sign up</h4> {/* //Erkan */}
+      <h4 className="card-title">{language.Signup}</h4>
       <div>
         <div className="form-group">
           <label>{language.name}:</label>
@@ -52,7 +52,7 @@ function RegisterForm({ onSubmit }) {
         </div>
 
         <div className="form-group">
-          <label>Register as a teacher</label>
+          <label>{language.Register_teacher}</label>
           <Checkbox
             checked={isTeacher}
             onChange={e => setIsTeacher(!isTeacher)}
