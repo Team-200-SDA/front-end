@@ -23,47 +23,31 @@ function LoginPage() {
   };
 
   return (
-    <div className="wrapper">
-      <div className="container">
-        <div className="row mt-4">
-          <div className="col-md-6 " style={{ color: 'white' }}>
-            <div className="btn-group">
-              <button
-                type="button"
-                className="btn btn-danger dropdown-toggle"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false">
-                {language.language}
-              </button>
-              <div className="dropdown-menu">
-                <a className="dropdown-item" onClick={changeEn} href="#">
-                  {language.english}
-                </a>
-                <a className="dropdown-item" onClick={changeSv} href="#">
-                  {language.swedish}
-                </a>
-                <a className="dropdown-item" onClick={changeEs} href="#">
-                  {language.spanish}
-                </a>
-              </div>
-            </div>
-            <h1>SDA</h1>
-            <p>{language.starter}</p>
-          </div>
-          <div className="col-md-6">
-            <div className="row">
-              <div className="col-12  strong-shadow">
-                <LoginForm onSubmit={login} />
-              </div>
-
-              <div className="col-12 mt-4">
-                <RegisterForm onSubmit={register} />
-              </div>
-            </div>
-          </div>
+    <div className="card login-wrap">
+      <div className="login-picture">
+        <div className="card-body login-form-div">
+          <h1 className="brand-name">Edulane</h1>
+          <LoginForm onSubmit={login} />
+          <RegisterForm onSubmit={register} />
         </div>
       </div>
+      <footer className="login-footer">
+        <span>
+          <a className="footer-link" onClick={changeEn} href="#">
+            {language.english}
+          </a>
+        </span>
+        <span>
+          <a className="footer-link" onClick={changeSv} href="#">
+            {language.swedish}
+          </a>
+        </span>
+        <span>
+          <a className="footer-link" onClick={changeEs} href="#">
+            {language.spanish}
+          </a>
+        </span>
+      </footer>
     </div>
   );
 }

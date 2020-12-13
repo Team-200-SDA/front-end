@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { v4 as uuid } from 'uuid';
-import TodoApi from '../../api/TodoApi';
-import { useContext } from 'react';
-import { LangContext } from '../../contexts/LanguageContext';
-import { Button } from '@material-ui/core';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { v4 as uuid } from "uuid";
+import TodoApi from "../../api/TodoApi";
+import { useContext } from "react";
+import { LangContext } from "../../contexts/LanguageContext";
+import { Button } from "@material-ui/core";
 
 function TodoListComponent() {
   const { language } = useContext(LangContext);
@@ -23,7 +23,7 @@ function TodoListComponent() {
 
   //Sorting the tasks
 
-  const responseSorter = response => {
+  const responseSorter = (response) => {
     return response.sort((a, b) =>
       a.complete > b.complete ? -1 : a.complete < b.complete ? 1 : 0
     );
@@ -31,21 +31,21 @@ function TodoListComponent() {
 
   //Updating of the taks
 
-  const updateComplete = async todo => {
+  const updateComplete = async (todo) => {
     await TodoApi.updateTodo({ ...todo, complete: !todo.complete });
-    setUpdate(value => value + 1);
+    setUpdate((value) => value + 1);
   };
 
-  const deleteTodo = async id => {
+  const deleteTodo = async (id) => {
     console.log(id);
 
     await TodoApi.deleteTodo(id);
-    setUpdate(value => value + 1);
+    setUpdate((value) => value + 1);
   };
 
   //Calling the functions ...
 
-  const jsxTodos = todos.map(todo => {
+  const jsxTodos = todos.map((todo) => {
     return (
       <tr key={uuid()}>
         <td>{todo.title}</td>
@@ -56,21 +56,22 @@ function TodoListComponent() {
           <button
             type="submit"
             onClick={() => deleteTodo(todo.id)}
-            className="btn btn-info">
+            className="btn btn-info"
+          >
             <i className="fas fa-trash-alt" />
           </button>
         </td>
 
         <td>
-        <button
-          type="submit"
-          onClick={() => updateComplete(todo)}
-          className="btn btn-info">
-          <i className="fas fa-clipboard-check"></i>
-        </button>
+          <button
+            type="submit"
+            onClick={() => updateComplete(todo)}
+            className="btn btn-info"
+          >
+            <i className="fas fa-clipboard-check"></i>
+          </button>
         </td>
       </tr>
-      
     );
   });
 
@@ -87,16 +88,16 @@ function TodoListComponent() {
       </div>
 
       <div className="card-body-todo create-assignment-div">
-        <div className="container d-flex justify-content-around mb-4 btn-group btn-group-toggle">
-          <table className="table table-striped table-bordered">
+        <div className="container d-flex justify-content-around btn-group btn-group-toggle">
+          <table className="table mt-3 mb-2 table-striped table-bordered">
             <thead>
               <tr>
                 <td>{language.Title}</td>
                 <td>{language.Description}</td>
                 <td>{language.Due_Date}</td>
-                <td>{language.Mark_Complete}</td>
-                <td>{language.Delete}</td>
                 <td>{language.Status}</td>
+                <td>{language.Delete}</td>
+                <td>{language.Mark_Complete}</td>
               </tr>
             </thead>
             <tbody>{jsxTodos}</tbody>

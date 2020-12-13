@@ -15,56 +15,55 @@ function RegisterForm({ onSubmit }) {
   }, [isTeacher]);
 
   return (
-    <div className="card">
-      <div className="card-body">
-        <h4 className="card-title">{language.signup}</h4>
-        <div>
-          <div className="form-group">
-            <label>{language.name}</label>
-            <input
-              type="text"
-              className="form-control"
-              value={name}
-              onChange={e => setName(e.target.value)}
-              placeholder={language.name}
-            />
-          </div>
+    <div className="card-body register-form">
+      <h4 className="card-title">Sign up</h4> {/* //Erkan */}
+      <div>
+        <div className="form-group">
+          <label>{language.name}:</label>
+          <input
+            type="text"
+            className="form-control"
+            value={name}
+            onChange={e => setName(e.target.value)}
+            placeholder={language.name}
+          />
+        </div>
 
-          <div className="form-group">
-            <label>{language.email}</label>
-            <input
-              type="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              className="form-control"
-              placeholder={language.email}
-            />
-          </div>
+        <div className="form-group">
+          <label>{language.email}:</label>
+          <input
+            type="email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            className="form-control"
+            placeholder={language.email}
+          />
+        </div>
 
-          <div className="form-group">
-            <label>{language.pass}</label>
-            <input
-              type="password"
-              placeholder={language.pass}
-              className="form-control"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-            />
-          </div>
+        <div className="form-group">
+          <label>{language.pass}:</label>
+          <input
+            type="password"
+            placeholder={language.pass}
+            className="form-control"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+          />
+        </div>
 
-          <div className="form-group">
-            <Checkbox
-              checked={isTeacher}
-              onChange={e => setIsTeacher(!isTeacher)}
-              name="checkedB"
-              color="primary"
-            />
-            <button
-              className="btn btn-success"
-              onClick={e => onSubmit({ name, email, password, isTeacher })}>
-              {language.create}
-            </button>
-          </div>
+        <div className="form-group">
+          <label>Register as a teacher</label>
+          <Checkbox
+            checked={isTeacher}
+            onChange={e => setIsTeacher(!isTeacher)}
+            name="checkedB"
+            color="var(--primary)"
+          />
+          <button
+            className="btn login-button"
+            onClick={e => onSubmit({ name, email, password, isTeacher })}>
+            {language.create}
+          </button>
         </div>
       </div>
     </div>
