@@ -125,6 +125,11 @@
   "Article_announcement_content":"Article or announcement content",
   "News_Announcement_Title":"News or Announcement Title",
   "News_Article_Content":"News or Article Content",
-  "Subjects":"Subjects"
+  "Subjects":"Subjects",
+  "Register":"Register",
+  "Send_message_to":"Send message to",
+  "No_Active_Conversations":"No Active Conversations",
+  "Create_new_Todo":"Create a new Todo",
+  "Create Todo":"Create_Todo"
   
 }

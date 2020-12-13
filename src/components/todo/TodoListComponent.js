@@ -91,11 +91,9 @@ function TodoListComponent() {
             <tbody>{jsxTodos}</tbody>
           </table>
         )}
-
         <Link to="/todo-form" className="btn info">
           <Button variant="contained" color="primary">
-            {/* Erkan Change from 'Create' to 'Create Todo' */}
-            Create Todo
+            {language.Create_Todo}
           </Button>
         </Link>
       </div>

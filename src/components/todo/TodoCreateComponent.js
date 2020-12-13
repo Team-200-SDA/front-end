@@ -33,7 +33,7 @@ function StudentCreateComponent() {
 
       <div className="card-body create-todo-card">
         <form onSubmit={event => createTodo(event)}>
-          <div className="creation-form create-todo-label">Create a new Todo</div>
+          <div className="creation-form create-todo-label">{language.Create_new_Todo}</div>
           <FormLabel className="form-label" component="legend">
             {language.Title}
           </FormLabel>
@@ -70,8 +70,7 @@ function StudentCreateComponent() {
             type="submit"
             variant="contained"
             color="primary">
-            {/* Change from Save to Create Todo */}
-            Create Todo
+            {language.Create_Todo}
           </Button>
         </form>
       </div>
