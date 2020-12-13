@@ -16,10 +16,10 @@ function RegisterForm({ onSubmit }) {
 
   return (
     <div className="card-body register-form">
-      <h4 className="card-title">{language.Signup}</h4>
+      <h4 className="card-title">Sign Up</h4> {/* //Erkan */}
       <div>
         <div className="form-group">
-          <label>{language.name}:</label>
+          {/* <label>{language.name}:</label> */}
           <input
             type="text"
             className="form-control"
@@ -30,7 +30,7 @@ function RegisterForm({ onSubmit }) {
         </div>
 
         <div className="form-group">
-          <label>{language.email}:</label>
+          {/* <label>{language.email}:</label> */}
           <input
             type="email"
             value={email}
@@ -41,7 +41,7 @@ function RegisterForm({ onSubmit }) {
         </div>
 
         <div className="form-group">
-          <label>{language.pass}:</label>
+          {/* <label>{language.pass}:</label> */}
           <input
             type="password"
             placeholder={language.pass}
@@ -52,19 +52,19 @@ function RegisterForm({ onSubmit }) {
         </div>
 
         <div className="form-group">
-          <label>{language.Register_teacher}</label>
           <Checkbox
             checked={isTeacher}
             onChange={e => setIsTeacher(!isTeacher)}
             name="checkedB"
             color="var(--primary)"
           />
-          <button
-            className="btn login-button"
-            onClick={e => onSubmit({ name, email, password, isTeacher })}>
-            {language.create}
-          </button>
+          <label className="checkbox-label">Register as a teacher</label>
         </div>
+        <button
+          className="btn login-button"
+          onClick={e => onSubmit({ name, email, password, isTeacher })}>
+          {language.create}
+        </button>
       </div>
     </div>
   );
