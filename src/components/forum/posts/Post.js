@@ -48,14 +48,23 @@ function Post({
 
   const onPostLike = async () => {
     const updatedPost = {
-      ...post,
-      likedUsers: [...post.likedUsers, user.name],
+      ...post, likedUsers: [...post.likedUsers, user.name],
     };
-    return await onPostUpdate(updatedPost) //a time lag happens between backend so setStatus added to on click
+    return await onPostUpdate(updatedPost) //a time lag happens between backend so setStatus added to onClick
+  };
+  
+console.log(post.likedUsers)
+
+  const onPostDislike = async () => {
+    var newLikeList = post.likedUsers.filter((item) => item !== user.name )
+    console.log(newLikeList)
+    const updatedPost = {
+      ...post, likedUsers: newLikeList,
+    };
+    return await onPostUpdate(updatedPost) //a time lag happens between backend so setStatus added to onClick
   };
 
-  console.log(post.likedUsers.length);
-  console.log(post);
+  
 
   const onPostFormCancel = () => {
     setIsUpdate(false);
@@ -126,6 +135,10 @@ function Post({
             <i class="far fa-thumbs-up mt-4 fa-4x" onClick={() => {setLikeCount(likeCount+1); onPostLike()}}>
               {likeCount}
             </i>
+
+            <i class="far fa-thumbs-down fa-4x fa-flip-horizontal" onClick={() => {setLikeCount(likeCount-1); onPostDislike()}}>
+            </i>
+            
             <Link to="#">
               <u
                 className="showComment"
