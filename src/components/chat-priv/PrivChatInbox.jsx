@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import PrivConversationCard from './PrivConversationCard';
 import { v4 as uuid } from 'uuid';
@@ -98,7 +99,8 @@ function PrivChatInbox({ conversations, setConversations }) {
             disabled={dropDownUsers.length === 0}
             className="conversation-dropdown"
             onChange={(event, data) => setSelectedUser(data.value)}
-            placeholder={language.with}
+            // Erkan. Text changed from "with..." to "Send message to"
+            placeholder={'Send message to'}
             selection
             options={dropDownUsers}
           />
@@ -123,7 +125,11 @@ function PrivChatInbox({ conversations, setConversations }) {
               conversations={conversations}
             />
           ) : (
-            <div className="no-active-conversation">No Active Conversations</div>
+            <>
+              <div></div>
+              {/* Erkan */}
+              <div className="no-active-conversation">No Active Conversations</div>
+            </>
           )}
         </div>
       </div>
