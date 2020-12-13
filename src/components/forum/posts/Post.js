@@ -46,14 +46,12 @@ function Post({
     return onPostUpdate(updatedPost).then(() => setIsUpdate(false));
   };
 
-  const onPostLike = () => {
+  const onPostLike = async () => {
     const updatedPost = {
       ...post,
       likedUsers: [...post.likedUsers, user.name],
     };
-    return onPostUpdate(updatedPost).then(() =>
-      setLikeCount(post.likedUsers.length)
-    );
+    return await onPostUpdate(updatedPost) //a time lag happens between backend so setStatus added to on click
   };
 
   console.log(post.likedUsers.length);
@@ -125,7 +123,7 @@ function Post({
                 {language.Add_Comment}
               </Button>
             </div>
-            <i class="far fa-thumbs-up mt-4 fa-4x" onClick={() => onPostLike()}>
+            <i class="far fa-thumbs-up mt-4 fa-4x" onClick={() => {setLikeCount(likeCount+1); onPostLike()}}>
               {likeCount}
             </i>
             <Link to="#">
