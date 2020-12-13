@@ -1,7 +1,9 @@
+.login-wrap {
+  display: flex;
+  /* flex-direction: row; */
+}
+
 .login-picture {
-  background-image: url('/src/assets/images/login.jpg');
-  background-size: cover;
-  min-height: 800px;
 }
 
 .login-form-div {
