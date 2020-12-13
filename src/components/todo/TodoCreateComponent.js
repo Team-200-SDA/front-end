@@ -26,51 +26,48 @@ function StudentCreateComponent() {
   };
 
   return (
-    // <div
-    //   className="container d-flex justify-content-around mb-4 btn-group btn-group-toggle"
-    //   data-toggle="buttons"
-    // >
-      <form onSubmit={(event) => createTodo(event)}>
-        <div className="card-body">
-          <h4>{language.Create_Todo}</h4>
-          <label>{language.Title}</label>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="form-control"
-            placeholder={language.Enter_Title}
-          />
-          <span style={{ color: "red" }}>{null}</span>
-          <br />
+    
+    <form onSubmit={(event) => createTodo(event)}>
+      <div className="card-body mt-3">
+        <h4>{language.Create_Todo}</h4>
+        <label>{language.Title}</label>
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className="form-control"
+          placeholder={language.Enter_Title}
+        />
+        <span style={{ color: "red" }}>{null}</span>
+        <br />
 
-          <label>{language.Description}</label>
-          <input
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            className="form-control"
-            placeholder={language.Enter_Description}
-          />
-          <span style={{ color: "red" }}>{null}</span>
-          <br />
+        <label>{language.Description}</label>
+        <input
+          type="text"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className="form-control"
+          placeholder={language.Enter_Description}
+        />
+        <span style={{ color: "red" }}>{null}</span>
+        <br />
 
-          <label>{language.Due_Date}</label>
-          <input
-            type="text"
-            value={dueDate}
-            onChange={(e) => setDueDate(e.target.value)}
-            className="form-control"
-            placeholder={language.Enter_due_date}
-          />
-          <span style={{ color: "red" }}>{null}</span>
-          <br />
+        <label>{language.Due_Date}</label>
+        <input
+          type="text"
+          value={dueDate}
+          onChange={(e) => setDueDate(e.target.value)}
+          className="form-control"
+          placeholder={language.Enter_due_date}
+        />
+        <span style={{ color: "red" }}>{null}</span>
+        <br />
 
-          <Button type="submit" variant="contained" color="primary">
-            {language.Save}
-          </Button>
-        </div>
-      </form>
+        <Button type="submit" variant="contained" color="primary">
+          {language.Save}
+        </Button>
+      </div>
+    </form>
     // </div>
   );
 }
