@@ -99,8 +99,7 @@ function PrivChatInbox({ conversations, setConversations }) {
             disabled={dropDownUsers.length === 0}
             className="conversation-dropdown"
             onChange={(event, data) => setSelectedUser(data.value)}
-            // Erkan. Text changed from "with..." to "Send message to"
-            placeholder={'Send message to'}
+            placeholder={language.Send_message_to}
             selection
             options={dropDownUsers}
           />
@@ -127,8 +126,7 @@ function PrivChatInbox({ conversations, setConversations }) {
             />
           ) : (
             <>
-              {/* Erkan */}
-              <div className="no-active-conversation">No Active Conversations</div>
+              <div className="no-active-conversation">{language.No_Active_Conversations}</div>
             </>
           )}
         </div>

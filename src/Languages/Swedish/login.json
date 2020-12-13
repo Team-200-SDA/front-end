@@ -125,5 +125,10 @@
 	"Article_announcement_content":"Innehåll i artikel eller tillkännagivande",
 	"News_Announcement_Title":"Nyheter eller tillkännagivande titel",
 	"News_Article_Content":"Nyheter eller artikelinnehåll",
-	"Subjects":"Ämnen"
+	"Subjects":"Ämnen",
+	"Register":"Registrera",
+	"Send_message_to":"Send message to",
+	"No_Active_Conversations":"Inga aktiva konversationer",
+	"Create_new_Todo":"Skapa en ny Todo",
+	"Create Todo":"Skapa Todo"
 }
