@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { LangContext } from "../../../contexts/LanguageContext";
 
 //styling import
-import { Button } from "@material-ui/core";
+import { Button, Tooltip, Collapse } from "@material-ui/core";
 import "./style.css";
 import "../../../css/shared.css";
 import "../../../css/subjects/_subjects.css";
@@ -41,6 +41,9 @@ function Post({
     setIsUpdate(true);
   };
 
+console.log(user.profilepic)
+
+
   const onPostFormSubmit = (postData) => {
     const updatedPost = { ...post, ...postData };
     return onPostUpdate(updatedPost).then(() => setIsUpdate(false));
@@ -48,23 +51,21 @@ function Post({
 
   const onPostLike = async () => {
     const updatedPost = {
-      ...post, likedUsers: [...post.likedUsers, user.name],
+      ...post,
+      likedUsers: [...post.likedUsers, user.name],
     };
-    return await onPostUpdate(updatedPost) //a time lag happens between backend so setStatus added to onClick
+    return await onPostUpdate(updatedPost); //a time lag happens between BE and FE so setStatus added to onClick
   };
-  
-console.log(post.likedUsers)
 
   const onPostDislike = async () => {
-    var newLikeList = post.likedUsers.filter((item) => item !== user.name )
-    console.log(newLikeList)
+    var newLikeList = post.likedUsers.filter((item) => item !== user.name);
+    console.log(newLikeList);
     const updatedPost = {
-      ...post, likedUsers: newLikeList,
+      ...post,
+      likedUsers: newLikeList,
     };
-    return await onPostUpdate(updatedPost) //a time lag happens between backend so setStatus added to onClick
+    return await onPostUpdate(updatedPost); //a time lag happens between backend so setStatus added to onClick
   };
-
-  
 
   const onPostFormCancel = () => {
     setIsUpdate(false);
@@ -92,8 +93,11 @@ console.log(post.likedUsers)
         <div className="card">
           <div className="card-body">
             <div className="card-title">
-              <h3>{post.title}</h3>
 
+              <div > <img src = {user.profilepic} />  
+              <h3>{post.title}</h3>
+              </div>
+              
               <p className="badge badge-primary text-wrap">{post.user.name}</p>
             </div>
             <div>{post.body}</div>
@@ -132,13 +136,33 @@ console.log(post.likedUsers)
                 {language.Add_Comment}
               </Button>
             </div>
-            <i class="far fa-thumbs-up mt-4 fa-4x" onClick={() => {setLikeCount(likeCount+1); onPostLike()}}>
-              {likeCount}
-            </i>
 
-            <i class="far fa-thumbs-down fa-4x fa-flip-horizontal" onClick={() => {setLikeCount(likeCount-1); onPostDislike()}}>
-            </i>
-            
+            <Tooltip
+              title={<h5>{post.likedUsers.join(",  ")}</h5>}
+              TransitionComponent={Collapse}
+              enterDelay={800}
+              leaveDelay={200}
+              arrow
+            >
+              <i
+                className="far fa-thumbs-up mt-4 fa-4x"
+                onClick={() => {
+                  setLikeCount(likeCount + 1);
+                  onPostLike();
+                }}
+              >
+                {likeCount}
+              </i>
+            </Tooltip>
+
+            <i
+              className="far fa-thumbs-down fa-4x fa-flip-horizontal"
+              onClick={() => {
+                setLikeCount(likeCount - 1);
+                onPostDislike();
+              }}
+            ></i>
+
             <Link to="#">
               <u
                 className="showComment"
