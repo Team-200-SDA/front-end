@@ -1,17 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Auth from '../../services/Auth';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 import { useContext } from 'react';
 import { LangContext } from '../../contexts/LanguageContext';
 
-import LoginPicture from '../../assets/images/login.jpg';
-
 function LoginPage() {
   const { language, changeEn, changeSv, changeEs } = useContext(LangContext);
+  const [registered, setRegistered] = useState(true);
+
   const login = async loginData => {
     const loginSuccess = await Auth.login(loginData);
-
     if (!loginSuccess) {
       alert(language.invalid);
     }
@@ -24,36 +23,50 @@ function LoginPage() {
     }
   };
 
-  return (
-    <div>
-      <div className="login-wrap">
-        <div className="login-picture">
-          <img src={LoginPicture} alt="Login Picture" />
-        </div>
-        <div className="login-form-div">
-          <div className="login-form-div">
-            <h1 className="brand-name">Edulane</h1>
-            <LoginForm onSubmit={login} />
-            <RegisterForm onSubmit={register} />
+  const registerFlip = () => {
+    setRegistered(!registered);
+  };
 
-            <footer className="login-footer">
-              <span>
-                <a className="footer-link" onClick={changeEn} href="#">
-                  {language.english}
-                </a>
-              </span>
-              <span>
-                <a className="footer-link" onClick={changeSv} href="#">
-                  {language.swedish}
-                </a>
-              </span>
-              <span>
-                <a className="footer-link" onClick={changeEs} href="#">
-                  {language.spanish}
-                </a>
-              </span>
-            </footer>
-          </div>
+  return (
+    <div className="login-wrap">
+      <div className="login-background" />
+      <div className="card-body login-form-div">
+        <h1 className="brand-name">Edulane</h1>
+
+        <div className="login-register">
+          {registered ? (
+            <>
+              <LoginForm onSubmit={login} />
+              <div className="login-flip" onClick={registerFlip}>
+                Sign Up?
+              </div>
+            </>
+          ) : (
+            <>
+              <RegisterForm onSubmit={register} />
+              <div className="login-flip" onClick={registerFlip}>
+                Already Registered?
+              </div>
+            </>
+          )}
+        </div>
+
+        <div className="login-footer">
+          <span>
+            <span className="footer-link" onClick={changeEn}>
+              {language.english}
+            </span>
+          </span>
+          <span>
+            <span className="footer-link" onClick={changeSv}>
+              {language.swedish}
+            </span>
+          </span>
+          <span>
+            <span className="footer-link" onClick={changeEs}>
+              {language.spanish}
+            </span>
+          </span>
         </div>
       </div>
     </div>
