@@ -115,5 +115,8 @@
 	"Join_Classroom":"Gå med i klassrummet",
 	"Update_profile_picture":"Uppdatera profilbild",
 	"Select_assignment":"Välj uppgift",
-	"Enter_lecture_name":"Ange ett föreläsningsnamn"
+	"Enter_lecture_name":"Ange ett föreläsningsnamn",
+	"Mark_Complete":"Markera som slutfört",
+	"Status":"Status",
+	"Create_new_Assignment":"Skapa ett nytt uppdrag"
 }

@@ -115,6 +115,8 @@
   "Join_Classroom":"Unirse a Classroom",
   "Update_profile_picture":"Actualizar foto de perfil",
   "Select_assignment":"Seleccionar tarea",
-  "Enter_lecture_name":"Ingrese un nombre de conferencia"
+  "Enter_lecture_name":"Ingrese un nombre de conferencia",
+  "Mark_Complete":"Marcar como completado",
+  "Status":"Estado",
+  "Create_new_Assignment":"Crear una nueva tarea"
 }
-

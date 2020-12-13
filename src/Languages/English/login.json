@@ -115,7 +115,10 @@
 	"Join_Classroom":"Join Classroom",
 	"Update_profile_picture":"Update profile picture",
 	"Select_assignment":"Select assignment",
-	"Enter_lecture_name":"Enter a lecture name"
+	"Enter_lecture_name":"Enter a lecture name",
+	"Mark_Complete":"Mark as Complete",
+	"Status":"Status",
+	"Create_new_Assignment":"Create a new Assignment"
 	
 
 }
