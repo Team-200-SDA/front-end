@@ -25,37 +25,38 @@ function LoginPage() {
   };
 
   return (
-    <>
+    <div>
       <div className="login-wrap">
         <div className="login-picture">
           <img src={LoginPicture} alt="Login Picture" />
         </div>
-
         <div className="login-form-div">
-          <h1 className="brand-name">Edulane</h1>
-          <LoginForm onSubmit={login} />
-          <RegisterForm onSubmit={register} />
+          <div className="login-form-div">
+            <h1 className="brand-name">Edulane</h1>
+            <LoginForm onSubmit={login} />
+            <RegisterForm onSubmit={register} />
 
-          <footer className="login-footer">
-            <span>
-              <a className="footer-link" onClick={changeEn} href="#">
-                {language.english}
-              </a>
-            </span>
-            <span>
-              <a className="footer-link" onClick={changeSv} href="#">
-                {language.swedish}
-              </a>
-            </span>
-            <span>
-              <a className="footer-link" onClick={changeEs} href="#">
-                {language.spanish}
-              </a>
-            </span>
-          </footer>
+            <footer className="login-footer">
+              <span>
+                <a className="footer-link" onClick={changeEn} href="#">
+                  {language.english}
+                </a>
+              </span>
+              <span>
+                <a className="footer-link" onClick={changeSv} href="#">
+                  {language.swedish}
+                </a>
+              </span>
+              <span>
+                <a className="footer-link" onClick={changeEs} href="#">
+                  {language.spanish}
+                </a>
+              </span>
+            </footer>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

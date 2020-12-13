@@ -1,19 +1,24 @@
 .login-wrap {
-  display: flex;
-  /* flex-direction: row; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
-.login-picture {
+.login-picture img {
+  /* width: 50%;
+  max-height: 100px; */
+  max-width: 100%;
+  /*  display: block; */
 }
 
 .login-form-div {
-  width: 40%;
+  width: 80%;
   margin: auto;
   margin-top: 50px;
 }
 
 .brand-name {
   color: var(--text);
+  font-size: 62px;
 }
 
 .login-form {
@@ -26,8 +31,9 @@
 }
 
 .login-footer {
+  text-align: center;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 40px;
   margin-bottom: 10px;
 }
 
@@ -36,8 +42,12 @@
   margin-right: 20px;
 }
 
+.checkbox-label {
+  /* color: var(--secondary); */
+}
+
 .login-button {
-  width: 120px;
+  width: 240px;
   color: white;
 }
 

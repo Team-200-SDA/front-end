@@ -12,7 +12,7 @@ function LoginForm({ onSubmit }) {
       <h4 className="card-title">{language.login}</h4>
       <div>
         <div className="form-group">
-          <label>{language.email}:</label>
+          {/* <label>{language.email}:</label> */}
           <input
             type="email"
             className="form-control"
@@ -23,7 +23,7 @@ function LoginForm({ onSubmit }) {
         </div>
 
         <div className="form-group">
-          <label>{language.pass}:</label>
+          {/* <label>{language.pass}:</label> */}
           <input
             type="password"
             placeholder={language.pass}
