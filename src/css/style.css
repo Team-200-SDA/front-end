@@ -9,8 +9,8 @@
 @import './subjects/_subjects.css';
 @import './lecture/_lecture.css';
 @import './assignment/_assignment.css';
-@import './layout//navbar.css';
+@import './layout/navbar.css';
 @import './news/news.css';
 @import './userProfile/UserProfile.css';
 @import './auth/loginPage.css';
-/* @import './todo/_todo.css'; */
+@import './todo/_todo.css';

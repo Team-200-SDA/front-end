@@ -1,3 +1,4 @@
+import { FormLabel } from '@material-ui/core';
 import React, { useState } from 'react';
 import { useContext } from 'react';
 import { LangContext } from '../../contexts/LanguageContext';
@@ -8,14 +9,16 @@ function LoginForm({ onSubmit }) {
   const { language } = useContext(LangContext);
 
   return (
-    <div className="card-body login-form">
+    <div className="login-form">
       <h4 className="card-title">{language.login}</h4>
       <div>
         <div className="form-group">
-          <label>{language.email}:</label>
+          <FormLabel className="form-label" component="legend">
+            {language.email}
+          </FormLabel>
           <input
             type="email"
-            className="form-control"
+            className="form-control subject-input"
             placeholder={language.email}
             value={email}
             onChange={e => setEmail(e.target.value)}
@@ -23,11 +26,13 @@ function LoginForm({ onSubmit }) {
         </div>
 
         <div className="form-group">
-          <label>{language.pass}:</label>
+          <FormLabel className="form-label" component="legend">
+            {language.pass}
+          </FormLabel>
           <input
             type="password"
             placeholder={language.pass}
-            className="form-control"
+            className="form-control subject-input"
             value={password}
             onChange={e => setPassword(e.target.value)}
           />

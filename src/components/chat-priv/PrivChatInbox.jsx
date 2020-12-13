@@ -117,6 +117,7 @@ function PrivChatInbox({ conversations, setConversations }) {
           <div className={`priv-chat-border ${displayUsers ? null : 'private-users'}`}>
             {jsxConversations}
           </div>
+          <div></div>
           {activeThreadReceiver !== '' ? (
             <PrivChatThread
               setConversations={setConversations}
@@ -126,7 +127,6 @@ function PrivChatInbox({ conversations, setConversations }) {
             />
           ) : (
             <>
-              <div></div>
               {/* Erkan */}
               <div className="no-active-conversation">No Active Conversations</div>
             </>

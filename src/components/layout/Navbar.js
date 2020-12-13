@@ -108,7 +108,7 @@ function Navbar({ onLogout }) {
             </li>
 
             <li className="nav-item">
-              <Link to="#" className="nav-link">
+              <Link to="#" className="nav-link" onClick={onLogout}>
                 <i className="fas fa-sign-out-alt nav-icon sign-out" onClick={onLogout} />
                 {language.Sign_Out}
               </Link>
