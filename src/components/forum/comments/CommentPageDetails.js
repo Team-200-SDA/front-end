@@ -9,8 +9,9 @@ export default function CommentPageDetails({ match, post }) {
 
   const getAllCommentsByPostId = async () => {
     const res = await CommentsApi.getCommentById(post.id);
-    return setComments(res.data);
+    return setComments((res.data.sort((a, b) => b.id - a.id)));
   };
+
 
   useEffect(() => {
     getAllCommentsByPostId();

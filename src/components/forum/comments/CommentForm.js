@@ -20,11 +20,10 @@ export default function CommentForm({
   const { language } = useContext(LangContext);
   const [commentAtom, setCommentAtom] = useRecoilState(commentState);
 
-  // another copy of whatever.
+  // another copy of getComments.
   const getAllCommentsByPostId = async (postId) => {
-   // const res = await CommentsApi.getCommentById(commentAtom[0].post.id);
     const res = await CommentsApi.getCommentById(postId);
-    return setCommentAtom(res.data);
+    return setCommentAtom((res.data.sort((a, b) => b.id - a.id)));
   };
 
 
