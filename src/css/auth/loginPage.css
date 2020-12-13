@@ -1,0 +1,60 @@
+.login-picture {
+  background-image: url('/src/assets/images/login.jpg');
+  background-size: cover;
+  min-height: 800px;
+}
+
+.login-form-div {
+  width: 40%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.brand-name {
+  color: var(--text);
+}
+
+.login-form {
+  background-color: white;
+}
+
+.register-form {
+  margin-top: 20px;
+  background-color: white;
+}
+
+.login-footer {
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.footer-link {
+  color: var(--primary);
+  margin-right: 20px;
+}
+
+.login-button {
+  width: 120px;
+  color: white;
+}
+
+@media screen and (max-width: 767px) {
+  .login-picture {
+    max-height: 300px;
+  }
+
+  .login-form-div {
+    width: 70%;
+    margin-top: 20px;
+  }
+
+  .register-form {
+    margin-top: 10px;
+  }
+
+  .login-footer {
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+}

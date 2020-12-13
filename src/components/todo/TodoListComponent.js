@@ -82,7 +82,7 @@ function TodoListComponent() {
         <div className="page-title-text">
           <h1>
             <i className="fas fa-tasks mr-3" />
-            Todo List
+            {language.Todo_List}
           </h1>
         </div>
       </div>
@@ -92,23 +92,25 @@ function TodoListComponent() {
           <table className="table mt-3 mb-2 table-striped table-bordered">
             <thead>
               <tr>
-                <td>Title</td>
-                <td>Description</td>
-                <td>Due Date</td>
-                <td>Status</td>
-                <td>Delete</td>
-                <td>Mark as Done</td>
+                <td>{language.Title}</td>
+                <td>{language.Description}</td>
+                <td>{language.Due_Date}</td>
+                <td>{language.Status}</td>
+                <td>{language.Delete}</td>
+                <td>{language.Mark_Complete}</td>
               </tr>
             </thead>
             <tbody>{jsxTodos}</tbody>
           </table>
         </div>
-
-        <Link to="/todo-form" className="btn info">
-          <Button variant="contained" color="primary">
-            Create
-          </Button>
-        </Link>
+          <Link to="/todo-form" className="btn info">
+            <Button
+            variant="contained"
+            color="primary">
+            {language.Create}
+            </Button>
+          </Link>
+        
       </div>
     </div>
   );

@@ -75,7 +75,6 @@ function Chat() {
   const messagesToRender = messages.map(msg => {
     return <ChatMessage key={uuid()} message={msg} />;
   });
-
   return (
     <div className="public-chat-wrap">
       <div className="title-div">
@@ -84,12 +83,10 @@ function Chat() {
           {language.Public_Chat}
         </h1>
       </div>
-
       <div className="card-body public-chat-body">
         <div className="chat-wrapper">
           <div className="jsx-messages">{messagesToRender}</div>
         </div>
-
         <form
           onSubmit={event => sendMessage(event)}
           className="message-form"
