@@ -14,7 +14,7 @@
 
 .private-chat-wrap {
   max-height: 100%;
-  min-height: 62vh;
+  min-height: calc(100vh - 372px);
   display: flex;
   flex-direction: column;
 }
@@ -91,8 +91,8 @@
 }
 
 .no-active-conversation {
-  margin-top: 30%;
-  margin-right: 25%;
+  margin-top: 10%;
+  /* margin-right: 25%; */
   font-size: 12pt;
 }
 
