@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import TodoApi from '../../api/TodoApi';
 import { useContext } from 'react';
-import { LangContext } from '../../contexts/LanguageContext';
+import { LangContext } from '../../js/states/LanguageContext';
 
 import { Button, FormLabel } from '@material-ui/core';
 
@@ -70,6 +70,7 @@ function StudentCreateComponent() {
             type="submit"
             variant="contained"
             color="primary">
+              {language.this_is_a_sample}  
             {language.Create_Todo}
           </Button>
         </form>

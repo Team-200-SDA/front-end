@@ -3,7 +3,7 @@ import Auth from '../../services/Auth';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 import { useContext } from 'react';
-import { LangContext } from '../../contexts/LanguageContext';
+import { LangContext } from '../../js/states/LanguageContext';
 
 function LoginPage() {
   const { language, changeEn, changeSv, changeEs } = useContext(LangContext);
@@ -38,14 +38,14 @@ function LoginPage() {
             <>
               <LoginForm onSubmit={login} />
               <div className="login-flip" onClick={registerFlip}>
-                Sign Up?
+                {language.Sign_up}
               </div>
             </>
           ) : (
             <>
               <RegisterForm onSubmit={register} />
               <div className="login-flip" onClick={registerFlip}>
-                Already Registered?
+                {language.Already_Registered}
               </div>
             </>
           )}

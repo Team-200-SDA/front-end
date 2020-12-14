@@ -5,7 +5,7 @@ import CommentForm from "../comments/CommentForm";
 import UserApi from "../../../api/UserApi";
 import CommentPageDetails from "../comments/CommentPageDetails";
 import { useContext } from "react";
-import { LangContext } from "../../../contexts/LanguageContext";
+import { LangContext } from "../../../js/states/LanguageContext";
 
 //styling import
 import { Button, Tooltip, Collapse } from "@material-ui/core";
@@ -84,7 +84,7 @@ function Post({
           initialBody={post.body}
           onSubmit={onPostFormSubmit}
           onCancel={onPostFormCancel}
-          formTitle="Update post"
+          formTitle={language.Update_post}
         />
       ) : (
         <div className="card">
@@ -106,7 +106,7 @@ function Post({
                     color="primary"
                     onClick={onUpdateClick}
                   >
-                    Edit
+                    {language.Edit}
                     <i class="fas fa-edit"></i>
                   </Button>
 
@@ -165,7 +165,7 @@ function Post({
                 className="showComment"
                 onClick={() => setActivePost(!activePost)}
               >
-                show comments
+                {language.show_comments}
               </u>
             </Link>
 

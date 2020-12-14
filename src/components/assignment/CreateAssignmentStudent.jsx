@@ -5,7 +5,7 @@ import { Dropdown } from 'semantic-ui-react';
 import AssignmentApi from '../../api/AssignmentApi';
 import getFilenameAndExtension from '../../js/functions/fileUpload/getFilenameAndExtention';
 import FileUploader from '../filestorage/FileUploader';
-import { LangContext } from '../../contexts/LanguageContext';
+import { LangContext } from '../../js/states/LanguageContext';
 import { useContext } from 'react';
 
 export default function CreateAssignmentStudent({
@@ -85,7 +85,7 @@ export default function CreateAssignmentStudent({
             defaultValue=""
           />
         </div>
-        <FormLabel component="legend">Upload assignment</FormLabel>
+        <FormLabel component="legend">{language.Upload_assignment}</FormLabel>
         <FileUploader
           setUploadResponse={setUploadResponse}
           uploadType={title === '' ? null : 'UPLOAD'}

@@ -1,7 +1,7 @@
 import { createContext, useState } from 'react';
-import English from '../Languages/English/login.json';
-import Swedish from '../Languages/Swedish/login.json';
-import Spanish from '../Languages/Spanish/login.json';
+import English from '../../Languages/english.json';
+import Swedish from '../../Languages/swedish.json';
+import Spanish from '../../Languages/spanish.json';
 
 export const LangContext = createContext();
 

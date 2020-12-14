@@ -7,7 +7,7 @@ import ChatMessage from './ChatMessage';
 import { Fab, TextField } from '@material-ui/core';
 import { Send } from '@material-ui/icons';
 import { format } from 'date-fns';
-import { LangContext } from '../../contexts/LanguageContext';
+import { LangContext } from '../../js/states/LanguageContext';
 import { useContext } from 'react';
 
 const wsEndpoint = 'https://edulane-backend.herokuapp.com/ws';

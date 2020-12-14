@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ImageUploader from '../imageuploader/ImageUploader';
 import { useContext } from 'react';
-import { LangContext } from '../../contexts/LanguageContext';
+import { LangContext } from '../../js/states/LanguageContext';
 import { Card, FormLabel } from '@material-ui/core';
 const defaultImage = '/images/defaultUserImage/blank-profile-pic.png';
 
@@ -104,7 +104,7 @@ function UserProfileForm({ user, onUpdateAddressClick, onUpdatePhoneClick, onUpd
               <div className="form-group row mt-1 mr-2">
                 <div className="col input-group profile-input">
                   <FormLabel className="form-label" component="legend">
-                    Update home address
+                    {language.Update_home_address}
                   </FormLabel>
                   <div className="input-group-prepend">
                     <span className="input-group-text">{language.Address}</span>
@@ -116,7 +116,7 @@ function UserProfileForm({ user, onUpdateAddressClick, onUpdatePhoneClick, onUpd
                     onChange={(event) =>
                       setAddress({ address: event.target.value })
                     }
-                    placeholder="Enter an Address"
+                    placeholder={language.Enter_Address}
                   />
                 </div>
                 <div className="text-right mt-4 mb-0">
@@ -133,10 +133,10 @@ function UserProfileForm({ user, onUpdateAddressClick, onUpdatePhoneClick, onUpd
               <div className="form-group row mt-1 mr-2">
                 <div className="col input-group profile-input">
                   <FormLabel className="form-label" component="legend">
-                    Update phone number
+                    {language.Update_phone_number}
                   </FormLabel>
                   <div className="input-group-prepend">
-                    <span className="input-group-text">Phone No.</span>
+                    <span className="input-group-text">{language.Phone_No}</span>
                   </div>
                   <input
                     className="form-control"
@@ -144,7 +144,7 @@ function UserProfileForm({ user, onUpdateAddressClick, onUpdatePhoneClick, onUpd
                     onChange={(event) =>
                       setPhoneno({ phoneno: event.target.value })
                     }
-                    placeholder="Enter a Phone Number"
+                    placeholder={language.Enter_Phone_Number}
                   />
                 </div>
                 <div className="text-right mt-4 mb-0">
