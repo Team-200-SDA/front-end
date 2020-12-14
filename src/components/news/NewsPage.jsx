@@ -21,7 +21,6 @@ export default function HomePage() {
   function getAllNews() {
     NewsApi.getAllNews().then(data => {
       setNews(data.data);
-      console.log(data);
     });
   }
 
