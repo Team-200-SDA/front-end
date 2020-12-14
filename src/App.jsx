@@ -5,11 +5,11 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import { RecoilRoot } from 'recoil';
 
-/// Import pages
+// Import pages
 import LoginPage from './components/auth/LoginPage';
 import HomePage from './components/home/HomePage';
 import Chat from './components/chat/Chat';
-import LiveVideo from './components/live/LiveVideo/LiveVideo';
+import LiveVideo from './components/live/LiveVideo';
 import Userprofile from './components/userprofile/UserProfile';
 import Calendar from './components/calendar/Calendar';
 import AssignmentPage from './components/assignment/AssignmentPage';

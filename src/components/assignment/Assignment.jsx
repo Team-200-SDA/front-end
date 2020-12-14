@@ -1,7 +1,5 @@
 import React from 'react';
-import fileTypeImage from '../../js/functions/fileUpload/fileTypeImage';
 import fileTypeImageFA from '../../js/functions/fileUpload/fileTypeImageFA';
-
 
 export default function Assignment({ assignment, deleteAssignment }) {
   const user_ = window.sessionStorage.getItem('user');

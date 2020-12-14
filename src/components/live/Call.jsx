@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useReducer, useCallback } from 'react';
-import Tile from '../Tile/Tile';
-import CallObjectContext from '../../../js/states/CallObjectContext';
-import CallMessage from '../CallMessage/CallMessage';
+import Tile from './Tile';
+import CallObjectContext from '../../js/states/CallObjectContext';
+import CallMessage from './CallMessage';
 import {
   initialCallState,
   CLICK_ALLOW_TIMEOUT,
@@ -13,8 +13,8 @@ import {
   isScreenShare,
   containsScreenShare,
   getMessage
-} from './callState';
-import { logDailyEvent } from '../../../js/live/logUtils';
+} from '../../js/states/callState';
+import { logDailyEvent } from '../../js/live/logUtils';
 
 export default function Call() {
   const callObject = useContext(CallObjectContext);

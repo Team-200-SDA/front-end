@@ -18,17 +18,21 @@ export default function CreateAssignmentStudent({
   const [link, setLink] = useState('');
   const [uploadResponse, setUploadResponse] = useState(null);
 
+  /**
+   * Creates an assignment object based on state values.
+   * Do a POST request with the assignment as the payload.
+   * Resets state values.
+   * Updates list of assignments by doing a GET request.
+   */
   function createAssignment() {
     if (link === '') {
       return;
     } //we don't want to post an assignment with no links.
-
     const newAssignment = {
       fileName: title,
       link: link,
       type: getFilenameAndExtension(uploadResponse.secure_url)
     };
-
     AssignmentApi.createAssignment(newAssignment).then(res => {
       setLink('');
       setTitle('');
@@ -37,10 +41,17 @@ export default function CreateAssignmentStudent({
     });
   }
 
+  /**
+   * Creates an array for the dropdown list with all the assignments the student has not yet
+   * submitted
+   */
   const filteredDropDown = teacherAssignments.filter(
     assignment => !assignments.find(assigned => assigned.fileName === assignment.fileName)
   );
 
+  /**
+   * Creates the dropdown objects using assignment file names.
+   */
   const dropDownOptions = filteredDropDown.map(assignment => {
     return {
       key: uuid(),
@@ -49,6 +60,9 @@ export default function CreateAssignmentStudent({
     };
   });
 
+  /**
+   * Whenever a file is uploaded, set the link state to the url where the file is stored.
+   */
   useEffect(() => {
     if (uploadResponse === null) {
       return;
