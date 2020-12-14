@@ -6,24 +6,23 @@ import Spanish from '../../Languages/spanish.json';
 export const LangContext = createContext();
 
 const LangContextProvider = props => {
-  const [language, setLanguage] = useState(English, Swedish);
+  const [language, setLanguage] = useState(English, Swedish, Spanish);
 
-  const changeEn = () => {
+  function changeLanguageToEn() {
     setLanguage(English);
-  };
+  }
 
-  const changeSv = () => {
+  const changeLanguageToSv = () => {
     setLanguage(Swedish);
   };
 
-  const changeEs = () => {
+  const changeLanguageToEs = () => {
     setLanguage(Spanish);
   };
   
-
   return (
     <LangContext.Provider
-      value={{ language, changeSv, changeEn, changeEs }}>
+      value={{ language, changeLanguageToEn, changeLanguageToSv, changeLanguageToEs }}>
       {props.children}
     </LangContext.Provider>
   );
