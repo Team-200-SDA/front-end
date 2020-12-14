@@ -5,9 +5,9 @@ class AuthApi {
     return Api.post('/authenticate', { email, password });
   }
 
-  register({ name, email, password, isTeacher }) {
-    const role = isTeacher === true ? 'teacher' : 'student';
-    return Api.post('/register', { name, email, password, role });
+  register({ name, email, password, teacherCode }) {
+    const teachCodeQuery = teacherCode !== '' ? '/' + teacherCode : '';
+    return Api.post(`/register${teachCodeQuery}`, { name, email, password });
   }
 }
 

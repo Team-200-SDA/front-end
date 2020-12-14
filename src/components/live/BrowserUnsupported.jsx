@@ -1,6 +1,9 @@
 import React from 'react';
+import { useContext } from 'react';
+import { LangContext } from '../../js/states/LanguageContext';
 
 export default function BrowserUnsupported() {
+  const { language, changeEn, changeSv, changeEs } = useContext(LangContext);
   return (
     <p className="browser-unsupported">
       {language.Looks_like}

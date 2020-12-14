@@ -9,8 +9,10 @@ import { Send } from '@material-ui/icons';
 import { format } from 'date-fns';
 import { LangContext } from '../../js/states/LanguageContext';
 import { useContext } from 'react';
+import PubChatApi from '../../api/PubChatApi';
 
-const wsEndpoint = 'https://edulane-backend.herokuapp.com/ws';
+const wsEndpoint = PubChatApi.endpoint;
+
 const sockJsConfig = {
   transports: ['xhr-streaming'],
   headers: { Authorization: window.sessionStorage.getItem('_token') }
@@ -29,6 +31,17 @@ function Chat() {
   const user = window.sessionStorage.getItem('user');
   const [messages, setMessages] = useState([]);
   const [messageField, setMessageField] = useState('');
+
+  /**
+   * Get all global messages previously sent and render them.
+   */
+  useEffect(() => {
+    const getChats = async () => {
+      const response = await PubChatApi.getAll();
+      setMessages(oldMessages => oldMessages.concat(response.data));
+    };
+    getChats();
+  }, []);
 
   /**
    * When the component mounts, establish a SOCKJS connection and set up the STOMP client.
@@ -68,7 +81,6 @@ function Chat() {
     if (message.type === 'JOIN' || message.type === 'LEAVE') {
       return;
     }
-    message.time = format(new Date(), 'HH:mm');
     setMessages(oldMessages => [...oldMessages, message]);
   }
 
@@ -84,7 +96,8 @@ function Chat() {
       const chatMessage = {
         sender: user,
         content: messageField,
-        type: 'CHAT'
+        type: 'CHAT',
+        date: format(new Date(), 'HH:mm dd-MMM-yyyy')
       };
       stompClient.send('/app/chat.sendMessage', {}, JSON.stringify(chatMessage));
     }

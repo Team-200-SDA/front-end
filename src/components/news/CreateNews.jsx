@@ -30,7 +30,6 @@ export default function CreateNews(props) {
     };
 
     NewsApi.createNews(newNews).then(res => {
-      console.log(res);
       props.getAllNews();
       setTitle('');
       setBody('');

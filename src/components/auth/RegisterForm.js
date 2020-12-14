@@ -1,5 +1,5 @@
-import { Checkbox, FormLabel } from '@material-ui/core';
-import React, { useEffect, useState } from 'react';
+import { FormLabel } from '@material-ui/core';
+import React, { useState } from 'react';
 import { useContext } from 'react';
 import { LangContext } from '../../js/states/LanguageContext';
 
@@ -7,16 +7,12 @@ function RegisterForm({ onSubmit }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isTeacher, setIsTeacher] = useState(false);
+  const [teacherCode, setTeacherCode] = useState('');
   const { language } = useContext(LangContext);
-
-  useEffect(() => {
-    console.log(isTeacher);
-  }, [isTeacher]);
 
   return (
     <div className=" register-form">
-      <h4 className="card-title">Register</h4> 
+      <h4 className="card-title">Register</h4>
       <div>
         <div className="form-group">
           <FormLabel className="form-label" component="legend">
@@ -57,17 +53,21 @@ function RegisterForm({ onSubmit }) {
         </div>
 
         <div className="form-group">
-          <Checkbox
-            checked={isTeacher}
-            onChange={e => setIsTeacher(!isTeacher)}
-            name="checkedB"
-            color="var(--primary)"
+          <FormLabel className="form-label" component="legend">
+            {'Teacher Code (Optional)'}
+          </FormLabel>
+          <input
+            type="password"
+            placeholder={'Teacher Code'}
+            className="form-control subject-input"
+            value={teacherCode}
+            onChange={e => setTeacherCode(e.target.value)}
           />
-          <label className="checkbox-label">{language.Register_teacher}</label>
         </div>
+
         <button
           className="btn login-button"
-          onClick={e => onSubmit({ name, email, password, isTeacher })}>
+          onClick={e => onSubmit({ name, email, password, teacherCode })}>
           {language.create}
         </button>
       </div>
