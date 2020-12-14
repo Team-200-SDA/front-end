@@ -139,9 +139,10 @@ function Post({
                 {language.Add_Comment}
               </Button>
             </div>
-            <span className="like-dislike">
+            <div className="like-dislike">
               <Tooltip
                 title={<h5>{post.likedUsers.join(",  ")}</h5>}
+                placement="top"
                 TransitionComponent={Collapse}
                 enterDelay={800}
                 leaveDelay={200}
@@ -161,24 +162,23 @@ function Post({
                   onPostDislike();
                 }}
               ></i>
-            </span>
+            </div>
 
-            <Link to="#">
-              <u
-                className="showComment"
-                onClick={() => setActivePost(!activePost)}
-              >
-                {activePost ? (
-                  <span>
-                    <i class="fas fa-angle-up"></i> close comments
-                  </span>
-                ) : (
-                  <span>
-                    <i class="fas fa-angle-down"></i> show comments
-                  </span>
-                )}
-              </u>
-            </Link>
+            <div className="show-comment">
+              <Link to="#">
+                <u onClick={() => setActivePost(!activePost)}>
+                  {activePost ? (
+                    <span>
+                      <i class="fas fa-angle-up"></i> close comments
+                    </span>
+                  ) : (
+                    <span>
+                      <i class="fas fa-angle-down"></i> show comments
+                    </span>
+                  )}
+                </u>
+              </Link>
+            </div>
 
             {activePost ? <CommentPageDetails post={post} /> : null}
 
