@@ -1,3 +1,4 @@
+//Component and react imports
 import React, { useState, useEffect } from "react";
 import PostForm from "./PostForm";
 import { Link } from "react-router-dom";
@@ -98,7 +99,7 @@ function Post({
         <div className="card mt-4">
           <div className="card-body forum">
             <span className="card-info">
-            <div >
+              <div>
                 {post.user.profilepic === null ? (
                   <img
                     className="forum-avatar"
