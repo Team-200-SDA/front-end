@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import TodoApi from '../../api/TodoApi';
 import { useContext } from 'react';
-import { LangContext } from '../../contexts/LanguageContext';
+import { LangContext } from '../../js/states/LanguageContext';
 import { Button } from '@material-ui/core';
 
 function TodoListComponent() {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactImageUploadComponent from 'react-images-upload';
 import { useContext } from 'react';
-import { LangContext } from '../../contexts/LanguageContext';
+import { LangContext } from '../../js/states/LanguageContext';
 /*
  * Image Uploading Note:
  * Ideally the API should be in the backend, however, with testing, sending the image to the backend and then uploading takes too long.

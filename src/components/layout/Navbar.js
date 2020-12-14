@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Calendar from '../calendar/Calendar';
 import { useContext } from 'react';
-import { LangContext } from '../../contexts/LanguageContext';
+import { LangContext } from '../../js/states/LanguageContext';
 
 const logo = '/images/logo/logo.png';
 function Navbar({ onLogout }) {

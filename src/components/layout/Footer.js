@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
-import { LangContext } from '../../contexts/LanguageContext';
+import { LangContext } from '../../js/states/LanguageContext';
 
 // Chat Bot
 import Chatbot from 'react-chatbot-kit';

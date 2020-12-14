@@ -3,7 +3,7 @@ import NewsApi from '../../api/NewsApi';
 
 import ImageUploader from '../imageuploader/ImageUploader';
 import { useContext } from 'react';
-import { LangContext } from '../../contexts/LanguageContext';
+import { LangContext } from '../../js/states/LanguageContext';
 import { Button, FormLabel } from '@material-ui/core';
 
 export default function CreateNews(props) {

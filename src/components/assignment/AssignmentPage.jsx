@@ -4,7 +4,7 @@ import AssignmentApi from '../../api/AssignmentApi';
 import CreateAssignmentStudent from './CreateAssignmentStudent';
 import CreateAssignmentTeacher from './CreateAssignmentTeacher';
 import Assignment from './Assignment';
-import { LangContext } from '../../contexts/LanguageContext';
+import { LangContext } from '../../js/states/LanguageContext';
 import { useContext } from 'react';
 
 export default function AssignmentPage() {
@@ -91,7 +91,7 @@ export default function AssignmentPage() {
       <div className="title-div">
         <h1 className="page-title-text">
           <i className="fas fa-clipboard title-icon" />
-          Assignments
+          {language.Assignments}
         </h1>
       </div>
       <div className="">

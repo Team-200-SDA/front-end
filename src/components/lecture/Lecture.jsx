@@ -2,7 +2,7 @@ import React from 'react';
 import LectureApi from '../../api/LectureApi';
 import fileTypeImageFA from '../../js/functions/fileUpload/fileTypeImageFA';
 import { useContext } from 'react';
-import { LangContext } from '../../contexts/LanguageContext';
+import { LangContext } from '../../js/states/LanguageContext';
 
 export default function Lecture({ getAllLectures, lecture, userRole }) {
   const { language } = useContext(LangContext);
