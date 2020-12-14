@@ -43,3 +43,21 @@
   margin-right: 12px;
   cursor: pointer;
 }
+
+@media screen and (max-width: 767px) {
+  .create-lecture-div {
+    max-width: 98%;
+  }
+
+  .lecture-cards {
+    width: 78%;
+  }
+
+  .MuiFormControl-root {
+    width: 50%;
+  }
+
+  .MuiFormGroup-row {
+    justify-content: center;
+  }
+}

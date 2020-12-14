@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Auth from '../../services/Auth';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
@@ -7,9 +7,10 @@ import { LangContext } from '../../contexts/LanguageContext';
 
 function LoginPage() {
   const { language, changeEn, changeSv, changeEs } = useContext(LangContext);
+  const [registered, setRegistered] = useState(true);
+
   const login = async loginData => {
     const loginSuccess = await Auth.login(loginData);
-
     if (!loginSuccess) {
       alert(language.invalid);
     }
@@ -22,46 +23,50 @@ function LoginPage() {
     }
   };
 
-  return (
-    <div className="wrapper">
-      <div className="container">
-        <div className="row mt-4">
-          <div className="col-md-6 " style={{ color: 'white' }}>
-            <div className="btn-group">
-              <button
-                type="button"
-                className="btn btn-danger dropdown-toggle"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false">
-                {language.language}
-              </button>
-              <div className="dropdown-menu">
-                <a className="dropdown-item" onClick={changeEn} href="#">
-                  {language.english}
-                </a>
-                <a className="dropdown-item" onClick={changeSv} href="#">
-                  {language.swedish}
-                </a>
-                <a className="dropdown-item" onClick={changeEs} href="#">
-                  {language.spanish}
-                </a>
-              </div>
-            </div>
-            <h1>SDA</h1>
-            <p>{language.starter}</p>
-          </div>
-          <div className="col-md-6">
-            <div className="row">
-              <div className="col-12  strong-shadow">
-                <LoginForm onSubmit={login} />
-              </div>
+  const registerFlip = () => {
+    setRegistered(!registered);
+  };
 
-              <div className="col-12 mt-4">
-                <RegisterForm onSubmit={register} />
+  return (
+    <div className="login-wrap">
+      <div className="login-background" />
+      <div className="card-body login-form-div">
+        <h1 className="brand-name">Edulane</h1>
+
+        <div className="login-register">
+          {registered ? (
+            <>
+              <LoginForm onSubmit={login} />
+              <div className="login-flip" onClick={registerFlip}>
+                Sign Up?
               </div>
-            </div>
-          </div>
+            </>
+          ) : (
+            <>
+              <RegisterForm onSubmit={register} />
+              <div className="login-flip" onClick={registerFlip}>
+                Already Registered?
+              </div>
+            </>
+          )}
+        </div>
+
+        <div className="login-footer">
+          <span>
+            <span className="footer-link" onClick={changeEn}>
+              {language.english}
+            </span>
+          </span>
+          <span>
+            <span className="footer-link" onClick={changeSv}>
+              {language.swedish}
+            </span>
+          </span>
+          <span>
+            <span className="footer-link" onClick={changeEs}>
+              {language.spanish}
+            </span>
+          </span>
         </div>
       </div>
     </div>

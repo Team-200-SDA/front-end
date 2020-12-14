@@ -47,30 +47,22 @@ function TodoListComponent() {
 
   const jsxTodos = todos.map(todo => {
     return (
-      <tr key={uuid()}>
-        <td>{todo.title}</td>
+      <tr key={uuid()} className={todo.complete ? 'todo-complete' : null}>
+        <th scope="row">{todo.title}</th>
         <td>{todo.description}</td>
         <td>{todo.dueDate}</td>
-        <td>{todo.complete ? <i className="fas fa-check" /> : null}</td>
         <td>
-          <button
-            type="submit"
-            onClick={() => deleteTodo(todo.id)}
-            className="btn btn-info">
-            <i className="fas fa-trash-alt" />
-          </button>
+          <i
+            onClick={() => updateComplete(todo)}
+            className={`${
+              todo.complete ? 'far fa-check-circle' : 'far fa-circle'
+            } todo-icon`}
+          />
         </td>
-
         <td>
-        <button
-          type="submit"
-          onClick={() => updateComplete(todo)}
-          className="btn btn-info">
-          <i className="fas fa-clipboard-check"></i>
-        </button>
+          <i onClick={() => deleteTodo(todo.id)} className="fas fa-trash todo-icon" />
         </td>
       </tr>
-      
     );
   });
 
@@ -78,40 +70,32 @@ function TodoListComponent() {
   return (
     <div className="ToDoList-Page-Wrap">
       <div className="title-div">
-        <div className="page-title-text">
-          <h1>
-            <i className="fas fa-tasks mr-3" />
-            Todo List
-          </h1>
-        </div>
+        <h1 className="page-title-text">
+          <i className="fas fa-tasks title-icon"></i>
+          {language.Todo_List}
+        </h1>
       </div>
 
-      <div className="card-body-todo create-assignment-div">
-        <div className="container d-flex justify-content-around mb-4 btn-group btn-group-toggle">
-          <table className="table table-striped table-bordered">
+      <div className="card-body todo-card">
+        {jsxTodos.length === 0 ? null : (
+          <table className="table table-striped">
             <thead>
               <tr>
-                <td>Title</td>
-                <td>Description</td>
-                <td>Due Date</td>
-                <td>Mark as Complete</td>
-                <td>Delete</td>
-                <td>Status</td>
+                <th scope="col">{language.Title}</th>
+                <th scope="col">{language.Description}</th>
+                <th scope="col">{language.Due_Date}</th>
+                <th scope="col">{language.Status}</th>
+                <th scope="col">{language.Delete}</th>
               </tr>
             </thead>
             <tbody>{jsxTodos}</tbody>
           </table>
-        </div>
-
-       
-          <Link to="/todo-form" className="btn info">
-            <Button
-            variant="contained"
-            color="primary">
-            Create
-            </Button>
-          </Link>
-        
+        )}
+        <Link to="/todo-form" className="btn info">
+          <Button variant="contained" color="primary">
+            {language.Create_Todo}
+          </Button>
+        </Link>
       </div>
     </div>
   );

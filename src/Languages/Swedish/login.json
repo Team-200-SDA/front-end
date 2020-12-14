@@ -115,5 +115,20 @@
 	"Join_Classroom":"Gå med i klassrummet",
 	"Update_profile_picture":"Uppdatera profilbild",
 	"Select_assignment":"Välj uppgift",
-	"Enter_lecture_name":"Ange ett föreläsningsnamn"
+	"Enter_lecture_name":"Ange ett föreläsningsnamn",
+	"Mark_Complete":"Markera som slutfört",
+	"Status":"Status",
+	"Create_new_Assignment":"Skapa ett nytt uppdrag",
+	"Register_teacher":"Registrera dig som lärare",
+	"Post_Article_Announcement":"Lägg upp en artikel eller ett meddelande",
+  "Enter_article_announcement_title":"Ange en artikel eller tillkännagivande titel",
+	"Article_announcement_content":"Innehåll i artikel eller tillkännagivande",
+	"News_Announcement_Title":"Nyheter eller tillkännagivande titel",
+	"News_Article_Content":"Nyheter eller artikelinnehåll",
+	"Subjects":"Ämnen",
+	"Register":"Registrera",
+	"Send_message_to":"Send message to",
+	"No_Active_Conversations":"Inga aktiva konversationer",
+	"Create_new_Todo":"Skapa en ny Todo",
+	"Create Todo":"Skapa Todo"
 }

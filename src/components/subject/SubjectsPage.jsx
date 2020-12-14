@@ -37,8 +37,7 @@ function SubjectsPage() {
       <div className="title-div">
         <h1 className="page-title-text">
           <i className="fas fa-book-open title-icon" />
-          {/* Erkan */}
-          Subjects
+          {language.Subjects}
         </h1>
       </div>
 
