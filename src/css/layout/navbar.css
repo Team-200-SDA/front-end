@@ -58,6 +58,9 @@
   align-items: center;
   padding: 0;
 }
+.nav-wrap .navbar .nav-link:hover {
+  color: var(--primary);
+}
 
 .nav-icon {
   margin-right: 16px;

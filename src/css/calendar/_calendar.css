@@ -1,0 +1,43 @@
+.calendar-card {
+  padding: 0;
+}
+
+.calendar.css-1uqnjl3-Calendar {
+  border-radius: 22px;
+  -webkit-border-radius: 22px;
+  -moz-border-radius: 22px;
+  -ms-border-radius: 22px;
+  -o-border-radius: 22px;
+  border: none;
+  color: var(--text);
+}
+
+.css-g3exbr-MultiEvent-MultiEvent {
+  background: var(--primary) !important;
+}
+
+.css-g3exbr-MultiEvent-MultiEvent:hover {
+  background: var(--dominant) !important;
+}
+
+.css-sg5tkv-Event-Event {
+  color: var(--primary) !important;
+}
+
+.css-jc1ljl-MultiEvent {
+  font-size: 9pt !important;
+}
+
+.css-1f19q1x-Event {
+  font-size: 9pt !important;
+}
+
+.css-155wnvz-Calendar {
+  padding-left: 14px !important;
+  font-size: 9pt !important;
+}
+
+a.css-d0cexe-Calendar {
+  padding-right: 14px !important;
+  font-size: 9pt !important;
+}

@@ -81,6 +81,10 @@ a {
   height: 100%;
 }
 
+a:hover {
+  color: var(--primary) !important;
+}
+
 button {
   color: var(--light);
   background: var(--dominant);
