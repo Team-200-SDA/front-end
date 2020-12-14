@@ -7,7 +7,7 @@ import { RecoilRoot } from 'recoil';
 
 // Import pages
 import LoginPage from './components/auth/LoginPage';
-import HomePage from './components/home/HomePage';
+import NewsPage from './components/news/NewsPage';
 import Chat from './components/chat/Chat';
 import LiveVideo from './components/live/LiveVideo';
 import Userprofile from './components/userprofile/UserProfile';
@@ -42,7 +42,7 @@ function App() {
           <div className="center">
             <Switch>
               <Route path="/" exact>
-                <HomePage />
+                <NewsPage />
               </Route>
               <Route path="/lectures" exact>
                 <SubjectsPage />

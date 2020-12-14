@@ -12,6 +12,12 @@ export default function CreateNews(props) {
   const [body, setBody] = useState('');
   const [image, setImage] = useState('');
 
+  /**
+   * Creates a news object based on state values.
+   * Do a POST request with the news as the payload.
+   * Resets state values.
+   * Updates list of news by doing a GET request.
+   */
   function createNews() {
     if (body === '') {
       return;
@@ -34,7 +40,9 @@ export default function CreateNews(props) {
 
   return (
     <div className="card-body create-news-div">
-      <div className="creation-form upload-file-tag">{language.Post_Article_Announcement}</div>
+      <div className="creation-form upload-file-tag">
+        {language.Post_Article_Announcement}
+      </div>
       <FormLabel className="form-label" component="legend">
         {language.Enter_article_announcement_title}
       </FormLabel>
@@ -56,6 +64,7 @@ export default function CreateNews(props) {
         />
 
         <ImageUploader setImgUrl={setImage} uploadPreset={'newspics'} />
+        {/* upload image from local storage */}
       </div>
 
       <div className="form-group">

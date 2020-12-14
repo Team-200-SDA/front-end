@@ -20,6 +20,12 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
   const [uploadResponse, setUploadResponse] = useState(null);
   const [uploadType, setUploadType] = useState('');
 
+  /**
+   * Creates a lecture object based on state values.
+   * Do a POST request with the lecture as the payload.
+   * Resets state values.
+   * Updates list of lecture by doing a GET request.
+   */
   function createLecture() {
     if (link === '') {
       return;
@@ -43,10 +49,18 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
     });
   }
 
+  /**
+   *
+   * @param {*} event
+   * Set the upload type state based on radio button selection.
+   */
   function radioChange(event) {
     setUploadType(event.target.value);
   }
 
+  /**
+   * Whenever a file is uploaded, set the link state to the url where the file is stored.
+   */
   useEffect(() => {
     if (uploadResponse === null) {
       return;

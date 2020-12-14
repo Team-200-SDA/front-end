@@ -15,6 +15,9 @@ export default function HomePage() {
 
   const user_role = window.sessionStorage.getItem('role');
 
+  /**
+   * API Call: Get all news created by teachers
+   */
   function getAllNews() {
     NewsApi.getAllNews().then(data => {
       setNews(data.data);
@@ -26,6 +29,12 @@ export default function HomePage() {
     getAllNews();
   }, []);
 
+  /**
+   *
+   * @param {Long} newsId
+   * Delete a specific news by id and then update the component by doing API
+   * calls to get the updated list of news.
+   */
   function deleteNews(newsId) {
     NewsApi.deleteNews(newsId).then(() => {
       alert(language.News_Deleted);
