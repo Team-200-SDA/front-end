@@ -3,8 +3,10 @@ import English from '../../Languages/english.json';
 import Swedish from '../../Languages/swedish.json';
 import Spanish from '../../Languages/spanish.json';
 
+// Created a contextProvider for wrapping whole website
 export const LangContext = createContext();
 
+//defined functions to change the langauge
 const LangContextProvider = props => {
   const [language, setLanguage] = useState(English, Swedish, Spanish);
 
