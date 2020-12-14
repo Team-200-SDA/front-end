@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { useRecoilState } from 'recoil';
 import CommentsApi from '../../../api/CommentsApi';
+import { commentState } from '../../../js/states/CommentState';
 import { useContext } from 'react';
 import { LangContext } from '../../../contexts/LanguageContext';
 
@@ -10,30 +12,46 @@ export default function CommentForm({
   setIsFormOpen,
   post,
   isUpdate,
+  setIsUpdate,
   comment
 }) {
   //props come from Comment
   const [body, setBody] = useState(initialBody || '');
   const { language } = useContext(LangContext);
-  const onCreateCommentClick = e => {
-    e.preventDefault();
-    const commentData = { body, post: post };
-    return CommentsApi.createComment(commentData).then(() => setIsFormOpen(false));
+  const [commentAtom, setCommentAtom] = useRecoilState(commentState);
+
+  // another copy of getComments.
+  const getAllCommentsByPostId = async (postId) => {
+    const res = await CommentsApi.getCommentById(postId);
+    return setCommentAtom((res.data.sort((a, b) => b.id - a.id)));
   };
 
-  const onUpdateCommentClick = e => {
+
+  const onCreateCommentClick = async e => {
+    e.preventDefault();
+    const commentData = { body, post: post };
+    await CommentsApi.createComment(commentData);
+    setIsFormOpen(false);
+    getAllCommentsByPostId(post.id);
+  };
+
+  const onUpdateCommentClick = async e => {
     e.preventDefault();
     const updatedComment = { ...comment, body };
-    return CommentsApi.updateComment(updatedComment).then(() => {
-      window.location.reload();
-    });
+    await CommentsApi.updateComment(updatedComment);
+    getAllCommentsByPostId(commentAtom[0].post.id);
+    setIsUpdate(false);
   };
 
   return (
     <div className="card mt-4">
       <div className="card-body">
         <h4 className="card-title">{formTitle || 'Create a comment'}</h4>
-        <form onSubmit={isUpdate ? onUpdateCommentClick : onCreateCommentClick}>
+
+        <form
+          onSubmit={
+            isUpdate ? e => onUpdateCommentClick(e) : e => onCreateCommentClick(e)
+          }>
           <div className="form-group">
             <label>{language.Body}</label>
             <textarea

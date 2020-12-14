@@ -1,31 +1,28 @@
-import React, { useState, useEffect } from "react";
-import CommentsList from "./CommentsList";
-import CommentsApi from "../../../api/CommentsApi";
+import React, { useState, useEffect } from 'react';
+import CommentsList from './CommentsList';
+import CommentsApi from '../../../api/CommentsApi';
+import { useRecoilState } from 'recoil';
+import { commentState } from '../../../js/states/CommentState';
 
-export default function CommentPageDetails({ match }) {
-  const [comments, setComments] = useState([]);
+export default function CommentPageDetails({ match, post }) {
+  const [comments, setComments] = useRecoilState(commentState);
 
-  const getAllCommentsByPostId = () => {
-    return CommentsApi.getCommentById(match.params.id).then((res) =>
-      setComments(res.data)
-    );
+  const getAllCommentsByPostId = async () => {
+    const res = await CommentsApi.getCommentById(post.id);
+    return setComments((res.data.sort((a, b) => b.id - a.id)));
   };
+
 
   useEffect(() => {
     getAllCommentsByPostId();
   }, []);
 
-  const deleteComment = (comment) => {
-    return CommentsApi.deleteComment(comment.id).then(() =>
-      setComments(comments.filter((a) => a.id !== comment.id))
-    );
+  const deleteComment = async comment => {
+    await CommentsApi.deleteComment(comment.id);
+    return setComments(comments.filter(a => a.id !== comment.id));
   };
 
   return (
-    <div>
-      {<CommentsList 
-      comments={comments} 
-      onCommentDelete={deleteComment} />}
-    </div>
+    <div>{<CommentsList comments={comments} onCommentDelete={deleteComment} />}</div>
   );
 }
