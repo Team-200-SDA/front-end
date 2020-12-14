@@ -12,6 +12,9 @@ function SubjectsPage() {
   const [subjects, setSubjects] = useState([]);
   const userRole = window.sessionStorage.getItem('role');
 
+  /**
+   * Get a list of subjects from the backend.
+   */
   const getSubjects = async () => {
     const response = await SubjectApi.getAll();
     setSubjects(response.data);
@@ -21,6 +24,10 @@ function SubjectsPage() {
     getSubjects();
   }, []);
 
+  /**
+   * Create an array of Subject components to render to the screen based on the array
+   * from the API call done in the use Effect.
+   */
   const jsxSubjects = subjects.map(subject => {
     return (
       <Subject

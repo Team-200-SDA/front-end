@@ -11,6 +11,10 @@ function CreateSubject({ getSubjects }) {
   const [description, setDescription] = useState('');
   const [link, setLink] = useState('');
 
+  /**
+   * Create a POST request for a new subject object using the state values.
+   * Reset values to default after request is done.
+   */
   const createSubject = async () => {
     await SubjectApi.create({ name, description, link });
     setName('');
