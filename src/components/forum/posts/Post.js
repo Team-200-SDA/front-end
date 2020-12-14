@@ -41,8 +41,6 @@ function Post({
     setIsUpdate(true);
   };
 
-
-
   const onPostFormSubmit = (postData) => {
     const updatedPost = { ...post, ...postData };
     return onPostUpdate(updatedPost).then(() => setIsUpdate(false));
@@ -90,19 +88,16 @@ function Post({
         />
       ) : (
         <div className="card">
-          <div className="card-body">
-            <div className="card-title">
-              <div>
-                {" "}
-                <img src={user.profilepic} />
-                <h3>{post.title}</h3>
-              </div>
+          <div className="card-body forum">
+            <span className="card-info">
+                <img className="forum-avatar" src={user.profilepic} />
+                <p className= "user-name">{post.user.name}</p>
+              
+            </span>
+            <div className="post-title"> <h3>{post.title}</h3></div>
+            <div className="post-body">{post.body}</div>
 
-              <p className="badge badge-primary text-wrap">{post.user.name}</p>
-            </div>
-            <div>{post.body}</div>
-
-            <div className="mt-3">
+            <div className="forum-buttons">
               {isMyPost && (
                 <>
                   <Button
@@ -111,7 +106,7 @@ function Post({
                     color="primary"
                     onClick={onUpdateClick}
                   >
-                    {language.Update}
+                    Edit
                     <i class="fas fa-edit"></i>
                   </Button>
 
@@ -137,31 +132,33 @@ function Post({
               </Button>
             </div>
 
-            <Tooltip
-              title={<h5>{post.likedUsers.join(",  ")}</h5>}
-              TransitionComponent={Collapse}
-              enterDelay={800}
-              leaveDelay={200}
-              arrow
-            >
-              <i
-                className="far fa-thumbs-up mt-4 fa-4x"
-                onClick={() => {
-                  setLikeCount(likeCount + 1);
-                  onPostLike();
-                }}
+            <div className="like-dislike">
+              <Tooltip
+                title={<h5>{post.likedUsers.join(",  ")}</h5>}
+                TransitionComponent={Collapse}
+                enterDelay={800}
+                leaveDelay={200}
+                arrow
               >
-                {likeCount}
-              </i>
-            </Tooltip>
+                <i
+                  className="far fa-thumbs-up mt-4 fa-2x"
+                  onClick={() => {
+                    setLikeCount(likeCount + 1);
+                    onPostLike();
+                  }}
+                >
+                  <p> {likeCount} </p>
+                </i>
+              </Tooltip>
 
-            <i
-              className="far fa-thumbs-down fa-4x fa-flip-horizontal"
-              onClick={() => {
-                setLikeCount(likeCount - 1);
-                onPostDislike();
-              }}
-            ></i>
+              <i
+                className="far fa-thumbs-down fa-2x fa-flip-horizontal"
+                onClick={() => {
+                  setLikeCount(likeCount - 1);
+                  onPostDislike();
+                }}
+              ></i>
+            </div>
 
             <Link to="#">
               <u
