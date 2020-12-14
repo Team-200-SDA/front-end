@@ -12,7 +12,7 @@ function RegisterForm({ onSubmit }) {
 
   return (
     <div className=" register-form">
-      <h4 className="card-title">Register</h4>
+      <h4 className="card-title">{language.Register}</h4>
       <div>
         <div className="form-group">
           <FormLabel className="form-label" component="legend">
