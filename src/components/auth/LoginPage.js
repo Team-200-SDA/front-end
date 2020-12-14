@@ -38,8 +38,7 @@ function LoginPage() {
             <>
               <LoginForm onSubmit={login} />
               <div className="login-flip" onClick={registerFlip}>
-                Sign Up?
-                {/* Erkan, the language.something is broken here. Doesnt show the text. */}
+                {language.Signup}
               </div>
             </>
           ) : (
