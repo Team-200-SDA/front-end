@@ -54,6 +54,12 @@ function Post({
     return await onPostUpdate(updatedPost); //a time lag happens between BE and FE so setStatus added to onClick
   };
 
+  const actionLike = () => {
+    setLikeCount(likeCount + 1);
+    onPostLike();
+  };
+  const userLiked = post.likedUsers.includes(user.name);
+
   const onPostDislike = async () => {
     var newLikeList = post.likedUsers.filter((item) => item !== user.name);
     console.log(newLikeList);
@@ -90,11 +96,13 @@ function Post({
         <div className="card">
           <div className="card-body forum">
             <span className="card-info">
-                <img className="forum-avatar" src={user.profilepic} />
-                <p className= "user-name">{post.user.name}</p>
-              
+              <img className="forum-avatar" src={user.profilepic} />
+              <p className="user-name">{post.user.name}</p>
             </span>
-            <div className="post-title"> <h3>{post.title}</h3></div>
+            <div className="post-title">
+              {" "}
+              <h3>{post.title}</h3>
+            </div>
             <div className="post-body">{post.body}</div>
 
             <div className="forum-buttons">
@@ -142,10 +150,7 @@ function Post({
               >
                 <i
                   className="far fa-thumbs-up mt-4 fa-2x"
-                  onClick={() => {
-                    setLikeCount(likeCount + 1);
-                    onPostLike();
-                  }}
+                  onClick={() => (userLiked ? null : actionLike())}
                 >
                   <p> {likeCount} </p>
                 </i>
