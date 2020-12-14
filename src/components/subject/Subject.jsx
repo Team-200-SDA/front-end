@@ -4,7 +4,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SubjectApi from '../../api/SubjectApi';
 import { useContext } from 'react';
-import { LangContext } from '../../contexts/LanguageContext';
+import { LangContext } from '../../js/states/LanguageContext';
 
 function Subject({ subject, getSubjects, userRole }) {
   const { language } = useContext(LangContext);

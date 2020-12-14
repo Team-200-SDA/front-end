@@ -9,6 +9,8 @@ import { roomUrlFromPageUrl, pageUrlFromRoomUrl } from '../../js/live/urlUtils';
 import DailyIframe from '@daily-co/daily-js';
 import { logDailyEvent } from '../../js/live/logUtils';
 import '../../css/live/sharedLive.css';
+import { useContext } from 'react';
+import { LangContext } from '../../js/states/LanguageContext';
 
 const STATE_IDLE = 'STATE_IDLE';
 const STATE_CREATING = 'STATE_CREATING';
@@ -17,7 +19,9 @@ const STATE_JOINED = 'STATE_JOINED';
 const STATE_LEAVING = 'STATE_LEAVING';
 const STATE_ERROR = 'STATE_ERROR';
 
+
 export default function LiveVideo() {
+  const { language } = useContext(LangContext);
   const [appState, setAppState] = useState(STATE_IDLE);
   const [roomUrl, setRoomUrl] = useState(null);
   const [callObject, setCallObject] = useState(null);
@@ -181,7 +185,7 @@ export default function LiveVideo() {
       <div className="title-div">
         <h1 className="page-title-text">
           <i className="fas fa-video title-icon" />
-          Live Stream
+          {language.Live_Stream}
         </h1>
       </div>
 

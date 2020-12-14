@@ -1,9 +1,12 @@
 import React, { useEffect, useRef } from 'react';
+import { useContext } from 'react';
+import { LangContext } from '../../js/states/LanguageContext';
+
 
 export default function Tile(props) {
   // Mom always said life was like a box of props...
   const { videoTrack, audioTrack, isLocalPerson, isLarge, isLoading, onClick } = props;
-
+  const { language } = useContext(LangContext);
   const videoEl = useRef(null);
   const audioEl = useRef(null);
 
@@ -22,7 +25,7 @@ export default function Tile(props) {
   }, [audioTrack]);
 
   function getLoadingComponent() {
-    return isLoading && <p className="loading">Loading...</p>;
+    return isLoading && <p className="loading">{language.Loading}</p>;
   }
 
   function getVideoComponent() {

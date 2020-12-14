@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import getFilenameAndExtension from '../../js/functions/fileUpload/getFilenameAndExtention';
 import FileUploader from './FileUploader';
 import { useContext } from 'react';
-import { LangContext } from '../../contexts/LanguageContext';
+import { LangContext } from '../../js/states/LanguageContext';
 import { FormLabel } from '@material-ui/core';
 
 export default function FileStorageForm({ uploadFile }) {
@@ -38,8 +38,8 @@ export default function FileStorageForm({ uploadFile }) {
         </h1>
       </div>
       <div className="card-body card-filestorage">
-        <div className="creation-form upload-file-tag">Store files Online</div>
-        <FormLabel component="legend">Select a file to upload</FormLabel>
+        <div className="creation-form upload-file-tag">{language.Store_files_Online}</div>
+        <FormLabel component="legend">{language.Select_file_to_upload}</FormLabel>
         <div className="storage-uploader file-storage-button">
           {/* FileUploader component allows the user to choose file and uploads the chosen file in cloudinary and 
           returns the response with filename, url, filetype */}

@@ -1,7 +1,7 @@
 import { Checkbox, FormLabel } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
-import { LangContext } from '../../contexts/LanguageContext';
+import { LangContext } from '../../js/states/LanguageContext';
 
 function RegisterForm({ onSubmit }) {
   const [name, setName] = useState('');
@@ -63,7 +63,7 @@ function RegisterForm({ onSubmit }) {
             name="checkedB"
             color="var(--primary)"
           />
-          <label className="checkbox-label">Register as a teacher</label>
+          <label className="checkbox-label">{language.Register_teacher}</label>
         </div>
         <button
           className="btn login-button"

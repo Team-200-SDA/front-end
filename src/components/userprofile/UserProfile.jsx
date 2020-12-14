@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import UserProfileForm from "./UserProfileForm";
 import UserApi from "../../api/UserApi";
 import { useContext } from "react";
-import { LangContext } from "../../contexts/LanguageContext";
+import { LangContext } from "../../js/states/LanguageContext";
 
 /**
  * This component calls Api to get logged in user details and updates address, phone no and profile picture

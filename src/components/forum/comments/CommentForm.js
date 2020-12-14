@@ -3,7 +3,7 @@ import { useRecoilState } from 'recoil';
 import CommentsApi from '../../../api/CommentsApi';
 import { commentState } from '../../../js/states/CommentState';
 import { useContext } from 'react';
-import { LangContext } from '../../../contexts/LanguageContext';
+import { LangContext } from '../../../js/states/LanguageContext';
 
 export default function CommentForm({
   initialBody,

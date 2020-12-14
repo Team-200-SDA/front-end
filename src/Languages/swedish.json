@@ -130,5 +130,30 @@
 	"Send_message_to":"Send message to",
 	"No_Active_Conversations":"Inga aktiva konversationer",
 	"Create_new_Todo":"Skapa en ny Todo",
-	"Create Todo":"Skapa Todo"
+	"Upload_assignment":"Uppladdningsuppgift",
+	"Enter_assignment_name":"Ange ett uppdragsnamn",
+	"Sign_up?":"Sign Up?",
+	"Already_Registered":"Redan registrerad?",
+	"Store_files_Online":"Lagra filer online",
+	"Select_file_to_upload":"Välj en fil att ladda upp",
+	"Update_post":"Uppdatera inlägg",
+	"Edit":"Redigera",
+	"show_comments":"Visa kommentarer",
+	"Create_new_Lecture":"Skapa en ny föreläsning",
+	"Select_lecture_type":"Välj föreläsningstyp",
+	"Looks_like":"Det verkar som om du måste uppgradera din webbläsare för att ringa videosamtal.",
+	"this_page":"this page",
+	"for_help":"för hjälp med att få en webbläsarversion som stöds.",
+	"Loading":"Läser in...",
+	"Read_less":"Läs mindre...",
+	"Read_More":"Läs mer...",
+	"Update_home_address":"Actualizar dirección particular",
+	"Enter_Address":"Ange en adress",
+	"Update_phone_number":"Uppdatera telefonnummer",
+	"Phone_No":"Telefonnr.",
+	"Enter_Phone_Number":"Enter a Phone Number",
+	"Hi":"Hej vän...............",
+	"Fantastic":"Fantastiskt, jag har följande resurser för dig på Javascript:"
+
+  
 }

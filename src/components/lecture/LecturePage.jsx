@@ -5,7 +5,7 @@ import LectureApi from '../../api/LectureApi';
 import CreateLecture from './CreateLecture';
 import Lecture from './Lecture';
 import { useContext } from 'react';
-import { LangContext } from '../../contexts/LanguageContext';
+import { LangContext } from '../../js/states/LanguageContext';
 
 export default function LecturePage() {
   // const subjects = useRecoilValue(subjectsState);
