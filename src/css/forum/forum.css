@@ -23,7 +23,8 @@
   height: auto;
   border-radius: 20%;
   border: 3px solid var(--primary);
-  max-width: 60%;
+  max-width: 80px;
+  max-height: 80px ;
 }
 
 .user-name {
@@ -47,7 +48,8 @@
 }
 
 .comment-body {
-  padding-top: 50px;
+  padding-top: 40px;
+  padding-left: 90px;
 }
 
 .like-dislike {

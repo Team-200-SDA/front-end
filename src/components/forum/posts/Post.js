@@ -13,6 +13,8 @@ import "../../../css/forum/forum.css";
 import "../../../css/shared.css";
 import "../../../css/subjects/_subjects.css";
 
+const defaultImage = "/images/defaultUserImage/blank-profile-pic.png";
+
 function Post({
   post,
   onPostUpdate,
@@ -93,10 +95,24 @@ function Post({
           formTitle="Update post"
         />
       ) : (
-        <div className="card">
+        <div className="card mt-4">
           <div className="card-body forum">
             <span className="card-info">
-              <img className="forum-avatar" src={post.user.profilepic} />
+            <div >
+                {post.user.profilepic === null ? (
+                  <img
+                    className="forum-avatar"
+                    src={defaultImage}
+                    alt="User profile"
+                  />
+                ) : (
+                  <img
+                    className="forum-avatar"
+                    src={post.user.profilepic}
+                    alt="User profile"
+                  />
+                )}
+              </div>
               <p className="user-name">{post.user.name}</p>
             </span>
             <div className="post-title">

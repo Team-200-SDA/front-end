@@ -7,6 +7,8 @@ import { LangContext } from "../../../contexts/LanguageContext";
 //styling import
 import "../../../css/forum/forum.css";
 
+const defaultImage = "/images/defaultUserImage/blank-profile-pic.png";
+
 function Comment({
   comment,
   onCommentDelete,
@@ -20,7 +22,7 @@ function Comment({
   const [user, setUser] = useState([]);
 
   const getUser = () => {
-    UserApi.getLoggedInUser().then(res => {
+    UserApi.getLoggedInUser().then((res) => {
       setUser(res.data);
     });
   };
@@ -57,15 +59,32 @@ function Comment({
           onCommentUpdate={onCommentUpdate}
           getAllCommentsByPostId={getAllCommentsByPostId}
         />
-        ) : (
+      ) : (
         <div className="card mt-4">
-         <div className="card-body forum">
-         <span className="card-info">
-              <img className="forum-avatar" src={comment.user.profilepic} />
+          <div className="card-body forum">
+            <span className="card-info">
+              {/* <img className="forum-avatar" src={comment.user.profilepic} /> */}
+
+              <div >
+                {comment.user.profilepic === null ? (
+                  <img
+                    className="forum-avatar"
+                    src={defaultImage}
+                    alt="User profile"
+                  />
+                ) : (
+                  <img
+                    className="forum-avatar"
+                    src={user.profilepic}
+                    alt="User profile"
+                  />
+                )}
+              </div>
+
               <p className="user-name">{comment.user.name}</p>
             </span>
             <div className="comment-body">{comment.body}</div>
-          
+
             <div className="forum-buttons">
               {isMyComment && (
                 <span className="edit-delete">
@@ -73,18 +92,13 @@ function Comment({
                     class="fas fa-trash fa-lg"
                     title="delete"
                     onClick={() => onCommentDelete(comment)}
-                  >
-                 
-                  </i>
+                  ></i>
 
                   <i
                     class="fas fa-edit fa-lg"
                     title="edit"
                     onClick={onUpdateComment}
-                  >
-                
-                    </i>
-                 
+                  ></i>
                 </span>
               )}
             </div>
