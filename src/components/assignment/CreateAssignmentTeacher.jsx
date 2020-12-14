@@ -12,6 +12,8 @@ import getFilenameAndExtension from '../../js/functions/fileUpload/getFilenameAn
 import FileUploader from '../filestorage/FileUploader';
 import { LangContext } from '../../js/states/LanguageContext';
 import { useContext } from 'react';
+import { format } from 'date-fns';
+import Calendar from 'react-calendar';
 
 export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
   const { language } = useContext(LangContext);
@@ -69,6 +71,13 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
     setLink(uploadResponse.secure_url);
     setUploadType('UPLOAD');
   }, [uploadResponse]);
+
+  /**
+   * Set default state as today. Doing this in useState causes an error.
+   */
+  useEffect(() => {
+    setDueDate(oldDate => format(new Date(), 'dd-MMM-yyyy'));
+  }, []);
 
   return (
     <div className="card-body create-assignment-div">
@@ -129,15 +138,8 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
           onChange={event => setLink(event.target.value)}
           disabled={uploadType === 'UPLOAD' || uploadType === ''}
         />
-        <FormLabel className="form-label" component="legend">
-          {language.Due_Date}
-        </FormLabel>
-        <input
-          className="form-control subject-input"
-          placeholder="Due Date"
-          value={dueDate}
-          onChange={event => setDueDate(event.target.value)}
-        />
+        <FormLabel component="legend">{language.Due_Date}</FormLabel>
+        <Calendar onChange={(value, event) => setDueDate(format(value, 'dd-MMM-yyyy'))} />
       </div>
 
       <div className="form-group">

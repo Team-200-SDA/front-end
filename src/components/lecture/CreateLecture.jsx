@@ -82,9 +82,21 @@ export default function CreateLecture({ urlParams, getAllLectures }) {
               aria-label="Assignment Type"
               value={uploadType}
               onChange={radioChange}>
-              <FormControlLabel value="UPLOAD" control={<Radio />} label={language.Upload_File} />
-              <FormControlLabel value="VIDEO" control={<Radio />} label={language.Video_Link} />
-              <FormControlLabel value="LINK" control={<Radio />} label={language.External_Link} />
+              <FormControlLabel
+                value="UPLOAD"
+                control={<Radio />}
+                label={language.Upload_File}
+              />
+              <FormControlLabel
+                value="VIDEO"
+                control={<Radio />}
+                label={language.Video_Link}
+              />
+              <FormControlLabel
+                value="LINK"
+                control={<Radio />}
+                label={language.External_Link}
+              />
             </RadioGroup>
           </FormControl>
 
