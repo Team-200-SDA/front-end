@@ -41,7 +41,6 @@ function Post({
     setIsUpdate(true);
   };
 
-console.log(user.profilepic)
 
 
   const onPostFormSubmit = (postData) => {
@@ -93,11 +92,12 @@ console.log(user.profilepic)
         <div className="card">
           <div className="card-body">
             <div className="card-title">
-
-              <div > <img src = {user.profilepic} />  
-              <h3>{post.title}</h3>
+              <div>
+                {" "}
+                <img src={user.profilepic} />
+                <h3>{post.title}</h3>
               </div>
-              
+
               <p className="badge badge-primary text-wrap">{post.user.name}</p>
             </div>
             <div>{post.body}</div>
