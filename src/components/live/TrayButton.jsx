@@ -1,10 +1,5 @@
 import React from 'react';
-import Icon, {
-  TYPE_MUTE_CAMERA,
-  TYPE_MUTE_MIC,
-  TYPE_SCREEN,
-  TYPE_LEAVE
-} from '../Icon/Icon';
+import Icon, { TYPE_MUTE_CAMERA, TYPE_MUTE_MIC, TYPE_SCREEN, TYPE_LEAVE } from './Icon';
 
 // This is important => Click it => https://miro.medium.com/max/852/1*f1Nlx5oKUMfgjhwhMEEXOA.png
 export default function TrayButton({

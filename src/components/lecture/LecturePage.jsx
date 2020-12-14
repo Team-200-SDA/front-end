@@ -14,6 +14,10 @@ export default function LecturePage() {
   const [lectures, setLectures] = useState([]);
   const userRole = window.sessionStorage.getItem('role');
 
+  /**
+   * Asynchronous API Call: Get all lectures created by teachers by
+   * subjectId
+   */
   const getLectures = async () => {
     try {
       const response = await LectureApi.getAllLecturesBySubjectId(urlParams.id);

@@ -7,6 +7,13 @@ import { LangContext } from '../../contexts/LanguageContext';
 export default function Lecture({ getAllLectures, lecture, userRole }) {
   const { language } = useContext(LangContext);
   const fileType = fileTypeImageFA(lecture.type);
+
+  /**
+   * @param {Long} lectureId
+   * Delete a specific lectureId by id and then update the component by doing API
+   * calls to get the updated list of lectures.
+   */
+
   function deleteLecture(lectureId) {
     LectureApi.deleteLecture(lectureId).then(() => {
       alert(language.Lecture_Deleted);

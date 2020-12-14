@@ -14,11 +14,18 @@ function PrivChatThread({
   setConversations
 }) {
   const [messageField, setMessageField] = useState('');
-  // This needs to be let, or inbox (parent component) wont update with
-  // messages from other/new 1st time senders 🤷‍♂️
   // const { language } = useContext(LangContext);
+
+  /**
+   * This needs to be let, or inbox (parent component) wont update with
+   * messages from other/new 1st time senders 🤷‍♂️
+   */
   let thread = conversations.find(thread => thread.receiverName === activeThreadReceiver);
 
+  /**
+   * @param {*} event
+   * POSTS a message object to the receiver based on email.
+   */
   const sendMessage = async event => {
     event.preventDefault();
     try {
@@ -33,6 +40,10 @@ function PrivChatThread({
     }
   };
 
+  /**
+   * Delete a message based on id.
+   * Sets the active thread to none and removes the thread from the array of conversations.
+   */
   const deleteMessages = () => {
     thread.thread.forEach(async msg => {
       await PrivChatApi.deleteMessage(msg.id);
@@ -41,14 +52,22 @@ function PrivChatThread({
     removeThread(thread);
   };
 
+  /**
+   * This is used to remove the empty thread from the conversations array.
+   * Because the state array is immutable, we use produce to create a deep copy of
+   * the state array, and modify that instead.
+   * @param {*} deleteThread
+   */
   const removeThread = deleteThread => {
-    // This is used to remove the empty thread from the conversations array
     const immerState = produce(conversations, draft => {
       return draft.filter(thread => thread.receiverName !== deleteThread.receiverName);
     });
     setConversations(immerState);
   };
 
+  /**
+   * Creates an array of messages to render in the message thread.
+   */
   const messagesToRender = thread.thread.map(message => (
     <PrivMessage key={uuid()} message={message} />
   ));

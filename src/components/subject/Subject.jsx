@@ -8,6 +8,13 @@ import { LangContext } from '../../contexts/LanguageContext';
 
 function Subject({ subject, getSubjects, userRole }) {
   const { language } = useContext(LangContext);
+
+  /**
+   * @param {number} id
+   * Delete a subject based on id.
+   * DEL API call.
+   * Get an updated list of subjects to render.
+   */
   const deleteSubject = async id => {
     await SubjectApi.delete(id);
     alert(language.Subject_Deleted);

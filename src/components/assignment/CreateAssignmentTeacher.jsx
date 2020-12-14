@@ -17,35 +17,50 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
   const { language } = useContext(LangContext);
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
+  const [dueDate, setDueDate] = useState('');
   const [uploadResponse, setUploadResponse] = useState(null);
   const [uploadType, setUploadType] = useState('');
 
+  /**
+   * Create an assignment object using state.
+   * The file type in the object is determined using the getFilenameAndExtension function.
+   * Do a POST request with the object ot the backend.
+   * Reset state values.
+   */
   function createAssignment() {
     if (link === '') {
       return;
     } //we don't want to post an assignment with no links.
-
     const newAssignment = {
       fileName: title,
       link: link,
+      dueDate: dueDate,
       type:
         uploadType === 'UPLOAD'
           ? getFilenameAndExtension(uploadResponse.secure_url)
           : uploadType
     };
-
     AssignmentApi.createAssignment(newAssignment).then(res => {
       getTeacherAssignments();
       setLink('');
       setTitle('');
+      setDueDate('');
       setUploadResponse(null);
     });
   }
 
+  /**
+   * @param {*} event
+   * Set the upload type state based on radio button selection.
+   */
   function radioChange(event) {
     setUploadType(event.target.value);
   }
 
+  /**
+   * Whenever a file is uploaded, set the title and link states with the correct
+   * values based on the upload response.
+   */
   useEffect(() => {
     if (uploadResponse === null) {
       return;
@@ -103,6 +118,7 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
           onChange={event => setTitle(event.target.value)}
           disabled={uploadType === ''}
         />
+
         <FormLabel className="form-label" component="legend">
           {language.link}
         </FormLabel>
@@ -112,6 +128,15 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
           value={link}
           onChange={event => setLink(event.target.value)}
           disabled={uploadType === 'UPLOAD' || uploadType === ''}
+        />
+        <FormLabel className="form-label" component="legend">
+          Due Date
+        </FormLabel>
+        <input
+          className="form-control subject-input"
+          placeholder="Due Date"
+          value={dueDate}
+          onChange={event => setDueDate(event.target.value)}
         />
       </div>
 

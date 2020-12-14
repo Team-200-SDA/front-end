@@ -4,7 +4,6 @@ import AssignmentApi from '../../api/AssignmentApi';
 import CreateAssignmentStudent from './CreateAssignmentStudent';
 import CreateAssignmentTeacher from './CreateAssignmentTeacher';
 import Assignment from './Assignment';
-
 import { LangContext } from '../../contexts/LanguageContext';
 import { useContext } from 'react';
 
@@ -17,14 +16,20 @@ export default function AssignmentPage() {
   const [assignmentSubmittedOn, setAssignmentSubmittedOn] = useState(false);
   const user_role = window.sessionStorage.getItem('role');
 
-  // Assign
+  /**
+   * Change state to render Assign component and does and api call to get the
+   * most up to date teacher assignments
+   */
   const handleAssignAssignment = () => {
     setAssignmentAssignedOn(true);
     setAssignmentSubmittedOn(false);
     getTeacherAssignments();
   };
 
-  // Submit
+  /**
+   * Change state to render submit component and does and api call to get the
+   * most up to date submissions of all students
+   */
   const handleSubmitAssignment = () => {
     setAssignmentAssignedOn(false);
     setAssignmentSubmittedOn(true);
@@ -32,27 +37,38 @@ export default function AssignmentPage() {
     getAllStudentAssignments();
   };
 
-  // Get all Assignments for logged in Student
+  /**
+   * API Call: Get all assignments for a logged in student
+   */
   function getAllAssignments() {
     AssignmentApi.getAllAssignments().then(data => {
       setAssignments(data.data);
     });
   }
 
-  // Get all Teacher Assignments
+  /**
+   * API Call: Get all assignments created by a teachers
+   */
   function getTeacherAssignments() {
     AssignmentApi.getTeacherAssignments().then(data => {
       setTeacherAssignments(data.data);
     });
   }
 
-  // Get all Student Assignments
+  /**
+   * API Call: If logged in as a teacher, get all the student assignments
+   */
   function getAllStudentAssignments() {
     AssignmentApi.getAllStudentAssignments().then(data => {
       setAllStudentsAssignments(data.data);
     });
   }
 
+  /**
+   * @param {num} assignmentId
+   * Delete a specific assignment by id and then update the component by doing API
+   * calls to get the updated list of assignments.
+   */
   function deleteAssignment(assignmentId) {
     AssignmentApi.deleteAssignment(assignmentId).then(() => {
       alert(language.Assignment_Deleted);
@@ -61,6 +77,10 @@ export default function AssignmentPage() {
     });
   }
 
+  /**
+   * When component is rendered, do an API call to get all the assignments created
+   * by teachers.
+   */
   useEffect(() => {
     getTeacherAssignments();
   }, []);

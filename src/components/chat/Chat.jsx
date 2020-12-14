@@ -15,9 +15,12 @@ const sockJsConfig = {
   transports: ['xhr-streaming'],
   headers: { Authorization: window.sessionStorage.getItem('_token') }
 };
-// These need to be re-instantiated in a UE for the connection to re-establish the
-// connection when revisiting the page. The initial SockJS instantiation needs to take place
-// outside of the function to avoid NOE. Doing in an a UE,[] is not fast enough.
+
+/**
+ * These need to be re-instantiated in a UE for the connection to re-establish the
+ * connection when revisiting the page. The initial SockJS instantiation needs to take place
+ * outside of the function to avoid NOE. Doing in an a UE,[] is not fast enough.
+ */
 let socket = new SockJS(wsEndpoint, null, sockJsConfig);
 let stompClient = Stomp.over(socket);
 
@@ -27,6 +30,10 @@ function Chat() {
   const [messages, setMessages] = useState([]);
   const [messageField, setMessageField] = useState('');
 
+  /**
+   * When the component mounts, establish a SOCKJS connection and set up the STOMP client.
+   * When the component dismounts, disconnect from the Websocket server.
+   */
   useEffect(() => {
     socket = new SockJS(wsEndpoint, null, sockJsConfig);
     stompClient = Stomp.over(socket);
@@ -35,6 +42,10 @@ function Chat() {
     return () => stompClient.disconnect();
   }, []);
 
+  /**
+   * When a connection to the websocket server is established, subscribe to the
+   * topic 'public' and add the user to the chatroom.
+   */
   function onConnected() {
     // Subscribe to the Public Topic
     stompClient.subscribe('/topic/public', onMessageReceived);
@@ -46,6 +57,12 @@ function Chat() {
     );
   }
 
+  /**
+   * @param {*} payload
+   * When a message is received that has the body of JOIN or leave, ignore it.
+   * Else, add a time to the message object and add it to the array of messages
+   * to be rendered in the chat component.
+   */
   function onMessageReceived(payload) {
     const message = JSON.parse(payload.body);
     if (message.type === 'JOIN' || message.type === 'LEAVE') {
@@ -55,6 +72,12 @@ function Chat() {
     setMessages(oldMessages => [...oldMessages, message]);
   }
 
+  /**
+   * @param {*} event
+   * Creates a message object using the state values.
+   * Send the message payload through the stomp client to the websocket server.
+   * Reset the message field state to an empty value.
+   */
   function sendMessage(event) {
     event.preventDefault();
     if (messageField && stompClient) {
@@ -72,6 +95,9 @@ function Chat() {
     console.log('error');
   }
 
+  /**
+   * Creates an array of ChatMessage components based on the message array.
+   */
   const messagesToRender = messages.map(msg => {
     return <ChatMessage key={uuid()} message={msg} />;
   });

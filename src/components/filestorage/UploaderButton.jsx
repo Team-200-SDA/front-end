@@ -5,7 +5,6 @@ import { Button } from '@material-ui/core';
 import { useContext } from 'react';
 import { LangContext } from '../../contexts/LanguageContext';
 
-
 function UploaderButton({ setUploadResponse, uploadType }) {
   const { language } = useContext(LangContext);
   const CustomButton = asUploadButton(
@@ -15,11 +14,15 @@ function UploaderButton({ setUploadResponse, uploadType }) {
         variant="contained"
         color="primary"
         disabled={uploadType !== 'UPLOAD'}>
-       {language.Upload}
+        {language.Upload}
       </Button>
     ))
   );
 
+  /**
+   * useItemFinishListener will run after an upload is complete.
+   * We use it to set a state value with the upload response.
+   */
   useItemFinishListener(item => {
     const response = item.uploadResponse;
     setUploadResponse(response.data);
