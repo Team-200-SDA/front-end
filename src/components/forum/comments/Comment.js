@@ -1,10 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import CommentForm from './CommentForm';
-import UserApi from '../../../api/UserApi';
-import { useContext } from 'react';
-import { LangContext } from '../../../contexts/LanguageContext';
+import React, { useState, useEffect } from "react";
+import CommentForm from "./CommentForm";
+import UserApi from "../../../api/UserApi";
+import { useContext } from "react";
+import { LangContext } from "../../../contexts/LanguageContext";
 
-function Comment({ comment, onCommentDelete, onCommentUpdate, getAllCommentsByPostId }) {
+//styling import
+import "../../../css/forum/forum.css";
+
+function Comment({
+  comment,
+  onCommentDelete,
+  onCommentUpdate,
+  getAllCommentsByPostId,
+}) {
   //props come from CommentsList
 
   const { language } = useContext(LangContext);
@@ -49,25 +57,35 @@ function Comment({ comment, onCommentDelete, onCommentUpdate, getAllCommentsByPo
           onCommentUpdate={onCommentUpdate}
           getAllCommentsByPostId={getAllCommentsByPostId}
         />
-      ) : (
+        ) : (
         <div className="card mt-4">
-          <div className="card-body">
-            <div>{comment.body}</div>
-            <p className="badge badge-primary text-wrap">{comment.user.name}</p>
-
-            <div className="mt-3">
+         <div className="card-body forum">
+         <span className="card-info">
+              <img className="forum-avatar" src={comment.user.profilepic} />
+              <p className="user-name">{comment.user.name}</p>
+            </span>
+            <div className="comment-body">{comment.body}</div>
+          
+            <div className="forum-buttons">
               {isMyComment && (
-                <>
-                  <button
-                    className="btn btn-danger mt-3"
-                    onClick={() => onCommentDelete(comment)}>
-                    {language.Delete}
-                  </button>
+                <span className="edit-delete">
+                  <i
+                    class="fas fa-trash fa-lg"
+                    title="delete"
+                    onClick={() => onCommentDelete(comment)}
+                  >
+                 
+                  </i>
 
-                  <button className="btn btn-warning mt-3 ml-3" onClick={onUpdateComment}>
-                    {language.Update}
-                  </button>
-                </>
+                  <i
+                    class="fas fa-edit fa-lg"
+                    title="edit"
+                    onClick={onUpdateComment}
+                  >
+                
+                    </i>
+                 
+                </span>
               )}
             </div>
           </div>

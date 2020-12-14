@@ -9,7 +9,7 @@ import { LangContext } from "../../../contexts/LanguageContext";
 
 //styling import
 import { Button, Tooltip, Collapse } from "@material-ui/core";
-import "./style.css";
+import "../../../css/forum/forum.css";
 import "../../../css/shared.css";
 import "../../../css/subjects/_subjects.css";
 
@@ -96,7 +96,7 @@ function Post({
         <div className="card">
           <div className="card-body forum">
             <span className="card-info">
-              <img className="forum-avatar" src={user.profilepic} />
+              <img className="forum-avatar" src={post.user.profilepic} />
               <p className="user-name">{post.user.name}</p>
             </span>
             <div className="post-title">
@@ -107,27 +107,26 @@ function Post({
 
             <div className="forum-buttons">
               {isMyPost && (
-                <>
-                  <Button
-                    className="upload-button"
-                    variant="contained"
-                    color="primary"
-                    onClick={onUpdateClick}
-                  >
-                    Edit
-                    <i class="fas fa-edit"></i>
-                  </Button>
-
-                  <Button
-                    className="button"
-                    color="primary"
-                    variant="contained"
+                <span className="edit-delete">
+                  <i
+                    class="fas fa-trash fa-2x"
+                    title="delete"
                     onClick={() => onPostDelete(post)}
                   >
-                    {language.Delete}
-                  </Button>
-                </>
+                    {" "}
+                  </i>
+
+                  <i
+                    class="fas fa-edit fa-2x"
+                    title="edit"
+                    onClick={() => onUpdateClick()}
+                  >
+                    {" "}
+                  </i>
+                </span>
               )}
+            </div>
+            <div className="addComment-button">
               <Button
                 type="button"
                 color="primary"
@@ -136,11 +135,11 @@ function Post({
                 data-target="#myModal"
                 onClick={onCreateCommentClick}
               >
+                <i class="far fa-comments fa-2x mr-2"></i>{" "}
                 {language.Add_Comment}
               </Button>
             </div>
-
-            <div className="like-dislike">
+            <span className="like-dislike">
               <Tooltip
                 title={<h5>{post.likedUsers.join(",  ")}</h5>}
                 TransitionComponent={Collapse}
@@ -149,28 +148,35 @@ function Post({
                 arrow
               >
                 <i
-                  className="far fa-thumbs-up mt-4 fa-2x"
+                  className="far fa-thumbs-up mt-3 fa-2x"
                   onClick={() => (userLiked ? null : actionLike())}
-                >
-                  <p> {likeCount} </p>
-                </i>
+                ></i>
               </Tooltip>
+              <h3 className="like-count"> {likeCount} </h3>
 
               <i
-                className="far fa-thumbs-down fa-2x fa-flip-horizontal"
+                className="far fa-thumbs-down mt-4 fa-2x fa-flip-horizontal"
                 onClick={() => {
                   setLikeCount(likeCount - 1);
                   onPostDislike();
                 }}
               ></i>
-            </div>
+            </span>
 
             <Link to="#">
               <u
                 className="showComment"
                 onClick={() => setActivePost(!activePost)}
               >
-                show comments
+                {activePost ? (
+                  <span>
+                    <i class="fas fa-angle-up"></i> close comments
+                  </span>
+                ) : (
+                  <span>
+                    <i class="fas fa-angle-down"></i> show comments
+                  </span>
+                )}
               </u>
             </Link>
 

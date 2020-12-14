@@ -5,6 +5,8 @@ import { commentState } from '../../../js/states/CommentState';
 import { useContext } from 'react';
 import { LangContext } from '../../../contexts/LanguageContext';
 
+import { Button } from "@material-ui/core";
+
 export default function CommentForm({
   initialBody,
   onCancel,
@@ -63,14 +65,29 @@ export default function CommentForm({
             />
           </div>
 
-          <div className="form-group">
-            <button className="btn btn-info" t ype="submit">
+          <div className="form-create-button">
+          <Button
+              type="button"
+              color="primary"
+              variant="contained"
+              data-toggle="modal"
+              data-target="#myModal"
+              type="submit"
+            >
               {language.Save}
-            </button>
+            </Button>
 
-            <button className="btn btn-outline" type="button" onClick={onCancel}>
+            <Button
+              type="button"
+              color="primary"
+              variant="contained"
+              data-toggle="modal"
+              data-target="#myModal"
+              type="button"
+              onClick={onCancel}
+            >
               {language.Cancel}
-            </button>
+            </Button>
           </div>
         </form>
       </div>
