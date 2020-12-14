@@ -11,6 +11,11 @@ export default function FileStorageForm({ uploadFile }) {
   const { language } = useContext(LangContext);
   const [uploadResponse, setUploadResponse] = useState(null);
 
+  /**
+   * Whenever user uploads file, it calls uploadFile call back function and passes chosen filename, url and filetype as parameter
+   * and 
+   * getFilenameAndExtension function takes file url as parameter and returns the extension of file
+   */
   useEffect(() => {
     if (uploadResponse === null) {
       return;
@@ -36,6 +41,8 @@ export default function FileStorageForm({ uploadFile }) {
         <div className="creation-form upload-file-tag">Store files Online</div>
         <FormLabel component="legend">Select a file to upload</FormLabel>
         <div className="storage-uploader file-storage-button">
+          {/* FileUploader component allows the user to choose file and uploads the chosen file in cloudinary and 
+          returns the response with filename, url, filetype */}
           <FileUploader setUploadResponse={setUploadResponse} uploadType={`UPLOAD`} />
         </div>
       </div>
