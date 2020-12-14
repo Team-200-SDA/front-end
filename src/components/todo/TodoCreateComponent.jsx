@@ -6,15 +6,23 @@ import { LangContext } from '../../contexts/LanguageContext';
 
 import { Button, FormLabel } from '@material-ui/core';
 
-//Using Functional components to Create a student todo list.
+/*   Using Functional components to Create a student todo list.*/
 function StudentCreateComponent() {
+  /* Context is primarily used when some data needs to be accessible 
+  by many components at different nesting levels.  */
+
   const { language } = useContext(LangContext);
+
+  //Setting the variables title,description,dueDate
+
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [dueDate, setDueDate] = useState('');
   const history = useHistory();
 
-  //Creation of the Todolist
+  /* Creation of the Todolist using async and await events.
+  The async keyword before a function has two effects:
+   Makes it always return a promise. Allows await to be used in it.Fetching the data using hooks. */
   const createTodo = async event => {
     event.preventDefault();
     const todo = { title, description, dueDate, complete: false };
@@ -23,6 +31,7 @@ function StudentCreateComponent() {
   };
 
   return (
+    //Fetching data using JSX ...
     <>
       <div className="title-div">
         <h1 className="page-title-text">
@@ -33,7 +42,9 @@ function StudentCreateComponent() {
 
       <div className="card-body create-todo-card">
         <form onSubmit={event => createTodo(event)}>
-          <div className="creation-form create-todo-label">{language.Create_new_Todo}</div>
+          <div className="creation-form create-todo-label">
+            {language.Create_new_Todo}
+          </div>
           <FormLabel className="form-label" component="legend">
             {language.Title}
           </FormLabel>
