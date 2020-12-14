@@ -20,11 +20,16 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
   const [uploadResponse, setUploadResponse] = useState(null);
   const [uploadType, setUploadType] = useState('');
 
+  /**
+   * Create an assignment object using state.
+   * The file type in the object is determined using the getFilenameAndExtension function.
+   * Do a POST request with the object ot the backend.
+   * Reset state values.
+   */
   function createAssignment() {
     if (link === '') {
       return;
     } //we don't want to post an assignment with no links.
-
     const newAssignment = {
       fileName: title,
       link: link,
@@ -33,7 +38,6 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
           ? getFilenameAndExtension(uploadResponse.secure_url)
           : uploadType
     };
-
     AssignmentApi.createAssignment(newAssignment).then(res => {
       getTeacherAssignments();
       setLink('');
@@ -42,10 +46,18 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
     });
   }
 
+  /**
+   * @param {*} event
+   * Set the upload type state based on radio button selection.
+   */
   function radioChange(event) {
     setUploadType(event.target.value);
   }
 
+  /**
+   * Whenever a file is uploaded, set the title and link states with the correct
+   * values based on the upload response.
+   */
   useEffect(() => {
     if (uploadResponse === null) {
       return;

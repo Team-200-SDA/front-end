@@ -4,13 +4,17 @@ import { EventSourcePolyfill } from 'event-source-polyfill';
 import { produce } from 'immer';
 import PrivChatApi from '../../api/PrivChatApi';
 
-// Helper vars
+// Needs to exists outside of UE to avoid connection issues.
 let eventSource = undefined;
 
 function PrivChatHandler({ conversations, setConversations }) {
   const [listening, setListening] = useState(false);
   const [messages, setMessages] = useState([]);
 
+  /**
+   * Creates an event source connection using the user token to authenticate.
+   * When the component dismounts, close the connection.
+   */
   useEffect(() => {
     if (!listening) {
       // Establish Connection
@@ -33,7 +37,7 @@ function PrivChatHandler({ conversations, setConversations }) {
   }, []);
 
   /*
-   *  On message received, save it into an array of messages in component state.
+   * On message received, save it into an array of messages in component state.
    */
   useEffect(() => {
     eventSource.onmessage = event => {

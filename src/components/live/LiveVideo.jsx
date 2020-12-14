@@ -1,14 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useCallback } from 'react';
-import Call from '../Call/Call';
-import StartButton from '../StartButton/StartButton';
-import createRoom from '../../../api/LiveVideoApi';
-import Tray from '../Tray/Tray';
-import CallObjectContext from '../../../js/states/CallObjectContext';
-import { roomUrlFromPageUrl, pageUrlFromRoomUrl } from '../../../js/live/urlUtils';
+import Call from './Call';
+import StartButton from './StartButton';
+import createRoom from '../../api/LiveVideoApi';
+import Tray from './Tray';
+import CallObjectContext from '../../js/states/CallObjectContext';
+import { roomUrlFromPageUrl, pageUrlFromRoomUrl } from '../../js/live/urlUtils';
 import DailyIframe from '@daily-co/daily-js';
-import { logDailyEvent } from '../../../js/live/logUtils';
-import '../../../css/live/sharedLive.css';
+import { logDailyEvent } from '../../js/live/logUtils';
+import '../../css/live/sharedLive.css';
 
 const STATE_IDLE = 'STATE_IDLE';
 const STATE_CREATING = 'STATE_CREATING';

@@ -19,6 +19,9 @@ function PrivChatInbox({ conversations, setConversations }) {
   const [activeThreadReceiver, setActiveThreadReceiver] = useState('');
   const [displayUsers, setDisplayUsers] = useState(false); // For mobile mode
 
+  /**
+   * On mount, get a list of all the users on the platform.
+   */
   useEffect(() => {
     const getUsers = async () => {
       const response = await UserApi.getAllUsers();
@@ -27,11 +30,23 @@ function PrivChatInbox({ conversations, setConversations }) {
     getUsers();
   }, []);
 
+  /**
+   * Whenever a new conversation is established with a user, map it to an array
+   * of message threads that will be displayed in an inbox.
+   */
   useEffect(() => {
     const activeUsers = conversations.map(thread => thread.receiverName);
     setActiveUserThreads(activeUsers);
   }, [conversations]);
 
+  /**
+   * @param {*} userInfo
+   * User info consists of a single string containing both a username and email address.
+   * Split the string to separate the values.
+   * Do a POST request with the message object, using the email address from the infoArray.
+   * Set the new conversation as the active conversation to be rendered to the screen. This
+   * is done by username.
+   */
   const sendMessage = async userInfo => {
     const infoArray = userInfo.split(' '); // Create array from string info
     try {
@@ -41,6 +56,7 @@ function PrivChatInbox({ conversations, setConversations }) {
         receiverEmail: infoArray[0]
       });
       infoArray.shift();
+      // Use timeout to avoid info array not being undefined
       setTimeout(() => {
         setActiveThreadReceiver(infoArray.join(' '));
       }, 75);
@@ -49,14 +65,24 @@ function PrivChatInbox({ conversations, setConversations }) {
     }
   };
 
+  /**
+   * Creates a list of users to whom new messages can be sent. This list can not contain the logged
+   * in user, or users that already have active conversations with the logged in user.
+   */
   const dropDownFiltered = users.filter(
     user => user.name !== loggedInUser && !activeUserThreads.includes(user.name)
   );
 
+  /**
+   * The dropdown user list is sorted by name.
+   */
   const dropDownSorted = dropDownFiltered.sort((a, b) =>
     a.name < b.name ? -1 : a.name > b.name ? 1 : 0
   );
 
+  /**
+   * Create the dropdown list objects based on user name and email.
+   */
   const dropDownUsers = dropDownSorted.map(user => {
     return {
       key: user.email,
@@ -65,10 +91,16 @@ function PrivChatInbox({ conversations, setConversations }) {
     };
   });
 
+  /**
+   * Active conversations are sorted based on the latest message received.
+   */
   const sortedConversations = conversations
     .slice()
     .sort((a, b) => (a.timeStamp > b.timeStamp ? -1 : a.timeStamp < b.timeStamp ? 1 : 0));
 
+  /**
+   * Creates an array of conversation threads to render to the inbox.
+   */
   const jsxConversations = sortedConversations.map(conversation => (
     <PrivConversationCard
       key={uuid()}
@@ -78,6 +110,10 @@ function PrivChatInbox({ conversations, setConversations }) {
     />
   ));
 
+  /**
+   * Every time the component mounts, set the conversation with the latest reply as the active conversation.
+   * Effectively rendering the conversation.
+   */
   useEffect(() => {
     if (conversations.length !== 0) {
       setActiveThreadReceiver(sortedConversations[0].receiverName);
@@ -99,7 +135,8 @@ function PrivChatInbox({ conversations, setConversations }) {
             disabled={dropDownUsers.length === 0}
             className="conversation-dropdown"
             onChange={(event, data) => setSelectedUser(data.value)}
-            placeholder={language.Send_message_to}
+            // Erkan. Text changed from "with..." to "Send message to"
+            placeholder={'Send message to'}
             selection
             options={dropDownUsers}
           />
@@ -126,7 +163,8 @@ function PrivChatInbox({ conversations, setConversations }) {
             />
           ) : (
             <>
-              <div className="no-active-conversation">{language.No_Active_Conversations}</div>
+              {/* Erkan */}
+              <div className="no-active-conversation">No Active Conversations</div>
             </>
           )}
         </div>
