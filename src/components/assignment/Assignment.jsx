@@ -21,9 +21,11 @@ export default function Assignment({ assignment, deleteAssignment }) {
           </a>
         </span>
 
-        <span className="due-date">
-          <i className="fas fa-calendar-check" /> {assignment.dueDate}
-        </span>
+        {assignment.user.role === 'teacher' ? (
+          <span className="due-date">
+            <i className="fas fa-calendar-check" /> {assignment.dueDate}
+          </span>
+        ) : null}
 
         {/* Show Student name if logged in as Teacher */}
         {user_ !== assignment.user.name && assignment.user.role !== 'teacher' ? (
