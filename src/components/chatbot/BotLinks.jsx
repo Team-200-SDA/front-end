@@ -1,5 +1,9 @@
 import React from 'react';
 
+/**
+ * This Component by using the .map maps the links to the text
+ * Displays the information required by  user
+ */
 const BotLinks = props => {
   const linkMarkup = props.options.map(link => (
     <li key={link.id} className="link-list-item">
