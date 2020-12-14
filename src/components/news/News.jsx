@@ -9,6 +9,10 @@ export default function News({ news, deleteNews }) {
     setShowAll(!showAll);
   };
 
+  /**
+   * Allows option to see the news in a short summary
+   * or in full context
+   */
   const fullNewsBody = (
     <>
       {news.body}
