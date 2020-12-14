@@ -16,7 +16,7 @@ function PostForm({
   const [body, setBody] = useState(initialBody || "");
 
   const onCreatePostClick = (e) => {
-    e.preventDefault();
+    e.preventDefault();    
     const postData = { title, body };
     onSubmit(postData).catch((err) => {
       alert(language.error_occured);

@@ -4,7 +4,7 @@ import UserApi from '../../../api/UserApi';
 import { useContext } from 'react';
 import { LangContext } from '../../../contexts/LanguageContext';
 
-function Comment({ comment, onCommentDelete, onCommentUpdate }) {
+function Comment({ comment, onCommentDelete, onCommentUpdate, getAllCommentsByPostId }) {
   //props come from CommentsList
 
   const { language } = useContext(LangContext);
@@ -47,6 +47,7 @@ function Comment({ comment, onCommentDelete, onCommentUpdate }) {
           comment={comment}
           onSaveUpdatedComment={onSaveUpdatedComment}
           onCommentUpdate={onCommentUpdate}
+          getAllCommentsByPostId={getAllCommentsByPostId}
         />
       ) : (
         <div className="card mt-4">
