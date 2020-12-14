@@ -9,7 +9,7 @@ import News from './News';
 import { useContext } from 'react';
 import { LangContext } from '../../js/states/LanguageContext';
 
-export default function HomePage() {
+export default function NewsPage() {
   const { language } = useContext(LangContext);
   const [news, setNews] = useState([]);
 
