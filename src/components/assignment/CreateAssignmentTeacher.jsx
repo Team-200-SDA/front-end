@@ -17,6 +17,7 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
   const { language } = useContext(LangContext);
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
+  const [dueDate, setDueDate] = useState('');
   const [uploadResponse, setUploadResponse] = useState(null);
   const [uploadType, setUploadType] = useState('');
 
@@ -33,6 +34,7 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
     const newAssignment = {
       fileName: title,
       link: link,
+      dueDate: dueDate,
       type:
         uploadType === 'UPLOAD'
           ? getFilenameAndExtension(uploadResponse.secure_url)
@@ -42,6 +44,7 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
       getTeacherAssignments();
       setLink('');
       setTitle('');
+      setDueDate('');
       setUploadResponse(null);
     });
   }
@@ -115,6 +118,7 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
           onChange={event => setTitle(event.target.value)}
           disabled={uploadType === ''}
         />
+
         <FormLabel className="form-label" component="legend">
           {language.link}
         </FormLabel>
@@ -124,6 +128,15 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
           value={link}
           onChange={event => setLink(event.target.value)}
           disabled={uploadType === 'UPLOAD' || uploadType === ''}
+        />
+        <FormLabel className="form-label" component="legend">
+          Due Date
+        </FormLabel>
+        <input
+          className="form-control subject-input"
+          placeholder="Due Date"
+          value={dueDate}
+          onChange={event => setDueDate(event.target.value)}
         />
       </div>
 
