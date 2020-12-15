@@ -1,7 +1,10 @@
+//simdilik kullanmiyoruz
+
 //Component and react imports
 import React, { useState, useEffect } from "react";
 import CommentsList from "./CommentsList";
 import CommentsApi from "../../../api/CommentsApi";
+import Comment from './Comment';
 
 function CommentsPage() {
   const [comments, setComments] = useState([]);
@@ -20,14 +23,26 @@ function CommentsPage() {
     );
   };
 
+  
+
   return (
     <div>
       {
-        <CommentsList
-          comment={comments}
-          setComments={setComments}
-          onCommentDelete={deleteComment}
-        />
+        // <CommentsList
+        //   comment={comments}
+        //   setComments={setComments}
+        //   onCommentDelete={deleteComment}
+        // />
+
+        // comments.map(comment => (
+        //   <Comment
+        //     key={comment.id}
+        //     comment={comments}
+        //     onCommentDelete={deleteComment}
+        //  //   onCommentUpdate={onCommentUpdate}
+        //     setComments={setComments}
+        //   />
+        // ))
       }
     </div>
   );

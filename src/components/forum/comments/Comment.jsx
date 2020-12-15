@@ -1,41 +1,32 @@
 //Component and react imports
-import React, { useState, useEffect } from 'react';
-import CommentForm from './CommentForm';
-import UserApi from '../../../api/UserApi';
-import { useContext } from 'react';
-import { LangContext } from '../../../js/states/LanguageContext';
+import React, { useState} from "react";
+import CommentForm from "./CommentForm";
+import { useContext } from "react";
+import { LangContext } from "../../../js/states/LanguageContext";
 
 //Styling import
-import '../../../css/forum/forum.css';
+import "../../../css/forum/forum.css";
 
 //Default user image for the forum
-const defaultImage = '/images/defaultUserImage/blank-profile-pic.png';
+const defaultImage = "/images/defaultUserImage/blank-profile-pic.png";
 
 /**
  * This component lists the comments and allows the logged-in user to delete or edit * own comment.
  */
-function Comment({ comment, onCommentDelete, onCommentUpdate, getAllCommentsByPostId }) {
-  //props come from CommentsList
+function Comment({
+  comment,
+  currentUser,
+  onCommentDelete,
+  onCommentUpdate,
+  getAllCommentsByPostId,
+}) {
+  //props come from CommentsPage
 
   const { language } = useContext(LangContext);
   const [isUpdate, setIsUpdate] = useState(false); // Opens/closes the Comment update form
-  const [user, setUser] = useState([]);
-
-  const getUser = () => {
-    UserApi.getLoggedInUser().then(res => {
-      setUser(res.data);
-    });
-  };
-
-  /**
-   * When component is rendered, do an API call to get the logged-in user information
-   */
-  useEffect(() => {
-    getUser();
-  }, []);
 
   //To be used in checking if the comment belongs to the loggedin user. If true makes buttons visible
-  const isMyComment = comment.user.id === user.id;
+  const isMyComment = comment.user.id === currentUser.id;
 
   //When user clicks edit button, variable isUpdate is set to true and edit form opens
   const onUpdateComment = () => {
@@ -71,7 +62,7 @@ function Comment({ comment, onCommentDelete, onCommentUpdate, getAllCommentsByPo
         <div className="comment-card forum">
           <span className="card-info">
             <div>
-              {/* If user didn't upload a picture, system default picture is used as the user avatar. */}
+              {/* If user didn't upload a picture, system default picture is used in the forum. */}
               {comment.user.profilepic === null ? (
                 <img
                   className="forum-avatar comment-avatar"
@@ -98,12 +89,14 @@ function Comment({ comment, onCommentDelete, onCommentUpdate, getAllCommentsByPo
                 <i
                   class="fas fa-trash post-button  fa-lg"
                   title="delete"
-                  onClick={() => onCommentDelete(comment)}></i>
+                  onClick={() => onCommentDelete(comment)}
+                ></i>
 
                 <i
                   class="fas fa-edit post-button  fa-lg"
                   title="edit"
-                  onClick={onUpdateComment}></i>
+                  onClick={onUpdateComment}
+                ></i>
               </span>
             )}
           </div>
