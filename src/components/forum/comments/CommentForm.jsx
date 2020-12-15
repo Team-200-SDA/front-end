@@ -93,6 +93,7 @@ export default function CommentForm({
             color="primary"
             variant="contained"
             data-toggle="modal"
+            type="submit"
             data-target="#myModal">
             {language.Save}
           </Button>

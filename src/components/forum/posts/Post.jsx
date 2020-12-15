@@ -249,22 +249,6 @@ function Post({
                   }}></i>
               )}
             </div>
-
-            <div className="show-comment">
-              <Link to="#">
-                <u onClick={() => setShowComments(!showComments)}>
-                  {showComments ? (
-                    <span>
-                      <i class="fas fa-angle-up"></i> close comments
-                    </span>
-                  ) : (
-                    <span>
-                      <i class="fas fa-angle-down"></i> show comments
-                    </span>
-                  )}
-                </u>
-              </Link>
-            </div>
           </div>
 
           <div className="show-comment">

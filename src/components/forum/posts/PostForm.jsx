@@ -57,6 +57,7 @@ function PostForm({ initialTitle, initialBody, onSubmit, onCancel, formTitle }) 
             color="primary"
             variant="contained"
             data-toggle="modal"
+            type="submit"
             data-target="#myModal">
             {language.Save}
           </Button>
