@@ -17,6 +17,7 @@ body {
 }
 
 .app {
+  background: var(--accent);
   display: grid;
   gap: 30px;
   height: 100vh;

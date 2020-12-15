@@ -81,7 +81,7 @@ function Comment({ comment, onCommentDelete, onCommentUpdate, getAllCommentsByPo
               ) : (
                 <img
                   className="forum-avatar comment-avatar"
-                  src={user.profilepic}
+                  src={comment.user.profilepic}
                   alt="User profile"
                 />
               )}
