@@ -3,10 +3,10 @@ import Auth from '../../services/Auth';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 import { useContext } from 'react';
-import { LangContext } from '../../contexts/LanguageContext';
+import { LangContext } from '../../js/states/LanguageContext';
 
 function LoginPage() {
-  const { language, changeEn, changeSv, changeEs } = useContext(LangContext);
+  const { language, changeLanguageToEn, changeLanguageToSv, changeLanguageToEs } = useContext(LangContext);
   const [registered, setRegistered] = useState(true);
 
   const login = async loginData => {
@@ -38,14 +38,14 @@ function LoginPage() {
             <>
               <LoginForm onSubmit={login} />
               <div className="login-flip" onClick={registerFlip}>
-                Sign Up?
+                {language.Signup}
               </div>
             </>
           ) : (
             <>
               <RegisterForm onSubmit={register} />
               <div className="login-flip" onClick={registerFlip}>
-                Already Registered?
+                {language.Already_Registered}
               </div>
             </>
           )}
@@ -53,17 +53,17 @@ function LoginPage() {
 
         <div className="login-footer">
           <span>
-            <span className="footer-link" onClick={changeEn}>
+            <span className="footer-link" onClick={changeLanguageToEn}>
               {language.english}
             </span>
           </span>
           <span>
-            <span className="footer-link" onClick={changeSv}>
+            <span className="footer-link" onClick={changeLanguageToSv}>
               {language.swedish}
             </span>
           </span>
           <span>
-            <span className="footer-link" onClick={changeEs}>
+            <span className="footer-link" onClick={changeLanguageToEs}>
               {language.spanish}
             </span>
           </span>

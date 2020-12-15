@@ -1,25 +1,25 @@
-import Api from "./Api";
+import Api from './Api';
 
 class CommentsApi {
-    getAllComments() {
-        return Api.get('/comments');
-    }
+  getAllComments() {
+    return Api.get('/comments');
+  }
 
-    getCommentById(id) {
-        return Api.get('/comments?postId='+id);
-    }
+  getCommentById(id) {
+    return Api.get('/comments?postId=' + id);
+  }
 
-    createComment(comment) {
-        return Api.post('/comments', comment);
-    }
+  createComment(comment) {
+    return Api.post('/comments', comment);
+  }
 
-    updateComment(comment) {
-        return Api.put('/comments', comment);
-    }
+  updateComment(comment) {
+    return Api.put('/comments', comment);
+  }
 
-    deleteComment(id) {
-        return Api.delete('/comments/' +id);
-    } 
+  deleteComment(id) {
+    return Api.delete('/comments/' + id);
+  }
 }
 
 export default new CommentsApi();

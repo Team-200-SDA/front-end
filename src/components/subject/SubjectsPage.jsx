@@ -5,7 +5,7 @@ import SubjectApi from '../../api/SubjectApi';
 import CreateSubject from './CreateSubject';
 import Subject from './Subject';
 import { useContext } from 'react';
-import { LangContext } from '../../contexts/LanguageContext';
+import { LangContext } from '../../js/states/LanguageContext';
 
 function SubjectsPage() {
   const { language } = useContext(LangContext);

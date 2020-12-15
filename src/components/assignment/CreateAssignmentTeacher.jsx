@@ -10,7 +10,7 @@ import React, { useState, useEffect } from 'react';
 import AssignmentApi from '../../api/AssignmentApi';
 import getFilenameAndExtension from '../../js/functions/fileUpload/getFilenameAndExtention';
 import FileUploader from '../filestorage/FileUploader';
-import { LangContext } from '../../contexts/LanguageContext';
+import { LangContext } from '../../js/states/LanguageContext';
 import { useContext } from 'react';
 
 export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
@@ -109,7 +109,7 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
 
       <div className="form-group assignment-inputs">
         <FormLabel className="form-label" component="legend">
-          Enter an assignment name
+          {language.Enter_assignment_name}
         </FormLabel>
         <input
           className="form-control subject-input"
@@ -130,7 +130,7 @@ export default function CreateAssignmentTeacher({ getTeacherAssignments }) {
           disabled={uploadType === 'UPLOAD' || uploadType === ''}
         />
         <FormLabel className="form-label" component="legend">
-          Due Date
+          {language.Due_Date}
         </FormLabel>
         <input
           className="form-control subject-input"

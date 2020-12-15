@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { DeleteRounded } from '@material-ui/icons';
+import { useContext } from 'react';
+import { LangContext } from '../../js/states/LanguageContext';
 
 export default function News({ news, deleteNews }) {
   const user_role = window.sessionStorage.getItem('role');
   const [showAll, setShowAll] = useState(false);
-
+  const { language } = useContext(LangContext);
   const toggleNewsView = () => {
     setShowAll(!showAll);
   };
@@ -18,7 +20,7 @@ export default function News({ news, deleteNews }) {
       {news.body}
       {news.body.length > 1000 ? (
         <p onClick={toggleNewsView} className="toggle-news-view">
-          Read less...
+          {language.Read_less}
         </p>
       ) : null}
     </>
@@ -28,7 +30,7 @@ export default function News({ news, deleteNews }) {
     <>
       {news.body.substring(0, 700)}
       <p onClick={toggleNewsView} className="toggle-news-view">
-        Read More...
+        {language.Read_More}
       </p>
     </>
   );

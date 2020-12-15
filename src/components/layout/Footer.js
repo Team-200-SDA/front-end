@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
-import { LangContext } from '../../contexts/LanguageContext';
+import { LangContext } from '../../js/states/LanguageContext';
 
 // Chat Bot
 import Chatbot from 'react-chatbot-kit';
@@ -9,7 +9,7 @@ import MessageParser from '../../js/chatbot-resources/MessageParser';
 import config from '../../js/chatbot-resources/config';
 
 export default function Footer() {
-  const { language, changeEn, changeSv, changeEs } = useContext(LangContext);
+  const { language, changeLanguageToEn, changeLanguageToSv, changeLanguageToEs } = useContext(LangContext);
   const [botOpen, setBotOpen] = useState(false);
   return (
     <footer className="bottom">
@@ -23,13 +23,13 @@ export default function Footer() {
         />
         <div className="dropdown-menu dropdown-menu-right">
           {' '}
-          <li className="dropdown-item" href="#" onClick={changeEn}>
+          <li className="dropdown-item" href="#" onClick={changeLanguageToEn}>
             {language.english}
           </li>
-          <li className="dropdown-item" href="#" onClick={changeSv}>
+          <li className="dropdown-item" href="#" onClick={changeLanguageToSv}>
             {language.swedish}
           </li>
-          <li className="dropdown-item" href="#" onClick={changeEs}>
+          <li className="dropdown-item" href="#" onClick={changeLanguageToEs}>
             {language.spanish}
           </li>
         </div>

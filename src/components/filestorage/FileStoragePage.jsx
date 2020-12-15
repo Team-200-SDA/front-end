@@ -3,7 +3,7 @@ import FileStorageApi from "../../api/FileStorageApi";
 import FileStorageForm from "../filestorage/FileStorageForm";
 import FileStorage from "./FileStorage";
 import { useContext } from "react";
-import { LangContext } from "../../contexts/LanguageContext";
+import { LangContext } from '../../js/states/LanguageContext';
 
 /**
  * This Component provides private file storage space for the current user

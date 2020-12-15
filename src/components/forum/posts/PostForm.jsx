@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useContext } from "react";
-import { LangContext } from "../../../contexts/LanguageContext";
+import { useContext } from 'react';
+import { LangContext } from '../../../js/states/LanguageContext';
 
 import { Button } from "@material-ui/core";
 
