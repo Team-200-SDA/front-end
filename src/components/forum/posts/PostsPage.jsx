@@ -14,7 +14,7 @@ function PostsPage() {
 
   const getAll = () => {
     PostsApi.getAllPosts().then(res => {
-      setPosts(res.data.sort((a, b) => b.id - a.id));
+      setPosts(res.data.sort((a, b) => b.upVote - a.upVote));
     });
   };
   useEffect(() => {
