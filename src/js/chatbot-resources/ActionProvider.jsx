@@ -39,6 +39,15 @@ class ActionProvider {
     );
     this.updateChatbotState(message1);
   };
+  machinelearning = () => {
+    const message1 = this.createChatBotMessage(
+      "Fantastic, I've got the following resources for you on machine learning:",
+      {
+        widget: 'machinelearning'
+      }
+    );
+    this.updateChatbotState(message1);
+  };
 
   //This method updates the state of the bot.
   updateChatbotState(message) {

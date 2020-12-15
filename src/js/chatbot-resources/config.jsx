@@ -9,10 +9,10 @@ const config = {
    widget to render with this message.t a name and changed the color of the messagebox
     and chatbutton components.
  */
-  botName: 'LearningBot',
+  botName: 'EdulaneBot',
 
   initialMessages: [
-    createChatBotMessage("Hi, I'm here to help. What do you want to 		learn?", {
+    createChatBotMessage("Hi Friend!!, I'm here to help. What do you want to 		learn?", {
       widget: 'LearningOptions'
     })
   ],
@@ -47,6 +47,7 @@ const config = {
         ]
       }
     },
+
     {
       widgetName: 'ReactJS',
       widgetFunc: props => <BotLinks {...props} />,
@@ -67,6 +68,31 @@ const config = {
             text: 'React Realworld projects',
             url:
               'https://medium.com/front-end-weekly/5-real-world-react-projects-to-inspire-growth-no-todo-apps-allowed-8c5b6cffbadd',
+            id: 3
+          }
+        ]
+      }
+    },
+    {
+      widgetName: 'machinelearning',
+      widgetFunc: props => <BotLinks {...props} />,
+      props: {
+        options: [
+          {
+            text: 'Introduction to MachineLearning',
+            url:
+              'http://www.neodev.se/article/an-introduction-to-neural-networks-and-machine-learning/',
+            id: 1
+          },
+          {
+            text: 'ML',
+            url:
+              'https://www.researchgate.net/publication/303806260_Machine_Learning_Algorithms_and_Applications',
+            id: 2
+          },
+          {
+            text: 'ML Realworld projects',
+            url: 'https://www.springboard.com/blog/machine-learning-projects/',
             id: 3
           }
         ]

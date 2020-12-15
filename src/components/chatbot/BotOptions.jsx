@@ -19,7 +19,11 @@ const BotOptions = props => {
       handler: props.actionProvider.apis,
       id: 6
     },
-    // { text: 'React JS', handler: () => {}, id: 2 },
+    {
+      text: 'machinelearning',
+      handler: props.actionProvider.machinelearning,
+      id: 7
+    },
     // { text: 'APIs', handler: () => {}, id: 3 },
     // { text: 'Material UI', handler: () => {}, id: 4 },
     
