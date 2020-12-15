@@ -1,12 +1,12 @@
 //Component and react imports
-import React from "react";
-import Post from "./Post";
+import React from 'react';
+import Post from './Post';
 
 function PostsList({ posts, onPostUpdate, onPostDelete }) {
   //props come from PostsPage
   return (
-    <div className="mt-4">
-      {posts.map((post) => (
+    <div className="">
+      {posts.map(post => (
         <Post
           key={post.id}
           post={post}

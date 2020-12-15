@@ -1,11 +1,11 @@
 //Component and react imports
-import React, { useEffect, useState } from "react";
-import PostsApi from "../../../api/PostsApi";
-import PostForm from "./PostForm";
-import PostsList from "./PostsList";
+import React, { useEffect, useState } from 'react';
+import PostsApi from '../../../api/PostsApi';
+import PostForm from './PostForm';
+import PostsList from './PostsList';
 import { useContext } from 'react';
-import { LangContext } from "../../../js/states/LanguageContext";
-
+import { LangContext } from '../../../js/states/LanguageContext';
+import { Button } from '@material-ui/core';
 
 function PostsPage() {
   const { language } = useContext(LangContext);
@@ -13,7 +13,7 @@ function PostsPage() {
   const [createForm, setCreateForm] = useState(false);
 
   const getAll = () => {
-    PostsApi.getAllPosts().then((res) => {
+    PostsApi.getAllPosts().then(res => {
       setPosts(res.data.sort((a, b) => b.id - a.id));
     });
   };
@@ -21,20 +21,20 @@ function PostsPage() {
     getAll();
   }, []);
 
-  const createPost = (postData) => {
-    return PostsApi.createPost(postData).then((res) => {
+  const createPost = postData => {
+    return PostsApi.createPost(postData).then(res => {
       setPosts([res.data, ...posts]);
       setCreateForm(false);
     });
   };
 
-  const updatedPost = (updatedPost) => {
-    return PostsApi.updatePost(updatedPost).then((res) => getAll());
+  const updatedPost = updatedPost => {
+    return PostsApi.updatePost(updatedPost).then(res => getAll());
   };
 
-  const deletePost = (post) => {
+  const deletePost = post => {
     return PostsApi.deletePost(post.id).then(() =>
-      setPosts(posts.filter((a) => a.id !== post.id))
+      setPosts(posts.filter(a => a.id !== post.id))
     );
   };
 
@@ -47,23 +47,27 @@ function PostsPage() {
   };
 
   return (
-    <div>
+    <>
+      <div className="title-div">
+        <h1 className="page-title-text">
+          <i className="fas fa-pencil-alt title-icon" />
+          {language.Forum}
+        </h1>
+      </div>
+
       {createForm ? (
         <PostForm onSubmit={createPost} onCancel={onCancelCreateForm} />
       ) : (
         <>
-          <button className="btn btn-primary" onClick={onCreateNewPost}>
-            {" "}
-            {language.Create_new_Post}
-          </button>
-          <PostsList
-            posts={posts}
-            onPostUpdate={updatedPost}
-            onPostDelete={deletePost}
-          />
+          <div className="card-body forum-card">
+            <Button variant="contained" color="primary" onClick={onCreateNewPost}>
+              {language.Create_new_Post}
+            </Button>
+          </div>
+          <PostsList posts={posts} onPostUpdate={updatedPost} onPostDelete={deletePost} />
         </>
       )}
-    </div>
+    </>
   );
 }
 
