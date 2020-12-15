@@ -76,13 +76,13 @@ function Comment({ comment, onCommentDelete, onCommentUpdate, getAllCommentsByPo
                 <img
                   className="forum-avatar comment-avatar"
                   src={defaultImage}
-                  alt="User profile"
+                  alt={language.User_Profile}
                 />
               ) : (
                 <img
                   className="forum-avatar comment-avatar"
                   src={comment.user.profilepic}
-                  alt="User profile"
+                  alt={language.User_Profile}
                 />
               )}
             </div>
@@ -97,12 +97,12 @@ function Comment({ comment, onCommentDelete, onCommentUpdate, getAllCommentsByPo
               <span className="edit-delete comment-icon">
                 <i
                   class="fas fa-trash post-button  fa-lg"
-                  title="delete"
+                  title={language.Delete}
                   onClick={() => onCommentDelete(comment)}></i>
 
                 <i
                   class="fas fa-edit post-button  fa-lg"
-                  title="edit"
+                  title={language.Edit}
                   onClick={onUpdateComment}></i>
               </span>
             )}

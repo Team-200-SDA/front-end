@@ -87,7 +87,7 @@ function PrivChatThread({
           className="message-text-field"
           id="outlined-full-width"
           placeholder={`Send a message to ${thread.thread[0].receiverName}`}
-          helperText="Enter or Click to send."
+          helperText={Language.Enter_Click}
           fullWidth
           margin="normal"
           onChange={e => setMessageField(e.target.value)}

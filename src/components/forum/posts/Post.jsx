@@ -21,7 +21,7 @@ function Post({
   onPostUpdate,
   onPostDelete //Props come from PostsList
 }) {
-  // const { language } = useContext(LangContext);
+  const { language } = useContext(LangContext);
   const [isUpdate, setIsUpdate] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [user, setUser] = useState([]);
@@ -206,7 +206,7 @@ function Post({
                 data-target="#myModal"
                 onClick={onCreateCommentClick}>
                 <i class="far fa-comments fa-2x mr-2"></i> {/* {language.Add_Comment} */}
-                Add Comment
+               {language.Add_Comment}
               </Button>
             </div>
             <div className="like-dislike">
@@ -256,11 +256,11 @@ function Post({
               <u onClick={() => setShowComments(!showComments)}>
                 {showComments ? (
                   <span>
-                    <i class="fas fa-angle-up"></i> close comments
+                    <i class="fas fa-angle-up"></i> {language.close_comments}
                   </span>
                 ) : (
                   <span>
-                    <i class="fas fa-angle-down"></i> show comments
+                    <i class="fas fa-angle-down"></i> {language.show_comments}
                   </span>
                 )}
               </u>

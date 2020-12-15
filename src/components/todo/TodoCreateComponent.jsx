@@ -86,7 +86,6 @@ function StudentCreateComponent() {
             type="submit"
             variant="contained"
             color="primary">
-            {language.this_is_a_sample}
             {language.Create_Todo}
           </Button>
         </form>

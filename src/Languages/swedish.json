@@ -76,7 +76,7 @@
 	"due_Date":"Förfallodatum",
 	"Complete":"Komplett",
 	"Create":"Skapa",
-	"Create_Subject":"Skapa ett ämne",
+	"Create_Subject":"Skapa ett nytt ämne",
 	"Subject_Name_Description":"Ämnesnamn och beskrivning",
 	"Subject_Name":"Ämnesnamn ...",
 	"Subject_Description":"Ämnesbeskrivning ...",
@@ -152,8 +152,6 @@
 	"Update_phone_number":"Uppdatera telefonnummer",
 	"Phone_No":"Telefonnr.",
 	"Enter_Phone_Number":"Enter a Phone Number",
-	"Hi":"Hej vän...............",
-	"Fantastic":"Fantastiskt, jag har följande resurser för dig på Javascript:"
-
+	"close_comments":"Stäng kommentarer"
   
 }

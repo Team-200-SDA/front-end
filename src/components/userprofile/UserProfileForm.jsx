@@ -72,13 +72,13 @@ function UserProfileForm({ user, onUpdateAddressClick, onUpdatePhoneClick, onUpd
               <img
                 className="profile-avatar"
                 src={defaultImage}
-                alt="User profile"
+                alt={language.User_Profile}
               />
             ) : (
               <img
                 className="profile-avatar"
                 src={user.profilepic}
-                alt="User profile"
+                alt={language.User_Profile}
               />
             )}
             {/* ImageUploader component allows the user to choose the image to set as profile picture and 
