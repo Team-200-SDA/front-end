@@ -7,13 +7,15 @@
   width: 80%;
   margin: auto;
   margin-bottom: 30px;
+  color: var(--text);
 }
 
 .news-div {
   max-width: 80%;
   padding: 0;
   margin: 0 auto 30px auto;
-  transition: all 0.5s linear;
+  /* transition: all 0.5s linear; */
+  color: var(--text);
 }
 
 img.news-image {

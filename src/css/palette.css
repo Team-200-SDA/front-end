@@ -3,6 +3,17 @@
   --accent: #ececec;
   --light: #f2f2f2;
   --text: hsla(193, 100%, 8%, 1);
+  --subtext: #8e8e8e;
   --primary: rgb(47, 104, 134);
   --secondary: #d8d8d8;
 }
+
+/* :root {
+  --dominant: linear-gradient(to right, #314755 0%, #26a0da 51%, #314755 100%);
+  --accent: rgb(13, 17, 23);
+  --light: rgb(6, 9, 15);
+  --text: rgb(179, 179, 179);
+  --subtext: #606060;
+  --primary: rgb(47, 104, 134);
+  --secondary: rgb(22, 27, 34);
+} */

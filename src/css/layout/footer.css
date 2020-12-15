@@ -20,6 +20,7 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.footer-button {
 }
 
 .footer-icon {
+  color: var(--text);
   font-size: 24pt;
   cursor: pointer;
 }
@@ -29,6 +30,7 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.footer-button {
 }
 
 .language-icon {
+  color: var(--text);
   font-size: 32px;
 }
 
