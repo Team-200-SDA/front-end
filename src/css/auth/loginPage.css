@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 75% 1fr;
   grid-template-rows: 100vh;
+  color: var(--text);
 }
 
 .login-background {

@@ -27,7 +27,11 @@ body {
     'sidebar footer blank';
   grid-template-columns: 200px auto 0;
   grid-template-rows: auto auto 100px;
-  transition: all 0.5s linear;
+  transition: all 0.5s linear !important;
+  -webkit-transition: all 0.3s linear !important;
+  -moz-transition: all 0.3s linear !important;
+  -ms-transition: all 0.3s linear !important;
+  -o-transition: all 0.3s linear !important;
 }
 
 .navbar {
