@@ -1,43 +1,49 @@
 .show-comment {
-  color: rgb(73, 73, 225);
-  position: absolute;
-  right: 15px;
-  width: 200px;
+  /* margin-bottom: 10px; */
 }
 .show-comment:hover {
-  color: hotpink;
+  color: var(--primary);
 }
 
 .card-info {
-  position: absolute;
-  left: 1px;
-  max-width: 100px;
-  margin-left: 15px;
+  display: flex;
   flex-direction: column;
-  flex-direction: row;
-  align-items: center;
+  max-width: 160px;
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .forum-avatar {
-  margin-top: 20px;
-  height: auto;
-  border-radius: 20%;
-  border: 3px solid var(--primary);
+  border-radius: 50%;
+  border: 2px solid var(--primary);
   max-width: 80px;
-  max-height: 80px ;
+  max-height: 80px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.comment-avatar {
+  margin-top: 10px;
+}
+
+.comment-icon {
+  margin-left: 10px;
 }
 
 .user-name {
   background: var(--primary);
   color: aliceblue;
-  margin: 5px;
-  max-width: 70%;
   border-radius: 30px;
-  margin-left: 15px;
-}
-
-.post-title {
-  margin-top: 80px;
+  margin: 5px;
 }
 
 .post-body {
@@ -48,61 +54,103 @@
 }
 
 .comment-body {
-  padding-top: 40px;
-  padding-left: 90px;
+  padding-top: 30px;
 }
 
 .like-dislike {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
-  margin-right: 54px;
 }
 
-.addComment-button {
-  padding-top: 18px;
+html
+  body
+  div#root
+  div.app
+  div.center
+  div
+  div
+  div.card-body.post
+  div.forum-buttons
+  div.addComment-button
+  button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary {
+  max-height: 32px;
+}
+
+.filler-div {
+  width: 70px;
 }
 
 .forum-buttons {
-  margin-top: 20px;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+  font-size: 7pt;
+  margin-top: 12px;
+  margin-bottom: 4px;
+}
+
+.forum-buttons-post {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.post-button:hover {
+  color: var(--primary) !important;
+  cursor: pointer;
+}
+
+.addComment-button {
+  justify-self: center;
+}
+
+.post-button {
+  margin-right: 16px;
+}
+
+.thumb-button:hover {
+  color: var(--primary) !important;
+  cursor: pointer;
 }
 
 .edit-delete {
-  margin: 20px;
-  display: flex;
-  justify-content: space-around;
-  width: 280px;
-  color: gray;
-  size: 500%;
-}
-
-.fa-edit:hover,
-.fa-trash:hover {
-  color: black;
+  color: var(--text);
+  /* font-size: 6pt; */
 }
 
 .like-count {
-  margin-top: 20px;
+  margin-top: 16px;
   margin-left: 10px;
   margin-right: 10px;
 }
 
-.fa-thumbs-up,
-.fa-thumbs-down,
-.fa-save {
-  color: #314755;
-}
-
-.fa-thumbs-up:hover,
-.fa-thumbs-down:hover,
-.fa-save:hover {
-  color: #26a0da;
-}
-
 .form-create-button {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+}
+
+.comment-card {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 22px;
+  -webkit-border-radius: 22px;
+  -moz-border-radius: 22px;
+  -ms-border-radius: 22px;
+  -o-border-radius: 22px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.create-comment {
+  margin-top: 12px;
+}
+
+.forum-card {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (max-width: 767px) {
+  .post {
+    width: 98%;
+  }
 }

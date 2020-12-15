@@ -1,25 +1,20 @@
 //Component and react imports
-import React, { useState, useEffect } from "react";
-import CommentForm from "./CommentForm";
-import UserApi from "../../../api/UserApi";
-import { useContext } from "react";
-import { LangContext } from "../../../js/states/LanguageContext";
+import React, { useState, useEffect } from 'react';
+import CommentForm from './CommentForm';
+import UserApi from '../../../api/UserApi';
+import { useContext } from 'react';
+import { LangContext } from '../../../js/states/LanguageContext';
 
 //Styling import
-import "../../../css/forum/forum.css";
+import '../../../css/forum/forum.css';
 
 //Default user image for the forum
-const defaultImage = "/images/defaultUserImage/blank-profile-pic.png";
+const defaultImage = '/images/defaultUserImage/blank-profile-pic.png';
 
 /**
  * This component lists the comments and allows the logged-in user to delete or edit * own comment.
  */
-function Comment({
-  comment,
-  onCommentDelete,
-  onCommentUpdate,
-  getAllCommentsByPostId,
-}) {
+function Comment({ comment, onCommentDelete, onCommentUpdate, getAllCommentsByPostId }) {
   //props come from CommentsList
 
   const { language } = useContext(LangContext);
@@ -27,7 +22,7 @@ function Comment({
   const [user, setUser] = useState([]);
 
   const getUser = () => {
-    UserApi.getLoggedInUser().then((res) => {
+    UserApi.getLoggedInUser().then(res => {
       setUser(res.data);
     });
   };
@@ -58,7 +53,7 @@ function Comment({
   };
 
   return (
-    <div>
+    <>
       {/* If variable isUpdate is true comment creating form opens */}
       {isUpdate ? (
         <CommentForm
@@ -73,52 +68,48 @@ function Comment({
           getAllCommentsByPostId={getAllCommentsByPostId}
         />
       ) : (
-        <div className="card mt-4">
-          <div className="card-body forum">
-            <span className="card-info">
-              <div>
-                {/* If user didn't upload a picture, system default picture is used as the user avatar. */}
-                {comment.user.profilepic === null ? (
-                  <img
-                    className="forum-avatar"
-                    src={defaultImage}
-                    alt="User profile"
-                  />
-                ) : (
-                  <img
-                    className="forum-avatar"
-                    src={user.profilepic}
-                    alt="User profile"
-                  />
-                )}
-              </div>
-
-              <p className="user-name">{comment.user.name}</p>
-            </span>
-
-            <div className="comment-body">{comment.body}</div>
-            <div className="forum-buttons">
-              {/* Variable isMyComment checks if the comment belongs to the logged in user. If the user and the logged-in user are the same delete and edit buttons are visible */}
-              {isMyComment && (
-                <span className="edit-delete">
-                  <i
-                    class="fas fa-trash fa-lg"
-                    title="delete"
-                    onClick={() => onCommentDelete(comment)}
-                  ></i>
-
-                  <i
-                    class="fas fa-edit fa-lg"
-                    title="edit"
-                    onClick={onUpdateComment}
-                  ></i>
-                </span>
+        <div className="comment-card forum">
+          <span className="card-info">
+            <div>
+              {/* If user didn't upload a picture, system default picture is used as the user avatar. */}
+              {comment.user.profilepic === null ? (
+                <img
+                  className="forum-avatar comment-avatar"
+                  src={defaultImage}
+                  alt="User profile"
+                />
+              ) : (
+                <img
+                  className="forum-avatar comment-avatar"
+                  src={user.profilepic}
+                  alt="User profile"
+                />
               )}
             </div>
+
+            <p className="user-name">{comment.user.name}</p>
+          </span>
+
+          <div className="comment-body">{comment.body}</div>
+          <div className="forum-buttons">
+            {/* Variable isMyComment checks if the comment belongs to the logged in user. If the user and the logged-in user are the same delete and edit buttons are visible */}
+            {isMyComment && (
+              <span className="edit-delete comment-icon">
+                <i
+                  class="fas fa-trash post-button  fa-lg"
+                  title="delete"
+                  onClick={() => onCommentDelete(comment)}></i>
+
+                <i
+                  class="fas fa-edit post-button  fa-lg"
+                  title="edit"
+                  onClick={onUpdateComment}></i>
+              </span>
+            )}
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
 

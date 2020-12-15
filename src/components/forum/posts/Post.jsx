@@ -1,27 +1,27 @@
 //Component and react imports
-import React, { useState, useEffect } from "react";
-import PostForm from "./PostForm";
-import { Link } from "react-router-dom";
-import CommentForm from "../comments/CommentForm";
-import UserApi from "../../../api/UserApi";
-import CommentPageDetails from "../comments/CommentPageDetails";
-import { useContext } from "react";
-import { LangContext } from "../../../js/states/LanguageContext";
+import React, { useState, useEffect } from 'react';
+import PostForm from './PostForm';
+import { Link } from 'react-router-dom';
+import CommentForm from '../comments/CommentForm';
+import UserApi from '../../../api/UserApi';
+import CommentPageDetails from '../comments/CommentPageDetails';
+import { useContext } from 'react';
+import { LangContext } from '../../../js/states/LanguageContext';
 
 //styling import
-import { Button, Tooltip, Collapse } from "@material-ui/core";
-import "../../../css/forum/forum.css";
-import "../../../css/shared.css";
-import "../../../css/subjects/_subjects.css";
+import { Button, Tooltip, Collapse } from '@material-ui/core';
+import '../../../css/forum/forum.css';
+import '../../../css/shared.css';
+import '../../../css/subjects/_subjects.css';
 
-const defaultImage = "/images/defaultUserImage/blank-profile-pic.png";
+const defaultImage = '/images/defaultUserImage/blank-profile-pic.png';
 
 function Post({
   post,
   onPostUpdate,
-  onPostDelete, //Props come from PostsList
+  onPostDelete //Props come from PostsList
 }) {
- // const { language } = useContext(LangContext);
+  // const { language } = useContext(LangContext);
   const [isUpdate, setIsUpdate] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [user, setUser] = useState([]);
@@ -29,7 +29,7 @@ function Post({
   const [likeCount, setLikeCount] = useState(post.likedUsers.length);
 
   const getUser = () => {
-    UserApi.getLoggedInUser().then((res) => {
+    UserApi.getLoggedInUser().then(res => {
       setUser(res.data);
     });
   };
@@ -53,7 +53,7 @@ function Post({
    * Takes the current post data and adds the new updated information
    * Returns updated post
    */
-  const onPostFormSubmit = (postData) => {
+  const onPostFormSubmit = postData => {
     const updatedPost = { ...post, ...postData };
     return onPostUpdate(updatedPost).then(() => setIsUpdate(false));
   };
@@ -65,13 +65,11 @@ function Post({
    * Post updated
    */
   const onPostLike = async () => {
-    var newDisLikeList = post.disLikedUsers.filter(
-      (item) => item !== user.name
-    );
+    var newDisLikeList = post.disLikedUsers.filter(item => item !== user.name);
     const updatedPost = {
       ...post,
       likedUsers: [...post.likedUsers, user.name],
-      disLikedUsers: newDisLikeList,
+      disLikedUsers: newDisLikeList
     };
     return await onPostUpdate(updatedPost); // setStatus is kept separate to avoid time lag between BE and FE
   };
@@ -83,11 +81,11 @@ function Post({
    * Post updated
    */
   const onPostDislike = async () => {
-    var newLikeList = post.likedUsers.filter((item) => item !== user.name);
+    var newLikeList = post.likedUsers.filter(item => item !== user.name);
     const updatedPost = {
       ...post,
       likedUsers: newLikeList,
-      disLikedUsers: [...post.disLikedUsers, user.name],
+      disLikedUsers: [...post.disLikedUsers, user.name]
     };
     return await onPostUpdate(updatedPost); //setStatus function is kept separate to avoid any functional lag between BE and FE
   };
@@ -120,7 +118,7 @@ function Post({
     setIsUpdate(false);
   };
 
-  const onCreateCommentClick = (data) => {
+  const onCreateCommentClick = data => {
     setIsFormOpen(true);
   };
 
@@ -139,54 +137,46 @@ function Post({
           formTitle="Update post"
         />
       ) : (
-        <div className="card mt-4">
-          <div className="card-body forum">
-            <span className="card-info">
-              <div>
-                {/* In case user doesn't upload a picture system default picture is used as user avatar */}
-                {post.user.profilepic === null ? (
-                  <img
-                    className="forum-avatar"
-                    src={defaultImage}
-                    alt="User profile"
-                  />
-                ) : (
-                  <img
-                    className="forum-avatar"
-                    src={post.user.profilepic}
-                    alt="User profile"
-                  />
-                )}
-              </div>
-              <p className="user-name">{post.user.name}</p>
-            </span>
-            <div className="post-title">
-              {" "}
-              <h3>{post.title}</h3>
-            </div>
-            <div className="post-body">{post.body}</div>
-
-            <div className="forum-buttons">
-              {isMyPost && (
-                <span className="edit-delete">
-                  <i
-                    class="fas fa-trash fa-2x"
-                    title="delete"
-                    onClick={() => onPostDelete(post)}
-                  >
-                    {" "}
-                  </i>
-
-                  <i
-                    class="fas fa-edit fa-2x"
-                    title="edit"
-                    onClick={() => onUpdateClick()}
-                  >
-                    {" "}
-                  </i>
-                </span>
+        <div className="card-body post">
+          <div className="post-title">
+            <h3>{post.title}</h3>
+          </div>
+          <span className="card-info">
+            <div>
+              {/* In case user doesn't upload a picture system default picture is used as user avatar */}
+              {post.user.profilepic === null ? (
+                <img className="forum-avatar" src={defaultImage} alt="User profile" />
+              ) : (
+                <img
+                  className="forum-avatar"
+                  src={post.user.profilepic}
+                  alt="User profile"
+                />
               )}
             </div>
+            <p className="user-name">{post.user.name}</p>
+          </span>
+
+          <div className="post-body">{post.body}</div>
+
+          <div className="forum-buttons forum-buttons-post">
+            {!isMyPost ? <div className="filler-div" /> : null}
+            {isMyPost && (
+              <div className="edit-delete">
+                <i
+                  class="fas fa-trash fa-2x post-button"
+                  title="delete"
+                  onClick={() => onPostDelete(post)}>
+                  {' '}
+                </i>
+                <i
+                  class="fas fa-edit fa-2x post-button"
+                  title="edit"
+                  onClick={() => onUpdateClick()}>
+                  {' '}
+                </i>
+              </div>
+            )}
             <div className="addComment-button">
               <Button
                 type="button"
@@ -194,64 +184,59 @@ function Post({
                 variant="contained"
                 data-toggle="modal"
                 data-target="#myModal"
-                onClick={onCreateCommentClick}
-              >
-                <i class="far fa-comments fa-2x mr-2"></i>{" "}
-                {/* {language.Add_Comment} */}
+                onClick={onCreateCommentClick}>
+                <i class="far fa-comments fa-2x mr-2"></i> {/* {language.Add_Comment} */}
                 Add Comment
               </Button>
             </div>
             <div className="like-dislike">
               {/* When user hovers the like button, it gives the liked users' name list */}
               <Tooltip
-                title={<h5>{post.likedUsers.join(",  ")}</h5>}
+                title={<h5>{post.likedUsers.join(',  ')}</h5>}
                 placement="top"
                 TransitionComponent={Collapse}
                 enterDelay={800}
                 leaveDelay={200}
-                arrow
-              >
+                arrow>
                 <i
-                  className="far fa-thumbs-up mt-3 fa-2x"
-                  onClick={() => (userLiked ? null : actionLike())}
-                ></i>
+                  className="far fa-thumbs-up thumb-button mt-3 fa-2x"
+                  onClick={() => (userLiked ? null : actionLike())}></i>
               </Tooltip>
               <h3 className="like-count"> {post.upVote} </h3>
 
               <i
-                className="far fa-thumbs-down mt-4 fa-2x fa-flip-horizontal"
-                onClick={() => (userDisLiked ? null : actionDisLike())}
-              ></i>
+                className="far fa-thumbs-down thumb-button mt-4 fa-2x fa-flip-horizontal"
+                onClick={() => (userDisLiked ? null : actionDisLike())}></i>
             </div>
-
-            <div className="show-comment">
-              <Link to="#">
-                <u onClick={() => setShowComments(!showComments)}>
-                  {showComments ? (
-                    <span>
-                      <i class="fas fa-angle-up"></i> close comments
-                    </span>
-                  ) : (
-                    <span>
-                      <i class="fas fa-angle-down"></i> show comments
-                    </span>
-                  )}
-                </u>
-              </Link>
-            </div>
-
-            {/* When "show comments" is clicked comments page expands */}
-            {showComments ? <CommentPageDetails post={post} /> : null}
-
-            {isFormOpen && (
-              <CommentForm
-                onCancel={onCreateCommentCancel}
-                onSubmit={onCreateCommentClick}
-                setIsFormOpen={setIsFormOpen}
-                post={post}
-              />
-            )}
           </div>
+
+          <div className="show-comment">
+            <Link to="#">
+              <u onClick={() => setShowComments(!showComments)}>
+                {showComments ? (
+                  <span>
+                    <i class="fas fa-angle-up"></i> close comments
+                  </span>
+                ) : (
+                  <span>
+                    <i class="fas fa-angle-down"></i> show comments
+                  </span>
+                )}
+              </u>
+            </Link>
+          </div>
+
+          {/* When "show comments" is clicked comments page expands */}
+          {showComments ? <CommentPageDetails post={post} /> : null}
+
+          {isFormOpen && (
+            <CommentForm
+              onCancel={onCreateCommentCancel}
+              onSubmit={onCreateCommentClick}
+              setIsFormOpen={setIsFormOpen}
+              post={post}
+            />
+          )}
         </div>
       )}
     </div>
