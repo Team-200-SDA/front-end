@@ -1,3 +1,4 @@
+//Component and react imports
 import React, { useEffect, useState } from "react";
 import PostsApi from "../../../api/PostsApi";
 import PostForm from "./PostForm";

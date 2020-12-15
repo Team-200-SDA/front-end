@@ -16,6 +16,12 @@ function PostForm({
   const [title, setTitle] = useState(initialTitle || "");
   const [body, setBody] = useState(initialBody || "");
 
+  /**
+   * @param {*} e
+   * preventDefault takes current event as parameter and prevents the page from refreshing.
+   * Creates new post.
+   * Catches exception and displays error message.
+   */
   const onCreatePostClick = (e) => {
     e.preventDefault();
     const postData = { title, body };
@@ -27,7 +33,7 @@ function PostForm({
   return (
     <div className="card mt-4">
       <div className="card-body">
-        <h4 className="card-title">{formTitle || "Create a post"}</h4>
+      <h4 className="card-title">{formTitle || "Create a post"}</h4>
         <form onSubmit={onCreatePostClick}>
           <div className="form-group">
             <label>{language.title}</label>

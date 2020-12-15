@@ -1,14 +1,19 @@
+//Component and react imports
 import React, { useState, useEffect } from "react";
 import CommentForm from "./CommentForm";
 import UserApi from "../../../api/UserApi";
 import { useContext } from "react";
 import { LangContext } from "../../../contexts/LanguageContext";
 
-//styling import
+//Styling import
 import "../../../css/forum/forum.css";
 
+//Default user image for the forum
 const defaultImage = "/images/defaultUserImage/blank-profile-pic.png";
 
+/**
+ * This component lists the comments and allows the logged-in user to delete or edit * own comment.
+ */
 function Comment({
   comment,
   onCommentDelete,
@@ -18,7 +23,7 @@ function Comment({
   //props come from CommentsList
 
   const { language } = useContext(LangContext);
-  const [isUpdate, setIsUpdate] = useState(false); //opens the Comment update form
+  const [isUpdate, setIsUpdate] = useState(false); // Opens/closes the Comment update form
   const [user, setUser] = useState([]);
 
   const getUser = () => {
@@ -27,26 +32,34 @@ function Comment({
     });
   };
 
+  /**
+   * When component is rendered, do an API call to get the logged-in user information
+   */
   useEffect(() => {
     getUser();
   }, []);
 
-  const isMyComment = comment.user.id === user.id; //checks if comment belongs to the loggedin user if true makes buttons visible
+  //To be used in checking if the comment belongs to the loggedin user. If true makes buttons visible
+  const isMyComment = comment.user.id === user.id;
 
+  //When user clicks edit button, variable isUpdate is set to true and edit form opens
   const onUpdateComment = () => {
     setIsUpdate(true);
   };
 
+  //When user clicks save, variable isUpdate is set to false and edit form closes
   const onSaveUpdatedComment = () => {
     setIsUpdate(false);
   };
 
+  //When user clicks cancel, variable isUpdate is set to false and edit form closes
   const onCommentFormCancel = () => {
     setIsUpdate(false);
   };
 
   return (
     <div>
+      {/* If variable isUpdate is true comment creating form opens */}
       {isUpdate ? (
         <CommentForm
           formTitle="Update comment"
@@ -63,9 +76,8 @@ function Comment({
         <div className="card mt-4">
           <div className="card-body forum">
             <span className="card-info">
-              {/* <img className="forum-avatar" src={comment.user.profilepic} /> */}
-
-              <div >
+              <div>
+                {/* If user didn't upload a picture, system default picture is used as the user avatar. */}
                 {comment.user.profilepic === null ? (
                   <img
                     className="forum-avatar"
@@ -83,9 +95,10 @@ function Comment({
 
               <p className="user-name">{comment.user.name}</p>
             </span>
-            <div className="comment-body">{comment.body}</div>
 
+            <div className="comment-body">{comment.body}</div>
             <div className="forum-buttons">
+              {/* Variable isMyComment checks if the comment belongs to the logged in user. If the user and the logged-in user are the same delete and edit buttons are visible */}
               {isMyComment && (
                 <span className="edit-delete">
                   <i
