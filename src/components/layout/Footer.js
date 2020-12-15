@@ -9,8 +9,34 @@ import MessageParser from '../../js/chatbot-resources/MessageParser';
 import config from '../../js/chatbot-resources/config';
 
 export default function Footer() {
-  const { language, changeLanguageToEn, changeLanguageToSv, changeLanguageToEs } = useContext(LangContext);
+  const {
+    language,
+    changeLanguageToEn,
+    changeLanguageToSv,
+    changeLanguageToEs
+  } = useContext(LangContext);
   const [botOpen, setBotOpen] = useState(false);
+  const [dark, setDark] = useState(false);
+
+  function darkMode() {
+    setDark(!dark);
+    if (dark) {
+      document.documentElement.style.setProperty('--primary', 'rgb(47, 104, 134)');
+      document.documentElement.style.setProperty('--secondary', 'rgb(22, 27, 34)');
+      document.documentElement.style.setProperty('--light', 'rgb(6, 9, 15)');
+      document.documentElement.style.setProperty('--accent', 'rgb(13, 17, 23)');
+      document.documentElement.style.setProperty('--text', 'rgb(179, 179, 179)');
+      document.documentElement.style.setProperty('--subtext', '#606060');
+    } else {
+      document.documentElement.style.setProperty('--primary', 'rgb(47, 104, 134)');
+      document.documentElement.style.setProperty('--secondary', '#d8d8d8');
+      document.documentElement.style.setProperty('--light', '#f2f2f2');
+      document.documentElement.style.setProperty('--accent', '#ececec');
+      document.documentElement.style.setProperty('--text', 'hsla(193, 100%, 8%, 1)');
+      document.documentElement.style.setProperty('--subtext', '#8e8e8e');
+    }
+  }
+
   return (
     <footer className="bottom">
       <div className="btn-group dropup">
@@ -35,9 +61,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="footer-button" variant="contained">
-        <a href="https://www.youtube.com/">
-          <i className="fas fa-info-circle footer-icon" />
-        </a>
+        <i onClick={darkMode} className="fas fa-sun footer-icon" />
       </div>
       <span className="copyright">&#169;2020 EDULANE. All Rights Reserved</span>
 

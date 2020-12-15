@@ -5,11 +5,16 @@
 }
 
 .todo-complete {
-  background-color: rgb(208, 244, 211) !important; /* Green bar on complete*/
+  background-color: rgba(162, 225, 167, 0.666) !important; /* Green bar on complete*/
+}
+
+tr {
+  color: var(--text);
 }
 
 .todo-icon {
   font-size: 12pt;
+  cursor: pointer;
 }
 
 .create-todo-label {
@@ -17,6 +22,7 @@
 }
 
 .create-todo-card {
+  color: var(--text);
   width: 80%;
   margin-left: auto;
   margin-right: auto;

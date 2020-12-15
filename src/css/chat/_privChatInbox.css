@@ -3,7 +3,7 @@
   align-items: center;
   flex-wrap: wrap;
   background-color: var(--secondary);
-
+  color: var(--text);
   margin-bottom: 10px;
   border-radius: 22px;
   -webkit-border-radius: 22px;
@@ -29,7 +29,7 @@
 .start-conversation {
   margin-bottom: 10px;
   display: flex;
-  /* justify-content: center; */
+  color: var(--text);
   align-items: center;
 }
 

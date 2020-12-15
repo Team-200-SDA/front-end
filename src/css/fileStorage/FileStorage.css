@@ -1,6 +1,7 @@
 .card-filestorage {
   margin: 0 auto 30px auto;
   max-width: 80%;
+  color: var(--text);
 }
 
 .ui.selection.dropdown.filetype-dropdown {
@@ -15,6 +16,7 @@
   max-height: 80px;
   margin: 0 auto 16px auto;
   max-width: 60%;
+  color: var(--text);
 }
 
 .file-delete {
