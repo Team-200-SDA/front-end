@@ -33,7 +33,7 @@ export default function CommentForm({
   /**
    * @param {*} postId
    * Given the postId gets all comments.
-   * Sets new state of commments and sorts comments by comment id in descending order.
+   * Sets new state of comments and sorts comments by comment id in descending order.
    */
   const getAllCommentsByPostId = async postId => {
     const res = await CommentsApi.getCommentById(postId);
