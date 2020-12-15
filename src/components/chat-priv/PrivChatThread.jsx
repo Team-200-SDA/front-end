@@ -6,6 +6,9 @@ import React, { useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import PrivChatApi from '../../api/PrivChatApi';
 import PrivMessage from './PrivMessage';
+import { useContext } from 'react';
+import { LangContext } from '../../js/states/LanguageContext';
+
 
 function PrivChatThread({
   conversations,
@@ -14,7 +17,7 @@ function PrivChatThread({
   setConversations
 }) {
   const [messageField, setMessageField] = useState('');
-  // const { language } = useContext(LangContext);
+  const { language } = useContext(LangContext);
 
   /**
    * This needs to be let, or inbox (parent component) wont update with
@@ -87,7 +90,7 @@ function PrivChatThread({
           className="message-text-field"
           id="outlined-full-width"
           placeholder={`Send a message to ${thread.thread[0].receiverName}`}
-          helperText={Language.Enter_Click}
+          helperText={language.Enter_Click}
           fullWidth
           margin="normal"
           onChange={e => setMessageField(e.target.value)}
