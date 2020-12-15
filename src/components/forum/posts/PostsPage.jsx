@@ -21,21 +21,20 @@ function PostsPage() {
     getAll();
   }, []);
 
-  const createPost = postData => {
-    return PostsApi.createPost(postData).then(res => {
-      setPosts([res.data, ...posts]);
-      setCreateForm(false);
-    });
+  const createPost = async postData => {
+    const res = await PostsApi.createPost(postData);
+    setPosts([res.data, ...posts]);
+    setCreateForm(false);
   };
 
-  const updatedPost = updatedPost => {
-    return PostsApi.updatePost(updatedPost).then(res => getAll());
+  const updatedPost = async updatedPost => {
+    await PostsApi.updatePost(updatedPost);
+    return getAll();
   };
 
-  const deletePost = post => {
-    return PostsApi.deletePost(post.id).then(() =>
-      setPosts(posts.filter(a => a.id !== post.id))
-    );
+  const deletePost = async post => {
+    await PostsApi.deletePost(post.id);
+    return setPosts(posts.filter(a => a.id !== post.id));
   };
 
   const onCreateNewPost = () => {
