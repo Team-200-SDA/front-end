@@ -75,6 +75,20 @@ function Post({
   };
 
   /**
+   * If the logged-in user removes a like,
+   * User's name is removed from liked users in the backend.
+   * Post updated
+   */
+  const onRemoveLike = async () => {
+    var newLikeList = post.likedUsers.filter(item => item !== user.name);
+    const updatedPost = {
+      ...post,
+      likedUsers: newLikeList
+    };
+    return await onPostUpdate(updatedPost); // setStatus is kept separate to avoid time lag between BE and FE
+  };
+
+  /**
    * If the logged-in user dislikes a post,
    * User's name is added to disliked users in the backend.
    * If user liked the post before, user's name is removed from the liked users in the backend.
@@ -91,27 +105,33 @@ function Post({
   };
 
   /**
-   * When like button clicked increases likeCount
-   * Updates post
+   * If the logged-in user removes a dislike,
+   * User's name is removed from disliked users list in the backend.
+   * Post updated
    */
+  const onRemoveDisLike = async () => {
+    var newDisLikeList = post.disLikedUsers.filter(item => item !== user.name);
+    const updatedPost = {
+      ...post,
+      disLikedUsers: newDisLikeList
+    };
+    return await onPostUpdate(updatedPost); // setStatus is kept separate to avoid time lag between BE and FE
+  };
+
+  // Updates post
   const actionLike = () => {
-    setLikeCount(likeCount + 1);
     onPostLike();
   };
 
-  /**************
-   * When like button clicked increases likeCount
-   * Updates post
-   */
+  //Updates post
   const actionDisLike = () => {
-    setLikeCount(likeCount - 1);
     onPostDislike();
   };
 
   // Checks if the user already liked the post
   const userLiked = post.likedUsers.includes(user.name);
 
-  //**********
+  // Checks if the user already disliked the post
   const userDisLiked = post.disLikedUsers.includes(user.name);
 
   const onPostFormCancel = () => {
@@ -198,15 +218,52 @@ function Post({
                 enterDelay={800}
                 leaveDelay={200}
                 arrow>
-                <i
-                  className="far fa-thumbs-up thumb-button mt-3 fa-2x"
-                  onClick={() => (userLiked ? null : actionLike())}></i>
+                {userLiked ? (
+                  <i
+                    className="fas thumb-button fa-thumbs-up mt-3 fa-2x"
+                    onClick={() => {
+                      onRemoveLike();
+                    }}></i>
+                ) : (
+                  <i
+                    className="far thumb-button fa-thumbs-up mt-3 fa-2x"
+                    onClick={() => {
+                      actionLike();
+                    }}></i>
+                )}
               </Tooltip>
+
               <h3 className="like-count"> {post.upVote} </h3>
 
-              <i
-                className="far fa-thumbs-down thumb-button mt-4 fa-2x fa-flip-horizontal"
-                onClick={() => (userDisLiked ? null : actionDisLike())}></i>
+              {userDisLiked ? (
+                <i
+                  class="fas thumb-button fa-thumbs-down mt-4 fa-2x fa-flip-horizontal"
+                  onClick={() => {
+                    onRemoveDisLike();
+                  }}></i>
+              ) : (
+                <i
+                  className="far fa-thumbs-down mt-4 fa-2x fa-flip-horizontal"
+                  onClick={() => {
+                    actionDisLike();
+                  }}></i>
+              )}
+            </div>
+
+            <div className="show-comment">
+              <Link to="#">
+                <u onClick={() => setShowComments(!showComments)}>
+                  {showComments ? (
+                    <span>
+                      <i class="fas fa-angle-up"></i> close comments
+                    </span>
+                  ) : (
+                    <span>
+                      <i class="fas fa-angle-down"></i> show comments
+                    </span>
+                  )}
+                </u>
+              </Link>
             </div>
           </div>
 
