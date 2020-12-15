@@ -24,8 +24,16 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.footer-button {
   cursor: pointer;
 }
 
+.footer-icon:hover {
+  color: var(--primary);
+}
+
 .language-icon {
   font-size: 32px;
+}
+
+.language-icon:hover {
+  color: var(--primary);
 }
 
 .dropdown-item {

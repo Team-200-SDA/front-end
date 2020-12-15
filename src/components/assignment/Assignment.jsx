@@ -35,7 +35,7 @@ export default function Assignment({ assignment, deleteAssignment }) {
         {/* Delete Button if logged in user is assignment author */}
         {role_ === assignment.user.role ? (
           <i
-            className="fas fa-trash assignment-delete"
+            className={`fas fa-trash ${role_ === 'student' ? 'assignment-delete' : null}`}
             onClick={() => deleteAssignment(assignment.id)}></i>
         ) : null}
       </div>

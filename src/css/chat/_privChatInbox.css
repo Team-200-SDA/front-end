@@ -86,10 +86,6 @@
   display: none;
 }
 
-.private-users {
-  display: none;
-}
-
 .no-active-conversation {
   margin-top: 10%;
   /* margin-right: 25%; */
@@ -129,5 +125,9 @@
 
   .no-active-conversation {
     margin-right: 0;
+  }
+
+  .private-users {
+    display: none;
   }
 }

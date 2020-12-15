@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import TodoApi from '../../api/TodoApi';
 import { useContext } from 'react';
 import { LangContext } from '../../js/states/LanguageContext';
+import Calendar from 'react-calendar';
 
 import { Button, FormLabel } from '@material-ui/core';
+import { format } from 'date-fns';
 
 /*   Using Functional components to Create a student todo list.*/
 function StudentCreateComponent() {
@@ -25,10 +27,18 @@ function StudentCreateComponent() {
    Makes it always return a promise. Allows await to be used in it.Fetching the data using hooks. */
   const createTodo = async event => {
     event.preventDefault();
+
     const todo = { title, description, dueDate, complete: false };
     await TodoApi.createTodo(todo);
     history.push('/todo-list');
   };
+
+  /**
+   * Set default state as today. Doing this in useState causes an error.
+   */
+  useEffect(() => {
+    setDueDate(oldDate => format(new Date(), 'dd-MMM-yyyy'));
+  }, []);
 
   return (
     //Fetching data using JSX ...
@@ -65,15 +75,10 @@ function StudentCreateComponent() {
             className="form-control subject-input"
             placeholder={language.Enter_Description}
           />
-          <FormLabel className="form-label" component="legend">
-            {language.Due_Date}
-          </FormLabel>
-          <input
-            type="text"
-            value={dueDate}
-            onChange={e => setDueDate(e.target.value)}
-            className="form-control subject-input last-input-todo"
-            placeholder={language.Enter_due_date}
+
+          <FormLabel component="legend">{language.Due_Date}</FormLabel>
+          <Calendar
+            onChange={(value, event) => setDueDate(format(value, 'dd-MMM-yyyy'))}
           />
 
           <Button
@@ -81,7 +86,7 @@ function StudentCreateComponent() {
             type="submit"
             variant="contained"
             color="primary">
-              {language.this_is_a_sample}  
+            {language.this_is_a_sample}
             {language.Create_Todo}
           </Button>
         </form>

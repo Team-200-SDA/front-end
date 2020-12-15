@@ -11,7 +11,6 @@ import NewsPage from './components/news/NewsPage';
 import Chat from './components/chat/Chat';
 import LiveVideo from './components/live/LiveVideo';
 import Userprofile from './components/userprofile/UserProfile';
-import Calendar from './components/calendar/Calendar';
 import AssignmentPage from './components/assignment/AssignmentPage';
 import FileStoragePage from './components/filestorage/FileStoragePage';
 import PrivChatHandler from './components/chat-priv/PrivChatHandler';
@@ -23,6 +22,7 @@ import LecturePage from './components/lecture/LecturePage';
 import PostsPage from './components/forum/posts/PostsPage';
 import CommentPageDetails from './components/forum/comments/CommentPageDetails';
 import CommentsPage from './components/forum/comments/CommentsPage';
+import CalendarComponent from './components/calendar/CalendarComponent';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -63,9 +63,11 @@ function App() {
               <Route path="/filestorage">
                 <FileStoragePage />
               </Route>
+
               <Route path="/calendar">
-                <Calendar />
+                <CalendarComponent />
               </Route>
+
               <Route path="/userprofile">
                 <Userprofile />
               </Route>

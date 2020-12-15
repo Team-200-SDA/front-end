@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Calendar from '../calendar/Calendar';
 import { useContext } from 'react';
 import { LangContext } from '../../js/states/LanguageContext';
 
@@ -90,7 +89,7 @@ function Navbar({ onLogout }) {
             </li>
 
             <li className="nav-item">
-              <Link to="#" onClick={Calendar} className="nav-link">
+              <Link to="/calendar" className="nav-link">
                 <i className="fas fa-calendar-alt nav-icon" /> {language.Calendar}
               </Link>
             </li>
@@ -108,8 +107,8 @@ function Navbar({ onLogout }) {
             </li>
 
             <li className="nav-item">
-              <Link to="#" className="nav-link" onClick={onLogout} >
-                <i className="fas fa-sign-out-alt nav-icon sign-out"  />
+              <Link to="#" className="nav-link" onClick={onLogout}>
+                <i className="fas fa-sign-out-alt nav-icon sign-out" />
                 {language.Sign_Out}
               </Link>
             </li>
