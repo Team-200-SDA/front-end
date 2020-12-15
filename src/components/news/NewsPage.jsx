@@ -20,7 +20,7 @@ export default function NewsPage() {
    */
   function getAllNews() {
     NewsApi.getAllNews().then(data => {
-      setNews(data.data);
+      setNews(data.data.sort((a, b) => b.id - a.id));
     });
   }
 
