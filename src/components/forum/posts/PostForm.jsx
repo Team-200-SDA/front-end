@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useContext } from 'react';
 import { LangContext } from '../../../js/states/LanguageContext';
 
+import { Button } from "@material-ui/core";
 
 function PostForm({
   initialTitle,
@@ -15,8 +16,14 @@ function PostForm({
   const [title, setTitle] = useState(initialTitle || "");
   const [body, setBody] = useState(initialBody || "");
 
+  /**
+   * @param {*} e
+   * preventDefault takes current event as parameter and prevents the page from refreshing.
+   * Creates new post.
+   * Catches exception and displays error message.
+   */
   const onCreatePostClick = (e) => {
-    e.preventDefault();    
+    e.preventDefault();
     const postData = { title, body };
     onSubmit(postData).catch((err) => {
       alert(language.error_occured);
@@ -26,7 +33,7 @@ function PostForm({
   return (
     <div className="card mt-4">
       <div className="card-body">
-        <h4 className="card-title">{formTitle || "Create a post"}</h4>
+      <h4 className="card-title">{formTitle || "Create a post"}</h4>
         <form onSubmit={onCreatePostClick}>
           <div className="form-group">
             <label>{language.title}</label>
@@ -51,18 +58,29 @@ function PostForm({
             />
           </div>
 
-          <div className="form-group">
-            <button className="btn btn-primary" type="submit">
+          <div className="form-create-button">
+            <Button
+              type="button"
+              color="primary"
+              variant="contained"
+              data-toggle="modal"
+              data-target="#myModal"
+              type="submit"
+            >
               {language.Save}
-            </button>
+            </Button>
 
-            <button
-              className="btn btn-outline"
+            <Button
+              type="button"
+              color="primary"
+              variant="contained"
+              data-toggle="modal"
+              data-target="#myModal"
               type="button"
               onClick={onCancel}
             >
               {language.Cancel}
-            </button>
+            </Button>
           </div>
         </form>
       </div>

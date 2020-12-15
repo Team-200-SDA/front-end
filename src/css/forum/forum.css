@@ -1,0 +1,108 @@
+.show-comment {
+  color: rgb(73, 73, 225);
+  position: absolute;
+  right: 15px;
+  width: 200px;
+}
+.show-comment:hover {
+  color: hotpink;
+}
+
+.card-info {
+  position: absolute;
+  left: 1px;
+  max-width: 100px;
+  margin-left: 15px;
+  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+}
+
+.forum-avatar {
+  margin-top: 20px;
+  height: auto;
+  border-radius: 20%;
+  border: 3px solid var(--primary);
+  max-width: 80px;
+  max-height: 80px ;
+}
+
+.user-name {
+  background: var(--primary);
+  color: aliceblue;
+  margin: 5px;
+  max-width: 70%;
+  border-radius: 30px;
+  margin-left: 15px;
+}
+
+.post-title {
+  margin-top: 80px;
+}
+
+.post-body {
+  margin-top: 20px;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.comment-body {
+  padding-top: 40px;
+  padding-left: 90px;
+}
+
+.like-dislike {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-right: 54px;
+}
+
+.addComment-button {
+  padding-top: 18px;
+}
+
+.forum-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-delete {
+  margin: 20px;
+  display: flex;
+  justify-content: space-around;
+  width: 280px;
+  color: gray;
+  size: 500%;
+}
+
+.fa-edit:hover,
+.fa-trash:hover {
+  color: black;
+}
+
+.like-count {
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.fa-thumbs-up,
+.fa-thumbs-down,
+.fa-save {
+  color: #314755;
+}
+
+.fa-thumbs-up:hover,
+.fa-thumbs-down:hover,
+.fa-save:hover {
+  color: #26a0da;
+}
+
+.form-create-button {
+  display: flex;
+  justify-content: space-evenly;
+}

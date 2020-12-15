@@ -1,14 +1,19 @@
-import React from 'react';
-import PostsPage from '../posts/PostsPage';
-import Comment from './Comment';
+import React from "react";
+import PostsPage from "../posts/PostsPage";
+import Comment from "./Comment";
 
-function CommentsList({ comments, onCommentDelete, onCommentUpdate, setComments }) {
+function CommentsList({
+  comments,
+  onCommentDelete,
+  onCommentUpdate,
+  setComments,
+}) {
   //props come from CommentsPage
 
   return (
     <div className="mt-4">
       <div className="mt-4">
-        {comments.map(comment => (
+      {comments.map(comment => (
           <Comment
             key={comment.id}
             comment={comment}
