@@ -4,7 +4,7 @@ import PostsApi from "../../../api/PostsApi";
 import PostForm from "./PostForm";
 import PostsList from "./PostsList";
 import { useContext } from 'react';
-import { LangContext } from '../../../js/states/LanguageContext';
+import { LangContext } from "../../../js/states/LanguageContext";
 
 
 function PostsPage() {

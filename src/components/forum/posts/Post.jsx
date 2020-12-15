@@ -6,7 +6,7 @@ import CommentForm from "../comments/CommentForm";
 import UserApi from "../../../api/UserApi";
 import CommentPageDetails from "../comments/CommentPageDetails";
 import { useContext } from "react";
-import { LangContext } from "../../../contexts/LanguageContext";
+import { LangContext } from "../../../js/states/LanguageContext";
 
 //styling import
 import { Button, Tooltip, Collapse } from "@material-ui/core";
@@ -21,7 +21,7 @@ function Post({
   onPostUpdate,
   onPostDelete, //Props come from PostsList
 }) {
-  const { language } = useContext(LangContext);
+ // const { language } = useContext(LangContext);
   const [isUpdate, setIsUpdate] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [user, setUser] = useState([]);
@@ -197,7 +197,8 @@ function Post({
                 onClick={onCreateCommentClick}
               >
                 <i class="far fa-comments fa-2x mr-2"></i>{" "}
-                {language.Add_Comment}
+                {/* {language.Add_Comment} */}
+                Add Comment
               </Button>
             </div>
             <div className="like-dislike">

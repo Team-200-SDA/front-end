@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import CommentForm from "./CommentForm";
 import UserApi from "../../../api/UserApi";
 import { useContext } from "react";
-import { LangContext } from "../../../contexts/LanguageContext";
+import { LangContext } from "../../../js/states/LanguageContext";
 
 //Styling import
 import "../../../css/forum/forum.css";

@@ -4,7 +4,7 @@ import { useRecoilState } from "recoil";
 import CommentsApi from "../../../api/CommentsApi";
 import { commentState } from "../../../js/states/CommentState";
 import { useContext } from "react";
-import { LangContext } from "../../../contexts/LanguageContext";
+import { LangContext } from "../../../js/states/LanguageContext";
 
 //Styling import
 import { Button } from "@material-ui/core";
