@@ -49,10 +49,12 @@
   max-width: 80%;
   margin-left: auto;
   margin-right: auto;
+  white-space: pre-wrap;
 }
 
 .comment-body {
   padding-top: 30px;
+  white-space: pre-wrap;
 }
 
 .like-dislike {
