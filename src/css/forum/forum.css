@@ -19,6 +19,10 @@
   color: var(--text);
 }
 
+.post h3 {
+  padding-bottom: 8px;
+}
+
 .forum-avatar {
   border-radius: 50%;
   border: 2px solid var(--primary);
