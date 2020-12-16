@@ -14,7 +14,8 @@
 .learning-option-button {
   padding: 0.5rem;
   border-radius: 25px;
-  background: #a8aeb3;
-  border: 1px solid green;
+  background: var(--secondary);
+  border: 1px solid var(--primary);
+  color: var(--text);
   margin: 3px;
 }

@@ -14,27 +14,27 @@ class ActionProvider {
 
   handleJavascriptList = () => {
     const message = this.createChatBotMessage(
-      "Fantastic, I've got the following resources for you on Javascript:",
+      "Fantastic, I've got the following resources for you on Biology:",
       {
-        widget: 'javascriptLinks'
+        widget: 'biology'
       }
     );
     this.updateChatbotState(message);
   };
   ReactJS = () => {
     const message1 = this.createChatBotMessage(
-      "Fantastic, I've got the following resources for you on React:",
+      "Fantastic, I've got the following resources for you on Chemistry:",
       {
-        widget: 'ReactJS'
+        widget: 'chemistry'
       }
     );
     this.updateChatbotState(message1);
   };
   apis = () => {
     const message1 = this.createChatBotMessage(
-      "Fantastic, I've got the following resources for you on API:",
+      "Fantastic, I've got the following resources for you on Physics:",
       {
-        widget: 'apis'
+        widget: 'physics'
       }
     );
     this.updateChatbotState(message1);
