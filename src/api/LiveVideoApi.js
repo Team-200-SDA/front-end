@@ -3,7 +3,7 @@ const createRoom = async () => {
     method: 'GET',
     headers: {
       Authorization:
-        'Bearer 606692026bd406710ed3b9eebf8dcfde837d259a43a72a6c25dcbb4e19b6ff2'
+        'Bearer 9606692026bd406710ed3b9eebf8dcfde837d259a43a72a6c25dcbb4e19b6ff2'
     }
   });
   const room = await response.json();

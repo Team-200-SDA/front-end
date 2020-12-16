@@ -61,7 +61,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="footer-button" variant="contained">
-        <i onClick={darkMode} className="fas fa-sun footer-icon" />
+        <i onClick={darkMode} className="fas fa-adjust footer-icon" />
       </div>
       <span className="copyright">&#169;2020 EDULANE. All Rights Reserved</span>
 

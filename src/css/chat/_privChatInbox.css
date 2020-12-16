@@ -90,6 +90,7 @@
   margin-top: 10%;
   /* margin-right: 25%; */
   font-size: 12pt;
+  color: var(--text);
 }
 
 @media screen and (max-width: 767px) {
