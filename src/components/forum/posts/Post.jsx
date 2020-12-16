@@ -1,8 +1,9 @@
 //Component and react imports
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PostForm from "./PostForm";
 import { Link } from "react-router-dom";
 import CommentForm from "../comments/CommentForm";
+import UserApi from "../../../api/UserApi";
 import CommentPageDetails from "../comments/CommentPageDetails";
 import { useContext } from "react";
 import { LangContext } from "../../../js/states/LanguageContext";
@@ -20,7 +21,7 @@ function Post({
   currentUser,
   post,
   onPostUpdate,
-  onPostDelete, //Props come from PostsPage
+  onPostDelete, //Props come from PostsList
 }) {
   const { language } = useContext(LangContext);
   const [isUpdate, setIsUpdate] = useState(false);
@@ -139,8 +140,29 @@ function Post({
         />
       ) : (
         <div className="card-body post">
-          <div className="post-title">
-            <h3>{post.title}</h3>
+          <div className="post-top">
+            <span className="post-top-right">
+              <h3>{post.title}</h3>
+            </span>
+            <span className="post-top-left">
+              <div>
+                {/* In case user doesn't upload a picture system default picture is used as user avatar */}
+                {post.user.profilepic === null ? (
+                  <img
+                    className="forum-avatar"
+                    src={defaultImage}
+                    alt="User profile"
+                  />
+                ) : (
+                  <img
+                    className="forum-avatar"
+                    src={post.user.profilepic}
+                    alt="User profile"
+                  />
+                )}
+              </div>
+              <p className="user-name">{post.user.name}</p>
+            </span>
           </div>
           <span className="card-info">
             <div>
