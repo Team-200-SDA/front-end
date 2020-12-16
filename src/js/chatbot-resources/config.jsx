@@ -9,12 +9,15 @@ const config = {
    widget to render with this message.t a name and changed the color of the messagebox
     and chatbutton components.
  */
-  botName: 'LearningBot',
+  botName: 'EduBot',
 
   initialMessages: [
-    createChatBotMessage("Hi, I'm here to help. What do you want to 		learn?", {
-      widget: 'LearningOptions'
-    })
+    createChatBotMessage(
+      "Hi, I'm here to help. Here are some extra resources for the following subjects.",
+      {
+        widget: 'LearningOptions'
+      }
+    )
   ],
 
   //We are using the Widgets inside the config file and this allows us room to decorate the widget with important properties inside the chatbot
@@ -24,73 +27,89 @@ const config = {
       widgetFunc: props => <BotOptions {...props} />
     },
     {
-      widgetName: 'javascriptLinks',
+      widgetName: 'biology',
       widgetFunc: props => <BotLinks {...props} />,
       props: {
         options: [
           {
-            text: 'Introduction to JS',
-            url:
-              'https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/basic-javascript/',
+            text: 'Photosynthesis',
+            url: 'https://www.youtube.com/watch?v=fTXh7A7Uc2M',
             id: 1
           },
           {
-            text: 'Mozilla JS Guide',
-            url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide',
+            text: 'Heart Structure',
+            url:
+              'https://aklectures.com/lecture/cardiovascular-system/structure-of-the-heart',
             id: 2
           },
           {
-            text: 'Frontend Masters',
-            url: 'https://frontendmasters.com',
+            text: 'Genome',
+            url: 'https://www.genome.gov/genetics-glossary/Deoxyribonucleic-Acid',
             id: 3
+          },
+          {
+            text: 'Microbes',
+            url: 'https://learn.genetics.utah.edu/content/microbiome/intro/',
+            id: 4
           }
         ]
       }
     },
     {
-      widgetName: 'ReactJS',
+      widgetName: 'chemistry',
       widgetFunc: props => <BotLinks {...props} />,
       props: {
         options: [
           {
-            text: 'Introduction to ReactJS',
-            url: 'https://reactjs.org/tutorial/tutorial.html',
+            text: 'Atomic Structure',
+            url:
+              'https://courses.lumenlearning.com/boundless-chemistry/chapter/the-structure-of-the-atom/#:~:text=Atoms%20consist%20of%20three%20basic,the%20electrons%20(negatively%20charged)',
             id: 1
           },
           {
-            text: 'React projects',
-            url:
-              'https://dev.to/nerdjfpb/15-react-js-project-ideas-beginner-to-expert-with-free-tutorial-f41',
+            text: "Bohr's Model",
+            url: 'https://www.youtube.com/watch?v=S1LDJUu4nko',
             id: 2
           },
           {
-            text: 'React Realworld projects',
+            text: 'Periodic Table',
             url:
-              'https://medium.com/front-end-weekly/5-real-world-react-projects-to-inspire-growth-no-todo-apps-allowed-8c5b6cffbadd',
+              'https://www.acs.org/content/acs/en/education/students/highschool/chemistryclubs/activities/periodic-table.html',
             id: 3
+          },
+          {
+            text: 'Thermodynamics',
+            url:
+              'https://chem.libretexts.org/Bookshelves/General_Chemistry/Map%3A_Chemistry_-_The_Central_Science_(Brown_et_al.)/19%3A_Chemical_Thermodynamics',
+            id: 4
           }
         ]
       }
     },
     {
-      widgetName: 'apis',
+      widgetName: 'physics',
       widgetFunc: props => <BotLinks {...props} />,
       props: {
         options: [
           {
-            text: 'REST APIS',
-            url: 'https://www.sitepoint.com/developers-rest-api/',
+            text: 'Motion and forces',
+            url: 'https://sciencetrek.org/sciencetrek/topics/force_and_motion/facts.cfm',
             id: 1
           },
           {
-            text: 'REACT API',
-            url: 'https://www.smashingmagazine.com/2020/06/rest-api-react-fetch-axios/',
+            text: 'Static & Kinetic Friction',
+            url: 'https://www.youtube.com/watch?v=pL2YfC-22Uc',
             id: 2
           },
           {
-            text: 'Web Services Api',
-            url: 'https://www.guru99.com/webservice-testing-beginner-guide.html',
+            text: 'Gravity',
+            url: 'https://www.youtube.com/watch?v=Kw51KiZhm0I',
             id: 3
+          },
+          {
+            text: 'Quantum Physics',
+            url: 'https://www.tcm.phy.cam.ac.uk/~bds10/aqp/lec1_compressed.pdf',
+            id: 4
           }
         ]
       }
