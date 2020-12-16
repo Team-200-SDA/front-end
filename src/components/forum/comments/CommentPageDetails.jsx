@@ -1,19 +1,18 @@
 //Component and react imports
-import React, { useEffect } from "react";
-import CommentsList from "./CommentsList";
+import React, { useEffect, useState } from "react";
 import CommentsApi from "../../../api/CommentsApi";
-import { useRecoilState } from "recoil";
-import { commentState } from "../../../js/states/CommentState";
+import Comment from "./Comment";
 
 /**
  * This component has the functions to get and delete comments
  *
  */
-export default function CommentPageDetails({ post }) {
-  const [comments, setComments] = useRecoilState(commentState);
+export default function CommentPageDetails({ post, currentUser }) {
+  const [comments, setComments] = useState([]);
 
   /**
-   * ***********************
+   * Gets comments related to a specific post by post id
+   * Sorts comments in descending order by id
    */
   const getAllCommentsByPostId = async () => {
     const res = await CommentsApi.getCommentById(post.id);
@@ -22,11 +21,11 @@ export default function CommentPageDetails({ post }) {
 
   useEffect(() => {
     getAllCommentsByPostId();
-  }, []);
+  });
 
   /**
    * @param {*} comment
-   *  Communicates with the backend and deletes the specific comment by comment id
+   *  Provides the communication with the backend and deletes the specific comment by comment id
    */
   const deleteComment = async (comment) => {
     await CommentsApi.deleteComment(comment.id);
@@ -35,7 +34,17 @@ export default function CommentPageDetails({ post }) {
 
   return (
     <div>
-      {<CommentsList comments={comments} onCommentDelete={deleteComment} />}
+      {comments.map((comment) => (
+        <Comment
+          key={comment.id}
+          currentUser={currentUser}
+          comment={comment}
+          onCommentDelete={deleteComment}
+          setComments={setComments}
+          getAllCommentsByPostId={getAllCommentsByPostId}
+         
+        />
+      ))}
     </div>
   );
 }

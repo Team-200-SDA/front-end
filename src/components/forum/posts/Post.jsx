@@ -1,9 +1,8 @@
 //Component and react imports
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PostForm from './PostForm';
 import { Link } from 'react-router-dom';
 import CommentForm from '../comments/CommentForm';
-import UserApi from '../../../api/UserApi';
 import CommentPageDetails from '../comments/CommentPageDetails';
 import { useContext } from 'react';
 import { LangContext } from '../../../js/states/LanguageContext';
@@ -14,34 +13,28 @@ import '../../../css/forum/forum.css';
 import '../../../css/shared.css';
 import '../../../css/subjects/_subjects.css';
 
+//Default image for users without a profile picture
 const defaultImage = '/images/defaultUserImage/blank-profile-pic.png';
 
 function Post({
+  currentUser,
   post,
   onPostUpdate,
-  onPostDelete //Props come from PostsList
+  onPostDelete //Props come from PostsPage
 }) {
-  // const { language } = useContext(LangContext);
+  const { language } = useContext(LangContext);
   const [isUpdate, setIsUpdate] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [user, setUser] = useState([]);
   const [showComments, setShowComments] = useState(false);
-  const [likeCount, setLikeCount] = useState(post.likedUsers.length);
 
-  const getUser = () => {
-    UserApi.getLoggedInUser().then(res => {
-      setUser(res.data);
-    });
-  };
+  //Returns the list of liked users' name list without the logged in user's name
+  var newLikeList = post.likedUsers.filter(item => item !== currentUser.name);
 
-  console.log(post);
-
-  useEffect(() => {
-    getUser();
-  }, []);
+  //Returns the list of disliked users' name list without the logged in user's name
+  var newDisLikeList = post.disLikedUsers.filter(item => item !== currentUser.name);
 
   //To be used in checking if the the post belongs to the logged-in user. If true, makes buttons visible
-  const isMyPost = post.user.id === user.id;
+  const isMyPost = post.user.id === currentUser.id;
 
   //When user clicks edit button, variable isUpdate is set to true and edit form opens
   const onUpdateClick = () => {
@@ -65,10 +58,9 @@ function Post({
    * Post updated
    */
   const onPostLike = async () => {
-    var newDisLikeList = post.disLikedUsers.filter(item => item !== user.name);
     const updatedPost = {
       ...post,
-      likedUsers: [...post.likedUsers, user.name],
+      likedUsers: [...post.likedUsers, currentUser.name],
       disLikedUsers: newDisLikeList
     };
     return await onPostUpdate(updatedPost); // setStatus is kept separate to avoid time lag between BE and FE
@@ -80,7 +72,6 @@ function Post({
    * Post updated
    */
   const onRemoveLike = async () => {
-    var newLikeList = post.likedUsers.filter(item => item !== user.name);
     const updatedPost = {
       ...post,
       likedUsers: newLikeList
@@ -95,11 +86,10 @@ function Post({
    * Post updated
    */
   const onPostDislike = async () => {
-    var newLikeList = post.likedUsers.filter(item => item !== user.name);
     const updatedPost = {
       ...post,
       likedUsers: newLikeList,
-      disLikedUsers: [...post.disLikedUsers, user.name]
+      disLikedUsers: [...post.disLikedUsers, currentUser.name]
     };
     return await onPostUpdate(updatedPost); //setStatus function is kept separate to avoid any functional lag between BE and FE
   };
@@ -110,7 +100,6 @@ function Post({
    * Post updated
    */
   const onRemoveDisLike = async () => {
-    var newDisLikeList = post.disLikedUsers.filter(item => item !== user.name);
     const updatedPost = {
       ...post,
       disLikedUsers: newDisLikeList
@@ -118,21 +107,11 @@ function Post({
     return await onPostUpdate(updatedPost); // setStatus is kept separate to avoid time lag between BE and FE
   };
 
-  // Updates post
-  const actionLike = () => {
-    onPostLike();
-  };
-
-  //Updates post
-  const actionDisLike = () => {
-    onPostDislike();
-  };
-
   // Checks if the user already liked the post
-  const userLiked = post.likedUsers.includes(user.name);
+  const userLiked = post.likedUsers.includes(currentUser.name);
 
   // Checks if the user already disliked the post
-  const userDisLiked = post.disLikedUsers.includes(user.name);
+  const userDisLiked = post.disLikedUsers.includes(currentUser.name);
 
   const onPostFormCancel = () => {
     setIsUpdate(false);
@@ -178,9 +157,7 @@ function Post({
               <p className="user-name">{post.user.name}</p>
             </span>
           </div>
-
           <div className="post-body">{post.body}</div>
-
           <div className="forum-buttons forum-buttons-post">
             {!isMyPost ? <div className="filler-div" /> : null}
             {isMyPost && (
@@ -207,12 +184,11 @@ function Post({
                 data-toggle="modal"
                 data-target="#myModal"
                 onClick={onCreateCommentClick}>
-                <i class="far fa-comments fa-2x mr-2"></i> {/* {language.Add_Comment} */}
-                Add Comment
+                <i class="far fa-comments fa-2x mr-2"></i> {language.Add_Comment}
               </Button>
             </div>
             <div className="like-dislike">
-              {/* When user hovers the like button, it gives the liked users' name list */}
+              {/* When user hovers the like button, liked users' name list is visible */}
               <Tooltip
                 title={<h5>{post.likedUsers.join(',  ')}</h5>}
                 placement="top"
@@ -230,7 +206,7 @@ function Post({
                   <i
                     className="far thumb-button fa-thumbs-up mt-3 fa-2x"
                     onClick={() => {
-                      actionLike();
+                      onPostLike();
                     }}></i>
                 )}
               </Tooltip>
@@ -247,7 +223,7 @@ function Post({
                 <i
                   className="far fa-thumbs-down mt-4 fa-2x fa-flip-horizontal"
                   onClick={() => {
-                    actionDisLike();
+                    onPostDislike();
                   }}></i>
               )}
             </div>
@@ -269,8 +245,9 @@ function Post({
             </Link>
           </div>
 
-          {/* When "show comments" is clicked comments page expands */}
-          {showComments ? <CommentPageDetails post={post} /> : null}
+          {showComments ? (
+            <CommentPageDetails post={post} currentUser={currentUser} />
+          ) : null}
 
           {isFormOpen && (
             <CommentForm

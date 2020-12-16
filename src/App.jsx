@@ -21,7 +21,6 @@ import SubjectsPage from './components/subject/SubjectsPage';
 import LecturePage from './components/lecture/LecturePage';
 import PostsPage from './components/forum/posts/PostsPage';
 import CommentPageDetails from './components/forum/comments/CommentPageDetails';
-import CommentsPage from './components/forum/comments/CommentsPage';
 import CalendarComponent from './components/calendar/CalendarComponent';
 
 function App() {
@@ -86,10 +85,6 @@ function App() {
 
               <Route path="/forum" exact>
                 <PostsPage />
-              </Route>
-
-              <Route exact path="/comments">
-                <CommentsPage />
               </Route>
               <Route
                 path="/post/:id/comments"
