@@ -1,3 +1,4 @@
+import { BASE_URL } from './Api';
 import Api from './Api';
 
 class PrivChatApi {
@@ -9,7 +10,7 @@ class PrivChatApi {
     return Api.delete(`/message/${id}`);
   }
 
-  stream = 'https://edulane-backend.herokuapp.com/message/stream';
+  stream = `${BASE_URL}/message/stream`;
 }
 
 export default new PrivChatApi();

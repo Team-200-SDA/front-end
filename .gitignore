@@ -222,3 +222,4 @@ build/
 firebase.json
 .firebaserc
 .firebase/
+.env

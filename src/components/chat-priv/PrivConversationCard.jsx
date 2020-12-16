@@ -14,7 +14,9 @@ function PrivConversationCard({
           activeThreadReceiver === conversation.receiverName ? 'active-receiver' : null
         }`}
         color="primary.contrastText">
-        <Avatar className={`message-avatar-priv`}>T</Avatar>
+        <Avatar className={`message-avatar-priv`}>
+          {conversation.receiverName.charAt(0)}
+        </Avatar>
         <div
           className={`private-message-sender ${
             activeThreadReceiver === conversation.receiverName ? 'active-receiver' : null

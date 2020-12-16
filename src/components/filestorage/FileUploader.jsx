@@ -6,7 +6,7 @@ function FileUploader({ setUploadResponse, uploadType }) {
   return (
     <Uploady
       destination={{
-        url: `https://api.cloudinary.com/v1_1/dyge6kiwf/raw/upload`,
+        url: process.env.REACT_APP_CLOUDINARY_RAW,
         params: { upload_preset: 'filestorage' }
       }}>
       <UploaderButton setUploadResponse={setUploadResponse} uploadType={uploadType} />

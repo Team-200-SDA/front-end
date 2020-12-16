@@ -37,14 +37,11 @@ function ImageUploader({ setImgUrl, uploadPreset }) {
     const sendImage = async () => {
       try {
         if (payload !== null) {
-          const response = await fetch(
-            'https://api.cloudinary.com/v1_1/dyge6kiwf/image/upload', //We should probably put this in .env for now.
-            {
-              method: 'post',
-              body: payload,
-              signal: abortFetch.signal
-            }
-          );
+          const response = await fetch(process.env.REACT_APP_CLOUDINARY, {
+            method: 'post',
+            body: payload,
+            signal: abortFetch.signal
+          });
           const jsonResponse = await response.json();
           setImgUrl(jsonResponse['secure_url']);
         }
