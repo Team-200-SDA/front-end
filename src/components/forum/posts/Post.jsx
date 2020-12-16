@@ -1,9 +1,8 @@
 //Component and react imports
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PostForm from "./PostForm";
 import { Link } from "react-router-dom";
 import CommentForm from "../comments/CommentForm";
-import UserApi from "../../../api/UserApi";
 import CommentPageDetails from "../comments/CommentPageDetails";
 import { useContext } from "react";
 import { LangContext } from "../../../js/states/LanguageContext";
@@ -21,7 +20,7 @@ function Post({
   currentUser,
   post,
   onPostUpdate,
-  onPostDelete, //Props come from PostsList
+  onPostDelete, //Props come from PostsPage
 }) {
   const { language } = useContext(LangContext);
   const [isUpdate, setIsUpdate] = useState(false);
@@ -164,29 +163,8 @@ function Post({
               <p className="user-name">{post.user.name}</p>
             </span>
           </div>
-          <span className="card-info">
-            <div>
-              {/* In case user doesn't upload a picture system default picture is used as user avatar */}
-              {post.user.profilepic === null ? (
-                <img
-                  className="forum-avatar"
-                  src={defaultImage}
-                  alt="User profile"
-                />
-              ) : (
-                <img
-                  className="forum-avatar"
-                  src={post.user.profilepic}
-                  alt="User profile"
-                />
-              )}
-            </div>
-            <p className="user-name">{post.user.name}</p>
-          </span>
-
           <div className="post-body">{post.body}</div>
-
-          <div className="forum-buttons forum-buttons-post">
+           <div className="forum-buttons forum-buttons-post">
             {!isMyPost ? <div className="filler-div" /> : null}
             {isMyPost && (
               <div className="edit-delete">

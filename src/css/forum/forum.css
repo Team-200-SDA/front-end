@@ -140,7 +140,6 @@ html
 
 .edit-delete {
   color: var(--text);
-  /* font-size: 6pt; */
 }
 
 .like-count {
@@ -189,9 +188,8 @@ html
   display: block;
   float: none;
   width: 70%;
-
   padding-right: 30%;
-  /* padding-left: 10%; */
+
 }
 @media screen and (max-width: 767px) {
   .post {

@@ -1,8 +1,6 @@
 //Component and react imports
-import React, { useState} from "react";
+import React, { useState } from "react";
 import CommentForm from "./CommentForm";
-import { useContext } from "react";
-import { LangContext } from "../../../js/states/LanguageContext";
 
 //Styling import
 import "../../../css/forum/forum.css";
@@ -11,7 +9,7 @@ import "../../../css/forum/forum.css";
 const defaultImage = "/images/defaultUserImage/blank-profile-pic.png";
 
 /**
- * This component lists the comments and allows the logged-in user to delete or edit * own comment.
+ * This component lists the comments and allows the logged-in user to delete or edit own comment.
  */
 function Comment({
   comment,
@@ -20,9 +18,6 @@ function Comment({
   onCommentUpdate,
   getAllCommentsByPostId,
 }) {
-  //props come from CommentsPage
-
-  const { language } = useContext(LangContext);
   const [isUpdate, setIsUpdate] = useState(false); // Opens/closes the Comment update form
 
   //To be used in checking if the comment belongs to the loggedin user. If true makes buttons visible
