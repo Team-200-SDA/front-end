@@ -5,4 +5,33 @@
   position: fixed;
   bottom: 130px;
   right: 30px;
+  border: 1px solid var(--secondary);
+  border-radius: 18px;
+  -webkit-border-radius: 18px;
+  -moz-border-radius: 18px;
+  -ms-border-radius: 18px;
+  -o-border-radius: 18px;
+}
+
+.react-chatbot-kit-chat-inner-container {
+  background: var(--light);
+  border-radius: 18px;
+  -webkit-border-radius: 18px;
+  -moz-border-radius: 18px;
+  -ms-border-radius: 18px;
+  -o-border-radius: 18px;
+}
+
+.react-chatbot-kit-chat-header {
+  background: var(--secondary);
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+}
+
+.react-chatbot-kit-chat-bot-message {
+  background-color: var(--primary);
+}
+
+.react-chatbot-kit-chat-bot-message-arrow {
+  border-right: var(--primary) !important;
 }
