@@ -5,8 +5,8 @@ import { useContext } from 'react';
 import { LangContext } from '../../js/states/LanguageContext';
 
 function CalendarComponent() {
-  const API_KEY = 'AIzaSyBYTS15rNiD7rLgO1SIjMYu8DnZ-TfxX1E';
-  const CALENDAR_ID = 'sda.team200@gmail.com';
+  const API_KEY = process.env.REACT_APP_GOOGLE_API;
+  const CALENDAR_ID = process.env.REACT_APP_GOOGLE_CALENDAR_ID;
   const { language } = useContext(LangContext);
 
   /**
