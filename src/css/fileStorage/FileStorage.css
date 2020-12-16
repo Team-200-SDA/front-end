@@ -48,6 +48,13 @@
   padding-bottom: 15px;
 }
 
+.upload-circle {
+  z-index: 11;
+  position: absolute;
+  top: 30%;
+  left: calc(50% + 45px);
+}
+
 @media screen and (max-width: 767px) {
   .card-filestorage {
     max-width: 98%;
