@@ -70,7 +70,7 @@ function Comment({ comment, onCommentDelete, onCommentUpdate, getAllCommentsByPo
       ) : (
         <div className="comment-card forum">
           <span className="card-info">
-            <div>
+            <div className= "forum-avatar-comment">
               {/* If user didn't upload a picture, system default picture is used as the user avatar. */}
               {comment.user.profilepic === null ? (
                 <img
@@ -87,7 +87,7 @@ function Comment({ comment, onCommentDelete, onCommentUpdate, getAllCommentsByPo
               )}
             </div>
 
-            <p className="user-name">{comment.user.name}</p>
+            <p className="user-name-comment">{comment.user.name}</p>
           </span>
 
           <div className="comment-body">{comment.body}</div>

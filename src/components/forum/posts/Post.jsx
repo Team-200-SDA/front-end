@@ -1,25 +1,25 @@
 //Component and react imports
-import React, { useState, useEffect } from 'react';
-import PostForm from './PostForm';
-import { Link } from 'react-router-dom';
-import CommentForm from '../comments/CommentForm';
-import UserApi from '../../../api/UserApi';
-import CommentPageDetails from '../comments/CommentPageDetails';
-import { useContext } from 'react';
-import { LangContext } from '../../../js/states/LanguageContext';
+import React, { useState, useEffect } from "react";
+import PostForm from "./PostForm";
+import { Link } from "react-router-dom";
+import CommentForm from "../comments/CommentForm";
+import UserApi from "../../../api/UserApi";
+import CommentPageDetails from "../comments/CommentPageDetails";
+import { useContext } from "react";
+import { LangContext } from "../../../js/states/LanguageContext";
 
 //styling import
-import { Button, Tooltip, Collapse } from '@material-ui/core';
-import '../../../css/forum/forum.css';
-import '../../../css/shared.css';
-import '../../../css/subjects/_subjects.css';
+import { Button, Tooltip, Collapse } from "@material-ui/core";
+import "../../../css/forum/forum.css";
+import "../../../css/shared.css";
+import "../../../css/subjects/_subjects.css";
 
-const defaultImage = '/images/defaultUserImage/blank-profile-pic.png';
+const defaultImage = "/images/defaultUserImage/blank-profile-pic.png";
 
 function Post({
   post,
   onPostUpdate,
-  onPostDelete //Props come from PostsList
+  onPostDelete, //Props come from PostsList
 }) {
   const { language } = useContext(LangContext);
   const [isUpdate, setIsUpdate] = useState(false);
@@ -29,7 +29,7 @@ function Post({
   const [likeCount, setLikeCount] = useState(post.likedUsers.length);
 
   const getUser = () => {
-    UserApi.getLoggedInUser().then(res => {
+    UserApi.getLoggedInUser().then((res) => {
       setUser(res.data);
     });
   };
@@ -53,7 +53,7 @@ function Post({
    * Takes the current post data and adds the new updated information
    * Returns updated post
    */
-  const onPostFormSubmit = postData => {
+  const onPostFormSubmit = (postData) => {
     const updatedPost = { ...post, ...postData };
     return onPostUpdate(updatedPost).then(() => setIsUpdate(false));
   };
@@ -65,11 +65,13 @@ function Post({
    * Post updated
    */
   const onPostLike = async () => {
-    var newDisLikeList = post.disLikedUsers.filter(item => item !== user.name);
+    var newDisLikeList = post.disLikedUsers.filter(
+      (item) => item !== user.name
+    );
     const updatedPost = {
       ...post,
       likedUsers: [...post.likedUsers, user.name],
-      disLikedUsers: newDisLikeList
+      disLikedUsers: newDisLikeList,
     };
     return await onPostUpdate(updatedPost); // setStatus is kept separate to avoid time lag between BE and FE
   };
@@ -80,10 +82,10 @@ function Post({
    * Post updated
    */
   const onRemoveLike = async () => {
-    var newLikeList = post.likedUsers.filter(item => item !== user.name);
+    var newLikeList = post.likedUsers.filter((item) => item !== user.name);
     const updatedPost = {
       ...post,
-      likedUsers: newLikeList
+      likedUsers: newLikeList,
     };
     return await onPostUpdate(updatedPost); // setStatus is kept separate to avoid time lag between BE and FE
   };
@@ -95,11 +97,11 @@ function Post({
    * Post updated
    */
   const onPostDislike = async () => {
-    var newLikeList = post.likedUsers.filter(item => item !== user.name);
+    var newLikeList = post.likedUsers.filter((item) => item !== user.name);
     const updatedPost = {
       ...post,
       likedUsers: newLikeList,
-      disLikedUsers: [...post.disLikedUsers, user.name]
+      disLikedUsers: [...post.disLikedUsers, user.name],
     };
     return await onPostUpdate(updatedPost); //setStatus function is kept separate to avoid any functional lag between BE and FE
   };
@@ -110,10 +112,12 @@ function Post({
    * Post updated
    */
   const onRemoveDisLike = async () => {
-    var newDisLikeList = post.disLikedUsers.filter(item => item !== user.name);
+    var newDisLikeList = post.disLikedUsers.filter(
+      (item) => item !== user.name
+    );
     const updatedPost = {
       ...post,
-      disLikedUsers: newDisLikeList
+      disLikedUsers: newDisLikeList,
     };
     return await onPostUpdate(updatedPost); // setStatus is kept separate to avoid time lag between BE and FE
   };
@@ -138,7 +142,7 @@ function Post({
     setIsUpdate(false);
   };
 
-  const onCreateCommentClick = data => {
+  const onCreateCommentClick = (data) => {
     setIsFormOpen(true);
   };
 
@@ -158,24 +162,30 @@ function Post({
         />
       ) : (
         <div className="card-body post">
-          <div className="post-title">
-            <h3>{post.title}</h3>
+          <div className="post-top">
+            <span className="post-top-right">
+              <h3>{post.title}</h3>
+            </span>
+            <span className="post-top-left">
+              <div>
+                {/* In case user doesn't upload a picture system default picture is used as user avatar */}
+                {post.user.profilepic === null ? (
+                  <img
+                    className="forum-avatar"
+                    src={defaultImage}
+                    alt="User profile"
+                  />
+                ) : (
+                  <img
+                    className="forum-avatar"
+                    src={post.user.profilepic}
+                    alt="User profile"
+                  />
+                )}
+              </div>
+              <p className="user-name">{post.user.name}</p>
+            </span>
           </div>
-          <span className="card-info">
-            <div>
-              {/* In case user doesn't upload a picture system default picture is used as user avatar */}
-              {post.user.profilepic === null ? (
-                <img className="forum-avatar" src={defaultImage} alt="User profile" />
-              ) : (
-                <img
-                  className="forum-avatar"
-                  src={post.user.profilepic}
-                  alt="User profile"
-                />
-              )}
-            </div>
-            <p className="user-name">{post.user.name}</p>
-          </span>
 
           <div className="post-body">{post.body}</div>
 
@@ -186,14 +196,16 @@ function Post({
                 <i
                   class="fas fa-trash fa-2x post-button"
                   title="delete"
-                  onClick={() => onPostDelete(post)}>
-                  {' '}
+                  onClick={() => onPostDelete(post)}
+                >
+                  {" "}
                 </i>
                 <i
                   class="fas fa-edit fa-2x post-button"
                   title="edit"
-                  onClick={() => onUpdateClick()}>
-                  {' '}
+                  onClick={() => onUpdateClick()}
+                >
+                  {" "}
                 </i>
               </div>
             )}
@@ -204,32 +216,43 @@ function Post({
                 variant="contained"
                 data-toggle="modal"
                 data-target="#myModal"
+<<<<<<< HEAD
                 onClick={onCreateCommentClick}>
                 <i class="far fa-comments fa-2x mr-2"></i> {/* {language.Add_Comment} */}
                {language.Add_Comment}
+=======
+                onClick={onCreateCommentClick}
+              >
+                <i class="far fa-comments fa-2x mr-2"></i>{" "}
+                {/* {language.Add_Comment} */}
+                Add Comment
+>>>>>>> ba0da1ccfac3a41b30c0ca9b754368071afb790e
               </Button>
             </div>
             <div className="like-dislike">
               {/* When user hovers the like button, it gives the liked users' name list */}
               <Tooltip
-                title={<h5>{post.likedUsers.join(',  ')}</h5>}
+                title={<h5>{post.likedUsers.join(",  ")}</h5>}
                 placement="top"
                 TransitionComponent={Collapse}
                 enterDelay={800}
                 leaveDelay={200}
-                arrow>
+                arrow
+              >
                 {userLiked ? (
                   <i
                     className="fas thumb-button fa-thumbs-up mt-3 fa-2x"
                     onClick={() => {
                       onRemoveLike();
-                    }}></i>
+                    }}
+                  ></i>
                 ) : (
                   <i
                     className="far thumb-button fa-thumbs-up mt-3 fa-2x"
                     onClick={() => {
                       actionLike();
-                    }}></i>
+                    }}
+                  ></i>
                 )}
               </Tooltip>
 
@@ -240,13 +263,15 @@ function Post({
                   class="fas thumb-button fa-thumbs-down mt-4 fa-2x fa-flip-horizontal"
                   onClick={() => {
                     onRemoveDisLike();
-                  }}></i>
+                  }}
+                ></i>
               ) : (
                 <i
                   className="far fa-thumbs-down mt-4 fa-2x fa-flip-horizontal"
                   onClick={() => {
                     actionDisLike();
-                  }}></i>
+                  }}
+                ></i>
               )}
             </div>
           </div>
