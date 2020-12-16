@@ -16,7 +16,7 @@ export default function Footer() {
     changeLanguageToEs
   } = useContext(LangContext);
   const [botOpen, setBotOpen] = useState(false);
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(true);
 
   function darkMode() {
     setDark(!dark);

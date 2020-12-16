@@ -158,24 +158,26 @@ function Post({
         />
       ) : (
         <div className="card-body post">
-          <span className="post-title">
-            <h3>{post.title}</h3>
-          </span>
-          <span className="card-info">
-            <div>
-              {/* In case user doesn't upload a picture system default picture is used as user avatar */}
-              {post.user.profilepic === null ? (
-                <img className="forum-avatar" src={defaultImage} alt="User profile" />
-              ) : (
-                <img
-                  className="forum-avatar"
-                  src={post.user.profilepic}
-                  alt="User profile"
-                />
-              )}
-            </div>
-            <p className="user-name">{post.user.name}</p>
-          </span>
+          <div className="post-top">
+            <span className="post-top-right">
+              <h3>{post.title}</h3>
+            </span>
+            <span className="post-top-left">
+              <div>
+                {/* In case user doesn't upload a picture system default picture is used as user avatar */}
+                {post.user.profilepic === null ? (
+                  <img className="forum-avatar" src={defaultImage} alt="User profile" />
+                ) : (
+                  <img
+                    className="forum-avatar"
+                    src={post.user.profilepic}
+                    alt="User profile"
+                  />
+                )}
+              </div>
+              <p className="user-name">{post.user.name}</p>
+            </span>
+          </div>
 
           <div className="post-body">{post.body}</div>
 
