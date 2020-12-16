@@ -158,9 +158,9 @@ function Post({
         />
       ) : (
         <div className="card-body post">
-          <div className="post-title">
+          <span className="post-title">
             <h3>{post.title}</h3>
-          </div>
+          </span>
           <span className="card-info">
             <div>
               {/* In case user doesn't upload a picture system default picture is used as user avatar */}
