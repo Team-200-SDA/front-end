@@ -4,7 +4,7 @@ import ImageUploader from '../imageuploader/ImageUploader';
 import { useContext } from 'react';
 import { LangContext } from '../../js/states/LanguageContext';
 import { FormLabel } from '@material-ui/core';
-const defaultImage = '/images/defaultUserImage/blank-profile-pic.png';
+const defaultImage = '/images/defaultUserImage/blankProfile.png';
 
 /**
  * This component displays the current user details, and allows user to update address, phone no and profile picture

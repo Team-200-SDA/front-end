@@ -1,12 +1,12 @@
 //Component and react imports
-import React, { useState } from "react";
-import CommentForm from "./CommentForm";
+import React, { useState } from 'react';
+import CommentForm from './CommentForm';
 
 //Styling import
-import "../../../css/forum/forum.css";
+import '../../../css/forum/forum.css';
 
 //Default user image for the forum
-const defaultImage = "/images/defaultUserImage/blank-profile-pic.png";
+const defaultImage = '/images/defaultUserImage/blank-profile-pic.png';
 
 /**
  * This component lists the comments and allows the logged-in user to delete or edit own comment.
@@ -16,7 +16,7 @@ function Comment({
   currentUser,
   onCommentDelete,
   onCommentUpdate,
-  getAllCommentsByPostId,
+  getAllCommentsByPostId
 }) {
   const [isUpdate, setIsUpdate] = useState(false); // Opens/closes the Comment update form
 
@@ -56,7 +56,7 @@ function Comment({
       ) : (
         <div className="comment-card forum">
           <span className="card-info">
-            <div className= "forum-avatar-comment">
+            <div className="forum-avatar-comment">
               {/* If user didn't upload a picture, system default picture is used as the user avatar. */}
               {comment.user.profilepic === null ? (
                 <img
@@ -84,14 +84,12 @@ function Comment({
                 <i
                   class="fas fa-trash post-button  fa-lg"
                   title="delete"
-                  onClick={() => onCommentDelete(comment)}
-                ></i>
+                  onClick={() => onCommentDelete(comment)}></i>
 
                 <i
                   class="fas fa-edit post-button  fa-lg"
                   title="edit"
-                  onClick={onUpdateComment}
-                ></i>
+                  onClick={onUpdateComment}></i>
               </span>
             )}
           </div>

@@ -6,7 +6,7 @@
 }
 
 .login-background {
-  background-image: url('/src/assets/images/login.jpg');
+  background-image: url('../../assets/images/login.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
