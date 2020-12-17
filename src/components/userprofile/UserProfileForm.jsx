@@ -1,55 +1,61 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import ImageUploader from '../imageuploader/ImageUploader';
 import { useContext } from 'react';
 import { LangContext } from '../../js/states/LanguageContext';
-import { Card, FormLabel } from '@material-ui/core';
-const defaultImage = '/images/defaultUserImage/blank-profile-pic.png';
+import { FormLabel } from '@material-ui/core';
+const defaultImage = '/images/defaultUserImage/blankProfile.png';
 
 /**
  * This component displays the current user details, and allows user to update address, phone no and profile picture
  */
-function UserProfileForm({ user, onUpdateAddressClick, onUpdatePhoneClick, onUpdatePicClick }) {
+function UserProfileForm({
+  user,
+  onUpdateAddressClick,
+  onUpdatePhoneClick,
+  onUpdatePicClick
+}) {
   const { language } = useContext(LangContext);
-  const [address, setAddress] = useState({ address: "" });
-  const [phoneno, setPhoneno] = useState({ phoneno: "" });
-  const [image, setImage] = useState({ image: "" });
+  const [address, setAddress] = useState({ address: '' });
+  const [phoneno, setPhoneno] = useState({ phoneno: '' });
+  const [image, setImage] = useState({ image: '' });
 
   /**
    *
    * @param {event} e
    * @returns {void}
-   * preventDefault takes current event as parameter and prevents the page from refreshing 
+   * preventDefault takes current event as parameter and prevents the page from refreshing
    * when a button is clicked or Enter is pressed.
-   * When user updates address, this function invokes call back function(onUpdateAddressClick) and 
+   * When user updates address, this function invokes call back function(onUpdateAddressClick) and
    * passes updated address as parameter
    */
   function clickUpdateAddress(e) {
     e.preventDefault();
     onUpdateAddressClick(address.address);
-    setAddress({ address: "" });
+    setAddress({ address: '' });
   }
 
   /**
    *
    * @param {event} e
    * @returns {void}
-   * preventDefault takes current event as parameter and prevents the page from refreshing 
+   * preventDefault takes current event as parameter and prevents the page from refreshing
    * when a button is clicked or Enter is pressed.
-   * When user updates Phoneno, this function invokes call back function(onUpdatePhoneClick) and 
+   * When user updates Phoneno, this function invokes call back function(onUpdatePhoneClick) and
    * passes updated phoneno as parameter
    */
   function clickUpdatePhone(e) {
     e.preventDefault();
     onUpdatePhoneClick(phoneno.phoneno);
-    setPhoneno({ phoneno: "" });
+    setPhoneno({ phoneno: '' });
   }
 
   /**
-   * Whenever user updates Profile picture, this function invokes call back function(onUpdatePicClick) and 
+   * Whenever user updates Profile picture, this function invokes call back function(onUpdatePicClick) and
    * passes updated profile image url as parameter
    */
   useEffect(() => {
-    if (image.image === "") {
+    if (image.image === '') {
       return;
     }
     onUpdatePicClick(image);
@@ -69,21 +75,13 @@ function UserProfileForm({ user, onUpdateAddressClick, onUpdatePhoneClick, onUpd
           {/* Profile Pic Stuff */}
           <div className="profile-pic-card">
             {user.profilepic === null ? (
-              <img
-                className="profile-avatar"
-                src={defaultImage}
-                alt="User profile"
-              />
+              <img className="profile-avatar" src={defaultImage} alt="User profile" />
             ) : (
-              <img
-                className="profile-avatar"
-                src={user.profilepic}
-                alt="User profile"
-              />
+              <img className="profile-avatar" src={user.profilepic} alt="User profile" />
             )}
             {/* ImageUploader component allows the user to choose the image to set as profile picture and 
             uploads chosen image to Cloudinary and returns the url */}
-            <ImageUploader setImgUrl={setImage} uploadPreset={"profile"} />
+            <ImageUploader setImgUrl={setImage} uploadPreset={'profile'} />
           </div>
 
           {/* User Name and Email */}
@@ -113,17 +111,14 @@ function UserProfileForm({ user, onUpdateAddressClick, onUpdatePhoneClick, onUpd
                   <input
                     className="form-control"
                     defaultValue={user.address}
-                    onChange={(event) =>
-                      setAddress({ address: event.target.value })
-                    }
+                    onChange={event => setAddress({ address: event.target.value })}
                     placeholder={language.Enter_Address}
                   />
                 </div>
                 <div className="text-right mt-4 mb-0">
                   <button
                     className="btn btn-light profile-update-button"
-                    onClick={(e) => clickUpdateAddress(e)}
-                  >
+                    onClick={e => clickUpdateAddress(e)}>
                     <i className="fas fa-save update-icon"></i>
                   </button>
                 </div>
@@ -141,17 +136,14 @@ function UserProfileForm({ user, onUpdateAddressClick, onUpdatePhoneClick, onUpd
                   <input
                     className="form-control"
                     defaultValue={user.phoneno}
-                    onChange={(event) =>
-                      setPhoneno({ phoneno: event.target.value })
-                    }
+                    onChange={event => setPhoneno({ phoneno: event.target.value })}
                     placeholder={language.Enter_Phone_Number}
                   />
                 </div>
                 <div className="text-right mt-4 mb-0">
                   <button
                     className="btn btn-light profile-update-button"
-                    onClick={(e) => clickUpdatePhone(e)}
-                  >
+                    onClick={e => clickUpdatePhone(e)}>
                     <i className="fas fa-save update-icon"></i>
                   </button>
                 </div>

@@ -1,11 +1,12 @@
-import Api from './Api';
+import { BASE_URL } from './Api';
+import Api from './Api.js';
 
 class PubChatApi {
   getAll() {
     return Api.get('/chat');
   }
 
-  endpoint = 'https://edulane-backend.herokuapp.com/ws';
+  endpoint = `${BASE_URL}/ws`;
 }
 
 export default new PubChatApi();

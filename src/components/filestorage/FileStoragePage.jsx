@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import FileStorageApi from "../../api/FileStorageApi";
-import FileStorageForm from "../filestorage/FileStorageForm";
-import FileStorage from "./FileStorage";
-import { useContext } from "react";
+import React, { useEffect, useState } from 'react';
+import FileStorageApi from '../../api/FileStorageApi';
+import FileStorageForm from '../filestorage/FileStorageForm';
+import FileStorage from './FileStorage';
+import { useContext } from 'react';
 import { LangContext } from '../../js/states/LanguageContext';
 
 /**
@@ -18,7 +18,7 @@ export default function FileStoragePage() {
    * Calls Api to get all files stored by current user
    */
   const getAll = () => {
-    FileStorageApi.getAllFiles().then((res) => {
+    FileStorageApi.getAllFiles().then(res => {
       setFiles(res.data);
     });
   };
@@ -35,9 +35,8 @@ export default function FileStoragePage() {
    * @param {Array} fileData
    * Calls Api to store chosen file details and alerts the user that file is uploaded
    */
-  const uploadFile = async (fileData) => {
+  const uploadFile = async fileData => {
     const res = await FileStorageApi.uploadFile(fileData);
-    alert(language.File_Uploaded);
     setFiles([...files, res.data]);
   };
 
@@ -46,7 +45,7 @@ export default function FileStoragePage() {
    * @param {num} fileId
    * Calls Api to delete the file by id
    */
-  const deleteFile = async (fileId) => {
+  const deleteFile = async fileId => {
     await FileStorageApi.deleteFile(fileId);
     alert(language.File_Deleted);
     getAll();
@@ -57,7 +56,7 @@ export default function FileStoragePage() {
       <FileStorageForm uploadFile={uploadFile} />
       {files.length === 0
         ? null
-        : files.map((file) => (
+        : files.map(file => (
             <FileStorage key={file.id} file={file} onFileDelete={deleteFile} />
           ))}
     </div>

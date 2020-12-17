@@ -219,3 +219,7 @@ $RECYCLE.BIN/
 build/
 .idea/
 .vscode/
+firebase.json
+.firebaserc
+.firebase/
+.env
