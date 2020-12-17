@@ -3,6 +3,8 @@
 This project attempts to improve studying and teaching remotely as its primary goal.  
 The approach to to reach his goal is to implement all the traditional functionalities required by a teacher or student into a single application. Eliminating the need to install multiple applications for file storage, text communication, video communication, scheduling applications etc. It's an all-in-one platform thats easy to use for both student and educator.
 
+[DEMO SITE](https://edulane-sda.web.app/)
+
 ## Software Requirements
 
 As the application is web based, any modern browser will suffice. The platform has been tested on the latest versions of Chrome, Edge, Safari and Firefox. Test date (17/12/2020).
