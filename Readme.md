@@ -43,4 +43,5 @@ The project built using [Gradle](https://gradle.org)
 ![Live Lectures](src/assets/images/lectures.png)
 ![Subjects Page](src/assets/images/subjects.png)
 ![Private Chat](src/assets/images/private_chat.png)
+![Forum](src/assets/images/forum.png)
 
