@@ -38,4 +38,4 @@ The project built using [Gradle](https://gradle.org)
 - [x] Multilingual Support
 - [x] Dark/Light Mode
 
-[loginpage](https://imgur.com/6Cx0fro)
+[loginpage](src/assets/images/Login_Page_readme.png)
