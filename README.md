@@ -1,7 +1,7 @@
 # EDU-Lane
 
 This project attempts to improve studying and teaching remotely as its primary goal.  
-The approach to to reach his goal is to implement all the traditional functionalities required by a teacher or student into a single application. Eliminating the need to install multiple applications for file storage, text communication, video communication, scheduling applications etc. It's an all-in-one platform thats easy to use for both student and educator.
+The approach to reach this goal is to implement all the traditional functionalities required by a teacher or student into a single application. Eliminating the need to install multiple applications for file storage, text communication, video communication, scheduling applications etc. It's an all-in-one platform thats easy to use for both student and educator.
 
 [DEMO SITE](https://edulane-sda.web.app/)
 
