@@ -14,10 +14,10 @@ It doesn't have an apparent conflict with equivalent Linux or Windows Operating 
 The project built using [https://gradle.org](Gradle)
 
 ## Technologies employed
-[https://spring.io/projects/spring-boot](Spring (boot))
-[https://www.oracle.com/java/technologies/javase-jdk11-downloads.html](JAVA SDK 11)
-[https://www.postgresql.org/](PostgreSQL)
-[https://www.docker.com/](Docker)
-[https://www.mongodb.com](MongoDB)
-[https://www.javascript.com/](JavaScript)
-[https://reactjs.org/](JSX-React)
+- [https://spring.io/projects/spring-boot](Spring (boot))
+- [https://www.oracle.com/java/technologies/javase-jdk11-downloads.html](JAVA SDK 11)
+- [https://www.postgresql.org/](PostgreSQL)
+- [https://www.docker.com/](Docker)
+- [https://www.mongodb.com](MongoDB)
+- [https://www.javascript.com/](JavaScript)
+- [https://reactjs.org/](JSX-React)
