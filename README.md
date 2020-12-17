@@ -55,8 +55,9 @@ You will need an instance of Postgresql and Mongo DB running on your system. Doc
 - [x] Dark/Light Mode
 
 ![](https://github.com/Team-200-SDA/front-end/blob/forumFE/src/assets/images/Login_Page_readme.png)
-![](src/assets/images/homepage.png)
-![](src/assets/images/live.png)
-![](src/assets/images/subjects.png)
-![](src/assets/images/private_chat.png)
-![](src/assets/images/forum.png)
+![](https://github.com/Team-200-SDA/front-end/blob/forumFE/src/assets/images/homepage.png)
+![](https://github.com/Team-200-SDA/front-end/blob/forumFE/src/assets/images/live.png)
+![](https://github.com/Team-200-SDA/front-end/blob/forumFE/src/assets/images/subjects.png)
+![](https://github.com/Team-200-SDA/front-end/blob/forumFE/src/assets/images/private_chat.png)
+![](https://github.com/Team-200-SDA/front-end/blob/forumFE/src/assets/images/forum.png)
+
