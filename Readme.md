@@ -37,3 +37,5 @@ The project built using [Gradle](https://gradle.org)
 - [x] Chatbot
 - [x] Multilingual Support
 - [x] Dark/Light Mode
+
+[loginpage](https://imgur.com/6Cx0fro)
