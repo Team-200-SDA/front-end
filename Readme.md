@@ -17,7 +17,7 @@ The project built using [Gradle](https://gradle.org)
 - [Spring (boot)](https://spring.io/projects/spring-boot)
 - [JAVA SDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
 - [PostgreSQL](https://www.postgresql.org/)
-- [(Docker](https://www.docker.com/)
+- [Docker](https://www.docker.com/)
 - [MongoDB](https://www.mongodb.com)
 - [JavaScript](https://www.javascript.com/)
 - [JSX-React](https://reactjs.org/)
@@ -38,4 +38,9 @@ The project built using [Gradle](https://gradle.org)
 - [x] Multilingual Support
 - [x] Dark/Light Mode
 
-[loginpage](src/assets/images/Login_Page_readme.png)
+![Loginpage](src/assets/images/Login_Page_readme.png)
+![Homepage](src/assets/images/homepage.png)
+![Live Lectures](src/assets/images/lectures.png)
+![Subjects Page](src/assets/images/subjects.png)
+![Private Chat](src/assets/images/private_chat.png)
+
