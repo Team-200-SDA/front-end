@@ -54,7 +54,7 @@ You will need an instance of Postgresql and Mongo DB running on your system. Doc
 - [x] Multilingual Support
 - [x] Dark/Light Mode
 
-![](src/assets/images/Login_Page_readme.png)
+![](https://github.com/Team-200-SDA/front-end/blob/forumFE/src/assets/images/Login_Page_readme.png)
 ![](src/assets/images/homepage.png)
 ![](src/assets/images/live.png)
 ![](src/assets/images/subjects.png)
